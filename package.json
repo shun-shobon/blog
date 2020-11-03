@@ -1,0 +1,10 @@
+{
+  "name": "blog",
+  "version": "0.0.0",
+  "description": "My blog project.",
+  "main": "src/index.ts",
+  "repository": "https://github.com/shun-shobon/blog.git",
+  "author": "Shuntaro Nishizawa <me@shun.technology> (https://shun.technology)",
+  "license": "UNLICENSED",
+  "private": true
+}
