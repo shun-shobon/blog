@@ -1,3 +1,5 @@
-import hello from "./hello";
+import { h } from "preact";
+import render from "preact-render-to-string";
+import Hello from "./hello";
 
-console.log(hello("world!"));
+console.log(render(h(Hello, { name: "world!" })));
