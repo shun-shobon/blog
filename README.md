@@ -1,57 +1,6 @@
-# Next.js template
+# Blog
 
-## Usage
+[![ci](https://github.com/shun-shobon/blog/actions/workflows/ci.yml/badge.svg)](https://github.com/shun-shobon/blog/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/shun-shobon/blog/branch/master/graph/badge.svg?token=4X2ZSMPZ6I)](https://codecov.io/gh/shun-shobon/blog)
 
-### Install
-
-```shell
-$ pnpm install
-```
-
-### Build
-
-```shell
-$ pnpm build
-```
-
-### Start production server
-
-```shell
-$ pnpm start
-```
-
-### Start development server
-
-```shell
-$ pnpm dev
-```
-
-### Start storybook server
-
-```shell
-$ pnpm storybook
-```
-
-### Run type checker
-
-```shell
-$ pnpm type
-```
-
-### Run linter
-
-```shell
-$ pnpm lint
-```
-
-### Run formatter
-
-```shell
-$ pnpm format
-```
-
-### Run test
-
-```shell
-$ pnpm test
-```
+> My blog site
