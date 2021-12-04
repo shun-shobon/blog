@@ -1,0 +1,48 @@
+{
+  "name": "@shun-shobon/blog",
+  "description": "My blog site",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:ci": "jest --ci --coverage",
+    "type": "tsc",
+    "lint": "next lint",
+    "format": "prettier --write --ignore-path .gitignore \"**/*.{js,ts,jsx,tsx,css}\"",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "next": "12.0.4",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@swc/core": "^1.2.117",
+    "@swc/jest": "^0.2.11",
+    "@testing-library/dom": "^8.11.1",
+    "@testing-library/jest-dom": "^5.15.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.0.3",
+    "@types/node": "16.11.11",
+    "@types/react": "17.0.37",
+    "@types/testing-library__jest-dom": "^5.14.2",
+    "autoprefixer": "^10.4.0",
+    "eslint": "^7.32.0",
+    "eslint-config-next": "^12.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-testing-library": "^5.0.1",
+    "husky": "^7.0.4",
+    "jest": "^27.4.3",
+    "lint-staged": "^12.1.2",
+    "postcss": "^8.4.4",
+    "prettier": "^2.5.0",
+    "tailwindcss": "^2.2.19",
+    "typescript": "~4.4.4"
+  },
+  "packageManager": "yarn@3.1.1"
+}

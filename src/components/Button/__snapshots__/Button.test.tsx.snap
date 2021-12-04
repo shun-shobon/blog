@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders 1`] = `
+<DocumentFragment>
+  <button
+    class="px-4 py-1 rounded-full text-white bg-blue-400"
+  >
+    Button
+  </button>
+</DocumentFragment>
+`;
