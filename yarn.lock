@@ -1002,6 +1002,7 @@ __metadata:
     eslint-config-next: ^12.0.4
     eslint-config-prettier: ^8.3.0
     eslint-plugin-testing-library: ^5.0.1
+    fast-glob: ^3.2.7
     husky: ^7.0.4
     jest: ^27.4.3
     lint-staged: ^12.1.2
