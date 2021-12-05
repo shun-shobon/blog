@@ -1,5 +1,5 @@
 module.exports = {
-  testEnvironment: "jsdom",
+  testEnvironment: "node",
   collectCoverageFrom: [
     "<rootDir>/src/**/*.{js,jsx,ts,tsx}",
     "!<rootDir>/**/*.stories.{js,jsx,ts,tsx}",
