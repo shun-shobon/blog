@@ -34,5 +34,5 @@ module.exports = {
       },
     ],
   },
-  transformIgnorePatterns: ["/node_modules/"],
+  transformIgnorePatterns: ["/node_modules/(?!(unified|remark-.*))/"],
 };

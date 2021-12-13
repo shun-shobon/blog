@@ -1,4 +1,4 @@
-import { getArticlePath } from "./blog";
+import { getArticlePath, getArticle } from "./blog";
 
 describe("getArticlePath", () => {
   it("特定のディレクトリ下のMarkdownファイルのパスを全件取得する", async () => {
