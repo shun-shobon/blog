@@ -4,7 +4,7 @@ import * as fs from "fs/promises";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkFrontmatter from "remark-frontmatter";
-import type { Root } from "mdast";
+import { type Root } from "mdast";
 import * as yaml from "yaml";
 import * as E from "fp-ts/lib/Either";
 import * as A from "fp-ts/lib/Array";

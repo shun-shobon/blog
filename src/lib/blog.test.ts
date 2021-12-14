@@ -1,5 +1,5 @@
 import { getArticlePath, getArticle, fetchArticles } from "./blog";
-import type { Heading } from "mdast";
+import { type Heading } from "mdast";
 import * as E from "fp-ts/lib/Either";
 
 describe("getArticlePath", () => {
