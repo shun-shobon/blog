@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Phrasing renders 1`] = `
+<DocumentFragment>
+  <strong>
+    Bold
+  </strong>
+   
+  <em>
+    Italic
+  </em>
+   
+  <em>
+    <strong>
+      Bold Italic
+    </strong>
+  </em>
+   
+  <code>
+    Inline Code
+  </code>
+   
+  <del>
+    Strikethrough
+  </del>
+</DocumentFragment>
+`;

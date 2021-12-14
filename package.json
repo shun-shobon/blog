@@ -24,6 +24,7 @@
     "react-dom": "17.0.2",
     "remark-extract-frontmatter": "^3.2.0",
     "remark-frontmatter": "^4.0.1",
+    "remark-gfm": "^3.0.1",
     "remark-parse": "^10.0.1",
     "unified": "^10.1.1",
     "yaml": "^1.10.2"

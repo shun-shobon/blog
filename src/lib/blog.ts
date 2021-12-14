@@ -4,6 +4,7 @@ import * as fs from "fs/promises";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkFrontmatter from "remark-frontmatter";
+import remarkGfm from "remark-gfm";
 import { type Root } from "mdast";
 import * as yaml from "yaml";
 import * as E from "fp-ts/lib/Either";
@@ -36,7 +37,10 @@ export async function getArticle(
 ): Promise<E.Either<Error, Article>> {
   const raw = await fs.readFile(path.join(basePath, filePath), "utf-8");
 
-  const processor = unified().use(remarkParse).use(remarkFrontmatter);
+  const processor = unified()
+    .use(remarkParse)
+    .use(remarkFrontmatter)
+    .use(remarkGfm);
 
   const contents = processor.parse(raw);
 
