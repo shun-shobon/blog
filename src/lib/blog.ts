@@ -50,6 +50,9 @@ export async function getArticle(
   );
   if (E.isLeft(frontmatter)) return frontmatter;
 
+  // Delete the frontmatter from the contents
+  contents.children.shift();
+
   const [date, name] = filePath.split("/");
   if (date === undefined || name === undefined) {
     return E.left(new Error("Invalid file path"));

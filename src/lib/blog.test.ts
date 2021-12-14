@@ -23,9 +23,9 @@ describe("getArticle", () => {
     expect(article.right.title).toBe("Test Article 1");
     expect(article.right.postedAt).toBe("2021-12-05T00:00:00.000Z");
     expect(article.right.tags).toStrictEqual(["foo", "bar"]);
-    expect((article.right.contents.children[1] as Heading).type).toBe(
+    expect((article.right.contents.children[0] as Heading).type).toBe(
       "heading",
     );
-    expect((article.right.contents.children[1] as Heading).depth).toBe(1);
+    expect((article.right.contents.children[0] as Heading).depth).toBe(1);
   });
 });
