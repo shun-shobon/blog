@@ -7,6 +7,7 @@ import remarkFrontmatter from "remark-frontmatter";
 import type { Root } from "mdast";
 import * as yaml from "yaml";
 import * as E from "fp-ts/lib/Either";
+import * as A from "fp-ts/lib/Array";
 import * as t from "io-ts";
 import { pipe } from "fp-ts/function";
 
@@ -63,4 +64,12 @@ export async function getArticle(
   return E.right(
     Object.assign({}, frontmatter.right, { slug, postedAt, contents }),
   );
+}
+
+export async function fetchArticles(
+  basePath: string,
+): Promise<E.Either<Error, Article[]>> {
+  const paths = await getArticlePath(basePath);
+  const articles = await Promise.all(paths.map((x) => getArticle(basePath, x)));
+  return A.sequence(E.either)(articles);
 }

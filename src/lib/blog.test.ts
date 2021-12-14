@@ -1,4 +1,4 @@
-import { getArticlePath, getArticle } from "./blog";
+import { getArticlePath, getArticle, fetchArticles } from "./blog";
 import type { Heading } from "mdast";
 import * as E from "fp-ts/lib/Either";
 
@@ -30,5 +30,18 @@ describe("getArticle", () => {
       "heading",
     );
     expect((article.right.contents.children[0] as Heading).depth).toBe(1);
+  });
+});
+
+describe("fetchArticles", () => {
+  it("特定のディレクトリ下のMarkdownファイルを全件取得する", async () => {
+    const articles = await fetchArticles("tests/articles");
+
+    expect(E.isRight(articles)).toBeTruthy();
+    if (E.isLeft(articles)) return;
+
+    expect(articles.right).toHaveLength(3);
+    expect(articles.right[0]?.slug).toBe("2021-12-05-test1");
+    expect(articles.right[2]?.title).toBe("Test Article 3");
   });
 });
