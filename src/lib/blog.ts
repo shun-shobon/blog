@@ -9,6 +9,8 @@ import * as E from "fp-ts/lib/Either";
 import * as t from "io-ts";
 import { pipe, identity } from "fp-ts/function";
 
+import { assertNonNull } from "../utils/assert";
+
 export function getArticlePath(basePath: string): Promise<string[]> {
   return fg("*/*.md", {
     cwd: basePath,
@@ -48,8 +50,10 @@ export async function getArticle(
   );
 
   const [date, name] = filePath.split("/");
-  const slug = `${date}-${name!.slice(0, -3)}`;
-  const postedAt = new Date(date!).toISOString();
+  assertNonNull(date);
+  assertNonNull(name);
+  const slug = `${date}-${name.slice(0, -3)}`;
+  const postedAt = new Date(date).toISOString();
 
   return Object.assign({}, frontmatter, { slug, postedAt });
 }
