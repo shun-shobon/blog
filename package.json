@@ -16,9 +16,17 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "fast-glob": "^3.2.7",
+    "fp-ts": "^2.11.5",
+    "io-ts": "^2.2.16",
     "next": "12.0.4",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "remark-extract-frontmatter": "^3.2.0",
+    "remark-frontmatter": "^4.0.1",
+    "remark-parse": "^10.0.1",
+    "unified": "^10.1.1",
+    "yaml": "^1.10.2"
   },
   "devDependencies": {
     "@swc/core": "^1.2.117",
@@ -28,6 +36,7 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.0.3",
+    "@types/mdast": "^3.0.10",
     "@types/node": "16.11.11",
     "@types/react": "17.0.37",
     "@types/testing-library__jest-dom": "^5.14.2",
