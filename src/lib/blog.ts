@@ -8,9 +8,7 @@ import type { Root } from "mdast";
 import * as yaml from "yaml";
 import * as E from "fp-ts/lib/Either";
 import * as t from "io-ts";
-import { pipe, identity } from "fp-ts/function";
-
-import { assertNonNull } from "../utils/assert";
+import { pipe } from "fp-ts/function";
 
 export function getArticlePath(basePath: string): Promise<string[]> {
   return fg("*/*.md", {
@@ -34,7 +32,7 @@ export type Article = {
 export async function getArticle(
   basePath: string,
   filePath: string,
-): Promise<Article> {
+): Promise<E.Either<Error, Article>> {
   const raw = await fs.readFile(path.join(basePath, filePath), "utf-8");
 
   const processor = unified().use(remarkParse).use(remarkFrontmatter);
@@ -42,22 +40,24 @@ export async function getArticle(
   const contents = processor.parse(raw);
 
   if (contents.children[0]?.type !== "yaml")
-    throw new Error("No YAML frontmatter found");
+    return E.left(new Error("No YAML frontmatter found"));
 
-  const frontmatter: t.TypeOf<typeof Frontmatter> = pipe(
+  const frontmatter = pipe(
     contents.children[0].value,
     yaml.parse,
     Frontmatter.decode,
-    E.fold((err) => {
-      throw new AggregateError(err);
-    }, identity),
+    E.mapLeft((err) => new AggregateError(err)),
   );
+  if (E.isLeft(frontmatter)) return frontmatter;
 
   const [date, name] = filePath.split("/");
-  assertNonNull(date);
-  assertNonNull(name);
+  if (date === undefined || name === undefined) {
+    return E.left(new Error("Invalid file path"));
+  }
   const slug = `${date}-${name.slice(0, -3)}`;
   const postedAt = new Date(date).toISOString();
 
-  return Object.assign({}, frontmatter, { slug, postedAt, contents });
+  return E.right(
+    Object.assign({}, frontmatter.right, { slug, postedAt, contents }),
+  );
 }
