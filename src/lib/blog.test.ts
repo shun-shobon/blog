@@ -1,4 +1,5 @@
 import { getArticlePath, getArticle } from "./blog";
+import type { Heading } from "mdast";
 
 describe("getArticlePath", () => {
   it("特定のディレクトリ下のMarkdownファイルのパスを全件取得する", async () => {
@@ -18,5 +19,7 @@ describe("getArticle", () => {
     expect(article.title).toBe("Test Article 1");
     expect(article.postedAt).toBe("2021-12-05T00:00:00.000Z");
     expect(article.tags).toStrictEqual(["foo", "bar"]);
+    expect((article.contents.children[1] as Heading).type).toBe("heading");
+    expect((article.contents.children[1] as Heading).depth).toBe(1);
   });
 });

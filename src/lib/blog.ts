@@ -4,6 +4,7 @@ import * as fs from "fs/promises";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkFrontmatter from "remark-frontmatter";
+import type { Root } from "mdast";
 import * as yaml from "yaml";
 import * as E from "fp-ts/lib/Either";
 import * as t from "io-ts";
@@ -22,9 +23,12 @@ const Frontmatter = t.type({
   tags: t.readonlyArray(t.string),
 });
 
-export type Article = t.TypeOf<typeof Frontmatter> & {
+export type Article = {
+  title: string;
   slug: string;
   postedAt: string;
+  tags: ReadonlyArray<string>;
+  contents: Root;
 };
 
 export async function getArticle(
@@ -35,13 +39,13 @@ export async function getArticle(
 
   const processor = unified().use(remarkParse).use(remarkFrontmatter);
 
-  const root = processor.parse(raw);
+  const contents = processor.parse(raw);
 
-  if (root.children[0]?.type !== "yaml")
+  if (contents.children[0]?.type !== "yaml")
     throw new Error("No YAML frontmatter found");
 
   const frontmatter: t.TypeOf<typeof Frontmatter> = pipe(
-    root.children[0].value,
+    contents.children[0].value,
     yaml.parse,
     Frontmatter.decode,
     E.fold((err) => {
@@ -55,5 +59,5 @@ export async function getArticle(
   const slug = `${date}-${name.slice(0, -3)}`;
   const postedAt = new Date(date).toISOString();
 
-  return Object.assign({}, frontmatter, { slug, postedAt });
+  return Object.assign({}, frontmatter, { slug, postedAt, contents });
 }
