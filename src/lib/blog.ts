@@ -11,7 +11,7 @@ import * as t from "io-ts";
 import { pipe } from "fp-ts/function";
 
 export function getArticlePath(basePath: string): Promise<string[]> {
-  return fg("*/*.md", {
+  return fg("*/*/main.md", {
     cwd: basePath,
   }).then((x) => x.sort());
 }
@@ -57,7 +57,7 @@ export async function getArticle(
   if (date === undefined || name === undefined) {
     return E.left(new Error("Invalid file path"));
   }
-  const slug = `${date}-${name.slice(0, -3)}`;
+  const slug = `${date}-${name}`;
   const postedAt = new Date(date).toISOString();
 
   return E.right(
