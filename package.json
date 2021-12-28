@@ -23,7 +23,9 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-markdown": "^7.1.1",
+    "remark": "^14.0.2",
     "remark-gfm": "^3.0.1",
+    "strip-markdown": "^5.0.0",
     "yaml": "^1.10.2"
   },
   "devDependencies": {
@@ -48,7 +50,7 @@
     "postcss": "^8.4.4",
     "prettier": "^2.5.0",
     "regenerator-runtime": "^0.13.9",
-    "tailwindcss": "^2.2.19",
+    "tailwindcss": "^3.0.7",
     "typescript": "^4.5.4"
   },
   "packageManager": "yarn@3.1.1"
