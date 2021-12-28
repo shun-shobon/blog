@@ -7,7 +7,7 @@ type Frontmatter = {
 };
 
 export function extractFrontmatter(raw: string): O.Option<Frontmatter> {
-  const regexp = /^---\n(.+?)\n---\n(.+)/;
+  const regexp = /^---\n(.+?)\n---\n(.+)/s;
   const [, rawFrontmatter, content] = regexp.exec(raw) ?? [];
 
   if (rawFrontmatter == null || content == null) return O.none;
