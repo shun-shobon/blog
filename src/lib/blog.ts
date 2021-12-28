@@ -1,16 +1,11 @@
 import fg from "fast-glob";
 import * as path from "path";
 import * as fs from "fs/promises";
-import { unified } from "unified";
-import remarkParse from "remark-parse";
-import remarkFrontmatter from "remark-frontmatter";
-import remarkGfm from "remark-gfm";
-import { type Root } from "mdast";
-import * as yaml from "yaml";
-import * as E from "fp-ts/lib/Either";
-import * as A from "fp-ts/lib/Array";
+import * as O from "fp-ts/Option";
+import * as E from "fp-ts/Either";
+import * as A from "fp-ts/Array";
 import * as t from "io-ts";
-import { pipe } from "fp-ts/function";
+import { extractFrontmatter } from "./frontmatter";
 
 export function getArticlePath(basePath: string): Promise<string[]> {
   return fg("*/*/main.md", {
@@ -28,7 +23,7 @@ export type Article = {
   slug: string;
   postedAt: string;
   tags: ReadonlyArray<string>;
-  contents: Root;
+  contents: string;
 };
 
 export async function getArticle(
@@ -37,26 +32,16 @@ export async function getArticle(
 ): Promise<E.Either<Error, Article>> {
   const raw = await fs.readFile(path.join(basePath, filePath), "utf-8");
 
-  const processor = unified()
-    .use(remarkParse)
-    .use(remarkFrontmatter)
-    .use(remarkGfm);
+  const optionalFrontmatter = extractFrontmatter(raw);
+  if (O.isNone(optionalFrontmatter))
+    return E.left(new Error(`No frontmatter found in ${filePath}`));
 
-  const contents = processor.parse(raw);
+  const rawFrontmatter = optionalFrontmatter.value.frontmatter;
+  const contents = optionalFrontmatter.value.content;
 
-  if (contents.children[0]?.type !== "yaml")
-    return E.left(new Error("No YAML frontmatter found"));
-
-  const frontmatter = pipe(
-    contents.children[0].value,
-    yaml.parse,
-    Frontmatter.decode,
-    E.mapLeft((err) => new AggregateError(err)),
-  );
-  if (E.isLeft(frontmatter)) return frontmatter;
-
-  // Delete the frontmatter from the contents
-  contents.children.shift();
+  const frontmatter = Frontmatter.decode(rawFrontmatter);
+  if (E.isLeft(frontmatter))
+    return E.left(new Error(`Invalid frontmatter in ${filePath}`));
 
   const [date, name] = filePath.split("/");
   if (date === undefined || name === undefined) {
