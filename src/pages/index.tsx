@@ -1,11 +1,41 @@
-import { type NextPage } from "next";
+import { type NextPage, type GetStaticProps } from "next";
+import * as E from "fp-ts/Either";
 
-const Index: NextPage = () => {
+import { type Article, fetchArticles } from "../lib/blog";
+import { getConfig } from "../config";
+
+import { Layout } from "../components/Layout";
+import { Summary } from "../components/Summary";
+
+type Props = {
+  articles: Article[];
+};
+
+const Index: NextPage<Props> = ({ articles }) => {
   return (
-    <div className="absolute w-full h-full grid place-items-center">
-      <h1 className="text-4xl md:text-8xl text-blue-400">Hello, world!</h1>
-    </div>
+    <Layout>
+      <main className="container mx-auto p-4 grid gap-4">
+        {articles.map((article) => (
+          <Summary key={article.slug} article={article} />
+        ))}
+      </main>
+    </Layout>
   );
+};
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const { articlePath } = getConfig();
+
+  const eitherArticles = await fetchArticles(articlePath);
+  if (E.isLeft(eitherArticles)) throw new Error("Failed to fetch articles");
+
+  const articles = eitherArticles.right;
+
+  return {
+    props: {
+      articles,
+    },
+  };
 };
 
 export default Index;
