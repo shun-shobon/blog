@@ -3,18 +3,23 @@
 exports[`Layout renders 1`] = `
 <DocumentFragment>
   <header
-    class="py-8 text-center"
+    class="py-8 grid place-items-center"
   >
-    <h1
-      class="text-2xl"
+    <a
+      class="text-center hover:opacity-50"
+      href="/"
     >
-      高専生はエンジニアの夢を見るか？
-    </h1>
-    <h2
-      class="text-gray-500"
-    >
-      しがない高専生の雑多ブログ
-    </h2>
+      <h1
+        class="text-2xl"
+      >
+        高専生はエンジニアの夢を見るか？
+      </h1>
+      <h2
+        class="text-gray-500"
+      >
+        しがない高専生の雑多ブログ
+      </h2>
+    </a>
   </header>
   Layout
   <footer
