@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Summary renders 1`] = `
+<DocumentFragment>
+  <article
+    class="p-4 rounded-lg shadow"
+  >
+    <h2
+      class="text-xl text-cyan-500"
+    >
+      <a
+        class="cursor-pointer hover:underline decoration-current"
+        href="articles/2021-12-05-test1"
+      >
+        Test Article 1
+      </a>
+    </h2>
+    <p
+      class="text-gray-500 flex flex-wrap gap-2"
+    >
+      <span>
+        #foo
+      </span>
+      <span>
+        #bar
+      </span>
+    </p>
+    <p>
+      Test Article 1
+
+Header 1
+
+Header 2
+
+Header 3
+
+Header 4
+
+Header 5
+
+Header 6
+
+List
+
+item 1
+
+item 2
+
+item 3
+
+Nested item 1
+
+Nested item 2
+
+Nested item 3
+
+Ordered List
+
+item 1
+
+item 2
+
+item 3
+
+Bold Italic...
+    </p>
+  </article>
+</DocumentFragment>
+`;
