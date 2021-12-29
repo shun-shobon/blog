@@ -1,5 +1,7 @@
 import { type NextPage, type GetStaticProps, type GetStaticPaths } from "next";
 import { format } from "date-fns";
+import { remark } from "remark";
+import stripMarkdown from "strip-markdown";
 import * as E from "fp-ts/Either";
 
 import { type Article, fetchArticles } from "../../lib/blog";
@@ -13,8 +15,14 @@ type Props = {
 };
 
 const Article: NextPage<Props> = ({ article }) => {
+  const description = remark()
+    .use(stripMarkdown)
+    .processSync(article.contents)
+    .toString()
+    .slice(0, 100);
+
   return (
-    <Layout>
+    <Layout title={article.title} description={description}>
       <main className="container mx-auto px-4 py-12 grid gap-8">
         <div>
           <h1 className="text-3xl text-cyan-500 font-medium">

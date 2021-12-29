@@ -13,7 +13,10 @@ type Props = {
 
 const Index: NextPage<Props> = ({ articles }) => {
   return (
-    <Layout>
+    <Layout
+      title="ホーム"
+      description="｢高専生はエンジニアの夢を見るか？｣のホームです。"
+    >
       <main className="container mx-auto px-4 py-12 grid gap-4">
         {articles.map((article) => (
           <Summary key={article.slug} article={article} />

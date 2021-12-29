@@ -1,13 +1,39 @@
 import { type ReactNode } from "react";
 import Link from "next/link";
+import Head from "next/head";
 
 export type Props = {
+  title: string;
+  description: string;
   children: ReactNode;
 };
 
-export const Layout = ({ children }: Props): JSX.Element => {
+export const Layout = ({
+  children,
+  title,
+  description,
+}: Props): JSX.Element => {
   return (
     <>
+      <Head>
+        <title>{`${title} | 高専生はエンジニアの夢を見るか？`}</title>
+        <meta name="description" content={description} />
+        <meta property="og:url" content="blog.s2n.tech" />
+        <meta property="og:title" content={title} />
+        <meta property="og:type" content="article" />
+        <meta property="og:description" content={description} />
+        <meta
+          property="og:image"
+          content="https://source.unsplash.com/random/1200x630"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@shun_shobon" />
+        <meta
+          property="og:site_name"
+          content="高専生はエンジニアの夢を見るか？"
+        />
+        <meta property="og:locale" content="ja_JP" />
+      </Head>
       <header className="py-8 grid place-items-center">
         <Link href="/">
           <a className="text-center hover:opacity-50">
