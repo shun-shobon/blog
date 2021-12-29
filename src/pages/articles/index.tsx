@@ -4,6 +4,7 @@ import * as E from "fp-ts/Either";
 import { type Article, fetchArticles } from "../../lib/blog";
 import { getConfig } from "../../config";
 
+import { Layout } from "../../components/Layout";
 import { Summary } from "../../components/Summary";
 
 type Props = {
@@ -12,11 +13,13 @@ type Props = {
 
 const Index: NextPage<Props> = ({ articles }) => {
   return (
-    <main className="container mx-auto p-4 grid gap-4">
-      {articles.map((article) => (
-        <Summary key={article.slug} article={article} />
-      ))}
-    </main>
+    <Layout>
+      <main className="container mx-auto p-4 grid gap-4">
+        {articles.map((article) => (
+          <Summary key={article.slug} article={article} />
+        ))}
+      </main>
+    </Layout>
   );
 };
 
