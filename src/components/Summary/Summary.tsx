@@ -16,7 +16,7 @@ export const Summary = ({ article }: Props): JSX.Element => {
     .concat("...");
 
   return (
-    <article className="p-4 rounded-lg shadow">
+    <article>
       <h2 className="text-xl text-cyan-500">
         <a
           href={`articles/${article.slug}`}
