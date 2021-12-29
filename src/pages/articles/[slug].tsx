@@ -17,7 +17,7 @@ const Article: NextPage<Props> = ({ article }) => {
     <Layout>
       <main className="container mx-auto p-4 grid gap-8">
         <div>
-          <h1 className="text-2xl text-cyan-500">{article.title}</h1>
+          <h1 className="text-3xl text-cyan-500">{article.title}</h1>
           <p className="text-gray-500 flex flex-wrap gap-2">
             {article.tags.map((tag) => (
               <span key={tag}>#{tag}</span>
@@ -27,7 +27,9 @@ const Article: NextPage<Props> = ({ article }) => {
             {format(new Date(article.postedAt), "yyyy年MM月dd日")}
           </p>
         </div>
-        <Markdown contents={article.contents} />
+        <section>
+          <Markdown contents={article.contents} />
+        </section>
       </main>
     </Layout>
   );
