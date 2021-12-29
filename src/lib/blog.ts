@@ -10,7 +10,7 @@ import { extractFrontmatter } from "./frontmatter";
 export function getArticlePath(basePath: string): Promise<string[]> {
   return fg("*/*/main.md", {
     cwd: basePath,
-  }).then((x) => x.sort());
+  }).then((x) => x.sort().reverse());
 }
 
 const Frontmatter = t.type({
