@@ -6,7 +6,11 @@ import { Layout } from "./Layout";
 
 describe("Layout", () => {
   it("renders", () => {
-    const component = render(<Layout>Layout</Layout>);
+    const component = render(
+      <Layout title="タイトル" description="説明">
+        Layout
+      </Layout>,
+    );
 
     expect(component.getByText("Layout")).toBeInTheDocument();
 

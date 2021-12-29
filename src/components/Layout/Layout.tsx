@@ -33,6 +33,10 @@ export const Layout = ({
           content="高専生はエンジニアの夢を見るか？"
         />
         <meta property="og:locale" content="ja_JP" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.webmanifest" />
       </Head>
       <header className="py-8 grid place-items-center">
         <Link href="/">
