@@ -4,9 +4,9 @@ import * as E from "fp-ts/lib/Either";
 describe("getArticlePath", () => {
   it("特定のディレクトリ下のMarkdownファイルのパスを全件取得する", async () => {
     expect(await getArticlePath("tests/articles")).toStrictEqual([
-      "2021-12-05/test1/main.md",
-      "2021-12-05/test2/main.md",
       "2021-12-06/test3/main.md",
+      "2021-12-05/test2/main.md",
+      "2021-12-05/test1/main.md",
     ]);
   });
 });
@@ -36,7 +36,7 @@ describe("fetchArticles", () => {
     if (E.isLeft(articles)) return;
 
     expect(articles.right).toHaveLength(3);
-    expect(articles.right[0]?.slug).toBe("2021-12-05-test1");
-    expect(articles.right[2]?.title).toBe("Test Article 3");
+    expect(articles.right[0]?.slug).toBe("2021-12-06-test3");
+    expect(articles.right[2]?.title).toBe("Test Article 1");
   });
 });
