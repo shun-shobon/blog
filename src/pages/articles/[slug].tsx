@@ -17,7 +17,9 @@ const Article: NextPage<Props> = ({ article }) => {
     <Layout>
       <main className="container mx-auto px-4 py-12 grid gap-8">
         <div>
-          <h1 className="text-3xl text-cyan-500">{article.title}</h1>
+          <h1 className="text-3xl text-cyan-500 font-medium">
+            {article.title}
+          </h1>
           <p className="text-gray-500 flex flex-wrap gap-2">
             {article.tags.map((tag) => (
               <span key={tag}>#{tag}</span>
