@@ -2,9 +2,7 @@
 
 exports[`Summary renders 1`] = `
 <DocumentFragment>
-  <article
-    class="p-4 rounded-lg shadow"
-  >
+  <article>
     <h2
       class="text-xl text-cyan-500"
     >

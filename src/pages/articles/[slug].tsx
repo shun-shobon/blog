@@ -15,7 +15,7 @@ type Props = {
 const Article: NextPage<Props> = ({ article }) => {
   return (
     <Layout>
-      <main className="container mx-auto p-4 grid gap-8">
+      <main className="container mx-auto px-4 py-12 grid gap-8">
         <div>
           <h1 className="text-3xl text-cyan-500">{article.title}</h1>
           <p className="text-gray-500 flex flex-wrap gap-2">

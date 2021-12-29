@@ -14,7 +14,7 @@ type Props = {
 const Index: NextPage<Props> = ({ articles }) => {
   return (
     <Layout>
-      <main className="container mx-auto p-4 grid gap-4">
+      <main className="container mx-auto px-4 py-12 grid gap-4">
         {articles.map((article) => (
           <Summary key={article.slug} article={article} />
         ))}
