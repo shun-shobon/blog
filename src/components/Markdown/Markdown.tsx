@@ -14,29 +14,29 @@ export const Markdown = ({ contents }: Props): JSX.Element => {
       components={{
         h1: ({ node, ...props }) => (
           <h1
-            className="font-medium text-3xl border-b border-gray-300 mb-8"
+            className="font-medium text-3xl border-b border-gray-300 mt-8"
             {...props}
           />
         ),
         h2: ({ node, ...props }) => (
           <h2
-            className="font-medium text-2xl border-b border-gray-300 mb-8"
+            className="font-medium text-2xl border-b border-gray-300 mt-8"
             {...props}
           />
         ),
         h3: ({ node, ...props }) => (
-          <h3 className="font-medium text-2xl mb-4" {...props} />
+          <h3 className="font-medium text-2xl mt-4" {...props} />
         ),
         h4: ({ node, ...props }) => (
-          <h4 className="font-medium text-xl mb-4" {...props} />
+          <h4 className="font-medium text-xl mt-4" {...props} />
         ),
         h5: ({ node, ...props }) => (
-          <h5 className="font-medium text-lg mb-4" {...props} />
+          <h5 className="font-medium text-lg mt-4" {...props} />
         ),
-        h6: ({ node, ...props }) => <h6 className="text-lg mb-4" {...props} />,
-        p: ({ node, ...props }) => <p className="text-base mb-2" {...props} />,
+        h6: ({ node, ...props }) => <h6 className="text-lg mt-4" {...props} />,
+        p: ({ node, ...props }) => <p className="text-base mt-2" {...props} />,
         pre: ({ children }) => (
-          <div className="rounded-xl mb-2">{children}</div>
+          <div className="rounded-xl mt-2">{children}</div>
         ),
         blockquote: ({ node, ...props }) => (
           <blockquote
@@ -45,10 +45,10 @@ export const Markdown = ({ contents }: Props): JSX.Element => {
           />
         ),
         ul: ({ children }) => (
-          <ul className="list-disc pl-5 mb-2">{children}</ul>
+          <ul className="list-disc pl-5 mt-2">{children}</ul>
         ),
         ol: ({ children }) => (
-          <ol className="list-decimal pl-5 mb-2">{children}</ol>
+          <ol className="list-decimal pl-5 mt-2">{children}</ol>
         ),
         li: ({ children }) => <li>{children}</li>,
         strong: ({ node, ...props }) => (
