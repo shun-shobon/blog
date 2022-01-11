@@ -2,6 +2,8 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+// @ts-ignore
+import { InlineMath, BlockMath } from "react-katex";
 import { LightAsync as SyntaxHighlighter } from "react-syntax-highlighter";
 import { nord } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
@@ -88,6 +90,12 @@ export const Markdown = ({ contents }: Props): JSX.Element => {
             {...node.properties}
             {...props}
           />
+        ),
+        // @ts-ignore
+        math: ({ value }) => (
+          <div className="w-full overflow-x-auto mt-2">
+            <BlockMath>{value}</BlockMath>
+          </div>
         ),
       }}
     >
