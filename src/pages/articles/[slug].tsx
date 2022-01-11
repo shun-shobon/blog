@@ -23,7 +23,7 @@ const Article: NextPage<Props> = ({ article }) => {
 
   return (
     <Layout title={article.title} description={description}>
-      <main className="w-full max-w-prose mx-auto px-4 py-12 grid gap-8">
+      <main className="w-full max-w-[80ch] mx-auto px-4 py-12 grid gap-8">
         <div>
           <h1 className="text-3xl text-cyan-500 font-medium">
             {article.title}
@@ -37,7 +37,7 @@ const Article: NextPage<Props> = ({ article }) => {
             {format(new Date(article.postedAt), "yyyy年MM月dd日")}
           </p>
         </div>
-        <section>
+        <section className="w-full overflow-x-auto">
           <Markdown contents={article.contents} />
         </section>
       </main>
