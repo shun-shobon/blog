@@ -14,7 +14,7 @@ export const Layout = ({
   description,
 }: Props): JSX.Element => {
   return (
-    <>
+    <div>
       <Head>
         <title>{`${title} | 高専生はエンジニアの夢を見るか？`}</title>
         <meta name="description" content={description} />
@@ -50,6 +50,6 @@ export const Layout = ({
       <footer className="py-2 border-t border-gray-300 text-center text-gray-500">
         Copyright©2021 Shuntaro Nishizawa
       </footer>
-    </>
+    </div>
   );
 };
