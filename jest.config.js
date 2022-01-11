@@ -9,6 +9,7 @@ module.exports = {
   moduleNameMapper: {
     "^.+\\.(png|svg|jpeg|gif|webp|avif|ico|bmp)$":
       "<rootDir>/tests/__mocks__/imageMock.js",
+    "^.+\\.(c|sc|sa)ss$": "<rootDir>/tests/__mocks__/styleMock.js",
   },
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   testPathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/.next/"],
