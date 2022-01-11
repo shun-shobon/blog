@@ -23,7 +23,7 @@ const Article: NextPage<Props> = ({ article }) => {
 
   return (
     <Layout title={article.title} description={description}>
-      <main className="container mx-auto px-4 py-12 grid gap-8">
+      <main className="w-full max-w-prose mx-auto px-4 py-12 grid gap-8">
         <div>
           <h1 className="text-3xl text-cyan-500 font-medium">
             {article.title}

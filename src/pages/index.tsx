@@ -17,7 +17,7 @@ const Index: NextPage<Props> = ({ articles }) => {
       title="ホーム"
       description="｢高専生はエンジニアの夢を見るか？｣のホームです。"
     >
-      <main className="container mx-auto px-4 py-12 grid gap-4">
+      <main className="w-full max-w-prose mx-auto px-4 py-12 grid gap-4">
         {articles.map((article) => (
           <Summary key={article.slug} article={article} />
         ))}
