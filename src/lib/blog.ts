@@ -1,3 +1,6 @@
+import * as fs from "node:fs/promises";
+import * as path from "node:path";
+
 import * as t from "io-ts";
 import type { Root } from "mdast";
 import remarkFrontmatter from "remark-frontmatter";
@@ -6,11 +9,26 @@ import remarkParse from "remark-parse";
 import { unified } from "unified";
 import YAML from "yaml";
 
+import { getConfig } from "./config";
 import { trying } from "./util";
 
 export type Article = Frontmatter & {
   content: Root;
 };
+
+export async function fetchArticle(slug: string): Promise<Article | Error> {
+  const { articlesPath } = getConfig();
+  const filePath = path.join(articlesPath, slug, "README.md");
+
+  const markdown = await fs
+    .readFile(filePath, "utf-8")
+    .catch((err: Error) => err);
+  if (markdown instanceof Error) {
+    return markdown;
+  }
+
+  return parse(markdown);
+}
 
 export function parse(markdown: string): Article | ParseError {
   const processor = unified()

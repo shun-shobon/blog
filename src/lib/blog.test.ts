@@ -1,4 +1,26 @@
-import { ParseError, parseFrontmatter } from "./blog";
+import { fetchArticle, ParseError, parseFrontmatter } from "./blog";
+import { unreachable } from "./util";
+
+describe("fetchArticle", () => {
+  it("success", async () => {
+    const slug = "hello-world";
+    const article = await fetchArticle(slug);
+
+    expect(article).not.toBeInstanceOf(Error);
+    if (article instanceof Error) {
+      unreachable();
+    }
+
+    expect(article.title).toBe("こんにちは世界");
+  });
+
+  it("not found", async () => {
+    const slug = "invalid-slug";
+    const article = await fetchArticle(slug);
+
+    expect(article).toBeInstanceOf(Error);
+  });
+});
 
 describe("parseFrontmatter()", () => {
   it("success", () => {
@@ -11,7 +33,7 @@ tags:
 
     expect(result).not.toBeInstanceOf(ParseError);
     if (result instanceof ParseError) {
-      return;
+      unreachable();
     }
 
     expect(result.title).toBe("Hello World");

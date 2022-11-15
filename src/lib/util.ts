@@ -9,3 +9,7 @@ export function trying<T>(fn: () => T): T | Error {
     return new Error("Unknown error");
   }
 }
+
+export function unreachable(): never {
+  throw new Error("Unreachable");
+}
