@@ -1,5 +1,34 @@
-import { fetchArticle, ParseError, parseFrontmatter } from "./blog";
+import {
+  fetchArticle,
+  fetchArticleSummaries,
+  ParseError,
+  parseFrontmatter,
+} from "./blog";
 import { unreachable } from "./util";
+
+describe("fetchArticleSummaries", () => {
+  // NOTE: jsdom環境ではsetImmediateが存在しないため、setTimeoutで代用する
+  let setImmediate: typeof global.setImmediate;
+  beforeAll(() => {
+    setImmediate = global.setImmediate;
+    global.setImmediate =
+      global.setImmediate ??
+      (<TArgs extends Array<unknown>>(
+        fn: (...args: TArgs) => void,
+        ...args: TArgs
+      ) => global.setTimeout(fn, 0, ...args));
+  });
+  afterAll(() => {
+    // 元に戻す
+    global.setImmediate = setImmediate;
+  });
+
+  it("success", async () => {
+    const articleSummaries = await fetchArticleSummaries();
+
+    expect(articleSummaries).toHaveLength(2);
+  });
+});
 
 describe("fetchArticle", () => {
   it("success", async () => {

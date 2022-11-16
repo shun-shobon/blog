@@ -1,8 +1,10 @@
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
 
+import glob from "fast-glob";
 import * as t from "io-ts";
 import type { Root } from "mdast";
+import { toString } from "mdast-util-to-string";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
@@ -15,6 +17,37 @@ import { trying } from "./util";
 export type Article = Frontmatter & {
   content: Root;
 };
+
+export type ArticleSummary = Frontmatter & {
+  slug: string;
+  summary: string;
+};
+
+export async function fetchArticleSummaries(): Promise<Array<ArticleSummary>> {
+  const { articlesPath } = getConfig();
+  const pattern = path.join(articlesPath, "*", "README.md");
+  const result = await glob(pattern);
+
+  const promise = result.map(async (filePath) => {
+    const slug = path.basename(path.dirname(filePath));
+    const markdown = await fs.readFile(filePath, "utf-8");
+    return { slug, markdown };
+  });
+
+  const articles = (await Promise.all(promise))
+    .map(({ slug, markdown }) => {
+      const result = parse(markdown);
+      if (result instanceof ParseError) {
+        return null;
+      }
+      const { content, ...frontmatter } = result;
+      const summary = toString(content).slice(0, 120).concat("...");
+      return { ...frontmatter, slug, summary };
+    })
+    .filter((article): article is ArticleSummary => article !== null);
+
+  return articles;
+}
 
 export async function fetchArticle(slug: string): Promise<Article | Error> {
   const { articlesPath } = getConfig();
