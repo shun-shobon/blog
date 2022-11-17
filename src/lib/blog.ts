@@ -44,7 +44,8 @@ export async function fetchArticleSummaries(): Promise<Array<ArticleSummary>> {
       const summary = toString(content).slice(0, 120).concat("...");
       return { ...frontmatter, slug, summary };
     })
-    .filter((article): article is ArticleSummary => article !== null);
+    .filter((article): article is ArticleSummary => article !== null)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return articles;
 }
