@@ -21,6 +21,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
+    "@tsconfig/next-strictest": "^1.0.1",
     "@types/jest": "^29.2.2",
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.24",
@@ -42,7 +43,7 @@
     "typescript": "^4.9.5"
   },
   "dependenciesMeta": {
-    "next@13.0.1": {
+    "next@13.1.6": {
       "unplugged": true
     }
   }

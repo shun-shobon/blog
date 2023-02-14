@@ -1087,6 +1087,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tsconfig/next-strictest@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@tsconfig/next-strictest@npm:1.0.1"
+  checksum: b5f872fd27756fbc1916fce75b36b20ad954ca9a86cb9abb1f211900f66bb4082512cef9096f0463d48fb228c8be3127cdcd871e7d275145c7907c31e64cc82e
+  languageName: node
+  linkType: hard
+
 "@types/aria-query@npm:^4.2.0":
   version: 4.2.2
   resolution: "@types/aria-query@npm:4.2.2"
@@ -1788,6 +1795,7 @@ __metadata:
   dependencies:
     "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": ^13.4.0
+    "@tsconfig/next-strictest": ^1.0.1
     "@types/jest": ^29.2.2
     "@types/node": ^18.11.9
     "@types/react": ^18.0.24
@@ -1813,6 +1821,8 @@ __metadata:
     typescript: ^4.9.5
   dependenciesMeta:
     next@13.0.1:
+      unplugged: true
+    next@13.1.6:
       unplugged: true
   languageName: unknown
   linkType: soft
