@@ -19,6 +19,10 @@
     "next": "^13.1.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "remark-gfm": "^3.0.1",
+    "remark-math": "^5.1.1",
+    "remark-parse": "^10.0.1",
+    "unified": "^10.1.2",
     "zod": "^3.20.6"
   },
   "devDependencies": {
@@ -30,6 +34,7 @@
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
     "autoprefixer": "^10.4.13",
+    "endent": "^2.1.0",
     "eslint": "^8.34.0",
     "eslint-config-next": "^13.1.6",
     "eslint-config-prettier": "^8.6.0",
