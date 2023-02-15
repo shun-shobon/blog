@@ -3,14 +3,14 @@
   "version": "0.0.0",
   "description": "My blog",
   "private": true,
-  "packageManager": "yarn@3.4.1",
+  "packageManager": "pnpm@7.27.0",
   "scripts": {
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint --fix",
     "format": "prettier --write './*.config.js' './src/**/*.{js,ts,jsx,tsx}'",
     "test": "jest",
-    "postinstall": "husky install"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@js-temporal/polyfill": "^0.4.3",
@@ -49,10 +49,5 @@
     "tailwindcss": "^3.2.6",
     "ts-jest": "^29.0.5",
     "typescript": "^4.9.5"
-  },
-  "dependenciesMeta": {
-    "next@13.1.6": {
-      "unplugged": true
-    }
   }
 }
