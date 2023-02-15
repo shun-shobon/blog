@@ -3,7 +3,7 @@
  */
 import { Temporal } from "@js-temporal/polyfill";
 
-import { findArticles } from "./lib";
+import { findArticles, readArticle } from "./lib";
 
 test("findArticles", async () => {
   const articles = await findArticles("test-articles");
@@ -22,5 +22,16 @@ test("findArticles", async () => {
     slug: "about",
     postedAt: Temporal.PlainDate.from("2023-02-01"),
     tags: [],
+  });
+});
+
+test("readArticle", async () => {
+  const article = await readArticle("test-articles", "hello-world");
+  expect(article).toStrictEqual({
+    title: "Hello, World!",
+    slug: "hello-world",
+    postedAt: Temporal.PlainDate.from("2023-01-01"),
+    tags: ["hello", "world"],
+    content: "\n# Hello, World!\n\nThis is a test article.\n",
   });
 });

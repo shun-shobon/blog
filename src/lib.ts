@@ -6,6 +6,19 @@ import fg from "fast-glob";
 import matter from "gray-matter";
 import * as z from "zod";
 
+const MARKDOWN_FILENAME = "README.md";
+
+type FrontMatter = z.infer<typeof FrontMatter>;
+
+type ArticleSummary = FrontMatter & {
+  slug: string;
+};
+
+type Article = ArticleSummary & {
+  // TODO: ASTにする
+  content: unknown;
+};
+
 const FrontMatter = z.object({
   title: z.string(),
   postedAt: z.union([
@@ -21,30 +34,40 @@ const FrontMatter = z.object({
   ]),
   tags: z.array(z.string()).default([]),
 });
-type FrontMatter = z.infer<typeof FrontMatter>;
-
-type ArticleSummary = FrontMatter & {
-  slug: string;
-};
 
 export async function findArticles(
   basePath: string,
 ): Promise<ArticleSummary[]> {
-  const pattern = path.join(basePath, "*", "README.md");
+  const pattern = path.join(basePath, "*", MARKDOWN_FILENAME);
   const files = await fg(pattern);
 
   return Promise.all(
     files.map(async (filePath) => {
       const slug = path.basename(path.dirname(filePath));
-      const frontMatter = await parseFrontMatter(filePath);
+      const frontMatter = await readFrontMatter(filePath);
       const articleSummary: ArticleSummary = { ...frontMatter, slug };
       return articleSummary;
     }),
   );
 }
 
-async function parseFrontMatter(filePath: string): Promise<FrontMatter> {
+async function readFrontMatter(filePath: string): Promise<FrontMatter> {
   const rawContent = await fs.readFile(filePath, "utf-8");
   const { data } = matter(rawContent);
   return FrontMatter.parse(data);
+}
+
+export async function readArticle(basePath: string, slug: string) {
+  const filePath = path.join(basePath, slug, MARKDOWN_FILENAME);
+  const rawContent = await fs.readFile(filePath, "utf-8");
+  const { data, content } = matter(rawContent);
+  const frontmatter = FrontMatter.parse(data);
+
+  const article: Article = {
+    ...frontmatter,
+    slug,
+    content,
+  };
+
+  return article;
 }
