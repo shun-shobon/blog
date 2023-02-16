@@ -7,9 +7,11 @@ specifiers:
   '@testing-library/user-event': ^14.4.3
   '@tsconfig/next-strictest': ^1.0.1
   '@types/jest': ^29.2.2
+  '@types/mdast': ^3.0.10
   '@types/node': ^18.11.9
   '@types/react': ^18.0.24
   '@types/react-dom': ^18.0.8
+  '@types/unist': ^2.0.6
   '@vitejs/plugin-react': ^3.1.0
   autoprefixer: ^10.4.13
   endent: ^2.1.0
@@ -34,6 +36,8 @@ specifiers:
   tailwindcss: ^3.2.6
   typescript: ^4.9.5
   unified: ^10.1.2
+  unist-util-inspect: ^7.0.2
+  unist-util-visit: ^4.1.2
   vite: ^4.1.1
   vite-tsconfig-paths: ^4.0.5
   vitest: ^0.28.5
@@ -50,6 +54,7 @@ dependencies:
   remark-math: 5.1.1
   remark-parse: 10.0.1
   unified: 10.1.2
+  unist-util-visit: 4.1.2
   zod: 3.20.6
 
 devDependencies:
@@ -58,9 +63,11 @@ devDependencies:
   '@testing-library/user-event': 14.4.3_yxlyej73nftwmh2fiao7paxmlm
   '@tsconfig/next-strictest': 1.0.1
   '@types/jest': 29.4.0
+  '@types/mdast': 3.0.10
   '@types/node': 18.13.0
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
+  '@types/unist': 2.0.6
   '@vitejs/plugin-react': 3.1.0_vite@4.1.1
   autoprefixer: 10.4.13_postcss@8.4.21
   endent: 2.1.0
@@ -76,6 +83,7 @@ devDependencies:
   prettier-plugin-tailwindcss: 0.2.3_prettier@2.8.4
   tailwindcss: 3.2.6_postcss@8.4.21
   typescript: 4.9.5
+  unist-util-inspect: 7.0.2
   vite: 4.1.1_@types+node@18.13.0
   vite-tsconfig-paths: 4.0.5_typescript@4.9.5
   vitest: 0.28.5_jsdom@21.1.0
@@ -899,7 +907,6 @@ packages:
     resolution: {integrity: sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA==}
     dependencies:
       '@types/unist': 2.0.6
-    dev: false
 
   /@types/ms/0.7.31:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
@@ -937,7 +944,6 @@ packages:
 
   /@types/unist/2.0.6:
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
-    dev: false
 
   /@types/yargs-parser/21.0.0:
     resolution: {integrity: sha512-iO9ZQHkZxHn4mSakYV0vFHAVDyEOIJQrV2uZ06HxEPcx+mt8swXoZHIbaaJ2crJYFfErySgktuTZ3BeLz+XmFA==}
@@ -4769,6 +4775,12 @@ packages:
       trough: 2.1.0
       vfile: 5.3.7
     dev: false
+
+  /unist-util-inspect/7.0.2:
+    resolution: {integrity: sha512-Op0XnmHUl6C2zo/yJCwhXQSm/SmW22eDZdWP2qdf4WpGrgO1ZxFodq+5zFyeRGasFjJotAnLgfuD1jkcKqiH1Q==}
+    dependencies:
+      '@types/unist': 2.0.6
+    dev: true
 
   /unist-util-is/5.2.0:
     resolution: {integrity: sha512-Glt17jWwZeyqrFqOK0pF1Ded5U3yzJnFr8CG1GMjCWTp9zDo2p+cmD6pWbZU8AgM5WU3IzRv6+rBwhzsGh6hBQ==}
