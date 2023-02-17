@@ -4,7 +4,8 @@ import type {
   Parent as UnistParent,
 } from "unist";
 
-type Content =
+export type Content =
+  | Section
   | Paragraph
   | ThematicBreak
   | Blockquote
@@ -31,7 +32,6 @@ type Content =
 
 export interface Parent extends UnistParent {
   children: Content[];
-  footnotes?: FootnoteDefinition[];
 }
 
 export interface Literal extends UnistLiteral {
@@ -40,6 +40,7 @@ export interface Literal extends UnistLiteral {
 
 export interface Root extends Parent {
   type: "root";
+  footnotes?: FootnoteDefinition[];
 }
 
 export interface Section extends Parent {

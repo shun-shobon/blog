@@ -6,21 +6,33 @@ import { parseMarkdown } from "./markdown";
 
 test.only("parseMarkdown", () => {
   const markdown = endent`
-    # Hello, World!
+    # 1. Heading 1
 
-    ## This is a test
+    This is 1. paragraph.
 
-    This is a test of **the emergency**[^fn] ~~broadcast~~ \`system\`.
+    ## 1.1. Heading 2
 
-    [^fn]: This is a footnote.
+    This is 1.1. paragraph.
 
-    $$
-    y = ax^2 + bx + c
-    $$
+    ## 1.2. Heading 2
 
-    [link][example]
+    This is 1.2. paragraph.
 
-    [example]: https://example.com "Example site"
+    ### 1.2.1. Heading 3
+
+    This is 1.2.1. paragraph.
+
+    ## 1.3. Heading 2
+
+    This is 1.3. paragraph.
+
+    # 2. Heading 1
+
+    This is 2. paragraph.
+
+    # 3. Heading 1
+
+    This is 3. paragraph.
   `;
 
   const ast = parseMarkdown(markdown);
