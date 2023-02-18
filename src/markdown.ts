@@ -36,6 +36,7 @@ const remarkAst: Plugin<unknown[], MdastRoot, Ast.Root> = () => {
   ) => {
     const defs = new Map<string, MdastDefinition>();
     const fnDefs = new Map<string, MdastFootnoteDefinition>();
+    const usedFnDefs: Ast.FootnoteDefinition[] = [];
 
     visit(mdastRoot, "definition", (def) => {
       defs.set(def.identifier, def);
@@ -199,17 +200,24 @@ const remarkAst: Plugin<unknown[], MdastRoot, Ast.Root> = () => {
             alt: node.alt,
           } satisfies Ast.Image;
         }
-        case "footnoteReference":
+        case "footnoteReference": {
+          const fnDef = fnDefs.get(node.identifier);
+          if (!fnDef) {
+            return {
+              type: "text",
+              value: `[^${node.identifier}]`,
+            } satisfies Ast.Text;
+          }
+
+          const usedFnDef = convertFootnoteDefinition(fnDef);
+          usedFnDefs.push(usedFnDef);
           return {
             type: "footnoteReference",
-            number: 0, // TODO: 生成する
+            number: usedFnDef.number,
           } satisfies Ast.FootnoteReference;
+        }
         case "footnoteDefinition":
-          return {
-            type: "footnoteDefinition",
-            number: 0, // TODO: 生成する
-            children: convertMany(node.children),
-          } satisfies Ast.FootnoteDefinition;
+          return [];
         case "math":
           return {
             type: "math",
@@ -226,6 +234,15 @@ const remarkAst: Plugin<unknown[], MdastRoot, Ast.Root> = () => {
     };
     const convertMany = (nodes: MdastContent[]): Ast.Content[] => {
       return nodes.flatMap(convertOne);
+    };
+    const convertFootnoteDefinition = (
+      mdastFnDef: MdastFootnoteDefinition,
+    ): Ast.FootnoteDefinition => {
+      return {
+        type: "footnoteDefinition",
+        number: usedFnDefs.length + 1,
+        children: convertMany(mdastFnDef.children),
+      };
     };
 
     const traverse = (
@@ -277,6 +294,7 @@ const remarkAst: Plugin<unknown[], MdastRoot, Ast.Root> = () => {
 
     const root: Ast.Root = {
       type: "root",
+      footnotes: usedFnDefs,
       children: traverse(mdastRoot.children, 1),
     };
 

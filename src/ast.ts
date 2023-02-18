@@ -42,7 +42,7 @@ export interface Literal extends UnistLiteral {
 
 export interface Root extends Parent {
   type: "root";
-  footnotes?: FootnoteDefinition[];
+  footnotes: FootnoteDefinition[];
 }
 
 export interface Section extends Parent {
