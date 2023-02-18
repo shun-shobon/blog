@@ -30,8 +30,6 @@ export type Content =
   | Math
   | InlineMath;
 
-// Heading/FootnoteDefinition は残してる
-
 export interface Parent extends UnistParent {
   children: Content[];
 }

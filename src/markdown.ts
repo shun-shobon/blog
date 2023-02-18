@@ -2,7 +2,6 @@ import type {
   Content as MdastContent,
   Definition as MdastDefinition,
   FootnoteDefinition as MdastFootnoteDefinition,
-  Heading as MdastHeading,
   Root as MdastRoot,
 } from "mdast";
 import { toString as mdastToString } from "mdast-util-to-string";
@@ -11,7 +10,6 @@ import remarkMath from "remark-math";
 import remarkParse from "remark-parse";
 import type { Plugin, Transformer } from "unified";
 import { unified } from "unified";
-import { inspect } from "unist-util-inspect";
 import { visit } from "unist-util-visit";
 
 import type * as Ast from "./ast";
@@ -46,6 +44,7 @@ const remarkAst: Plugin<unknown[], MdastRoot, Ast.Root> = () => {
       fnDefs.set(fnDef.identifier, fnDef);
     });
 
+    // TODO: 型をちゃんとする
     const convertOne = (node: MdastContent): Ast.Content | Ast.Content[] => {
       switch (node.type) {
         case "paragraph":
