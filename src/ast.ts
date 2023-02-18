@@ -6,6 +6,7 @@ import type {
 
 export type Content =
   | Section
+  | Heading
   | Paragraph
   | ThematicBreak
   | Blockquote
@@ -25,6 +26,7 @@ export type Content =
   | Link
   | Image
   | FootnoteReference
+  | FootnoteDefinition
   | Math
   | InlineMath;
 
