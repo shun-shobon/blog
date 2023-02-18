@@ -41,52 +41,57 @@ const remarkAst: Plugin<unknown[], MdastRoot, Root> = () => {
     //   fnDefs.set(fnDef.identifier, fnDef);
     // });
 
-    const splitSections = (mdastChildren: MdastContent[], depth: number) => {
-      const res: Content[] = [];
-
-      let currentHeading: MdastHeading | null = null;
-      let currentSectionContent: MdastContent[] = [];
-      for (const mdastChild of mdastChildren) {
-        if (mdastChild.type === "heading" && mdastChild.depth === depth) {
-          if (currentHeading === null) {
-            currentHeading = mdastChild;
-          } else {
-            // FIXME: Need transform Mdast to Ast
-            const section: Section = u(
-              "section",
-              { heading: currentHeading as Heading },
-              splitSections(currentSectionContent, depth + 1) as Content[],
-            );
-            res.push(section);
-            currentHeading = mdastChild;
-            currentSectionContent = [];
-          }
-        } else {
-          if (currentHeading === null) {
-            // FIXME: Need transform Mdast to Ast
-            res.push(mdastChild as Content);
-          } else {
-            currentSectionContent.push(mdastChild);
-          }
-        }
+    const transform = (
+      mdastChildren: MdastContent[],
+      depth: number,
+    ): Content[] => {
+      if (depth > 6 || mdastChildren.length === 0) {
+        return mdastChildren as Content[];
       }
-      if (currentHeading !== null) {
-        // FIXME: Need transform Mdast to Ast
-        const section: Section = u(
-          "section",
-          { heading: currentHeading as Heading },
-          splitSections(currentSectionContent, depth + 1) as Content[],
+
+      const res: Content[] = [];
+      let trailing = mdastChildren;
+      let currentHead: Heading | null = null;
+      while (trailing.length > 0) {
+        const headIdx = trailing.findIndex(
+          (node) => node.type === "heading" && node.depth === depth,
         );
-        res.push(section);
+
+        const children: Content[] = transform(
+          trailing.slice(
+            0,
+            // 次の見出しがない場合は末尾までを対象にする
+            headIdx === -1 ? undefined : headIdx,
+          ),
+          depth + 1,
+        );
+
+        if (currentHead === null) {
+          res.push(...children);
+        } else {
+          const section: Section = {
+            type: "section",
+            heading: currentHead!,
+            children,
+          };
+          res.push(section);
+        }
+
+        if (headIdx === -1) {
+          break;
+        }
+
+        currentHead = trailing[headIdx] as Heading;
+        trailing = trailing.slice(headIdx + 1);
       }
 
       return res;
     };
 
-    const root: Root = u(
-      "root",
-      splitSections(mdastRoot.children, 1) as Content[],
-    );
+    const root: Root = {
+      type: "root",
+      children: transform(mdastRoot.children, 1),
+    };
 
     return next(null, root, file);
   };
