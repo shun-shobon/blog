@@ -5,6 +5,7 @@ import type {
   Heading as MdastHeading,
   Root as MdastRoot,
 } from "mdast";
+import { toString as mdastToString } from "mdast-util-to-string";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import remarkParse from "remark-parse";
@@ -52,13 +53,15 @@ const remarkAst: Plugin<unknown[], MdastRoot, Ast.Root> = () => {
             type: "paragraph",
             children: convertMany(node.children),
           } satisfies Ast.Paragraph;
-        case "heading":
+        case "heading": {
+          const identifier = mdastToString(node.children).replaceAll(" ", "-");
           return {
             type: "heading",
             depth: node.depth,
-            identifier: "", // TODO: 生成する
+            identifier,
             children: convertMany(node.children),
           } satisfies Ast.Heading;
+        }
         case "thematicBreak":
           return {
             type: "thematicBreak",
@@ -181,15 +184,7 @@ const remarkAst: Plugin<unknown[], MdastRoot, Ast.Root> = () => {
             return [
               {
                 type: "text",
-                value: "![",
-              } satisfies Ast.Text,
-              {
-                type: "text",
-                value: node.alt ?? "",
-              } satisfies Ast.Text,
-              {
-                type: "text",
-                value: `][${node.identifier}]`,
+                value: `![${node.alt ?? ""}][${node.identifier}]`,
               } satisfies Ast.Text,
             ];
           }
@@ -216,8 +211,6 @@ const remarkAst: Plugin<unknown[], MdastRoot, Ast.Root> = () => {
             number: usedFnDef.number,
           } satisfies Ast.FootnoteReference;
         }
-        case "footnoteDefinition":
-          return [];
         case "math":
           return {
             type: "math",
@@ -228,8 +221,12 @@ const remarkAst: Plugin<unknown[], MdastRoot, Ast.Root> = () => {
             type: "inlineMath",
             value: node.value,
           } satisfies Ast.InlineMath;
+        // Definitionは無視する
+        case "definition":
+        case "footnoteDefinition":
+          return [];
         default:
-          throw new Error(`Unexpected node type: ${inspect(node)}`);
+          throw new Error(`Unexpected node type: ${node.type}`);
       }
     };
     const convertMany = (nodes: MdastContent[]): Ast.Content[] => {
