@@ -1,9 +1,4 @@
-import type {
-  Content as MdastContent,
-  Definition as MdastDefinition,
-  FootnoteDefinition as MdastFootnoteDefinition,
-  Root as MdastRoot,
-} from "mdast";
+import type * as Mdast from "mdast";
 import { toString as mdastToString } from "mdast-util-to-string";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
@@ -27,14 +22,14 @@ export function parseMarkdown(markdown: string) {
   return transformer.runSync(mdastAst);
 }
 
-const remarkAst: Plugin<unknown[], MdastRoot, Ast.Root> = () => {
-  const transformer: Transformer<MdastRoot, Ast.Root> = (
+const remarkAst: Plugin<unknown[], Mdast.Root, Ast.Root> = () => {
+  const transformer: Transformer<Mdast.Root, Ast.Root> = (
     mdastRoot,
     file,
     next,
   ) => {
-    const defs = new Map<string, MdastDefinition>();
-    const fnDefs = new Map<string, MdastFootnoteDefinition>();
+    const defs = new Map<string, Mdast.Definition>();
+    const fnDefs = new Map<string, Mdast.FootnoteDefinition>();
     const usedFnDefs: Ast.FootnoteDefinition[] = [];
 
     visit(mdastRoot, "definition", (def) => {
@@ -45,7 +40,7 @@ const remarkAst: Plugin<unknown[], MdastRoot, Ast.Root> = () => {
     });
 
     // TODO: 型をちゃんとする
-    const convertOne = (node: MdastContent): Ast.Content | Ast.Content[] => {
+    const convertOne = (node: Mdast.Content): Ast.Content | Ast.Content[] => {
       switch (node.type) {
         case "paragraph":
           return {
@@ -228,11 +223,11 @@ const remarkAst: Plugin<unknown[], MdastRoot, Ast.Root> = () => {
           throw new Error(`Unexpected node type: ${node.type}`);
       }
     };
-    const convertMany = (nodes: MdastContent[]): Ast.Content[] => {
+    const convertMany = (nodes: Mdast.Content[]): Ast.Content[] => {
       return nodes.flatMap(convertOne);
     };
     const convertFootnoteDefinition = (
-      mdastFnDef: MdastFootnoteDefinition,
+      mdastFnDef: Mdast.FootnoteDefinition,
     ): Ast.FootnoteDefinition => {
       return {
         type: "footnoteDefinition",
@@ -242,7 +237,7 @@ const remarkAst: Plugin<unknown[], MdastRoot, Ast.Root> = () => {
     };
 
     const traverse = (
-      mdastChildren: MdastContent[],
+      mdastChildren: Mdast.Content[],
       depth: number,
     ): Ast.Content[] => {
       if (depth > 6 || mdastChildren.length === 0) {
@@ -250,9 +245,9 @@ const remarkAst: Plugin<unknown[], MdastRoot, Ast.Root> = () => {
       }
 
       const res: Ast.Content[] = [];
-      let trailing: MdastContent[] = mdastChildren;
+      let trailing: Mdast.Content[] = mdastChildren;
       let currentHead: Ast.Heading | null = null;
-      while (trailing.length > 0) {
+      while (true) {
         const headIdx = trailing.findIndex(
           (node) => node.type === "heading" && node.depth === depth,
         );
@@ -288,10 +283,26 @@ const remarkAst: Plugin<unknown[], MdastRoot, Ast.Root> = () => {
       return res;
     };
 
+    const createToc = (children: Ast.Content[]): Ast.TocItem[] =>
+      children
+        .filter((child): child is Ast.Section => child.type === "section")
+        .map((section) => ({
+          type: "tocItem",
+          heading: section.heading,
+          children: createToc(section.children),
+        }));
+
+    const children = traverse(mdastRoot.children, 1);
+    const toc: Ast.Toc = {
+      type: "toc",
+      children: createToc(children),
+    };
+
     const root: Ast.Root = {
       type: "root",
       footnotes: usedFnDefs,
-      children: traverse(mdastRoot.children, 1),
+      toc,
+      children,
     };
 
     return next(null, root, file);

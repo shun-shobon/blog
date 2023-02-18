@@ -41,6 +41,7 @@ export interface Literal extends UnistLiteral {
 export interface Root extends Parent {
   type: "root";
   footnotes: FootnoteDefinition[];
+  toc: Toc;
 }
 
 export interface Section extends Parent {
@@ -167,3 +168,14 @@ export interface Alternative {
 }
 
 export type AlignType = "left" | "right" | "center" | null;
+
+export interface Toc {
+  type: "toc";
+  children: TocItem[];
+}
+
+export interface TocItem extends UnistParent {
+  type: "tocItem";
+  heading: Heading;
+  children: TocItem[];
+}

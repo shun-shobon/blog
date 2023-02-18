@@ -144,6 +144,108 @@ describe("parseMarkdown", () => {
     expect(parsed.children).toEqual(expected);
   });
 
+  test("toc", () => {
+    const markdown = endent`
+      # 1.
+
+      ## 1.1.
+
+      ### 1.1.1.
+
+      ### 1.1.2.
+
+      ## 1.2.
+
+      # 2.
+
+      ## 2.1.
+
+      # 3.
+    `;
+
+    const parsed = parseMarkdown(markdown);
+
+    expect(parsed.toc).toEqual(
+      u("toc", [
+        u(
+          "tocItem",
+          {
+            heading: u("heading", { depth: 1, identifier: "1." }, [
+              u("text", "1."),
+            ]),
+          },
+          [
+            u(
+              "tocItem",
+              {
+                heading: u("heading", { depth: 2, identifier: "1.1." }, [
+                  u("text", "1.1."),
+                ]),
+              },
+              [
+                u(
+                  "tocItem",
+                  {
+                    heading: u("heading", { depth: 3, identifier: "1.1.1." }, [
+                      u("text", "1.1.1."),
+                    ]),
+                  },
+                  [],
+                ),
+                u(
+                  "tocItem",
+                  {
+                    heading: u("heading", { depth: 3, identifier: "1.1.2." }, [
+                      u("text", "1.1.2."),
+                    ]),
+                  },
+                  [],
+                ),
+              ],
+            ),
+            u(
+              "tocItem",
+              {
+                heading: u("heading", { depth: 2, identifier: "1.2." }, [
+                  u("text", "1.2."),
+                ]),
+              },
+              [],
+            ),
+          ],
+        ),
+        u(
+          "tocItem",
+          {
+            heading: u("heading", { depth: 1, identifier: "2." }, [
+              u("text", "2."),
+            ]),
+          },
+          [
+            u(
+              "tocItem",
+              {
+                heading: u("heading", { depth: 2, identifier: "2.1." }, [
+                  u("text", "2.1."),
+                ]),
+              },
+              [],
+            ),
+          ],
+        ),
+        u(
+          "tocItem",
+          {
+            heading: u("heading", { depth: 1, identifier: "3." }, [
+              u("text", "3."),
+            ]),
+          },
+          [],
+        ),
+      ]),
+    );
+  });
+
   test("footnote", () => {
     const markdown = endent`
       Hello, world[^1].
