@@ -34,17 +34,17 @@ const remarkAst: Plugin<unknown[], MdastRoot, Ast.Root> = () => {
     file,
     next,
   ) => {
-    // const defs = new Map<string, MdastDefinition>();
-    // const fnDefs = new Map<string, MdastFootnoteDefinition>();
+    const defs = new Map<string, MdastDefinition>();
+    const fnDefs = new Map<string, MdastFootnoteDefinition>();
 
-    // visit(mdastRoot, "definition", (def) => {
-    //   defs.set(def.identifier, def);
-    // });
-    // visit(mdastRoot, "footnoteDefinition", (fnDef) => {
-    //   fnDefs.set(fnDef.identifier, fnDef);
-    // });
+    visit(mdastRoot, "definition", (def) => {
+      defs.set(def.identifier, def);
+    });
+    visit(mdastRoot, "footnoteDefinition", (fnDef) => {
+      fnDefs.set(fnDef.identifier, fnDef);
+    });
 
-    const convertOne = (node: MdastContent): Ast.Content => {
+    const convertOne = (node: MdastContent): Ast.Content | Ast.Content[] => {
       switch (node.type) {
         case "paragraph":
           return {
@@ -145,6 +145,28 @@ const remarkAst: Plugin<unknown[], MdastRoot, Ast.Root> = () => {
             title: node.title,
             children: convertMany(node.children),
           } satisfies Ast.Link;
+        case "linkReference": {
+          const def = defs.get(node.identifier);
+          if (!def) {
+            return [
+              {
+                type: "text",
+                value: "[",
+              } satisfies Ast.Text,
+              ...convertMany(node.children),
+              {
+                type: "text",
+                value: `][${node.identifier}]`,
+              } satisfies Ast.Text,
+            ];
+          }
+          return {
+            type: "link",
+            url: def.url,
+            title: def.title,
+            children: convertMany(node.children),
+          } satisfies Ast.Link;
+        }
         case "image":
           return {
             type: "image",
@@ -152,6 +174,31 @@ const remarkAst: Plugin<unknown[], MdastRoot, Ast.Root> = () => {
             title: node.title,
             alt: node.alt,
           } satisfies Ast.Image;
+        case "imageReference": {
+          const def = defs.get(node.identifier);
+          if (!def) {
+            return [
+              {
+                type: "text",
+                value: "![",
+              } satisfies Ast.Text,
+              {
+                type: "text",
+                value: node.alt ?? "",
+              } satisfies Ast.Text,
+              {
+                type: "text",
+                value: `][${node.identifier}]`,
+              } satisfies Ast.Text,
+            ];
+          }
+          return {
+            type: "image",
+            url: def.url,
+            title: def.title,
+            alt: node.alt,
+          } satisfies Ast.Image;
+        }
         case "footnoteReference":
           return {
             type: "footnoteReference",
@@ -178,7 +225,7 @@ const remarkAst: Plugin<unknown[], MdastRoot, Ast.Root> = () => {
       }
     };
     const convertMany = (nodes: MdastContent[]): Ast.Content[] => {
-      return nodes.map(convertOne);
+      return nodes.flatMap(convertOne);
     };
 
     const traverse = (
