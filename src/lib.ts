@@ -6,6 +6,9 @@ import fg from "fast-glob";
 import matter from "gray-matter";
 import * as z from "zod";
 
+import type { Root } from "./ast";
+import { parseMarkdown } from "./markdown";
+
 const MARKDOWN_FILENAME = "README.md";
 
 type FrontMatter = z.infer<typeof FrontMatter>;
@@ -15,8 +18,7 @@ type ArticleSummary = FrontMatter & {
 };
 
 type Article = ArticleSummary & {
-  // TODO: ASTにする
-  content: unknown;
+  content: Root;
 };
 
 const FrontMatter = z.object({
@@ -59,9 +61,10 @@ async function readFrontMatter(filePath: string): Promise<FrontMatter> {
 
 export async function readArticle(basePath: string, slug: string) {
   const filePath = path.join(basePath, slug, MARKDOWN_FILENAME);
-  const rawContent = await fs.readFile(filePath, "utf-8");
-  const { data, content } = matter(rawContent);
+  const fileContent = await fs.readFile(filePath, "utf-8");
+  const { data, content: rawContent } = matter(fileContent);
   const frontmatter = FrontMatter.parse(data);
+  const content = parseMarkdown(rawContent);
 
   const article: Article = {
     ...frontmatter,

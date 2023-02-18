@@ -1,4 +1,5 @@
 import { Temporal } from "@js-temporal/polyfill";
+import { u } from "unist-builder";
 import { assert, expect, test } from "vitest";
 
 import { findArticles, readArticle } from "./lib";
@@ -34,6 +35,16 @@ test("readArticle", async () => {
     slug: "hello-world",
     postedAt: Temporal.PlainDate.from("2023-01-01"),
     tags: ["hello", "world"],
-    content: "\n# Hello, World!\n\nThis is a test article.\n",
+    content: u("root", { toc: expect.anything(), footnotes: [] }, [
+      u(
+        "section",
+        {
+          heading: u("heading", { depth: 1, identifier: "Hello,-World!" }, [
+            u("text", "Hello, World!"),
+          ]),
+        },
+        [u("paragraph", [u("text", "This is a test article.")])],
+      ),
+    ]),
   });
 });
