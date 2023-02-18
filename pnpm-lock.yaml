@@ -37,6 +37,7 @@ specifiers:
   tailwindcss: ^3.2.6
   typescript: ^4.9.5
   unified: ^10.1.2
+  unist-builder: ^3.0.1
   unist-util-inspect: ^7.0.2
   unist-util-visit: ^4.1.2
   vite: ^4.1.1
@@ -85,6 +86,7 @@ devDependencies:
   prettier-plugin-tailwindcss: 0.2.3_prettier@2.8.4
   tailwindcss: 3.2.6_postcss@8.4.21
   typescript: 4.9.5
+  unist-builder: 3.0.1
   unist-util-inspect: 7.0.2
   vite: 4.1.1_@types+node@18.13.0
   vite-tsconfig-paths: 4.0.5_typescript@4.9.5
@@ -4777,6 +4779,12 @@ packages:
       trough: 2.1.0
       vfile: 5.3.7
     dev: false
+
+  /unist-builder/3.0.1:
+    resolution: {integrity: sha512-gnpOw7DIpCA0vpr6NqdPvTWnlPTApCTRzr+38E6hCWx3rz/cjo83SsKIlS1Z+L5ttScQ2AwutNnb8+tAvpb6qQ==}
+    dependencies:
+      '@types/unist': 2.0.6
+    dev: true
 
   /unist-util-inspect/7.0.2:
     resolution: {integrity: sha512-Op0XnmHUl6C2zo/yJCwhXQSm/SmW22eDZdWP2qdf4WpGrgO1ZxFodq+5zFyeRGasFjJotAnLgfuD1jkcKqiH1Q==}
