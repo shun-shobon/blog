@@ -16,7 +16,7 @@ export default function Layout({ children }: Props): JSX.Element {
       </head>
       <body className="text-gray-600 dark:bg-slate-800 dark:text-slate-400">
         <Header />
-        <main>{children}</main>
+        {children}
       </body>
     </html>
   );

@@ -13,11 +13,11 @@ const MARKDOWN_FILENAME = "README.md";
 
 type FrontMatter = z.infer<typeof FrontMatter>;
 
-type ArticleSummary = FrontMatter & {
+export type ArticleSummary = FrontMatter & {
   slug: string;
 };
 
-type Article = ArticleSummary & {
+export type Article = ArticleSummary & {
   content: Root;
 };
 
