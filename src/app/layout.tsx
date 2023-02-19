@@ -2,6 +2,8 @@ import "@/styles/global.css";
 
 import type { ReactNode } from "react";
 
+import { Header } from "./Header";
+
 type Props = {
   children: ReactNode;
 };
@@ -10,9 +12,12 @@ export default function Layout({ children }: Props): JSX.Element {
   return (
     <html lang="ja">
       <head>
-        <title>Blog</title>
+        <title>星朧の夜</title>
       </head>
-      <body>{children}</body>
+      <body className="text-gray-600 dark:bg-slate-800 dark:text-slate-400">
+        <Header />
+        <main>{children}</main>
+      </body>
     </html>
   );
 }
