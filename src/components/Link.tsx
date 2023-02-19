@@ -8,7 +8,7 @@ export function Link({ className, ...props }: Props): JSX.Element {
   return (
     <NextLink
       className={twMerge(
-        "transition-colors dark:text-slate-300 dark:hover:text-purple-400",
+        "text-slate-800 transition-colors hover:text-purple-500 dark:text-slate-300 dark:hover:text-purple-400",
         className,
       )}
       {...props}

@@ -14,7 +14,7 @@ export default function Layout({ children }: Props): JSX.Element {
       <head>
         <title>星朧の夜</title>
       </head>
-      <body className="text-gray-600 dark:bg-slate-800 dark:text-slate-400">
+      <body className="bg-slate-50 text-gray-600 dark:bg-slate-800 dark:text-slate-400">
         <Header />
         {children}
       </body>
