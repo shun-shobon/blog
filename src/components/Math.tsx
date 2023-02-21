@@ -7,7 +7,7 @@ import {
   InlineMath as InlineMathComponent,
 } from "react-katex";
 
-import type { InlineMath as InlineMathNode, Math as MathNode } from "@/ast";
+import type { InlineMath as InlineMathNode, Math as MathNode } from "@/lib/ast";
 
 type MathProps = {
   node: MathNode;

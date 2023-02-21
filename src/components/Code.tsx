@@ -2,7 +2,7 @@
 import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import { duotoneDark as style } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
-import type { Code as CodeNode } from "@/ast";
+import type { Code as CodeNode } from "@/lib/ast";
 
 type Props = {
   node: CodeNode;

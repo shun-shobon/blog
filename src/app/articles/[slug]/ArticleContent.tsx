@@ -2,7 +2,6 @@ import ImageComponent from "next/image";
 import type { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
-import type * as Ast from "@/ast";
 import { Code as CodeComponent } from "@/components/Code";
 import { Heading as HeadingComponent } from "@/components/Heading";
 import { Link as LinkComponent } from "@/components/Link";
@@ -10,6 +9,7 @@ import {
   InlineMath as InlineMathComponent,
   Math as MathComponent,
 } from "@/components/Math";
+import type * as Ast from "@/lib/ast";
 
 type ArticleContentProps = {
   content: Ast.Content[];
