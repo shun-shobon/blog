@@ -8,7 +8,9 @@ export function Header(): JSX.Element {
           星朧の夜
         </li>
         <li>
-          <Link href="/">HOME</Link>
+          <Link internal href="/">
+            HOME
+          </Link>
         </li>
       </ul>
     </header>

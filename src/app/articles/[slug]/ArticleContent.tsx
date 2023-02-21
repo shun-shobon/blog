@@ -1,4 +1,5 @@
 import ImageComponent from "next/image";
+import type { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
 import type * as Ast from "@/ast";
@@ -9,11 +10,12 @@ import {
   InlineMath as InlineMathComponent,
   Math as MathComponent,
 } from "@/components/Math";
-type Props = {
+
+type ArticleContentProps = {
   content: Ast.Content[];
 };
 
-export function ArticleContent({ content }: Props): JSX.Element {
+export function ArticleContent({ content }: ArticleContentProps): JSX.Element {
   return (
     <>
       {content.map((node, idx) => (
@@ -23,16 +25,41 @@ export function ArticleContent({ content }: Props): JSX.Element {
   );
 }
 
-type ContentProps<T> = {
-  node: T;
+type ArticleFootnotesProps = {
+  footnotes: Ast.FootnoteDefinition[];
 };
 
-function Content({ node }: ContentProps<Ast.Content>): JSX.Element {
+export function ArticleFootnotes({
+  footnotes,
+}: ArticleFootnotesProps): JSX.Element | null {
+  if (footnotes.length === 0) return null;
+
+  return (
+    <>
+      <hr />
+      <section className="space-y-2">
+        <h2 className="sr-only">脚注</h2>
+        <ol className="ml-6 list-decimal">
+          {footnotes.map((node, idx) => (
+            <FootnoteDefinition key={idx} node={node} />
+          ))}
+        </ol>
+      </section>
+    </>
+  );
+}
+
+type ContentProps<T> = {
+  node: T;
+  children?: ReactNode;
+};
+
+function Content({ node, children }: ContentProps<Ast.Content>): JSX.Element {
   switch (node.type) {
     case "section":
       return <Section node={node} />;
     case "paragraph":
-      return <Paragraph node={node} />;
+      return <Paragraph node={node}>{children}</Paragraph>;
     case "heading":
       return <Heading node={node} />;
     case "thematicBreak":
@@ -74,7 +101,7 @@ function Content({ node }: ContentProps<Ast.Content>): JSX.Element {
     case "footnoteReference":
       return <FootnoteReference node={node} />;
     case "math":
-      return <Math node={node} />;
+      return <MathBlock node={node} />;
     case "inlineMath":
       return <InlineMath node={node} />;
   }
@@ -82,7 +109,7 @@ function Content({ node }: ContentProps<Ast.Content>): JSX.Element {
 
 function Section({ node }: ContentProps<Ast.Section>): JSX.Element {
   return (
-    <section className="space-y-2">
+    <section className="my-8 space-y-4">
       <Heading node={node.heading} />
       {node.children.map((child, idx) => (
         <Content key={idx} node={child} />
@@ -91,19 +118,22 @@ function Section({ node }: ContentProps<Ast.Section>): JSX.Element {
   );
 }
 
-function Paragraph({ node }: ContentProps<Ast.Paragraph>): JSX.Element {
+function Paragraph({
+  node,
+  children,
+}: ContentProps<Ast.Paragraph>): JSX.Element {
   return (
     <p>
       {node.children.map((child, idx) => (
         <Content key={idx} node={child} />
       ))}
+      {children}
     </p>
   );
 }
 
 function Heading({ node }: ContentProps<Ast.Heading>): JSX.Element {
-  const level =
-    node.depth === 6 ? 6 : ((node.depth + 1) as 1 | 2 | 3 | 4 | 5 | 6);
+  const level = Math.min(6, node.depth + 1) as 2 | 3 | 4 | 5 | 6;
 
   return (
     <HeadingComponent
@@ -137,7 +167,7 @@ function List({ node }: ContentProps<Ast.List>): JSX.Element {
     <ListItem key={idx} node={child} />
   ));
 
-  const base = "ml-4";
+  const base = "ml-6";
 
   return node.ordered ? (
     <ol className={twMerge(base, "list-decimal")}>{children}</ol>
@@ -160,13 +190,13 @@ function Table({ node }: ContentProps<Ast.Table>): JSX.Element {
   const [head, ...body] = node.children;
 
   return (
-    <table>
-      <thead>
+    <table className="w-full">
+      <thead className="border-t-2 border-b">
         <TableRow node={head!} isHead />
       </thead>
-      <tbody>
+      <tbody className="border-b-2">
         {body.map((row, idx) => (
-          <TableRow key={idx} node={row} />
+          <TableRow key={idx} node={row} align={node.align ?? undefined} />
         ))}
       </tbody>
     </table>
@@ -175,12 +205,21 @@ function Table({ node }: ContentProps<Ast.Table>): JSX.Element {
 
 function TableRow({
   node,
+  align,
   isHead,
-}: ContentProps<Ast.TableRow> & { isHead?: boolean | undefined }): JSX.Element {
+}: ContentProps<Ast.TableRow> & {
+  align?: Ast.AlignType[] | undefined;
+  isHead?: boolean | undefined;
+}): JSX.Element {
   return (
     <tr>
       {node.children.map((child, idx) => (
-        <TableCell key={idx} node={child} isHead={isHead} />
+        <TableCell
+          key={idx}
+          node={child}
+          align={align?.[idx]}
+          isHead={isHead}
+        />
       ))}
     </tr>
   );
@@ -188,14 +227,25 @@ function TableRow({
 
 function TableCell({
   node,
+  align,
   isHead,
 }: ContentProps<Ast.TableCell> & {
+  align?: Ast.AlignType | undefined;
   isHead?: boolean | undefined;
 }): JSX.Element {
   const Tag = isHead ? "th" : "td";
 
+  const alignClass =
+    align === "left"
+      ? "text-left"
+      : align === "center"
+      ? "text-center"
+      : align === "right"
+      ? "text-right"
+      : null;
+
   return (
-    <Tag>
+    <Tag className={twMerge("p-1", alignClass)}>
       {node.children.map((child, idx) => (
         <Content key={idx} node={child} />
       ))}
@@ -275,10 +325,11 @@ function FootnoteReference({
   node,
 }: ContentProps<Ast.FootnoteReference>): JSX.Element {
   return (
-    <sup id={`#fnref-${node.number}`}>
+    <sup id={`fnref-${node.number}`}>
       <LinkComponent
+        className="text-purple-700 hover:underline dark:text-purple-300"
         href={`#fn-${node.number}`}
-        aria-describedby={`#fn-${node.number}`}
+        aria-describedby={`fn-${node.number}`}
       >
         {node.number}
       </LinkComponent>
@@ -290,21 +341,24 @@ function FootnoteDefinition({
   node,
 }: ContentProps<Ast.FootnoteDefinition>): JSX.Element {
   return (
-    <li id={`#fn-${node.number}`}>
+    <li id={`fn-${node.number}`}>
       {node.children.map((child, idx) => (
-        <Content key={idx} node={child} />
+        <Content key={idx} node={child}>
+          {/* FootnoteDefinitionの子ノードは基本的に1つなのでこれで問題ない */}
+          <LinkComponent
+            className="ml-2 text-purple-700 dark:text-purple-300"
+            href={`#fnref-${node.number}`}
+            aria-label="Back to content"
+          >
+            ↵
+          </LinkComponent>
+        </Content>
       ))}
-      <LinkComponent
-        href={`#fnref-${node.number}`}
-        aria-label="Back to content"
-      >
-        ↵
-      </LinkComponent>
     </li>
   );
 }
 
-function Math({ node }: ContentProps<Ast.Math>): JSX.Element {
+function MathBlock({ node }: ContentProps<Ast.Math>): JSX.Element {
   return <MathComponent node={node} />;
 }
 

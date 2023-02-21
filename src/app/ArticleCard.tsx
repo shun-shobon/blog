@@ -12,6 +12,7 @@ export function ArticleCard({ summary }: Props): JSX.Element {
     <article key={summary.slug} className="grid gap-1">
       <Heading level={2}>
         <Link
+          internal
           className="text-slate-800 dark:text-slate-200"
           href={`/articles/${summary.slug}`}
         >

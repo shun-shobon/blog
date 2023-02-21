@@ -2,7 +2,7 @@ import { ArticleMatter } from "@/components/ArticleMatter";
 import { Heading } from "@/components/Heading";
 import { findArticles, readArticle } from "@/lib";
 
-import { ArticleContent } from "./ArticleContent";
+import { ArticleContent, ArticleFootnotes } from "./ArticleContent";
 
 type Params = {
   slug: string;
@@ -23,6 +23,7 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
           <ArticleMatter summary={article} />
         </header>
         <ArticleContent content={article.content.children} />
+        <ArticleFootnotes footnotes={article.content.footnotes} />
       </article>
     </main>
   );

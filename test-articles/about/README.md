@@ -6,11 +6,19 @@ emoji: ":question:"
 
 # 1.
 
+This is section 1.
+
 ## 1.1.
+
+This is section 1.1.
 
 ### 1.1.1.
 
-This **is** _a_ **_test_** article.
+This is section 1.1.1.
+
+This **is** _a_ **_test_** article. [^1]
+
+[^1]: This is a footnote.
 
 ---
 
@@ -52,3 +60,9 @@ $$
 \end{aligned}
 \right.
 $$
+
+| Table |           Test           |
+| :---- | :----------------------: |
+| 1     |            2             |
+| `3`   | [4](https://example.com) |
+| **5** |           _6_            |
