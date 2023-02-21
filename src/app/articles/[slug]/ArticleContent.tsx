@@ -2,9 +2,13 @@ import ImageComponent from "next/image";
 import { twMerge } from "tailwind-merge";
 
 import type * as Ast from "@/ast";
+import { Code as CodeComponent } from "@/components/Code";
 import { Heading as HeadingComponent } from "@/components/Heading";
 import { Link as LinkComponent } from "@/components/Link";
-
+import {
+  InlineMath as InlineMathComponent,
+  Math as MathComponent,
+} from "@/components/Math";
 type Props = {
   content: Ast.Content[];
 };
@@ -204,7 +208,7 @@ function HTML({ node }: ContentProps<Ast.HTML>): JSX.Element {
 }
 
 function Code({ node }: ContentProps<Ast.Code>): JSX.Element {
-  return <pre>{node.value}</pre>;
+  return <CodeComponent node={node} />;
 }
 
 function Text({ node }: ContentProps<Ast.Text>): JSX.Element {
@@ -242,7 +246,11 @@ function Delete({ node }: ContentProps<Ast.Delete>): JSX.Element {
 }
 
 function InlineCode({ node }: ContentProps<Ast.InlineCode>): JSX.Element {
-  return <code>{node.value}</code>;
+  return (
+    <code className="inline-block rounded px-1.5 py-0.5 dark:bg-slate-900 dark:text-purple-300">
+      {node.value}
+    </code>
+  );
 }
 
 function Break({}: ContentProps<Ast.Break>): JSX.Element {
@@ -297,9 +305,9 @@ function FootnoteDefinition({
 }
 
 function Math({ node }: ContentProps<Ast.Math>): JSX.Element {
-  return <pre>{node.value}</pre>;
+  return <MathComponent node={node} />;
 }
 
 function InlineMath({ node }: ContentProps<Ast.InlineMath>): JSX.Element {
-  return <code>{node.value}</code>;
+  return <InlineMathComponent node={node} />;
 }

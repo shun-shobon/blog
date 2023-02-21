@@ -31,3 +31,24 @@ This **is** _a_ **_test_** article.
 [example.com][link]
 
 [link]: https://example.com
+
+```typescript
+class MyClass {
+  constructor(private readonly name: string) {}
+
+  public getName(): string {
+    return this.name;
+  }
+}
+```
+
+`inline code` $\KaTeX$
+
+$$
+\left\{
+\begin{aligned}
+  2x + 3y &= 5 \\
+  5x - 2y &= 3 \\
+\end{aligned}
+\right.
+$$
