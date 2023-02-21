@@ -1,11 +1,15 @@
 import { ArticleMatter } from "@/components/ArticleMatter";
 import { Heading } from "@/components/Heading";
-import { readArticle } from "@/lib";
+import { findArticles, readArticle } from "@/lib";
+
+import { ArticleContent } from "./ArticleContent";
+
+type Params = {
+  slug: string;
+};
 
 type Props = {
-  params: {
-    slug: string;
-  };
+  params: Params;
 };
 
 export default async function Page({ params }: Props): Promise<JSX.Element> {
@@ -18,7 +22,16 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
         <header>
           <ArticleMatter summary={article} />
         </header>
+        <ArticleContent content={article.content.children} />
       </article>
     </main>
   );
+}
+
+export async function generateStaticParams(): Promise<Params[]> {
+  const articleSummaries = await findArticles("test-articles");
+
+  return articleSummaries.map((summary) => ({
+    slug: summary.slug,
+  }));
 }
