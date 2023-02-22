@@ -5,6 +5,7 @@ import { unified } from "unified";
 import { u } from "unist-builder";
 import { describe, expect, test } from "vitest";
 
+import { remarkRemovePosition } from ".";
 import { remarkResolveReference } from "./remark-resolve-reference";
 
 describe("remarkResolveReference", () => {
@@ -55,6 +56,7 @@ describe("remarkResolveReference", () => {
   test("When a link ref is found (from Markdown)", () => {
     const transformer = unified()
       .use(remarkParse)
+      .use(remarkRemovePosition)
       .use(remarkResolveReference)
       .freeze();
 
@@ -65,11 +67,10 @@ describe("remarkResolveReference", () => {
     `;
 
     const result = transformer.runSync(transformer.parse(markdown));
-    // @ts-ignore
-    expect(result).toMatchObject(
+    expect(result).toEqual(
       u("root", [
         u("paragraph", [
-          u("link", { url: "https://example.com" }, [
+          u("link", { url: "https://example.com", title: null }, [
             u("text", "example site"),
           ]),
         ]),

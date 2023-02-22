@@ -48,6 +48,7 @@ specifiers:
   unified: ^10.1.2
   unist-builder: ^3.0.1
   unist-util-inspect: ^7.0.2
+  unist-util-remove-position: ^4.0.2
   unist-util-visit: ^4.1.2
   vite: ^4.1.1
   vite-tsconfig-paths: ^4.0.5
@@ -73,6 +74,7 @@ dependencies:
   tailwind-merge: 1.9.1
   ts-array-length: 0.1.2
   unified: 10.1.2
+  unist-util-remove-position: 4.0.2
   unist-util-visit: 4.1.2
   zod: 3.20.6
 
@@ -4981,6 +4983,13 @@ packages:
 
   /unist-util-is/5.2.0:
     resolution: {integrity: sha512-Glt17jWwZeyqrFqOK0pF1Ded5U3yzJnFr8CG1GMjCWTp9zDo2p+cmD6pWbZU8AgM5WU3IzRv6+rBwhzsGh6hBQ==}
+    dev: false
+
+  /unist-util-remove-position/4.0.2:
+    resolution: {integrity: sha512-TkBb0HABNmxzAcfLf4qsIbFbaPDvMO6wa3b3j4VcEzFVaw1LBKwnW4/sRJ/atSLSzoIg41JWEdnE7N6DIhGDGQ==}
+    dependencies:
+      '@types/unist': 2.0.6
+      unist-util-visit: 4.1.2
     dev: false
 
   /unist-util-stringify-position/3.0.3:

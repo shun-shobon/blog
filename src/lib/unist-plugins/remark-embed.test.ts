@@ -6,6 +6,7 @@ import { unified } from "unified";
 import { u } from "unist-builder";
 import { describe, expect, test } from "vitest";
 
+import { remarkRemovePosition } from ".";
 import { remarkEmbed } from "./remark-embed";
 
 describe("remarkEmbed", () => {
@@ -39,6 +40,7 @@ describe("remarkEmbed", () => {
     const transformer = unified()
       .use(remarkParse)
       .use(remarkGfm)
+      .use(remarkRemovePosition)
       .use(remarkEmbed)
       .freeze();
 
@@ -47,8 +49,6 @@ describe("remarkEmbed", () => {
     `;
 
     const result = transformer.runSync(transformer.parse(markdown));
-    expect(result).toMatchObject(
-      u("root", [u("embed", "https://example.com")]),
-    );
+    expect(result).toEqual(u("root", [u("embed", "https://example.com")]));
   });
 });
