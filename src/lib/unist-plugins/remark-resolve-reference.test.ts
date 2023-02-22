@@ -48,14 +48,7 @@ describe("remarkResolveReference", () => {
 
     const result = transformer.runSync(ast);
     expect(result).toEqual(
-      u("root", [
-        u("paragraph", [
-          u("text", "["),
-          u("text", "example site"),
-          u("text", "]"),
-          u("text", "[example]"),
-        ]),
-      ]),
+      u("root", [u("paragraph", [u("text", "[example site][example]")])]),
     );
   });
 

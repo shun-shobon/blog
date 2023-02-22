@@ -27,6 +27,7 @@ specifiers:
   jsdom: ^21.1.0
   katex: ^0.16.4
   lint-staged: ^13.1.2
+  mdast-util-compact: ^4.1.1
   mdast-util-to-string: ^3.1.1
   next: ^13.1.6
   postcss: ^8.4.21
@@ -58,6 +59,7 @@ dependencies:
   fast-glob: 3.2.12
   gray-matter: 4.0.3
   katex: 0.16.4
+  mdast-util-compact: 4.1.1
   mdast-util-to-string: 3.1.1
   next: 13.1.6_biqbaboplfbrettd7655fr4n2y
   prop-types: 15.8.1
@@ -3268,6 +3270,13 @@ packages:
 
   /markdown-table/3.0.3:
     resolution: {integrity: sha512-Z1NL3Tb1M9wH4XESsCDEksWoKTdlUafKc4pt0GRwjUyXaCFZ+dc3g2erqB6zm3szA2IUSi7VnPI+o/9jnxh9hw==}
+    dev: false
+
+  /mdast-util-compact/4.1.1:
+    resolution: {integrity: sha512-h/UFPIkf4ZlJw50k9UC+CkY+/urhFHZB25GXGh0f+kbqSulzZMSEGWeFjAe2jEQsFu9bSjf0s/TdZXsjvtmxIQ==}
+    dependencies:
+      '@types/mdast': 3.0.10
+      unist-util-visit: 4.1.2
     dev: false
 
   /mdast-util-find-and-replace/2.2.2:

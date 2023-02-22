@@ -1,4 +1,5 @@
 import type {
+  Content,
   Definition,
   Image,
   ImageReference,
@@ -8,6 +9,7 @@ import type {
   StaticPhrasingContent,
   Text,
 } from "mdast";
+import { compact } from "mdast-util-compact";
 import type { Plugin } from "unified";
 import type { Visitor } from "unist-util-visit";
 import { visit } from "unist-util-visit";
@@ -61,6 +63,8 @@ const linkReferenceVisitorBuilder = (
         { type: "text", value: `[${node.identifier}]` },
       ];
       parent.children.splice(idx, 1, ...nodes);
+      // SAFETY: `parent` is a `Parent` and Root and Content extends Parent.
+      compact(parent as Root | Content);
       return;
     }
 
@@ -87,6 +91,8 @@ const imageReferenceVisitorBuilder = (
         value: `[${node.alt}][${node.identifier}]`,
       };
       parent.children[idx] = text;
+      // SAFETY: `parent` is a `Parent` and Root and Content extends Parent.
+      compact(parent as Root | Content);
       return;
     }
 
