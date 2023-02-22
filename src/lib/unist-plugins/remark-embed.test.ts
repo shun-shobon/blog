@@ -9,7 +9,7 @@ import { describe, expect, test } from "vitest";
 import { remarkEmbed } from "./remark-embed";
 
 describe("remarkEmbed", () => {
-  test("from mdast AST", () => {
+  test("When the URL and text are same (from AST)", () => {
     const transformer = unified().use(remarkEmbed).freeze();
     const ast: Root = u("root", [
       u("paragraph", [
@@ -23,7 +23,7 @@ describe("remarkEmbed", () => {
     expect(result).toEqual(u("root", [u("embed", "https://example.com")]));
   });
 
-  test("When URL and text are different", () => {
+  test("When the URL and text are different (from AST)", () => {
     const transformer = unified().use(remarkEmbed).freeze();
     const ast: Root = u("root", [
       u("paragraph", [
@@ -35,7 +35,7 @@ describe("remarkEmbed", () => {
     expect(result).toEqual(ast);
   });
 
-  test("from markdown", () => {
+  test("When the URL and text are same (from Markdown)", () => {
     const transformer = unified()
       .use(remarkParse)
       .use(remarkGfm)
@@ -47,6 +47,8 @@ describe("remarkEmbed", () => {
     `;
 
     const result = transformer.runSync(transformer.parse(markdown));
-    expect(result.children[0]).toEqual(u("embed", "https://example.com"));
+    expect(result).toMatchObject(
+      u("root", [u("embed", "https://example.com")]),
+    );
   });
 });
