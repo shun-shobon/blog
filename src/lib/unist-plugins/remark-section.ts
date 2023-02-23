@@ -3,7 +3,7 @@ import type { Plugin } from "unified";
 
 import { findNodeAfter, isHeadingOfDepth } from "./utils";
 
-export interface Section {
+export interface Section extends Parent {
   type: "section";
   children: [Heading, ...Content[]];
 }

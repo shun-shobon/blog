@@ -4,6 +4,8 @@ import type {
   ImageReference,
   Link,
   LinkReference,
+  List,
+  ListItem,
   Paragraph,
   Parent,
   Text,
@@ -38,6 +40,14 @@ export function isHeadingOfDepth(depth: number) {
 
 export function isParagraph(node?: Node | null): node is Paragraph {
   return node != null && node.type === "paragraph";
+}
+
+export function isList(node?: Node | null): node is List {
+  return node != null && node.type === "list";
+}
+
+export function isListItem(node?: Node | null): node is ListItem {
+  return node != null && node.type === "listItem";
 }
 
 export function isText(node?: Node | null): node is Text {

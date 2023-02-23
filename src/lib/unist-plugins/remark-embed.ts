@@ -15,6 +15,7 @@ export interface Embed extends Literal {
 
 export const remarkEmbed: Plugin<never[], Root> = () => {
   return (tree) => {
+    // @ts-ignore: Fuck unist-util-visit types.
     visit(tree, isEmbed, visitor);
   };
 };
