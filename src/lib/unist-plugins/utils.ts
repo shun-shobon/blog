@@ -1,5 +1,6 @@
 import type {
   Definition,
+  Heading,
   ImageReference,
   Link,
   LinkReference,
@@ -9,8 +10,30 @@ import type {
 } from "mdast";
 import type { Node } from "unist";
 
+export function findNodeAfter<T extends Node>(
+  tree: Parent,
+  after: number,
+  predicate: (node: Node) => node is T,
+): [T, number] | [undefined, undefined] {
+  const idx = tree.children.slice(after).findIndex(predicate);
+  if (idx === -1) return [undefined, undefined];
+
+  const index = idx + after;
+  return [tree.children[index] as T, index];
+}
+
 export function isParent(node?: Node | null): node is Parent {
   return node != null && Object.hasOwn(node, "children");
+}
+
+export function isHeading(node?: Node | null): node is Heading {
+  return node != null && node.type === "heading";
+}
+
+export function isHeadingOfDepth(depth: number) {
+  return (node?: Node | null): node is Heading => {
+    return isHeading(node) && node.depth === depth;
+  };
 }
 
 export function isParagraph(node?: Node | null): node is Paragraph {

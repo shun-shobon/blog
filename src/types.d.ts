@@ -1,7 +1,8 @@
-import type { Embed } from "@/lib/unist-plugins/remark-embed";
+import type { Embed, Section } from "@/lib/unist-plugins";
 
 declare module "mdast" {
   interface BlockContentMap {
     embed: Embed;
+    section: Section;
   }
 }
