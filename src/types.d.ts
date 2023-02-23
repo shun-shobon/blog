@@ -17,4 +17,8 @@ declare module "mdast" {
     descriptionTerm: DescriptionTerm;
     descriptionDescription: DescriptionDescription;
   }
+
+  interface Heading {
+    identifier?: string;
+  }
 }

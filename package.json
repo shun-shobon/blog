@@ -16,6 +16,7 @@
   "dependencies": {
     "@js-temporal/polyfill": "^0.4.3",
     "fast-glob": "^3.2.12",
+    "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.3",
     "katex": "^0.16.4",
     "mdast-util-compact": "^4.1.1",

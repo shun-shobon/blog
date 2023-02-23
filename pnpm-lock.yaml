@@ -22,6 +22,7 @@ specifiers:
   eslint-config-prettier: ^8.6.0
   eslint-plugin-simple-import-sort: ^10.0.0
   fast-glob: ^3.2.12
+  github-slugger: ^2.0.0
   gray-matter: ^4.0.3
   husky: ^8.0.3
   jsdom: ^21.1.0
@@ -58,6 +59,7 @@ specifiers:
 dependencies:
   '@js-temporal/polyfill': 0.4.3
   fast-glob: 3.2.12
+  github-slugger: 2.0.0
   gray-matter: 4.0.3
   katex: 0.16.4
   mdast-util-compact: 4.1.1
@@ -2456,6 +2458,10 @@ packages:
   /get-tsconfig/4.4.0:
     resolution: {integrity: sha512-0Gdjo/9+FzsYhXCEFueo2aY1z1tpXrxWZzP7k8ul9qt1U5o8rYJwTJYmaeHdrVosYIVYkOy2iwCJ9FdpocJhPQ==}
     dev: true
+
+  /github-slugger/2.0.0:
+    resolution: {integrity: sha512-IaOQ9puYtjrkq7Y0Ygl9KDZnrf/aiUJYUpVf89y8kyaxbRG7Y1SrX/jaumrv81vc61+kiMempujsM3Yw7w5qcw==}
+    dev: false
 
   /glob-parent/5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
