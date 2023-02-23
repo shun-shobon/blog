@@ -9,8 +9,11 @@ import type {
   Paragraph,
   Parent,
   Text,
+  YAML,
 } from "mdast";
 import type { Node } from "unist";
+
+import type { Section } from "./remark-section";
 
 export function findNodeAfter<T extends Node>(
   tree: Parent,
@@ -26,6 +29,14 @@ export function findNodeAfter<T extends Node>(
 
 export function isParent(node?: Node | null): node is Parent {
   return node != null && Object.hasOwn(node, "children");
+}
+
+export function isYAML(node?: Node | null): node is YAML {
+  return node != null && node.type === "yaml";
+}
+
+export function isSection(node?: Node | null): node is Section {
+  return node != null && node.type === "section";
 }
 
 export function isHeading(node?: Node | null): node is Heading {
