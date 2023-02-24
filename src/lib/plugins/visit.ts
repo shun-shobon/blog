@@ -6,7 +6,8 @@ type Visitor<T extends Node> = (
   node: T,
   index: number | null,
   parent: Parent | null,
-) => void;
+) => VisitorResult;
+type VisitorResult = void | boolean | "SKIP";
 
 // @ts-ignore: unist-util-visit has **very** **very** complex types so this effects type checking
 export const visit = unistVisit as <T extends Node>(

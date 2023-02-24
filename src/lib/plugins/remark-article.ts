@@ -5,10 +5,15 @@ import type { Plugin } from "unified";
 import * as YAML from "yaml";
 import * as z from "zod";
 
-import { isSection, isYAML } from "./utils";
+import type { Section } from ".";
+import { isParagraph, isSection, isYAML } from "./utils";
+import { visit } from "./visit";
+
+const LEAD_MAX_LENGTH = 150;
 
 interface Article extends Parent, Frontmatter {
   type: "article";
+  lead: string;
   plainTitle: string;
   children: [Heading, ...Content[]];
 }
@@ -67,13 +72,34 @@ function createArticle(tree: Root, frontmatter: Frontmatter): Error | Article {
     );
   }
 
+  const lead = createLead(section);
   const plainTitle = toString(section.children[0]);
 
   const article: Article = {
     type: "article",
+    lead,
     plainTitle,
     children: section.children,
     ...frontmatter,
   };
   return article;
+}
+
+function createLead(section: Section): string {
+  let lead = "";
+  visit(section, isParagraph, (node, _idx, parent) => {
+    if (!isSection(parent)) return "SKIP";
+
+    lead += toString(node);
+    if (lead.length >= LEAD_MAX_LENGTH) return false;
+
+    return true;
+  });
+
+  if (lead.length > LEAD_MAX_LENGTH) {
+    lead = lead.slice(0, LEAD_MAX_LENGTH - 1);
+    lead += "…";
+  }
+
+  return lead;
 }

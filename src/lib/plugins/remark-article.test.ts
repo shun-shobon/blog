@@ -33,6 +33,7 @@ describe("remarkDescriptionList", () => {
       u(
         "article",
         {
+          lead: "content",
           plainTitle: "title",
           emoji: ":memo:",
           tags: ["tag1", "tag2"],
@@ -116,6 +117,7 @@ describe("remarkDescriptionList", () => {
       u(
         "article",
         {
+          lead: "content",
           plainTitle: "title",
           emoji: ":memo:",
           tags: ["tag1", "tag2"],
