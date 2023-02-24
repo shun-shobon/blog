@@ -1,9 +1,11 @@
+import * as fs from "node:fs/promises";
 import * as path from "node:path";
 
 import type { Alternative, Image, Parent, Resource } from "mdast";
 import sharp from "sharp";
 import type { Node } from "unist";
 
+import type { Article } from "../lib";
 import { UnreachableError } from "../utils";
 import { isImage, isParent } from "./utils";
 import { visit, Visitor } from "./visit";
@@ -15,10 +17,16 @@ export interface LocalImage extends Node, Resource, Alternative {
   aspectRatio: `${number} / ${number}`;
 }
 
-export async function mdastLocalImage(tree: Parent, basePath: string) {
+type ArticlePath = {
+  slug: string;
+  from: string;
+  to: string;
+};
+
+export async function mdastLocalImage(tree: Parent, articlePath: ArticlePath) {
   const promises: Promise<void>[] = [];
 
-  const visitor = visitorBuilder(basePath, promises);
+  const visitor = visitorBuilder(articlePath, promises);
   visit(tree, isLocalImage, visitor);
 
   await Promise.all(promises);
@@ -38,14 +46,14 @@ function isLocalImage(node: Node): node is Image {
 }
 
 function visitorBuilder(
-  basePath: string,
+  articlePath: ArticlePath,
   promises: Promise<void>[],
 ): Visitor<Image> {
   return (node, idx, parent) => {
     if (!isParent(parent) || idx === null) throw new UnreachableError();
 
-    const imagePath = path.join(basePath, node.url);
     const promise = (async () => {
+      const imagePath = path.join(articlePath.from, articlePath.slug, node.url);
       const result = await getImageSize(imagePath);
       if (!result) return;
       const { width, height } = result;
@@ -61,6 +69,7 @@ function visitorBuilder(
       };
 
       parent.children[idx] = localImage;
+      await copyLocalImage(articlePath, localImage);
     })();
 
     promises.push(promise);
@@ -79,4 +88,15 @@ async function getImageSize(imagePath: string): Promise<ImageSizeResult> {
   if (!width || !height) return undefined;
 
   return { width, height };
+}
+
+async function copyLocalImage(
+  articlePath: ArticlePath,
+  node: LocalImage,
+): Promise<void> {
+  const from = path.join(articlePath.from, articlePath.slug, node.url);
+  const to = path.join(articlePath.to, articlePath.slug, node.url);
+
+  await fs.mkdir(path.dirname(to), { recursive: true });
+  await fs.copyFile(from, to);
 }
