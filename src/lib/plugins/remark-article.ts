@@ -1,10 +1,11 @@
-import type { Content, Heading, Parent, Root } from "mdast";
+import type { Content, FootnoteDefinition, Heading, Parent, Root } from "mdast";
 import { toString } from "mdast-util-to-string";
 import { hasLength } from "ts-array-length";
 import type { Plugin } from "unified";
 import * as YAML from "yaml";
 import * as z from "zod";
 
+import { mdastFootnote } from "./mdast-footnote";
 import { mdastLead } from "./mdast-lead";
 import { isSection, isYAML } from "./utils";
 
@@ -15,6 +16,7 @@ interface Article extends Parent, Frontmatter {
   lead: string;
   plainTitle: string;
   children: [Heading, ...Content[]];
+  footnotes: FootnoteDefinition[];
 }
 
 type Frontmatter = z.infer<typeof frontmatterSchema>;
@@ -71,6 +73,7 @@ function createArticle(tree: Root, frontmatter: Frontmatter): Error | Article {
     );
   }
 
+  const footnotes = mdastFootnote(tree);
   const lead = mdastLead(section);
   const plainTitle = toString(section.children[0]);
 
@@ -78,6 +81,7 @@ function createArticle(tree: Root, frontmatter: Frontmatter): Error | Article {
     type: "article",
     lead,
     plainTitle,
+    footnotes,
     children: section.children,
     ...frontmatter,
   };

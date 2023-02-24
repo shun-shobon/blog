@@ -5,9 +5,9 @@ import { LEAD_MAX_LENGTH } from "./remark-article";
 import { isParagraph, isSection } from "./utils";
 import { visit } from "./visit";
 
-export function mdastLead(section: Parent): string {
+export function mdastLead(tree: Parent): string {
   let lead = "";
-  visit(section, isParagraph, (node, _idx, parent) => {
+  visit(tree, isParagraph, (node, _idx, parent) => {
     if (!isSection(parent)) return "SKIP";
 
     lead += toString(node);

@@ -1,5 +1,7 @@
 import type {
   Definition,
+  FootnoteDefinition,
+  FootnoteReference,
   Heading,
   ImageReference,
   Link,
@@ -79,4 +81,16 @@ export function isImageReference(node?: Node | null): node is ImageReference {
 
 export function isDefinition(node?: Node | null): node is Definition {
   return node != null && node.type === "definition";
+}
+
+export function isFootnoteDefinition(
+  node?: Node | null,
+): node is FootnoteDefinition {
+  return node != null && node.type === "footnoteDefinition";
+}
+
+export function isFootnoteReference(
+  node?: Node | null,
+): node is FootnoteReference {
+  return node != null && node.type === "footnoteReference";
 }

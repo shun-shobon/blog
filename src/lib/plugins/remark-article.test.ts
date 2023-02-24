@@ -35,6 +35,7 @@ describe("remarkDescriptionList", () => {
         {
           lead: "content",
           plainTitle: "title",
+          footnotes: [],
           emoji: ":memo:",
           tags: ["tag1", "tag2"],
         },
@@ -119,6 +120,7 @@ describe("remarkDescriptionList", () => {
         {
           lead: "content",
           plainTitle: "title",
+          footnotes: [],
           emoji: ":memo:",
           tags: ["tag1", "tag2"],
         },
