@@ -1,3 +1,4 @@
+/* eslint-disable */
 import type * as Mdast from "mdast";
 import { toString as mdastToString } from "mdast-util-to-string";
 import remarkGfm from "remark-gfm";
@@ -266,7 +267,7 @@ const remarkAst: Plugin<unknown[], Mdast.Root, Ast.Root> = () => {
         } else {
           const section: Ast.Section = {
             type: "section",
-            heading: currentHead!,
+            heading: currentHead,
             children,
           };
           res.push(section);
@@ -276,6 +277,8 @@ const remarkAst: Plugin<unknown[], Mdast.Root, Ast.Root> = () => {
           break;
         }
 
+        // SAFETY: trailing[headIdx] is always Mdast.Heading
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         currentHead = convertOne(trailing[headIdx]!) as Ast.Heading;
         trailing = trailing.slice(headIdx + 1);
       }

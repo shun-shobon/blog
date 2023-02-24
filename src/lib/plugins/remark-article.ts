@@ -34,8 +34,9 @@ export const remarkArticle: Plugin<never[], Root, Article> = () => {
 function extractFrontmatter(tree: Root): Error | Frontmatter {
   const yamlNode = tree.children[0];
   if (!isYAML(yamlNode)) {
+    const type = yamlNode?.type ?? "undefined";
     return new Error(
-      `1st child expected to be Frontmatter YAML node, but got ${yamlNode?.type}`,
+      `1st child expected to be Frontmatter YAML node, but got ${type} node`,
     );
   }
 

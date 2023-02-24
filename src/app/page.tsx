@@ -1,5 +1,5 @@
 import { Heading } from "@/components/Heading";
-import { findArticles } from "@/lib";
+import { findArticles } from "@/lib/lib";
 
 import { ArticleCard } from "./ArticleCard";
 

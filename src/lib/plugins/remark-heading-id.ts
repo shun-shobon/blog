@@ -10,7 +10,6 @@ export const remarkHeadingId: Plugin<never[], Root> = () => {
   return (tree) => {
     const slugger = new GitHubSlugger();
     const visitor = visitorBuilder(slugger);
-    // @ts-ignore: Fuck unist-util-visit types.
     visit(tree, isHeading, visitor);
   };
 };

@@ -1,4 +1,4 @@
-import type { ArticleSummary } from "@/lib";
+import type { ArticleSummary } from "@/lib/lib";
 
 type Props = {
   summary: ArticleSummary;

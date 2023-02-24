@@ -35,7 +35,6 @@ type DescriptionListContent = DescriptionTerm | DescriptionDescription;
 
 export const remarkDescriptionList: Plugin<never[], Root> = () => {
   return (tree) => {
-    // @ts-ignore: Fuck unist-util-visit types.
     visit(tree, isDescription, visitor);
   };
 };

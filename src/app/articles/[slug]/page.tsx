@@ -1,6 +1,6 @@
 import { ArticleMatter } from "@/components/ArticleMatter";
 import { Heading } from "@/components/Heading";
-import { findArticles, readArticle } from "@/lib";
+import { findArticles, readArticle } from "@/lib/lib";
 
 import { ArticleContent, ArticleFootnotes } from "./ArticleContent";
 

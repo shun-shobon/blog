@@ -31,11 +31,8 @@ export const remarkResolveReference: Plugin<never[], Root> = () => {
     const linkReferenceVisitor = linkReferenceVisitorBuilder(definitionMap);
     const imageReferenceVisitor = imageReferenceVisitorBuilder(definitionMap);
 
-    // @ts-ignore: Fuck unist-util-visit types.
     visit(tree, isDefinition, definitionVisitor);
-    // @ts-ignore: Fuck unist-util-visit types.
     visit(tree, isLinkReference, linkReferenceVisitor);
-    // @ts-ignore: Fuck unist-util-visit types.
     visit(tree, isImageReference, imageReferenceVisitor);
   };
 };
@@ -91,7 +88,7 @@ const imageReferenceVisitorBuilder = (
     if (!definition) {
       const text: Text = {
         type: "text",
-        value: `[${node.alt}][${node.identifier}]`,
+        value: `![${node.alt ?? ""}][${node.identifier}]`,
       };
       parent.children[idx] = text;
       // SAFETY: `parent` is a `Parent` and Root and Content extends Parent.

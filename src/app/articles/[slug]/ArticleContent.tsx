@@ -97,6 +97,8 @@ function Content({ node, children }: ContentProps<Ast.Content>): JSX.Element {
     case "link":
       return <Link node={node} />;
     case "image":
+      // SAFETY: this is a custom component, not next/image
+      // eslint-disable-next-line jsx-a11y/alt-text
       return <Image node={node} />;
     case "footnoteReference":
       return <FootnoteReference node={node} />;
@@ -148,7 +150,7 @@ function Heading({ node }: ContentProps<Ast.Heading>): JSX.Element {
   );
 }
 
-function ThematicBreak({}: ContentProps<Ast.ThematicBreak>): JSX.Element {
+function ThematicBreak(_props: ContentProps<Ast.ThematicBreak>): JSX.Element {
   return <hr />;
 }
 
@@ -192,6 +194,8 @@ function Table({ node }: ContentProps<Ast.Table>): JSX.Element {
   return (
     <table className="w-full">
       <thead className="border-t-2 border-b">
+        {/* SAFETY: head is always non-null */}
+        {/* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */}
         <TableRow node={head!} isHead />
       </thead>
       <tbody className="border-b-2">
@@ -303,7 +307,7 @@ function InlineCode({ node }: ContentProps<Ast.InlineCode>): JSX.Element {
   );
 }
 
-function Break({}: ContentProps<Ast.Break>): JSX.Element {
+function Break(_props: ContentProps<Ast.Break>): JSX.Element {
   return <br />;
 }
 
