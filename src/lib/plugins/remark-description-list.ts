@@ -10,11 +10,11 @@ import type {
 import { hasMinLength } from "ts-array-length";
 import type { Plugin } from "unified";
 import type { Node, Parent as UnistParent } from "unist";
-import { visit } from "unist-util-visit";
 
 import { UnreachableError } from "@/lib/utils";
 
 import { isList, isListItem, isParagraph, isParent, isText } from "./utils";
+import { visit } from "./visit";
 
 export interface DescriptionList extends Parent {
   type: "descriptionList";

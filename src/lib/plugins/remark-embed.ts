@@ -3,11 +3,11 @@ import { hasLength } from "ts-array-length";
 import type { Plugin } from "unified";
 import type { Node } from "unist";
 import type { Parent } from "unist";
-import { visit } from "unist-util-visit";
 
 import { UnreachableError } from "@/lib/utils";
 
 import { isLink, isParagraph, isParent, isText } from "./utils";
+import { visit } from "./visit";
 
 export interface Embed extends Literal {
   type: "embed";

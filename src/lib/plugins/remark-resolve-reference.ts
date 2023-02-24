@@ -12,7 +12,6 @@ import type {
 import { compact } from "mdast-util-compact";
 import type { Plugin } from "unified";
 import type { Visitor } from "unist-util-visit";
-import { visit } from "unist-util-visit";
 
 import { UnreachableError } from "@/lib/utils";
 
@@ -22,6 +21,7 @@ import {
   isLinkReference,
   isParent,
 } from "./utils";
+import { visit } from "./visit";
 
 export const remarkResolveReference: Plugin<never[], Root> = () => {
   return (tree) => {
