@@ -4,7 +4,7 @@ import type {
   DescriptionTerm,
   Embed,
   Section,
-} from "@/lib/unist-plugins";
+} from "@/lib/plugins";
 
 declare module "mdast" {
   interface BlockContentMap {
