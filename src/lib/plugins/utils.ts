@@ -3,6 +3,7 @@ import type {
   FootnoteDefinition,
   FootnoteReference,
   Heading,
+  Image,
   ImageReference,
   Link,
   LinkReference,
@@ -69,6 +70,10 @@ export function isText(node?: Node | null): node is Text {
 
 export function isLink(node?: Node | null): node is Link {
   return node != null && node.type === "link";
+}
+
+export function isImage(node?: Node | null): node is Image {
+  return node != null && node.type === "image";
 }
 
 export function isLinkReference(node?: Node | null): node is LinkReference {

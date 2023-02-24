@@ -1,3 +1,4 @@
+export type { LocalImage } from "./mdast-local-image";
 export * from "./remark-article";
 export * from "./remark-description-list";
 export * from "./remark-embed";

@@ -3,6 +3,7 @@ import type {
   DescriptionList,
   DescriptionTerm,
   Embed,
+  LocalImage,
   Section,
 } from "@/lib/plugins";
 
@@ -11,6 +12,10 @@ declare module "mdast" {
     embed: Embed;
     section: Section;
     descriptionList: DescriptionList;
+  }
+
+  interface StaticPhrasingContentMap {
+    localImage: LocalImage;
   }
 
   interface RowContentMap {
