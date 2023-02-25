@@ -24,7 +24,7 @@ export type ArticleSummaries = Record<string, ArticleSummary>;
 
 export type ArticleSummary = Pick<
   Article,
-  "plainTitle" | "lead" | "createdAt" | "emoji" | "tags"
+  "title" | "lead" | "createdAt" | "emoji" | "tags"
 >;
 
 export async function exportArticles(
@@ -47,8 +47,8 @@ export async function exportArticles(
 }
 
 function createArticleSummary(article: Article): ArticleSummary {
-  const { plainTitle, lead, createdAt, emoji, tags } = article;
-  return { plainTitle, lead, createdAt, emoji, tags };
+  const { title, lead, createdAt, emoji, tags } = article;
+  return { title, lead, createdAt, emoji, tags };
 }
 
 async function exportArticle(

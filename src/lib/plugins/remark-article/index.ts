@@ -12,6 +12,7 @@ import { mdastFootnote } from "./mdast-footnote";
 import { Frontmatter, mdastFrontmatter } from "./mdast-frontmatter";
 import { mdastLead } from "./mdast-lead";
 import { mdastLocalImage } from "./mdast-local-image";
+import { mdastToc, Toc } from "./mdast-toc";
 
 export type { LocalImage } from "./mdast-local-image";
 
@@ -22,6 +23,8 @@ export interface Article extends Parent, Frontmatter, ArticleDate {
   slug: string;
   lead: string;
   plainTitle: string;
+  title: Heading;
+  toc: Toc[];
   children: [Heading, ...Content[]];
   footnotes: FootnoteDefinition[];
 }
@@ -82,12 +85,15 @@ function createArticle(
   const footnotes = mdastFootnote(tree);
   const lead = mdastLead(section);
   const plainTitle = toString(section.children[0]);
+  const toc = mdastToc(section);
 
   const article: Article = {
     type: "article",
     slug,
     lead,
+    title: heading,
     plainTitle,
+    toc,
     footnotes,
     children: section.children,
     ...articleDate,
