@@ -1,3 +1,7 @@
+# generated
+/data/
+/public/articles/
+
 # dependencies
 /node_modules/
 

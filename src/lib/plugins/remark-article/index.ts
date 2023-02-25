@@ -19,6 +19,7 @@ export const MARKDOWN_FILENAME = "README.md";
 
 export interface Article extends Parent, Frontmatter, ArticleDate {
   type: "article";
+  slug: string;
   lead: string;
   plainTitle: string;
   children: [Heading, ...Content[]];
@@ -45,7 +46,12 @@ export const remarkArticle: Plugin<Option, Root, Article> = (articlePath) => {
 
     const frontmatter = mdastFrontmatter(tree);
 
-    const article = createArticle(tree, frontmatter, articleDate);
+    const article = createArticle(
+      tree,
+      articlePath.slug,
+      frontmatter,
+      articleDate,
+    );
 
     return article;
   };
@@ -53,6 +59,7 @@ export const remarkArticle: Plugin<Option, Root, Article> = (articlePath) => {
 
 function createArticle(
   tree: Root,
+  slug: string,
   frontmatter: Frontmatter,
   articleDate: ArticleDate,
 ): Article {
@@ -78,6 +85,7 @@ function createArticle(
 
   const article: Article = {
     type: "article",
+    slug,
     lead,
     plainTitle,
     footnotes,

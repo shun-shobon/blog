@@ -20,7 +20,60 @@ import {
   remarkSection,
 } from "./plugins";
 
-export async function findArticleSlugs(basePath: string): Promise<string[]> {
+export type ArticleSummaries = Record<string, ArticleSummary>;
+
+export type ArticleSummary = Pick<
+  Article,
+  "plainTitle" | "lead" | "createdAt" | "emoji" | "tags"
+>;
+
+export async function exportArticles(
+  fromDir: string,
+  imageExportDir: string,
+  dataExportDir: string,
+): Promise<void> {
+  const articles = await processArticles(fromDir, imageExportDir);
+
+  const articleSummaries: ArticleSummaries = Object.fromEntries(
+    articles.map((article) => [article.slug, createArticleSummary(article)]),
+  );
+  const articleSummariesPath = path.join(dataExportDir, "__summaries.json");
+  await fs.mkdir(dataExportDir, { recursive: true });
+  await fs.writeFile(articleSummariesPath, JSON.stringify(articleSummaries));
+
+  await Promise.all(
+    articles.map((article) => exportArticle(dataExportDir, article)),
+  );
+}
+
+function createArticleSummary(article: Article): ArticleSummary {
+  const { plainTitle, lead, createdAt, emoji, tags } = article;
+  return { plainTitle, lead, createdAt, emoji, tags };
+}
+
+async function exportArticle(
+  dataExportDir: string,
+  article: Article,
+): Promise<void> {
+  const articlePath = path.join(dataExportDir, `${article.slug}.json`);
+  await fs.writeFile(articlePath, JSON.stringify(article));
+}
+
+async function processArticles(
+  fromDir: string,
+  toDir: string,
+): Promise<Article[]> {
+  const slugs = await findArticleSlugs(fromDir);
+  const articlePaths = slugs.map((slug) => ({ slug, fromDir, toDir }));
+
+  const articles = await Promise.all(
+    articlePaths.map((articlePath) => processArticle(articlePath)),
+  );
+
+  return articles;
+}
+
+async function findArticleSlugs(basePath: string): Promise<string[]> {
   const pattern = path.join(basePath, "*", MARKDOWN_FILENAME);
   const files = await fg(pattern);
 
@@ -29,9 +82,7 @@ export async function findArticleSlugs(basePath: string): Promise<string[]> {
   });
 }
 
-export async function processArticle(
-  articlePath: ArticlePath,
-): Promise<Article> {
+async function processArticle(articlePath: ArticlePath): Promise<Article> {
   const processor = unified()
     .use(remarkParse)
     .use(remarkFrontmatter)
