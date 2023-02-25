@@ -1,9 +1,10 @@
 import type { Parent } from "mdast";
 import { toString } from "mdast-util-to-string";
 
-import { LEAD_MAX_LENGTH } from "./remark-article";
-import { isParagraph, isSection } from "./utils";
-import { visit } from "./visit";
+import { isParagraph, isSection } from "../utils";
+import { visit } from "../visit";
+
+const LEAD_MAX_LENGTH = 150;
 
 export function mdastLead(tree: Parent): string {
   let lead = "";

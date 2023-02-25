@@ -5,10 +5,10 @@ import type { Alternative, Image, Parent, Resource } from "mdast";
 import sharp from "sharp";
 import type { Node } from "unist";
 
-import type { Article } from "../lib";
-import { UnreachableError } from "../utils";
-import { isImage, isParent } from "./utils";
-import { visit, Visitor } from "./visit";
+import { UnreachableError } from "../../utils";
+import { isImage, isParent } from "../utils";
+import { visit, Visitor } from "../visit";
+import type { ArticlePath } from ".";
 
 export interface LocalImage extends Node, Resource, Alternative {
   type: "localImage";
@@ -16,12 +16,6 @@ export interface LocalImage extends Node, Resource, Alternative {
   height: number;
   aspectRatio: `${number} / ${number}`;
 }
-
-type ArticlePath = {
-  slug: string;
-  from: string;
-  to: string;
-};
 
 export async function mdastLocalImage(tree: Parent, articlePath: ArticlePath) {
   const promises: Promise<void>[] = [];
@@ -53,7 +47,11 @@ function visitorBuilder(
     if (!isParent(parent) || idx === null) throw new UnreachableError();
 
     const promise = (async () => {
-      const imagePath = path.join(articlePath.from, articlePath.slug, node.url);
+      const imagePath = path.join(
+        articlePath.fromDir,
+        articlePath.slug,
+        node.url,
+      );
       const result = await getImageSize(imagePath);
       if (!result) return;
       const { width, height } = result;
@@ -94,8 +92,8 @@ async function copyLocalImage(
   articlePath: ArticlePath,
   node: LocalImage,
 ): Promise<void> {
-  const from = path.join(articlePath.from, articlePath.slug, node.url);
-  const to = path.join(articlePath.to, articlePath.slug, node.url);
+  const from = path.join(articlePath.fromDir, articlePath.slug, node.url);
+  const to = path.join(articlePath.toDir, articlePath.slug, node.url);
 
   await fs.mkdir(path.dirname(to), { recursive: true });
   await fs.copyFile(from, to);
