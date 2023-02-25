@@ -1,10 +1,10 @@
 import { Heading } from "@/components/Heading";
-import { findArticles } from "@/lib/lib";
+import { findArticleSlugs } from "@/lib/markdown";
 
 import { ArticleCard } from "./ArticleCard";
 
 export default async function Page(): Promise<JSX.Element> {
-  const summaries = await findArticles("test-articles");
+  const summaries = await findArticleSlugs("test-articles");
 
   return (
     <main className="mx-auto flex max-w-screen-lg flex-col gap-4 px-6 py-4">

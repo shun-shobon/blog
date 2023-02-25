@@ -1,6 +1,6 @@
 import { ArticleMatter } from "@/components/ArticleMatter";
 import { Heading } from "@/components/Heading";
-import { findArticles, readArticle } from "@/lib/lib";
+import { findArticleSlugs, processArticle } from "@/lib/markdown";
 
 import { ArticleContent, ArticleFootnotes } from "./ArticleContent";
 
@@ -13,7 +13,7 @@ type Props = {
 };
 
 export default async function Page({ params }: Props): Promise<JSX.Element> {
-  const article = await readArticle("test-articles", params.slug);
+  const article = await processArticle("test-articles", params.slug);
 
   return (
     <main>
@@ -30,7 +30,7 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
 }
 
 export async function generateStaticParams(): Promise<Params[]> {
-  const articleSummaries = await findArticles("test-articles");
+  const articleSummaries = await findArticleSlugs("test-articles");
 
   return articleSummaries.map((summary) => ({
     slug: summary.slug,

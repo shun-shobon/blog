@@ -1,4 +1,4 @@
-import type { ArticleSummary } from "@/lib/lib";
+import type { ArticleSummary } from "@/lib/markdown";
 
 type Props = {
   summary: ArticleSummary;

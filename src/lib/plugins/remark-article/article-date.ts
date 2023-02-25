@@ -43,9 +43,11 @@ async function readFileModifiedDates(
   file: string,
 ): Promise<Temporal.Instant[]> {
   const command = `git log --date=iso-strict --format=%ad -- ${file}`;
-  const { stdout } = await exec(command, {
+  const { stdout, stderr } = await exec(command, {
     cwd: repoPath,
   });
+
+  if (stderr) throw new Error(stderr);
 
   return stdout
     .trim()

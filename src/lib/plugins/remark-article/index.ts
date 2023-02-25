@@ -15,7 +15,9 @@ import { mdastLocalImage } from "./mdast-local-image";
 
 export type { LocalImage } from "./mdast-local-image";
 
-interface Article extends Parent, Frontmatter, ArticleDate {
+export const MARKDOWN_FILENAME = "README.md";
+
+export interface Article extends Parent, Frontmatter, ArticleDate {
   type: "article";
   lead: string;
   plainTitle: string;
@@ -35,11 +37,7 @@ export const remarkArticle: Plugin<Option, Root, Article> = (articlePath) => {
   return async (tree) => {
     await mdastLocalImage(tree, articlePath);
 
-    const articleFilePath = path.join(
-      articlePath.fromDir,
-      articlePath.slug,
-      "README.md",
-    );
+    const articleFilePath = path.join(articlePath.slug, MARKDOWN_FILENAME);
     const articleDate = await readArticleChangedDate(
       articlePath.fromDir,
       articleFilePath,

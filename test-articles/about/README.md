@@ -66,3 +66,5 @@ $$
 | 1     |            2             |
 | `3`   | [4](https://example.com) |
 | **5** |           _6_            |
+
+![meru](./meru.jpg)

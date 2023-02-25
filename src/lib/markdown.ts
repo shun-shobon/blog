@@ -1,315 +1,60 @@
-/* eslint-disable */
-import type * as Mdast from "mdast";
-import { toString as mdastToString } from "mdast-util-to-string";
+import * as fs from "node:fs/promises";
+import * as path from "node:path";
+
+import fg from "fast-glob";
+import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import remarkParse from "remark-parse";
-import type { Plugin, Transformer } from "unified";
 import { unified } from "unified";
-import { visit } from "unist-util-visit";
 
-import type * as Ast from "./ast";
+import type { Article, ArticlePath } from "./plugins";
+import {
+  MARKDOWN_FILENAME,
+  remarkArticle,
+  remarkDescriptionList,
+  remarkEmbed,
+  remarkHeadingId,
+  remarkRemovePosition,
+  remarkResolveReference,
+  remarkSection,
+} from "./plugins";
 
-export function parseMarkdown(markdown: string) {
-  const parser = unified()
-    .use(remarkParse)
-    .use(remarkGfm)
-    .use(remarkMath)
-    .freeze();
-  const mdastAst = parser.parse(markdown);
+export async function findArticleSlugs(basePath: string): Promise<string[]> {
+  const pattern = path.join(basePath, "*", MARKDOWN_FILENAME);
+  const files = await fg(pattern);
 
-  const transformer = unified().use(remarkAst).freeze();
-
-  return transformer.runSync(mdastAst);
+  return files.map((filePath) => {
+    return path.basename(path.dirname(filePath));
+  });
 }
 
-const remarkAst: Plugin<unknown[], Mdast.Root, Ast.Root> = () => {
-  const transformer: Transformer<Mdast.Root, Ast.Root> = (
-    mdastRoot,
-    file,
-    next,
-  ) => {
-    const defs = new Map<string, Mdast.Definition>();
-    const fnDefs = new Map<string, Mdast.FootnoteDefinition>();
-    const usedFnDefs: Ast.FootnoteDefinition[] = [];
+export async function processArticle(
+  articlePath: ArticlePath,
+): Promise<Article> {
+  const processor = unified()
+    .use(remarkParse)
+    .use(remarkFrontmatter)
+    .use(remarkGfm)
+    .use(remarkMath)
+    .use(remarkRemovePosition)
+    .use(remarkResolveReference)
+    .use(remarkEmbed)
+    .use(remarkDescriptionList)
+    .use(remarkHeadingId)
+    .use(remarkSection)
+    .use(remarkArticle, articlePath)
+    .freeze();
 
-    visit(mdastRoot, "definition", (def) => {
-      defs.set(def.identifier, def);
-    });
-    visit(mdastRoot, "footnoteDefinition", (fnDef) => {
-      fnDefs.set(fnDef.identifier, fnDef);
-    });
+  const filePath = path.join(
+    articlePath.fromDir,
+    articlePath.slug,
+    MARKDOWN_FILENAME,
+  );
 
-    // TODO: 型をちゃんとする
-    const convertOne = (node: Mdast.Content): Ast.Content | Ast.Content[] => {
-      switch (node.type) {
-        case "paragraph":
-          return {
-            type: "paragraph",
-            children: convertMany(node.children),
-          } satisfies Ast.Paragraph;
-        case "heading": {
-          const identifier = mdastToString(node.children).replaceAll(" ", "-");
-          return {
-            type: "heading",
-            depth: node.depth,
-            identifier,
-            children: convertMany(node.children),
-          } satisfies Ast.Heading;
-        }
-        case "thematicBreak":
-          return {
-            type: "thematicBreak",
-          } satisfies Ast.ThematicBreak;
-        case "blockquote":
-          return {
-            type: "blockquote",
-            children: convertMany(node.children),
-          } satisfies Ast.Blockquote;
-        case "list":
-          return {
-            type: "list",
-            ordered: node.ordered,
-            start: node.start,
-            spread: node.spread,
-            children: convertMany(node.children) as Ast.ListItem[],
-          } satisfies Ast.List;
-        case "listItem":
-          return {
-            type: "listItem",
-            checked: node.checked,
-            spread: node.spread,
-            children: convertMany(node.children),
-          } satisfies Ast.ListItem;
-        case "table":
-          return {
-            type: "table",
-            align: node.align,
-            children: convertMany(node.children) as Ast.TableRow[],
-          } satisfies Ast.Table;
-        case "tableRow":
-          return {
-            type: "tableRow",
-            children: convertMany(node.children) as Ast.TableCell[],
-          } satisfies Ast.TableRow;
-        case "tableCell":
-          return {
-            type: "tableCell",
-            children: convertMany(node.children),
-          } satisfies Ast.TableCell;
-        case "html":
-          return {
-            type: "html",
-            value: node.value,
-          } satisfies Ast.HTML;
-        case "code":
-          return {
-            type: "code",
-            lang: node.lang,
-            value: node.value,
-          } satisfies Ast.Code;
-        case "text":
-          return {
-            type: "text",
-            value: node.value,
-          } satisfies Ast.Text;
-        case "emphasis":
-          return {
-            type: "emphasis",
-            children: convertMany(node.children),
-          } satisfies Ast.Emphasis;
-        case "strong":
-          return {
-            type: "strong",
-            children: convertMany(node.children),
-          } satisfies Ast.Strong;
-        case "delete":
-          return {
-            type: "delete",
-            children: convertMany(node.children),
-          } satisfies Ast.Delete;
-        case "inlineCode":
-          return {
-            type: "inlineCode",
-            value: node.value,
-          } satisfies Ast.InlineCode;
-        case "break":
-          return {
-            type: "break",
-          } satisfies Ast.Break;
-        case "link":
-          return {
-            type: "link",
-            url: node.url,
-            title: node.title,
-            children: convertMany(node.children),
-          } satisfies Ast.Link;
-        case "linkReference": {
-          const def = defs.get(node.identifier);
-          if (!def) {
-            return [
-              {
-                type: "text",
-                value: "[",
-              } satisfies Ast.Text,
-              ...convertMany(node.children),
-              {
-                type: "text",
-                value: `][${node.identifier}]`,
-              } satisfies Ast.Text,
-            ];
-          }
-          return {
-            type: "link",
-            url: def.url,
-            title: def.title,
-            children: convertMany(node.children),
-          } satisfies Ast.Link;
-        }
-        case "image":
-          return {
-            type: "image",
-            url: node.url,
-            title: node.title,
-            alt: node.alt,
-          } satisfies Ast.Image;
-        case "imageReference": {
-          const def = defs.get(node.identifier);
-          if (!def) {
-            return [
-              {
-                type: "text",
-                value: `![${node.alt ?? ""}][${node.identifier}]`,
-              } satisfies Ast.Text,
-            ];
-          }
-          return {
-            type: "image",
-            url: def.url,
-            title: def.title,
-            alt: node.alt,
-          } satisfies Ast.Image;
-        }
-        case "footnoteReference": {
-          const fnDef = fnDefs.get(node.identifier);
-          if (!fnDef) {
-            return {
-              type: "text",
-              value: `[^${node.identifier}]`,
-            } satisfies Ast.Text;
-          }
+  const fileContent = await fs.readFile(filePath, "utf-8");
 
-          const usedFnDef = convertFootnoteDefinition(fnDef);
-          usedFnDefs.push(usedFnDef);
-          return {
-            type: "footnoteReference",
-            number: usedFnDef.number,
-          } satisfies Ast.FootnoteReference;
-        }
-        case "math":
-          return {
-            type: "math",
-            value: node.value,
-          } satisfies Ast.Math;
-        case "inlineMath":
-          return {
-            type: "inlineMath",
-            value: node.value,
-          } satisfies Ast.InlineMath;
-        // Definitionは無視する
-        case "definition":
-        case "footnoteDefinition":
-          return [];
-        default:
-          throw new Error(`Unexpected node type: ${node.type}`);
-      }
-    };
-    const convertMany = (nodes: Mdast.Content[]): Ast.Content[] => {
-      return nodes.flatMap(convertOne);
-    };
-    const convertFootnoteDefinition = (
-      mdastFnDef: Mdast.FootnoteDefinition,
-    ): Ast.FootnoteDefinition => {
-      return {
-        type: "footnoteDefinition",
-        number: usedFnDefs.length + 1,
-        children: convertMany(mdastFnDef.children),
-      };
-    };
+  const article = await processor.run(processor.parse(fileContent));
 
-    const traverse = (
-      mdastChildren: Mdast.Content[],
-      depth: number,
-    ): Ast.Content[] => {
-      if (depth > 6 || mdastChildren.length === 0) {
-        return convertMany(mdastChildren);
-      }
-
-      const res: Ast.Content[] = [];
-      let trailing: Mdast.Content[] = mdastChildren;
-      let currentHead: Ast.Heading | null = null;
-      while (true) {
-        const headIdx = trailing.findIndex(
-          (node) => node.type === "heading" && node.depth === depth,
-        );
-
-        const children: Ast.Content[] = traverse(
-          trailing.slice(
-            0,
-            // 次の見出しがない場合は末尾までを対象にする
-            headIdx === -1 ? undefined : headIdx,
-          ),
-          depth + 1,
-        );
-
-        if (currentHead === null) {
-          res.push(...children);
-        } else {
-          const section: Ast.Section = {
-            type: "section",
-            heading: currentHead,
-            children,
-          };
-          res.push(section);
-        }
-
-        if (headIdx === -1) {
-          break;
-        }
-
-        // SAFETY: trailing[headIdx] is always Mdast.Heading
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        currentHead = convertOne(trailing[headIdx]!) as Ast.Heading;
-        trailing = trailing.slice(headIdx + 1);
-      }
-
-      return res;
-    };
-
-    const createToc = (children: Ast.Content[]): Ast.TocItem[] =>
-      children
-        .filter((child): child is Ast.Section => child.type === "section")
-        .map((section) => ({
-          type: "tocItem",
-          heading: section.heading,
-          children: createToc(section.children),
-        }));
-
-    const children = traverse(mdastRoot.children, 1);
-    const toc: Ast.Toc = {
-      type: "toc",
-      children: createToc(children),
-    };
-
-    const root: Ast.Root = {
-      type: "root",
-      footnotes: usedFnDefs,
-      toc,
-      children,
-    };
-
-    return next(null, root, file);
-  };
-
-  return transformer;
-};
+  return article;
+}

@@ -1,7 +1,7 @@
 import { ArticleMatter } from "@/components/ArticleMatter";
 import { Heading } from "@/components/Heading";
 import { Link } from "@/components/Link";
-import type { ArticleSummary } from "@/lib/lib";
+import type { ArticleSummary } from "@/lib/markdown";
 
 type Props = {
   summary: ArticleSummary;
