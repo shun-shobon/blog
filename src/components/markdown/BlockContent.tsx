@@ -39,6 +39,7 @@ export function BlockContent({
         </DescriptionList>
       );
     case "embed":
+      // @ts-expect-error: Server Component
       return <Embed>{children}</Embed>;
     case "heading":
       return <Heading footnoteDefs={footnoteDefs}>{children}</Heading>;

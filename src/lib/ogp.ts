@@ -1,0 +1,73 @@
+import { IElement, INodeList, Window } from "happy-dom";
+
+const REVALIDATE_SECONDS = 60 * 60 * 24; // 1 day
+
+export const FAVICON_SIZE = 64;
+
+export type Ogp = {
+  title: string | undefined;
+  description: string | undefined;
+  image: string | undefined;
+  site: string | undefined;
+  favicon: string | undefined;
+};
+
+export async function fetchOgp(urlString: string): Promise<Ogp> {
+  const url = new URL(urlString);
+  const html = await fetchSite(url);
+
+  const window = new Window();
+  const document = window.document;
+  document.write(html);
+
+  const ogpElements = document.querySelectorAll("meta[property^='og:']");
+
+  const title = findContent(ogpElements, "og:title");
+  const description = findContent(ogpElements, "og:description");
+  const image = findContent(ogpElements, "og:image");
+  const site = findContent(ogpElements, "og:site_name");
+  const favicon = createFavivonUrl(url);
+
+  return {
+    title,
+    description,
+    image,
+    site,
+    favicon,
+  };
+}
+
+function findContent(
+  elements: INodeList<IElement>,
+  property: string,
+): string | undefined {
+  return elements
+    .find((e) => e.getAttribute("property") === property)
+    ?.getAttribute("content");
+}
+
+async function fetchSite(url: URL): Promise<string> {
+  const response = await fetch(url, {
+    headers: {
+      "User-Agent": "bot",
+    },
+    next: {
+      revalidate: REVALIDATE_SECONDS,
+    },
+  });
+  if (!response.ok) {
+    throw new Error(`Failed to fetch ${url.toString()}: ${response.status}`);
+  }
+
+  const text = await response.text();
+  return text;
+}
+
+const FAVICON_API = "https://www.google.com/s2/favicons";
+export function createFavivonUrl(url: URL): string {
+  const faviconUrl = new URL(FAVICON_API);
+  faviconUrl.searchParams.set("domain_url", url.origin);
+  faviconUrl.searchParams.set("sz", FAVICON_SIZE.toString());
+
+  return faviconUrl.toString();
+}
