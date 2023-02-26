@@ -10,6 +10,8 @@ import { isImage, isParent } from "../utils";
 import { visit, Visitor } from "../visit";
 import type { ArticlePath } from ".";
 
+const ARTICLE_PATH = "/articles";
+
 export interface LocalImage extends Node, Resource, Alternative {
   type: "localImage";
   width: number;
@@ -29,14 +31,18 @@ export async function mdastLocalImage(tree: Parent, articlePath: ArticlePath) {
 function isLocalImage(node: Node): node is Image {
   if (!isImage(node)) return false;
 
-  if (node.url.startsWith("/")) return false;
-
   try {
     new URL(node.url);
     return false;
   } catch {
     return true;
   }
+}
+
+function resolveRelativeUrl(url: string, slug: string): string {
+  const normarlizedUrl = url.replace(/^\.\//, "");
+
+  return `${ARTICLE_PATH}/${slug}/${normarlizedUrl}`;
 }
 
 function visitorBuilder(
@@ -58,7 +64,7 @@ function visitorBuilder(
 
       const localImage: LocalImage = {
         type: "localImage",
-        url: node.url,
+        url: resolveRelativeUrl(node.url, articlePath.slug),
         title: node.title,
         alt: node.alt,
         width,
@@ -67,7 +73,7 @@ function visitorBuilder(
       };
 
       parent.children[idx] = localImage;
-      await copyLocalImage(articlePath, localImage);
+      await copyLocalImage(articlePath, node.url);
     })();
 
     promises.push(promise);
@@ -90,10 +96,10 @@ async function getImageSize(imagePath: string): Promise<ImageSizeResult> {
 
 async function copyLocalImage(
   articlePath: ArticlePath,
-  node: LocalImage,
+  url: string,
 ): Promise<void> {
-  const from = path.join(articlePath.fromDir, articlePath.slug, node.url);
-  const to = path.join(articlePath.toDir, articlePath.slug, node.url);
+  const from = path.join(articlePath.fromDir, articlePath.slug, url);
+  const to = path.join(articlePath.toDir, articlePath.slug, url);
 
   await fs.mkdir(path.dirname(to), { recursive: true });
   await fs.copyFile(from, to);

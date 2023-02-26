@@ -1,4 +1,5 @@
 "use client";
+
 import type { InlineMath as InlineMathNode } from "mdast-util-math";
 import { InlineMath as KatexInlineMath } from "react-katex";
 

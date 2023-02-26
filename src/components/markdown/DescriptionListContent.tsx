@@ -2,7 +2,9 @@ import type { FootnoteDefinition as FootnoteDefinitionNode } from "mdast";
 
 import type { DescriptionListContent as DescriptionListContentNode } from "@/lib/plugins";
 
-import { DescriptionDescription, DescriptionTerm } from ".";
+// import { DescriptionDescription, DescriptionTerm } from ".";
+import { DescriptionDescription } from "./DescriptionDescription";
+import { DescriptionTerm } from "./DescriptionTerm";
 
 type DescriptionListContentProps = {
   children: DescriptionListContentNode;

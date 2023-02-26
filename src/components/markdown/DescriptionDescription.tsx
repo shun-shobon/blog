@@ -5,7 +5,7 @@ import type {
 
 import type { DescriptionDescription as DescriptionDescriptionNode } from "@/lib/plugins";
 
-import { BlockContentList } from ".";
+import { BlockContentList } from "./BlockContent";
 
 type Props = {
   children: DescriptionDescriptionNode;

@@ -3,20 +3,18 @@ import type {
   PhrasingContent as PhrasingContentNode,
 } from "mdast";
 
-import {
-  Break,
-  Delete,
-  Emphasis,
-  FootnoteReference,
-  HTML,
-  Image,
-  InlineCode,
-  InlineMath,
-  Link,
-  LocalImage,
-  Strong,
-  Text,
-} from ".";
+import { Break } from "./Break";
+import { Delete } from "./Delete";
+import { Emphasis } from "./Emphasis";
+import { FootnoteReference } from "./FootnoteReference";
+import { HTML } from "./HTML";
+import { Image } from "./Image";
+import { InlineCode } from "./InlineCode";
+import { InlineMath } from "./InlineMath";
+import { Link } from "./Link";
+import { LocalImage } from "./LocalImage";
+import { Strong } from "./Strong";
+import { Text } from "./Text";
 
 type PhasingContentProps = {
   children: PhrasingContentNode;

@@ -4,7 +4,7 @@ import type {
   TableCell as TableCellNode,
 } from "mdast";
 
-import { PhrasingContentList } from ".";
+import { PhrasingContentList } from "./PhrasingContent";
 
 type Props = {
   align: AlignType | undefined;

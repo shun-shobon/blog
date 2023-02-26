@@ -3,7 +3,7 @@ import type {
   List as ListNode,
 } from "mdast";
 
-import { ListItem } from ".";
+import { ListItem } from "./ListItem";
 
 type Props = {
   children: ListNode;

@@ -11,7 +11,7 @@ export function getFootnoteIndex(
     throw new Error("Footnote definition not found");
   }
 
-  return index;
+  return index + 1;
 }
 
 export function getFootnoteRefId(index: number): string {

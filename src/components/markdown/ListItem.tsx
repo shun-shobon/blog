@@ -4,7 +4,7 @@ import type {
   ListItem as ListItemNode,
 } from "mdast";
 
-import { BlockContentList } from ".";
+import { BlockContentList } from "./BlockContent";
 
 type Props = {
   children: ListItemNode;

@@ -1,4 +1,5 @@
 "use client";
+
 import type { Math as MathNode } from "mdast-util-math";
 import { BlockMath as KatexBlockMath } from "react-katex";
 

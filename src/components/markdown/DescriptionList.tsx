@@ -2,7 +2,7 @@ import type { FootnoteDefinition as FootnoteDefinitionNode } from "mdast";
 
 import type { DescriptionList as DescriptionListNode } from "@/lib/plugins";
 
-import { DescriptionListContentList } from ".";
+import { DescriptionListContentList } from "./DescriptionListContent";
 
 type Props = {
   children: DescriptionListNode;

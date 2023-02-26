@@ -3,20 +3,18 @@ import type {
   FootnoteDefinition as FootnoteDefinitionNode,
 } from "mdast";
 
-import {
-  Blockquote,
-  Code,
-  DescriptionList,
-  Embed,
-  Heading,
-  HTML,
-  List,
-  Math,
-  Paragraph,
-  Section,
-  Table,
-  ThematicBreak,
-} from ".";
+import { Blockquote } from "./Blockquote";
+import { Code } from "./Code";
+import { DescriptionList } from "./DescriptionList";
+import { Embed } from "./Embed";
+import { Heading } from "./Heading";
+import { HTML } from "./HTML";
+import { List } from "./List";
+import { Math } from "./Math";
+import { Paragraph } from "./Paragraph";
+import { Section } from "./Section";
+import { Table } from "./Table";
+import { ThematicBreak } from "./ThematicBreak";
 
 type BlockContentProps = {
   children: BlockContentNode;

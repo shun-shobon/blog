@@ -3,7 +3,7 @@ import type {
   FootnoteDefinition as FootnoteDefinitionNode,
 } from "mdast";
 
-import { PhrasingContentList } from ".";
+import { PhrasingContentList } from "./PhrasingContent";
 
 type Props = {
   children: DeleteNode;

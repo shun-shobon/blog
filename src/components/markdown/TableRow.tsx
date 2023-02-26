@@ -4,7 +4,7 @@ import type {
   TableRow as TableRowNode,
 } from "mdast";
 
-import { TableCell } from ".";
+import { TableCell } from "./TableCell";
 
 type Props = {
   head?: boolean;

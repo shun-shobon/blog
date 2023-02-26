@@ -4,7 +4,7 @@ import type {
   FootnoteDefinition as FootnoteDefinitionNode,
 } from "mdast";
 
-import { BlockContentList } from ".";
+import { BlockContentList } from "./BlockContent";
 
 type Props = {
   children: BlockquoteNode;

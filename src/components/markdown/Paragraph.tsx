@@ -3,7 +3,7 @@ import type {
   Paragraph as ParagraphNode,
 } from "mdast";
 
-import { PhrasingContentList } from ".";
+import { PhrasingContentList } from "./PhrasingContent";
 
 type Props = {
   children: ParagraphNode;

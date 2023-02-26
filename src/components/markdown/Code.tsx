@@ -1,4 +1,5 @@
 "use client";
+
 import type { Code as CodeNode } from "mdast";
 import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import { duotoneDark as style } from "react-syntax-highlighter/dist/esm/styles/prism";

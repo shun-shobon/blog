@@ -5,7 +5,7 @@ import type {
 
 import type { Section as SectionNode } from "@/lib/plugins";
 
-import { BlockContentList } from ".";
+import { BlockContentList } from "./BlockContent";
 
 type Props = {
   children: SectionNode;

@@ -4,7 +4,7 @@ import type {
 } from "mdast";
 import { hasMinLength } from "ts-array-length";
 
-import { TableRow } from ".";
+import { TableRow } from "./TableRow";
 
 type Props = {
   children: TableNode;
