@@ -1,4 +1,4 @@
-import { IElement, INodeList, Window } from "happy-dom";
+import { parse } from "node-html-parser";
 
 const REVALIDATE_SECONDS = 60 * 60 * 24; // 1 day
 
@@ -16,11 +16,9 @@ export async function fetchOgp(urlString: string): Promise<Ogp> {
   const url = new URL(urlString);
   const html = await fetchSite(url);
 
-  const window = new Window();
-  const document = window.document;
-  document.write(html);
+  const root = parse(html);
 
-  const ogpElements = document.querySelectorAll("meta[property^='og:']");
+  const ogpElements = root.querySelectorAll("meta[property^='og:']");
 
   const title = findContent(ogpElements, "og:title");
   const description = findContent(ogpElements, "og:description");

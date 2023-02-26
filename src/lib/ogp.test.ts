@@ -2,7 +2,7 @@ import { expect, test } from "vitest";
 
 import { fetchOgp } from "./ogp";
 
-test.skip("fetchOgp", async () => {
+test("fetchOgp", async () => {
   const url = "https://zenn.dev/topics/react";
   const ogp = await fetchOgp(url);
 
