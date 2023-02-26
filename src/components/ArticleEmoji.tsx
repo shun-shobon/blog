@@ -9,6 +9,8 @@ type Props = {
 
 export function ArticleEmoji({ children, className }: Props): JSX.Element {
   return (
-    <span className={classNames(styles.emoji, className)}>{children}</span>
+    <span className={classNames(styles.emoji, className)} aria-hidden="true">
+      {children}
+    </span>
   );
 }

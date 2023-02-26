@@ -10,7 +10,7 @@ type Props = {
 
 export function ArticleCardMeta({ summary, className }: Props): JSX.Element {
   return (
-    <aside className={className}>
+    <header className={className}>
       <dl className={styles.list}>
         <dt className={styles.srOnly}>Posted at</dt>
         <dd>
@@ -25,6 +25,6 @@ export function ArticleCardMeta({ summary, className }: Props): JSX.Element {
           </>
         )}
       </dl>
-    </aside>
+    </header>
   );
 }
