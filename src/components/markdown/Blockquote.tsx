@@ -16,11 +16,11 @@ export function Blockquote({
   footnoteDefs,
 }: Props): JSX.Element {
   return (
-    <p>
+    <blockquote>
       <BlockContentList footnoteDefs={footnoteDefs}>
         {/* SAFETY: `DefinitionContent` is not expected to appear. */}
         {children as BlockContentNode[]}
       </BlockContentList>
-    </p>
+    </blockquote>
   );
 }

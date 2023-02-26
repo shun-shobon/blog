@@ -7,12 +7,14 @@ import type {
 import { PhrasingContentList } from "./PhrasingContent";
 
 type Props = {
+  head?: boolean;
   align: AlignType | undefined;
   children: TableCellNode;
   footnoteDefs: FootnoteDefinitionNode[];
 };
 
 export function TableCell({
+  head,
   align,
   children: { children },
   footnoteDefs,
@@ -30,11 +32,13 @@ export function TableCell({
       break;
   }
 
+  const Tag = head ? "th" : "td";
+
   return (
-    <td className={className}>
+    <Tag className={className}>
       <PhrasingContentList footnoteDefs={footnoteDefs}>
         {children}
       </PhrasingContentList>
-    </td>
+    </Tag>
   );
 }

@@ -19,15 +19,18 @@ export function TableRow({
   children: { children },
   footnoteDefs,
 }: Props): JSX.Element {
-  const Tag = head ? "th" : "td";
-
   return (
-    <Tag>
+    <tr>
       {children.map((child, idx) => (
-        <TableCell key={idx} align={align[idx]} footnoteDefs={footnoteDefs}>
+        <TableCell
+          key={idx}
+          head
+          align={align[idx]}
+          footnoteDefs={footnoteDefs}
+        >
           {child}
         </TableCell>
       ))}
-    </Tag>
+    </tr>
   );
 }
