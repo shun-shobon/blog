@@ -1,5 +1,7 @@
-import "./color.css";
+import "@acab/reset.css";
 import "./reset.css";
+import "./color.css";
+import "katex/dist/katex.min.css";
 
 import type { ReactNode } from "react";
 

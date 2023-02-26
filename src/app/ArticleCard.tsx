@@ -1,6 +1,7 @@
+import type { Heading as HeadingNode } from "mdast";
 import Link from "next/link";
 
-import { Heading } from "@/components/Heading";
+import { PhrasingContentList } from "@/components/markdown";
 import type { ArticleSummary } from "@/lib/markdown";
 
 type Props = {
@@ -10,16 +11,21 @@ type Props = {
 export function ArticleCard({ summary }: Props): JSX.Element {
   return (
     <article key={summary.slug} className="grid gap-1">
-      <Heading level={2}>
-        <Link
-          className="text-slate-800 dark:text-slate-200"
-          // href={`/articles/${summary.slug}`}
-          href="/"
-        >
-          {JSON.stringify(summary.title)}
-        </Link>
-      </Heading>
+      <Link href={`/articles/${summary.slug}`} prefetch={false}>
+        <Heading>{summary.title}</Heading>
+      </Link>
       <p>{summary.lead}</p>
     </article>
+  );
+}
+
+type HeadingProps = {
+  children: HeadingNode;
+};
+function Heading({ children: { children } }: HeadingProps): JSX.Element {
+  return (
+    <h2>
+      <PhrasingContentList footnoteDefs={[]}>{children}</PhrasingContentList>
+    </h2>
   );
 }
