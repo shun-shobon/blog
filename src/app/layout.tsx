@@ -1,8 +1,10 @@
 import "./color.css";
+import "./reset.css";
 
 import type { ReactNode } from "react";
 
 import { Header } from "./Header";
+import styles from "./layout.module.css";
 
 type Props = {
   children: ReactNode;
@@ -14,7 +16,7 @@ export default function Layout({ children }: Props): JSX.Element {
       <head>
         <title>星朧の夜</title>
       </head>
-      <body className="bg-slate-50 text-gray-700 dark:bg-slate-800 dark:text-slate-300">
+      <body className={styles.body}>
         <Header />
         {children}
       </body>

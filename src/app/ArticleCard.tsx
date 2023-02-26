@@ -1,6 +1,6 @@
-import { ArticleMatter } from "@/components/ArticleMatter";
+import Link from "next/link";
+
 import { Heading } from "@/components/Heading";
-import { Link } from "@/components/Link";
 import type { ArticleSummary } from "@/lib/markdown";
 
 type Props = {
@@ -12,16 +12,14 @@ export function ArticleCard({ summary }: Props): JSX.Element {
     <article key={summary.slug} className="grid gap-1">
       <Heading level={2}>
         <Link
-          internal
           className="text-slate-800 dark:text-slate-200"
-          href={`/articles/${summary.slug}`}
+          // href={`/articles/${summary.slug}`}
+          href="/"
         >
-          {summary.title}
+          {JSON.stringify(summary.title)}
         </Link>
       </Heading>
-      <aside>
-        <ArticleMatter summary={summary} />
-      </aside>
+      <p>{summary.lead}</p>
     </article>
   );
 }

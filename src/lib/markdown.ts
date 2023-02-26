@@ -21,9 +21,13 @@ import {
   remarkSection,
 } from "./plugins";
 
+export type ArticleSummaries = {
+  summaries: ArticleSummary[];
+};
+
 export type ArticleSummary = Pick<
   Article,
-  "title" | "lead" | "createdAt" | "emoji" | "tags"
+  "title" | "slug" | "lead" | "createdAt" | "emoji" | "tags"
 >;
 
 export async function exportArticles(
@@ -33,13 +37,13 @@ export async function exportArticles(
 ): Promise<void> {
   const articles = await processArticles(fromDir, imageExportDir);
 
-  const articleSummaries: ArticleSummary[] = articles.map(createArticleSummary);
-  articleSummaries.sort(
+  const summaries: ArticleSummary[] = articles.map(createArticleSummary);
+  summaries.sort(
     (a, b) => -Temporal.PlainDate.compare(a.createdAt, b.createdAt),
   );
   const articleSummariesPath = path.join(dataExportDir, "__summaries__.json");
   await fs.mkdir(dataExportDir, { recursive: true });
-  await fs.writeFile(articleSummariesPath, JSON.stringify(articleSummaries));
+  await fs.writeFile(articleSummariesPath, JSON.stringify({ summaries }));
 
   const promies = articles.map((article) =>
     exportArticle(dataExportDir, article),
@@ -48,8 +52,8 @@ export async function exportArticles(
 }
 
 function createArticleSummary(article: Article): ArticleSummary {
-  const { title, lead, createdAt, emoji, tags } = article;
-  return { title, lead, createdAt, emoji, tags };
+  const { title, slug, lead, createdAt, emoji, tags } = article;
+  return { title, slug, lead, createdAt, emoji, tags };
 }
 
 async function exportArticle(

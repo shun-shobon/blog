@@ -1,14 +1,20 @@
-import { Link } from "@/components/Link";
+import "@acab/reset.css";
+
+import Link from "next/link";
+
+import styles from "./Header.module.css";
 
 export function Header(): JSX.Element {
   return (
-    <header className="border-b border-purple-700 px-6 py-4 dark:border-purple-300">
-      <ul className="flex items-center gap-4 text-lg font-bold">
-        <li className="mr-auto font-serif text-2xl text-slate-900 dark:text-slate-100">
-          星朧の夜
+    <header className={styles.header}>
+      <ul className={styles.headerList}>
+        <li className={styles.headerBrand}>
+          <Link href="/" className={styles.headerBrandLink}>
+            星朧の夜
+          </Link>
         </li>
         <li>
-          <Link internal href="/">
+          <Link className={styles.headerLink} href="/">
             HOME
           </Link>
         </li>

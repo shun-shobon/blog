@@ -1,5 +1,6 @@
 :root {
   --primary: #0c6e73;
+  --text: #2c363f;
   --background: #e7f5f6;
   --border: #ced8d9;
 }
@@ -7,6 +8,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --primary: #58babf;
+    --text: #e7f5f6;
     --background: #2c363f;
     --border: #414a52;
   }

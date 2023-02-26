@@ -1,5 +1,5 @@
+import classNames from "classnames";
 import type { ComponentProps } from "react";
-import { twMerge } from "tailwind-merge";
 
 // h1からh6は共通
 type Props = ComponentProps<"h1"> & {
@@ -31,5 +31,5 @@ export function Heading({ level, className, ...props }: Props): JSX.Element {
       break;
   }
 
-  return <Tag className={twMerge(baseStyle, className)} {...props} />;
+  return <Tag className={classNames(baseStyle, className)} {...props} />;
 }
