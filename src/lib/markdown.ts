@@ -1,6 +1,7 @@
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
 
+import { Temporal } from "@js-temporal/polyfill";
 import fg from "fast-glob";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
@@ -20,8 +21,6 @@ import {
   remarkSection,
 } from "./plugins";
 
-export type ArticleSummaries = Record<string, ArticleSummary>;
-
 export type ArticleSummary = Pick<
   Article,
   "title" | "lead" | "createdAt" | "emoji" | "tags"
@@ -34,16 +33,18 @@ export async function exportArticles(
 ): Promise<void> {
   const articles = await processArticles(fromDir, imageExportDir);
 
-  const articleSummaries: ArticleSummaries = Object.fromEntries(
-    articles.map((article) => [article.slug, createArticleSummary(article)]),
+  const articleSummaries: ArticleSummary[] = articles.map(createArticleSummary);
+  articleSummaries.sort(
+    (a, b) => -Temporal.PlainDate.compare(a.createdAt, b.createdAt),
   );
-  const articleSummariesPath = path.join(dataExportDir, "__summaries.json");
+  const articleSummariesPath = path.join(dataExportDir, "__summaries__.json");
   await fs.mkdir(dataExportDir, { recursive: true });
   await fs.writeFile(articleSummariesPath, JSON.stringify(articleSummaries));
 
-  await Promise.all(
-    articles.map((article) => exportArticle(dataExportDir, article)),
+  const promies = articles.map((article) =>
+    exportArticle(dataExportDir, article),
   );
+  await Promise.all(promies);
 }
 
 function createArticleSummary(article: Article): ArticleSummary {
