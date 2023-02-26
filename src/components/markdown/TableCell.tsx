@@ -7,7 +7,7 @@ import type {
 import { PhrasingContentList } from "./PhrasingContent";
 
 type Props = {
-  head?: boolean;
+  head?: boolean | undefined;
   align: AlignType | undefined;
   children: TableCellNode;
   footnoteDefs: FootnoteDefinitionNode[];

@@ -7,7 +7,7 @@ import type {
 import { TableCell } from "./TableCell";
 
 type Props = {
-  head?: boolean;
+  head?: boolean | undefined;
   align: AlignType[];
   children: TableRowNode;
   footnoteDefs: FootnoteDefinitionNode[];
@@ -23,8 +23,8 @@ export function TableRow({
     <tr>
       {children.map((child, idx) => (
         <TableCell
+          head={head}
           key={idx}
-          head
           align={align[idx]}
           footnoteDefs={footnoteDefs}
         >
