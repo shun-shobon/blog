@@ -1,0 +1,27 @@
+.article {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: repeat(3, auto) 1fr;
+  grid-template-areas:
+    "emoji title"
+    "emoji meta"
+    "emoji lead"
+    "emoji .";
+  gap: 0.25rem;
+}
+
+.articleHeading {
+  grid-area: title;
+}
+
+.articleEmoji {
+  grid-area: emoji;
+}
+
+.articleMeta {
+  grid-area: meta;
+}
+
+.articleLead {
+  grid-area: lead;
+}

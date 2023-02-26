@@ -1,7 +1,7 @@
-import { Heading } from "@/components/Heading";
+import { ArticleCard } from "@/components/ArticleCard/ArticleCard";
 import type { ArticleSummaries, ArticleSummary } from "@/lib/markdown";
 
-import { ArticleCard } from "./ArticleCard";
+import styles from "./page.module.css";
 
 async function getArticleSummaries(): Promise<ArticleSummary[]> {
   return ((await import("data/__summaries__.json")) as ArticleSummaries)
@@ -12,8 +12,8 @@ export default async function Page(): Promise<JSX.Element> {
   const summaries = await getArticleSummaries();
 
   return (
-    <main className="mx-auto flex max-w-screen-lg flex-col gap-4 px-6 py-4">
-      <Heading level={1}>記事一覧</Heading>
+    <main className={styles.main}>
+      <h1 className={styles.title}>記事一覧</h1>
       {summaries.map((summary) => (
         <ArticleCard key={summary.slug} summary={summary} />
       ))}

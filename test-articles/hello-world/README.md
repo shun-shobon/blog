@@ -1,7 +1,7 @@
 ---
 title: Hello, World!
 postedAt: 2023-01-01
-emoji: ":wave:"
+emoji: "👋"
 tags:
   - hello
   - world
