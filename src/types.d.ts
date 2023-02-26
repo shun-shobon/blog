@@ -18,7 +18,8 @@ declare module "mdast" {
     localImage: LocalImage;
   }
 
-  interface RowContentMap {
+  // HACK: `DescriptionTerm` and `DescriptionDescription` are not `DefinitionContent` but they are `Content` in mdast
+  interface DefinitionContentMap {
     descriptionTerm: DescriptionTerm;
     descriptionDescription: DescriptionDescription;
   }

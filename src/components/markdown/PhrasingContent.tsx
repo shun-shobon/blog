@@ -1,6 +1,6 @@
 import type {
   FootnoteDefinition as FootnoteDefinitionNode,
-  PhrasingContent,
+  PhrasingContent as PhrasingContentNode,
 } from "mdast";
 
 import {
@@ -19,7 +19,7 @@ import {
 } from ".";
 
 type PhasingContentProps = {
-  children: PhrasingContent;
+  children: PhrasingContentNode;
   footnoteDefs: FootnoteDefinitionNode[];
 };
 
@@ -67,7 +67,7 @@ export function PhrasingContent({
 }
 
 type PhasingContentListProp = {
-  children: PhrasingContent[];
+  children: PhrasingContentNode[];
   footnoteDefs: FootnoteDefinitionNode[];
 };
 

@@ -31,7 +31,7 @@ export interface DescriptionDescription extends Parent {
   children: (BlockContent | DefinitionContent)[];
 }
 
-type DescriptionListContent = DescriptionTerm | DescriptionDescription;
+export type DescriptionListContent = DescriptionTerm | DescriptionDescription;
 
 export const remarkDescriptionList: Plugin<never[], Root> = () => {
   return (tree) => {
