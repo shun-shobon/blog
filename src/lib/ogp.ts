@@ -1,3 +1,4 @@
+import type { HTMLElement } from "node-html-parser";
 import { parse } from "node-html-parser";
 
 const REVALIDATE_SECONDS = 60 * 60 * 24; // 1 day
@@ -8,6 +9,7 @@ export type Ogp = {
   title: string | undefined;
   description: string | undefined;
   image: string | undefined;
+  isLargeImage: boolean;
   site: string | undefined;
   favicon: string | undefined;
 };
@@ -18,25 +20,29 @@ export async function fetchOgp(urlString: string): Promise<Ogp> {
 
   const root = parse(html);
 
-  const ogpElements = root.querySelectorAll("meta[property^='og:']");
+  const ogpElements = root.querySelectorAll('meta[property^="og:"]');
 
   const title = findContent(ogpElements, "og:title");
   const description = findContent(ogpElements, "og:description");
   const image = findContent(ogpElements, "og:image");
   const site = findContent(ogpElements, "og:site_name");
+  const isLargeImage =
+    root.querySelector('meta[name="twitter:card"]')?.getAttribute("content") ===
+    "summary_large_image";
   const favicon = createFavivonUrl(url);
 
   return {
     title,
     description,
     image,
+    isLargeImage,
     site,
     favicon,
   };
 }
 
 function findContent(
-  elements: INodeList<IElement>,
+  elements: HTMLElement[],
   property: string,
 ): string | undefined {
   return elements

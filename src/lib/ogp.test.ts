@@ -11,6 +11,7 @@ test("fetchOgp", async () => {
   expect(ogp.image).toBe(
     "https://storage.googleapis.com/zenn-user-upload/topics/489b9436a3.png",
   );
+  expect(ogp.isLargeImage).toBeFalsy();
   expect(ogp.site).toBe("Zenn");
   expect(ogp.favicon).toBe(
     "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fzenn.dev&sz=64",
