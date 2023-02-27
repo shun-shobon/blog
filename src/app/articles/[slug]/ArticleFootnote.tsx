@@ -1,5 +1,4 @@
 import type { BlockContent, FootnoteDefinition } from "mdast";
-import { useId } from "react";
 
 import { BlockContentList } from "@/components/markdown";
 import {
@@ -16,8 +15,6 @@ type Props = {
 export function ArticleFootnote({
   children: footnoteDefs,
 }: Props): JSX.Element | null {
-  const sectionId = useId();
-
   if (footnoteDefs.length === 0) {
     return null;
   }
@@ -25,8 +22,8 @@ export function ArticleFootnote({
   return (
     <>
       <hr />
-      <section aria-labelledby={sectionId}>
-        <h2 id={sectionId} className={styles.srOnly}>
+      <section aria-labelledby="footnote">
+        <h2 id="footnote" className={styles.srOnly}>
           脚注
         </h2>
         <ol>
