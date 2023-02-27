@@ -25,6 +25,8 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
   );
 }
 
+export const dynamicParams = false;
+
 export async function generateStaticParams(): Promise<Params[]> {
   const tags = await getAllTags();
 
