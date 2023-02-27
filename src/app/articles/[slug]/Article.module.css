@@ -100,11 +100,15 @@
   border-color: var(--border);
 }
 
-.article a:not([data-component="true"] *):not([data-component="true"]) {
+.article
+  a:not([data-component="true"] *):not([data-component="true"]):not(header *) {
   color: var(--primary);
 }
 
-.article a:not([data-component="true"] *):not([data-component="true"]):hover {
+.article
+  a:not([data-component="true"] *):not([data-component="true"]):not(
+    header *
+  ):hover {
   text-decoration: underline;
 }
 
