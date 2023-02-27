@@ -4,20 +4,20 @@ import { BlockContentList, Heading } from "@/components/markdown";
 import type { Article } from "@/lib/plugins";
 
 import styles from "./Article.module.css";
+import { ArticleMeta } from "./ArticleMeta";
 
 type Props = {
   children: Article;
 };
 
-export function Article({
-  children: { children, footnotes },
-}: Props): JSX.Element {
-  const [title, ...content] = children;
+export function Article({ children: article }: Props): JSX.Element {
+  const [title, ...content] = article.children;
 
   return (
     <article className={styles.article}>
-      <Heading footnoteDefs={footnotes}>{title}</Heading>
-      <BlockContentList footnoteDefs={footnotes}>
+      <Heading footnoteDefs={article.footnotes}>{title}</Heading>
+      <ArticleMeta>{article}</ArticleMeta>
+      <BlockContentList footnoteDefs={article.footnotes}>
         {content as BlockContent[]}
       </BlockContentList>
     </article>
