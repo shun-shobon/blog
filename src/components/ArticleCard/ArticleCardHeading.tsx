@@ -12,14 +12,14 @@ type HeadingProps = {
   className?: string;
 };
 export function Heading({
-  children: { children },
+  children: { children, identifier },
   slug,
   className,
 }: HeadingProps): JSX.Element {
   const href = `/articles/${slug}`;
 
   return (
-    <h2 className={classNames(styles.heading, className)}>
+    <h2 id={identifier} className={classNames(styles.heading, className)}>
       <Link href={href} className={styles.headingLink}>
         <PhrasingContentList footnoteDefs={[]}>{children}</PhrasingContentList>
       </Link>

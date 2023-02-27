@@ -16,6 +16,7 @@
 }
 .articleMetaItem > dt::after {
   content: ":";
+  content: ":" / "";
 }
 
 .articleMetaItem > dd {

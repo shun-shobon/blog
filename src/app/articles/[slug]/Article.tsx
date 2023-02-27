@@ -14,7 +14,7 @@ export function Article({ children: article }: Props): JSX.Element {
   const [title, ...content] = article.children;
 
   return (
-    <article className={styles.article}>
+    <article className={styles.article} aria-labelledby={title.identifier}>
       <Heading footnoteDefs={article.footnotes}>{title}</Heading>
       <ArticleMeta>{article}</ArticleMeta>
       <BlockContentList footnoteDefs={article.footnotes}>

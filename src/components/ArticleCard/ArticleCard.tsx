@@ -11,7 +11,11 @@ type Props = {
 
 export function ArticleCard({ summary }: Props): JSX.Element {
   return (
-    <article key={summary.slug} className={styles.article}>
+    <article
+      key={summary.slug}
+      className={styles.article}
+      aria-labelledby={summary.title.identifier}
+    >
       <Heading slug={summary.slug}>{summary.title}</Heading>
       <ArticleEmoji className={styles.articleEmoji}>
         {summary.emoji}

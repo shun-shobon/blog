@@ -17,7 +17,7 @@ export function Section({
   footnoteDefs,
 }: Props): JSX.Element {
   return (
-    <section>
+    <section aria-labelledby={children[0].identifier}>
       <BlockContentList footnoteDefs={footnoteDefs}>
         {/* SAFETY: No other than `BlockContentNode` is expected to appear */}
         {children as BlockContentNode[]}
