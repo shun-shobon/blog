@@ -1,8 +1,11 @@
+.embedWrapper {
+  margin: 1rem 0;
+}
+
 .embed {
   display: flex;
   border: 1px solid var(--border);
   border-radius: 1rem;
-  margin: 1rem 0;
   transition: background-color 0.25s ease-in-out;
   overflow: hidden;
 }
