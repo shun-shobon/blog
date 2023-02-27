@@ -23,7 +23,7 @@ export function Table({
   return (
     <table>
       <thead>
-        <TableRow head align={align ?? []} footnoteDefs={footnoteDefs}>
+        <TableRow head align={[]} footnoteDefs={footnoteDefs}>
           {headerRow}
         </TableRow>
       </thead>

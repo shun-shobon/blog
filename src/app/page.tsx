@@ -1,12 +1,7 @@
 import { ArticleCard } from "@/components/ArticleCard/ArticleCard";
-import type { ArticleSummaries, ArticleSummary } from "@/lib/markdown";
+import { getArticleSummaries } from "@/lib/article";
 
 import styles from "./page.module.css";
-
-async function getArticleSummaries(): Promise<ArticleSummary[]> {
-  return ((await import("data/__summaries__.json")) as ArticleSummaries)
-    .summaries;
-}
 
 export default async function Page(): Promise<JSX.Element> {
   const summaries = await getArticleSummaries();

@@ -10,12 +10,14 @@ type Props = {
 
 export function Code({ children: { value, lang } }: Props): JSX.Element {
   return (
-    <SyntaxHighlighter
-      language={lang ?? undefined}
-      style={style}
-      showLineNumbers
-    >
-      {value}
-    </SyntaxHighlighter>
+    <div data-component="true">
+      <SyntaxHighlighter
+        language={lang ?? undefined}
+        style={style}
+        showLineNumbers
+      >
+        {value}
+      </SyntaxHighlighter>
+    </div>
   );
 }

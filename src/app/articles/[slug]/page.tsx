@@ -1,8 +1,7 @@
-import { ArticleMatter } from "@/components/ArticleMatter";
-import { Heading } from "@/components/Heading";
-import { findArticleSlugs, processArticle } from "@/lib/markdown";
+import { getArticle, getArticleSummaries } from "@/lib/article";
 
-import { ArticleContent, ArticleFootnotes } from "./ArticleContent";
+import { Article } from "./Article";
+import styles from "./page.module.css";
 
 type Params = {
   slug: string;
@@ -13,26 +12,19 @@ type Props = {
 };
 
 export default async function Page({ params }: Props): Promise<JSX.Element> {
-  const article = await processArticle("test-articles", params.slug);
+  const article = await getArticle(params.slug);
 
   return (
-    <main>
-      <article className="mx-auto max-w-screen-lg space-y-2 px-6 py-4">
-        <Heading level={1}>{article.title}</Heading>
-        <header>
-          <ArticleMatter summary={article} />
-        </header>
-        <ArticleContent content={article.content.children} />
-        <ArticleFootnotes footnotes={article.content.footnotes} />
-      </article>
+    <main className={styles.main}>
+      <Article>{article}</Article>
     </main>
   );
 }
 
 export async function generateStaticParams(): Promise<Params[]> {
-  const articleSummaries = await findArticleSlugs("test-articles");
+  const summaries = await getArticleSummaries();
 
-  return articleSummaries.map((summary) => ({
+  return summaries.map((summary) => ({
     slug: summary.slug,
   }));
 }

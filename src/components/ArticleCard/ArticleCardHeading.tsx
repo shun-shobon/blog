@@ -2,7 +2,7 @@ import classNames from "classnames";
 import type { Heading as HeadingNode } from "mdast";
 import Link from "next/link";
 
-import { PhrasingContentList } from "@/components/markdown/PhrasingContent";
+import { PhrasingContentList } from "@/components/markdown";
 
 import styles from "./ArticleCardHeading.module.css";
 

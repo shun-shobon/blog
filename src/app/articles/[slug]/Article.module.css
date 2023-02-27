@@ -1,0 +1,136 @@
+.article p + p {
+  margin-top: 1rem;
+}
+
+.article > :first-child {
+  margin-top: 0;
+}
+
+.article > :last-child {
+  margin-bottom: 0;
+}
+
+.article :where(h2, h3, h4) {
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--primary);
+}
+
+.article :where(h5, h6) {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.article :where(h1, h2, h3, h4, h5, h6) {
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.article h1 {
+  font-size: 3rem;
+}
+
+.article h2 {
+  font-size: 2.25rem;
+}
+
+.article h3 {
+  font-size: 2rem;
+}
+
+.article h4 {
+  font-size: 1.75rem;
+}
+
+.article h5 {
+  font-size: 1.5rem;
+}
+
+.article h6 {
+  font-size: 1.25rem;
+}
+
+.article :where(blockquote, ul, ol, dl, table, [data-component="true"]) {
+  margin: 1rem 0;
+}
+
+.article blockquote {
+  border-left: 0.25rem solid var(--text-quote);
+  padding-left: 1rem;
+  color: var(--text-quote);
+}
+
+.article :where(ul, ol) {
+  padding-left: 1.25rem;
+}
+
+.article :where(ul, ol) :where(ul, ol) {
+  margin: 0.2rem 0;
+}
+
+.article ul {
+  list-style: disc;
+}
+
+.article ol {
+  list-style: decimal;
+}
+
+.article dl > dt::after {
+  content: ":";
+  content: ":" / "";
+}
+
+.article dl > :where(dt, dd) + dt {
+  margin-top: 0.5rem;
+}
+
+.article dl > dd {
+  padding-left: 1.25rem;
+}
+
+.article hr {
+  margin: 2rem 0;
+  border-color: var(--border);
+}
+
+.article a:not([data-component="true"] *) {
+  color: var(--primary);
+}
+
+.article a:not([data-component="true"] *):hover {
+  text-decoration: underline;
+}
+
+.article code:not([data-component="true"] *) {
+  font-family: monospace;
+  font-size: 1rem;
+  background-color: var(--border);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+}
+
+.article strong:not([data-component="true"] *) {
+  font-weight: 700;
+}
+
+.article em:not([data-component="true"] *) {
+  font-style: italic;
+}
+
+.article table {
+  width: 100%;
+  border-top: 2px solid var(--border);
+  border-bottom: 2px solid var(--border);
+}
+
+.article table th {
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+  font-weight: 700;
+}
+
+.article table :where(th, td) {
+  padding: 0.5rem;
+}

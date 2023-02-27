@@ -5,6 +5,7 @@ import type {
 } from "mdast";
 
 import { PhrasingContentList } from "./PhrasingContent";
+import styles from "./TableCell.module.css";
 
 type Props = {
   head?: boolean | undefined;
@@ -22,13 +23,13 @@ export function TableCell({
   let className;
   switch (align) {
     case "left":
-      className = "align-left";
+      className = styles.left;
       break;
     case "right":
-      className = "align-right";
+      className = styles.right;
       break;
     case "center":
-      className = "align-center";
+      className = styles.center;
       break;
   }
 
