@@ -36,19 +36,29 @@ export async function exportArticles(
   dataExportDir: string,
 ): Promise<void> {
   const articles = await processArticles(fromDir, imageExportDir);
+  sortArticles(articles);
 
-  const summaries: ArticleSummary[] = articles.map(createArticleSummary);
-  summaries.sort(
-    (a, b) => -Temporal.PlainDate.compare(a.createdAt, b.createdAt),
-  );
-  const articleSummariesPath = path.join(dataExportDir, "__summaries__.json");
-  await fs.mkdir(dataExportDir, { recursive: true });
-  await fs.writeFile(articleSummariesPath, JSON.stringify({ summaries }));
+  await exportArticleSummaries(dataExportDir, articles);
 
   const promies = articles.map((article) =>
     exportArticle(dataExportDir, article),
   );
   await Promise.all(promies);
+}
+
+export const ARTICLE_SUMMARIES_FILE_NAME = "__articles__.json";
+
+async function exportArticleSummaries(
+  dataExportDir: string,
+  articles: Article[],
+): Promise<void> {
+  const summaries = articles.map(createArticleSummary);
+  const articleSummariesPath = path.join(
+    dataExportDir,
+    ARTICLE_SUMMARIES_FILE_NAME,
+  );
+  await fs.mkdir(dataExportDir, { recursive: true });
+  await fs.writeFile(articleSummariesPath, JSON.stringify({ summaries }));
 }
 
 function createArticleSummary(article: Article): ArticleSummary {
@@ -76,6 +86,29 @@ async function processArticles(
   );
 
   return articles;
+}
+
+function sortArticles(articles: Article[]): void {
+  articles.sort((a, b) => {
+    const compareCreatedAt = Temporal.PlainDate.compare(
+      a.createdAt,
+      b.createdAt,
+    );
+
+    if (compareCreatedAt !== 0) {
+      return -compareCreatedAt;
+    }
+
+    if (a.updatedAt && b.updatedAt) {
+      return -Temporal.PlainDate.compare(a.updatedAt, b.updatedAt);
+    } else if (a.updatedAt && !b.updatedAt) {
+      return -1;
+    } else if (!a.updatedAt && b.updatedAt) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
 }
 
 async function findArticleSlugs(basePath: string): Promise<string[]> {

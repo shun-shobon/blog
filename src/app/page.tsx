@@ -1,10 +1,10 @@
 import { ArticleCard } from "@/components/ArticleCard/ArticleCard";
-import { getArticleSummaries } from "@/lib/article";
+import { getAllArticleSummaries } from "@/lib/article";
 
 import styles from "./page.module.css";
 
 export default async function Page(): Promise<JSX.Element> {
-  const summaries = await getArticleSummaries();
+  const summaries = await getAllArticleSummaries();
 
   return (
     <main className={styles.main}>

@@ -1,4 +1,4 @@
-import { getArticle, getArticleSummaries } from "@/lib/article";
+import { getAllArticleSummaries,getArticle } from "@/lib/article";
 
 import { Article } from "./Article";
 import styles from "./page.module.css";
@@ -22,7 +22,7 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
 }
 
 export async function generateStaticParams(): Promise<Params[]> {
-  const summaries = await getArticleSummaries();
+  const summaries = await getAllArticleSummaries();
 
   return summaries.map((summary) => ({
     slug: summary.slug,
