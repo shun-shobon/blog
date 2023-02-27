@@ -3,7 +3,7 @@ import { parse } from "node-html-parser";
 
 const REVALIDATE_SECONDS = 60 * 60 * 24; // 1 day
 
-export const FAVICON_SIZE = 64;
+export const FAVICON_SIZE = 16;
 
 export type Ogp = {
   title: string | undefined;

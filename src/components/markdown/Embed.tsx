@@ -1,7 +1,7 @@
-import NextImage from "next/image";
-
 import { FAVICON_SIZE, fetchOgp } from "@/lib/ogp";
 import type { Embed as EmbedNode } from "@/lib/plugins";
+
+import styles from "./Embed.module.css";
 
 type Props = {
   children: EmbedNode;
@@ -13,25 +13,24 @@ export async function Embed({
   const ogp = await fetchOgp(value);
 
   return (
-    <article data-component="true">
-      <a href={value}>
-        <h2>{ogp.title}</h2>
-        <p>{ogp.description}</p>
-        {/* SAFETY: `opg.image` is a foreign image */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img alt="" src={ogp.image} />
-        <footer>
-          {/* SAFETY: `opg.image` is a foreign image */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={ogp.favicon ?? ""}
-            width={FAVICON_SIZE}
-            height={FAVICON_SIZE}
-            alt=""
-          />
-          {ogp.site}
-        </footer>
-      </a>
-    </article>
+    <a href={value} data-component="true">
+      <article className={styles.embed}>
+        <div className={styles.embedText}>
+          <h2 className={styles.embedTextTitle}>{ogp.title}</h2>
+          <p className={styles.embedTextDescription}>{ogp.description}</p>
+          <footer className={styles.embedTextSite}>
+            <img
+              src={ogp.favicon ?? ""}
+              width={FAVICON_SIZE}
+              height={FAVICON_SIZE}
+              alt=""
+              className={styles.embedTextSiteImage}
+            />
+            <span className={styles.embedTextSiteName}>{ogp.site}</span>
+          </footer>
+        </div>
+        <img alt="" src={ogp.image} className={styles.embedImage} />
+      </article>
+    </a>
   );
 }

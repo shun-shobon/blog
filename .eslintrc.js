@@ -28,6 +28,7 @@ module.exports = {
         "ts-ignore": "allow-with-description",
       },
     ],
+    "@next/next/no-img-element": "off",
   },
   overrides: [
     {

@@ -10,7 +10,7 @@
   margin-bottom: 0;
 }
 
-.article :where(h2, h3, h4) {
+.article :where(h2, h3, h4):not([data-component="true"] *) {
   margin-top: 2rem;
   margin-bottom: 0.5rem;
   border-bottom: 1px solid var(--primary);
@@ -22,7 +22,7 @@
   border-bottom: 1px solid var(--border);
 }
 
-.article :where(h1, h2, h3, h4, h5, h6) {
+.article :where(h1, h2, h3, h4, h5, h6):not([data-component="true"] *) {
   font-weight: 700;
   line-height: 1.5;
 }
@@ -31,7 +31,7 @@
   font-size: 3rem;
 }
 
-.article h2 {
+.article h2:not([data-component="true"] *) {
   font-size: 2.25rem;
 }
 
@@ -95,11 +95,11 @@
   border-color: var(--border);
 }
 
-.article a:not([data-component="true"] *) {
+.article a:not([data-component="true"] *):not([data-component="true"]) {
   color: var(--primary);
 }
 
-.article a:not([data-component="true"] *):hover {
+.article a:not([data-component="true"] *):not([data-component="true"]):hover {
   text-decoration: underline;
 }
 
