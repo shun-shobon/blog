@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
     other: {
       rel: "manifest",
-      url: "manifest.webmanifest",
+      url: "/manifest.webmanifest",
     },
   },
   openGraph: {
