@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import { ArticleCard } from "@/components/ArticleCard/ArticleCard";
 import { Title } from "@/components/Title";
 import { getAllTags, getArticleSummariesByTag } from "@/lib/article";
@@ -25,6 +27,26 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
       ))}
     </main>
   );
+}
+
+export function generateMetadata({ params }: Props): Metadata {
+  const tag = decodeURIComponent(params.name);
+
+  return {
+    title: `${tag}の記事一覧 | blog.s2n.tech`,
+    openGraph: {
+      title: `${tag}の記事一覧`,
+      images: [
+        {
+          url: `https://blog.s2n.tech/api/ogp?title=${encodeURIComponent(
+            `${tag}の記事一覧`,
+          )}`,
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+  };
 }
 
 export const dynamicParams = false;
