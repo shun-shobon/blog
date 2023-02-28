@@ -13,11 +13,13 @@ type Props = {
 };
 
 export default async function Page({ params }: Props): Promise<JSX.Element> {
-  const summaries = await getArticleSummariesByTag(params.name);
+  const name = decodeURIComponent(params.name);
+
+  const summaries = await getArticleSummariesByTag(name);
 
   return (
     <main className={styles.main}>
-      <Title>{params.name}の記事一覧</Title>
+      <Title>{name}の記事一覧</Title>
       {summaries.map((summary) => (
         <ArticleCard key={summary.slug} summary={summary} />
       ))}
