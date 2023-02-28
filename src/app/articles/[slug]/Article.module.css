@@ -32,27 +32,27 @@
 }
 
 .article h1 {
-  font-size: 3rem;
-}
-
-.article h2:not([data-component="true"] *) {
-  font-size: 2.25rem;
-}
-
-.article h3 {
   font-size: 2rem;
 }
 
-.article h4 {
+.article h2:not([data-component="true"] *) {
   font-size: 1.75rem;
 }
 
-.article h5 {
+.article h3 {
   font-size: 1.5rem;
 }
 
-.article h6 {
+.article h4 {
   font-size: 1.25rem;
+}
+
+.article h5 {
+  font-size: 1rem;
+}
+
+.article h6 {
+  font-size: 1rem;
 }
 
 .article
