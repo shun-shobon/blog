@@ -1,6 +1,6 @@
 {
   "name": "blog",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "blog.s2n.tech",
   "private": true,
   "packageManager": "pnpm@7.27.0",
