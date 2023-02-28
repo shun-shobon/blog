@@ -37,6 +37,10 @@ export function generateMetadata({ params }: Props): Metadata {
     title: `${tag}の記事一覧 | blog.s2n.tech`,
     openGraph: {
       title: `${tag}の記事一覧`,
+      url: "https://blog.s2n.tech",
+      siteName: "blog.s2n.tech",
+      locale: "ja-JP",
+      type: "website",
       images: [
         {
           url: createOgpImageUrl(`${tag}の記事一覧`),

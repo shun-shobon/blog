@@ -34,6 +34,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: article.plainTitle,
       description: article.lead,
+      url: "https://blog.s2n.tech",
+      siteName: "blog.s2n.tech",
+      locale: "ja-JP",
       images: [
         {
           url: createOgpImageUrl(article.plainTitle, article.createdAt),

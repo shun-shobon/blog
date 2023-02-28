@@ -21,9 +21,4 @@ export default async function Page(): Promise<JSX.Element> {
 
 export const metadata: Metadata = {
   title: "ホーム | blog.s2n.tech",
-  openGraph: {
-    title: "blog.s2n.tech",
-    description:
-      "しゅん🌙(@shun_shobon)のブログサイトです。技術記事からポエムまで色々書きます。",
-  },
 };
