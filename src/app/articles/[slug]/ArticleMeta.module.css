@@ -1,0 +1,44 @@
+.articleMeta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-bottom: 2rem;
+}
+
+.articleMetaItem {
+  display: inline;
+}
+
+.articleMetaItem > dt {
+  display: inline;
+  margin-right: 0.25rem;
+}
+.articleMetaItem > dt::after {
+  content: ":";
+  content: ":" / "";
+}
+
+.articleMetaItem > dd {
+  display: inline;
+}
+
+.tags {
+  display: inline-flex;
+}
+
+.box {
+  flex-basis: 100%;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

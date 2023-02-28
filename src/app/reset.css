@@ -1,0 +1,8 @@
+:where(a) {
+  color: unset;
+  text-decoration: none;
+}
+
+:root {
+  scroll-behavior: smooth;
+}

@@ -1,0 +1,12 @@
+.heading {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.headingLink {
+  transition: color 0.2s ease-in-out;
+}
+
+.headingLink:hover {
+  color: var(--primary);
+}

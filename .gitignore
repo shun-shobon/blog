@@ -1,18 +1,26 @@
-/node_modules
-.yarn/*
-!.yarn/patches
-!.yarn/releases
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
-.pnp.*
-/coverage
+# articles
+/articles/
+
+# generated
+/data/
+/public/articles/
+
+# dependencies
+/node_modules/
+
+# testing
+/coverage/
+
+# next.js
 /.next/
 /out/
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+
+# local env files
+.env*.local
+
+# vercel
 .vercel
+
+# typescript
 *.tsbuildinfo
-/articles
+next-env.d.ts

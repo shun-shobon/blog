@@ -1,0 +1,28 @@
+.header {
+  padding: 0.5rem 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.headerList {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.headerBrand {
+  margin-right: auto;
+}
+
+.headerBrandLink {
+  color: var(--primary);
+  font-size: 2rem;
+}
+
+.headerLink {
+  transition: color 0.2s;
+}
+.headerLink:hover {
+  color: var(--primary);
+}
