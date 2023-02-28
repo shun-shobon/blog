@@ -3,12 +3,10 @@ import type { NextRequest } from "next/server";
 
 const BACKGROUND_IMG = `<svg id="visual" viewBox="0 0 1200 630" width="1200" height="630" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><rect width="1200" height="630" fill="#2c363f"></rect><g><g transform="translate(799 10)"><path d="M0 -270.7L234.5 -135.4L234.5 135.4L0 270.7L-234.5 135.4L-234.5 -135.4Z" fill="none" stroke="#58babf" stroke-width="2"></path></g><g transform="translate(140 414)"><path d="M0 -243L210.4 -121.5L210.4 121.5L0 243L-210.4 121.5L-210.4 -121.5Z" fill="none" stroke="#58babf" stroke-width="2"></path></g><g transform="translate(1042 617)"><path d="M0 -248L214.8 -124L214.8 124L0 248L-214.8 124L-214.8 -124Z" stroke="#58babf" fill="none" stroke-width="2"></path></g></g></svg>`;
 
-const NOTO_SANS_JP_PATH = new URL(
-  "../../assets/NotoSansJP-Bold.otf",
-  import.meta.url,
-);
-
 const ICON_PATH = new URL("../../assets/icon.jpg", import.meta.url);
+
+const GOOGLE_FONT_URL = "https://fonts.googleapis.com/css2";
+const NOTO_SANS_JP = "Noto Sans JP:wght@700";
 
 export const config = {
   runtime: "edge",
@@ -19,7 +17,12 @@ export default async function ogp(req: NextRequest) {
   const title = searchParams.get("title");
   const date = searchParams.get("date");
 
-  const assets = await fetchAssets();
+  const name = "しゅん🌙";
+
+  const notoSansJp = await fetchFont(
+    NOTO_SANS_JP,
+    `${title ?? ""}${name}${date ?? ""}`,
+  );
 
   const backgroundImage = `url(data:image/svg+xml,${encodeURIComponent(
     BACKGROUND_IMG,
@@ -79,7 +82,7 @@ export default async function ogp(req: NextRequest) {
               style={{ borderRadius: "50%", marginRight: "16px" }}
               alt=""
             />
-            しゅん🌙
+            {name}
           </div>
 
           {date && <div>{date}</div>}
@@ -92,7 +95,7 @@ export default async function ogp(req: NextRequest) {
       fonts: [
         {
           name: "NotoSansJP",
-          data: assets.notoSansJp,
+          data: notoSansJp,
           style: "normal",
         },
       ],
@@ -100,14 +103,35 @@ export default async function ogp(req: NextRequest) {
   );
 }
 
-type Assets = {
-  notoSansJp: ArrayBuffer;
-};
+async function fetchFont(fontName: string, text: string): Promise<ArrayBuffer> {
+  const url = new URL(GOOGLE_FONT_URL);
+  url.searchParams.set("family", fontName);
+  url.searchParams.set("text", text);
 
-async function fetchAssets(): Promise<Assets> {
-  const notoSansJp = await fetch(NOTO_SANS_JP_PATH).then((res) =>
-    res.arrayBuffer(),
+  const cssRes = await fetch(url, {
+    headers: {
+      // ref: https://github.com/vercel/satori/blob/83d658542719c5cf0ea2354e782489f9e1e60a84/playground/pages/api/font.ts#L23C4-L25
+      "User-Agent":
+        "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; de-at) AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1",
+    },
+  });
+  if (!cssRes.ok) {
+    throw new Error(`Failed to fetch font: ${cssRes.statusText}`);
+  }
+  const css = await cssRes.text();
+
+  const resource = css.match(
+    /src: url\((.+)\) format\('(opentype|truetype)'\)/,
   );
 
-  return { notoSansJp };
+  if (!resource || !resource[1]) {
+    throw new Error("Failed to parse font");
+  }
+
+  const fontRes = await fetch(resource[1]);
+  if (!fontRes.ok) {
+    throw new Error(`Failed to fetch font: ${fontRes.statusText}`);
+  }
+
+  return fontRes.arrayBuffer();
 }
