@@ -113,10 +113,10 @@
 }
 
 .article code:not([data-component="true"] *) {
-  font-family: monospace;
-  font-size: 1rem;
+  font-family: var(--monospace);
   background-color: var(--border);
   padding: 0.2rem 0.4rem;
+  margin: 0 0.1rem;
   border-radius: 0.25rem;
 }
 

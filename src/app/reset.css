@@ -5,4 +5,5 @@
 
 :root {
   scroll-behavior: smooth;
+  font-family: var(--sans-serif);
 }

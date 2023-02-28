@@ -1,6 +1,6 @@
 import "@acab/reset.css";
-import "./reset.css";
 import "./color.css";
+import "./reset.css";
 import "katex/dist/katex.min.css";
 
 import type { Metadata } from "next";

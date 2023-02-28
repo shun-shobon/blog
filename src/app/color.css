@@ -4,6 +4,10 @@
   --text-quote: #565e65;
   --background: #e7f5f6;
   --border: #ced8d9;
+  --sans-serif: -apple-system, "BlinkMacSystemFont", "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", "Meiryo", sans-serif;
+  --monospace: "SFMono-Regular", "Consolas", "Liberation Mono", "Menlo",
+    monospace;
 }
 
 @media (prefers-color-scheme: dark) {
