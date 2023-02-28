@@ -2,6 +2,7 @@ import { Temporal } from "@js-temporal/polyfill";
 import type { Metadata } from "next";
 
 import { getAllArticleSummaries, getArticle } from "@/lib/article";
+import { createOgpImageUrl } from "@/lib/ogp-image";
 
 import { Article } from "./Article";
 import styles from "./page.module.css";
@@ -35,9 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: article.lead,
       images: [
         {
-          url: `https://blog.s2n.tech/api/ogp?title=${encodeURIComponent(
-            article.plainTitle,
-          )}`,
+          url: createOgpImageUrl(article.plainTitle, article.createdAt),
           width: 1200,
           height: 630,
         },

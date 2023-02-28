@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { ArticleCard } from "@/components/ArticleCard/ArticleCard";
 import { Title } from "@/components/Title";
 import { getAllTags, getArticleSummariesByTag } from "@/lib/article";
+import { createOgpImageUrl } from "@/lib/ogp-image";
 
 import styles from "./page.module.css";
 
@@ -38,9 +39,7 @@ export function generateMetadata({ params }: Props): Metadata {
       title: `${tag}の記事一覧`,
       images: [
         {
-          url: `https://blog.s2n.tech/api/ogp?title=${encodeURIComponent(
-            `${tag}の記事一覧`,
-          )}`,
+          url: createOgpImageUrl(`${tag}の記事一覧`),
           width: 1200,
           height: 630,
         },

@@ -6,6 +6,8 @@ import "katex/dist/katex.min.css";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
+import { createOgpImageUrl } from "@/lib/ogp-image";
+
 import { Header } from "./Header";
 import styles from "./layout.module.css";
 
@@ -38,15 +40,16 @@ export const metadata: Metadata = {
     address: false,
   },
   openGraph: {
+    title: "blog.s2n.tech",
+    description:
+      "しゅん🌙(@shun_shobon)のブログサイトです。技術記事からポエムまで色々書きます。",
     url: "https://blog.s2n.tech",
     siteName: "blog.s2n.tech",
     locale: "ja-JP",
     type: "website",
     images: [
       {
-        url: `https://blog.s2n.tech/api/ogp?title=${encodeURIComponent(
-          "blog.s2n.tech",
-        )}`,
+        url: createOgpImageUrl("blog.s2n.tech"),
         width: 1200,
         height: 630,
       },
