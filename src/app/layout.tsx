@@ -39,6 +39,23 @@ export const metadata: Metadata = {
     email: false,
     address: false,
   },
+  icons: {
+    icon: [
+      {
+        url: "/favicon.ico",
+        sizes: "any",
+      },
+      {
+        url: "/icon.svg",
+        type: "image/svg+xml",
+      },
+    ],
+    apple: "/apple-touch-icon.png",
+    other: {
+      rel: "manifest",
+      url: "manifest.webmanifest",
+    },
+  },
   openGraph: {
     title: "blog.s2n.tech",
     description:
