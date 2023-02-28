@@ -5,7 +5,6 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
-  // @ts-expect-error: Dependency version mismatch
   plugins: [react(), tsconfigPaths()],
   test: {
     globals: true,
