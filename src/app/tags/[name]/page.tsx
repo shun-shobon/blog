@@ -41,13 +41,12 @@ export function generateMetadata({ params }: Props): Metadata {
       siteName: "blog.s2n.tech",
       locale: "ja-JP",
       type: "website",
-      images: [
-        {
-          url: createOgpImageUrl(`${tag}の記事一覧`),
-          width: 1200,
-          height: 630,
-        },
-      ],
+      images: createOgpImageUrl(`${tag}の記事一覧`),
+    },
+    twitter: {
+      card: "summary_large_image",
+      creator: "@shun_shobon",
+      images: createOgpImageUrl(`${tag}の記事一覧`),
     },
   };
 }

@@ -37,13 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: "https://blog.s2n.tech",
       siteName: "blog.s2n.tech",
       locale: "ja-JP",
-      images: [
-        {
-          url: createOgpImageUrl(article.plainTitle, article.createdAt),
-          width: 1200,
-          height: 630,
-        },
-      ],
+      images: createOgpImageUrl(article.plainTitle, article.createdAt),
       type: "article",
       publishedTime: Temporal.PlainDate.from(article.createdAt)
         .toZonedDateTime("Asia/Tokyo")
@@ -55,6 +49,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         : undefined,
       authors: "しゅん🌙 (@shun_shobon)",
       tags: article.tags,
+    },
+    twitter: {
+      card: "summary_large_image",
+      creator: "@shun_shobon",
+      images: createOgpImageUrl(article.plainTitle, article.createdAt),
     },
   };
 }
