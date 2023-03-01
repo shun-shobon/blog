@@ -69,6 +69,5 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     creator: "@shun_shobon",
-    images: createOgpImageUrl("blog.s2n.tech"),
   },
 };

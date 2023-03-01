@@ -50,11 +50,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       authors: "しゅん🌙 (@shun_shobon)",
       tags: article.tags,
     },
-    twitter: {
-      card: "summary_large_image",
-      creator: "@shun_shobon",
-      images: createOgpImageUrl(article.plainTitle, article.createdAt),
-    },
   };
 }
 
