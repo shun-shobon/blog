@@ -56,7 +56,9 @@
 }
 
 .article
-  :where(blockquote, ul, ol, dl, table, [data-component="true"]):not([class]) {
+  :where(blockquote, ul, ol, dl, table, img, [data-component="true"]):not(
+    [class]
+  ) {
   margin: 1rem 0;
 }
 
