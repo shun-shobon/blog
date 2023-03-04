@@ -27,7 +27,14 @@ export type ArticleSummaries = {
 
 export type ArticleSummary = Pick<
   Article,
-  "title" | "slug" | "lead" | "createdAt" | "emoji" | "tags"
+  | "title"
+  | "plainTitle"
+  | "slug"
+  | "lead"
+  | "createdAt"
+  | "updatedAt"
+  | "emoji"
+  | "tags"
 >;
 
 export async function exportArticles(
@@ -62,8 +69,9 @@ async function exportArticleSummaries(
 }
 
 function createArticleSummary(article: Article): ArticleSummary {
-  const { title, slug, lead, createdAt, emoji, tags } = article;
-  return { title, slug, lead, createdAt, emoji, tags };
+  const { title, plainTitle, slug, lead, createdAt, updatedAt, emoji, tags } =
+    article;
+  return { title, plainTitle, slug, lead, createdAt, updatedAt, emoji, tags };
 }
 
 async function exportArticle(

@@ -7,7 +7,7 @@ export const exec = promisify(execNonPromise);
 
 export type ArticleDate = {
   createdAt: string;
-  updatedAt?: string;
+  updatedAt?: string | undefined;
 };
 
 export async function readArticleChangedDate(

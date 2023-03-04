@@ -34,6 +34,11 @@ export const metadata: Metadata = {
   authors: [{ name: "しゅん🌙", url: "https://s2n.tech" }],
   themeColor: "#2c363f",
   colorScheme: "dark light",
+  alternates: {
+    types: {
+      "application/atom+xml": "/feed",
+    },
+  },
   formatDetection: {
     telephone: false,
     email: false,
