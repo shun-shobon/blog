@@ -1,5 +1,5 @@
 import "@acab/reset.css";
-import "./color.css";
+import "./variable.css";
 import "./reset.css";
 import "katex/dist/katex.min.css";
 
@@ -9,6 +9,7 @@ import type { ReactNode } from "react";
 import { ORIGIN, TITLE } from "@/config";
 import { createOgpImageUrl } from "@/lib/ogp-image";
 
+import { Footer } from "./Footer";
 import { Header } from "./Header";
 import styles from "./layout.module.css";
 
@@ -22,6 +23,7 @@ export default function Layout({ children }: Props): JSX.Element {
       <body className={styles.body}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
