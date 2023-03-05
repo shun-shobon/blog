@@ -1,19 +1,16 @@
-import { FAVICON_SIZE, fetchOgp } from "@/lib/ogp";
-import type { Embed as EmbedNode } from "@/lib/plugins";
+import type { Ogp } from "@/lib/ogp";
+import { FAVICON_SIZE } from "@/lib/ogp";
 
-import styles from "./Embed.module.css";
+import styles from "./LinkCard.module.css";
 
 type Props = {
-  children: EmbedNode;
+  ogp: Ogp;
+  url: string;
 };
 
-export async function Embed({
-  children: { value },
-}: Props): Promise<JSX.Element> {
-  const ogp = await fetchOgp(value);
-
+export function LinkCard({ ogp, url }: Props): JSX.Element {
   return (
-    <a href={value} className={styles.embedWrapper}>
+    <a href={url} className={styles.embedWrapper}>
       <article className={styles.embed}>
         <div className={styles.embedText}>
           <h2 className={styles.embedTextTitle}>{ogp.title}</h2>

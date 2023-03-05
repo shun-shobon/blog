@@ -1,4 +1,5 @@
 import type { BlockContent } from "mdast";
+import Script from "next/script";
 
 import { BlockContentList } from "@/components/markdown";
 import type { Article } from "@/lib/plugins";
@@ -22,6 +23,10 @@ export function Article({ children: article }: Props): JSX.Element {
       </BlockContentList>
       <ArticleFootnote>{article.footnotes}</ArticleFootnote>
       <ArticleFooter title={article.plainTitle} slug={article.slug} />
+      <Script
+        src="https://platform.twitter.com/widgets.js"
+        strategy="afterInteractive"
+      />
     </article>
   );
 }

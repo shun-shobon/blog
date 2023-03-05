@@ -59,6 +59,8 @@ This **is** _a_ **_test_** article. [^1]
 
 https://zenn.dev
 
+https://twitter.com/shun_shobon/status/1628762716365266946
+
 ```typescript
 class MyClass {
   constructor(private readonly name: string) {}
