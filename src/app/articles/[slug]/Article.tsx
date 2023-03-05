@@ -1,13 +1,10 @@
-// import styles from "./Article.module.css";
-// import "./Article.scss";
-
 import type { BlockContent } from "mdast";
 
-import { BlockContentList, Heading } from "@/components/markdown";
+import { BlockContentList } from "@/components/markdown";
 import type { Article } from "@/lib/plugins";
 
 import { ArticleFootnote } from "./ArticleFootnote";
-import { ArticleMeta } from "./ArticleMeta";
+import { ArticleHeader } from "./ArticleHeader";
 
 type Props = {
   children: Article;
@@ -18,8 +15,7 @@ export function Article({ children: article }: Props): JSX.Element {
 
   return (
     <article aria-labelledby={title.identifier}>
-      <Heading footnoteDefs={article.footnotes}>{title}</Heading>
-      <ArticleMeta>{article}</ArticleMeta>
+      <ArticleHeader>{article}</ArticleHeader>
       <BlockContentList footnoteDefs={article.footnotes}>
         {content as BlockContent[]}
       </BlockContentList>

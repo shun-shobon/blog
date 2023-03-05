@@ -1,17 +1,19 @@
 import { ArticleTags } from "@/components/ArticleTag";
+import { Heading } from "@/components/markdown";
 import type { Article } from "@/lib/plugins";
 
-import styles from "./ArticleMeta.module.css";
+import styles from "./ArticleHeader.module.css";
 
 type Props = {
   children: Article;
 };
 
-export function ArticleMeta({
-  children: { createdAt, updatedAt, tags },
+export function ArticleHeader({
+  children: { title, footnotes, createdAt, updatedAt, tags },
 }: Props): JSX.Element {
   return (
     <header>
+      <Heading footnoteDefs={footnotes}>{title}</Heading>
       <dl className={styles.articleMeta}>
         <div className={styles.articleMetaItem}>
           <dt>投稿日</dt>

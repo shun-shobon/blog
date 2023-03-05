@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.5rem 1rem;
-  margin-bottom: 2rem;
+  gap: 1rem 1rem;
+  margin: 1rem 0 2rem;
 }
 
 .articleMetaItem {
