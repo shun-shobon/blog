@@ -1,4 +1,3 @@
-import type { HTMLElement } from "node-html-parser";
 import { parse } from "node-html-parser";
 
 const REVALIDATE_SECONDS = 60 * 60 * 24; // 1 day
@@ -20,16 +19,33 @@ export async function fetchOgp(urlString: string): Promise<Ogp> {
 
   const root = parse(html);
 
-  const ogpElements = root.querySelectorAll('meta[property^="og:"]');
-
-  const title = findContent(ogpElements, "og:title");
-  const description = findContent(ogpElements, "og:description");
-  const image = findContent(ogpElements, "og:image");
-  const site = findContent(ogpElements, "og:site_name");
+  const title =
+    root.querySelector('meta[property="og:title"]')?.getAttribute("content") ??
+    root.querySelector("title")?.text;
+  const description = (
+    root.querySelector('meta[property="og:description"]') ??
+    root.querySelector('meta[name="description"]')
+  )?.getAttribute("content");
+  const image = (
+    root.querySelector('meta[property="og:image:secure_url"]') ??
+    root.querySelector('meta[property="og:image:url"]') ??
+    root.querySelector('meta[property="og:image"]')
+  )?.getAttribute("content");
+  const site =
+    root
+      .querySelector('meta[property="og:site_name"]')
+      ?.getAttribute("content") ?? url.hostname;
   const isLargeImage =
     root.querySelector('meta[name="twitter:card"]')?.getAttribute("content") ===
     "summary_large_image";
-  const favicon = createFavivonUrl(url);
+  const favicon = new URL(
+    (
+      root.querySelector('link[rel="icon"][type="image/svg+xml"]') ??
+      root.querySelector('link[rel="icon"][type="image/png"]') ??
+      root.querySelector('link[rel="icon"]')
+    )?.getAttribute("href") ?? "/favicon.ico",
+    url,
+  ).toString();
 
   return {
     title,
@@ -39,15 +55,6 @@ export async function fetchOgp(urlString: string): Promise<Ogp> {
     site,
     favicon,
   };
-}
-
-function findContent(
-  elements: HTMLElement[],
-  property: string,
-): string | undefined {
-  return elements
-    .find((e) => e.getAttribute("property") === property)
-    ?.getAttribute("content");
 }
 
 async function fetchSite(url: URL): Promise<string> {
@@ -65,13 +72,4 @@ async function fetchSite(url: URL): Promise<string> {
 
   const text = await response.text();
   return text;
-}
-
-const FAVICON_API = "https://www.google.com/s2/favicons";
-export function createFavivonUrl(url: URL): string {
-  const faviconUrl = new URL(FAVICON_API);
-  faviconUrl.searchParams.set("domain_url", url.origin);
-  faviconUrl.searchParams.set("sz", FAVICON_SIZE.toString());
-
-  return faviconUrl.toString();
 }
