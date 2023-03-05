@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { ArticleCard } from "@/components/ArticleCard/ArticleCard";
 import { Title } from "@/components/Title";
+import { TITLE } from "@/config";
 import { getAllArticleSummaries } from "@/lib/article";
 
 import styles from "./page.module.css";
@@ -20,5 +21,5 @@ export default async function Page(): Promise<JSX.Element> {
 }
 
 export const metadata: Metadata = {
-  title: "ホーム | blog.s2n.tech",
+  title: `ホーム | ${TITLE}`,
 };

@@ -3,6 +3,9 @@
 import { useEffect, useState } from "react";
 import { FaShare, FaTwitter } from "react-icons/fa";
 
+import { TITLE } from "@/config";
+import { getArticleUrl } from "@/lib/utils";
+
 import styles from "./ShareButtons.module.css";
 
 type Props = {
@@ -16,8 +19,8 @@ export function ShareButtons({ plainTitle, slug }: Props): JSX.Element {
     setIsShareApiSupported("share" in navigator);
   }, []);
 
-  const title = `${plainTitle} | blog.s2n.tech\n`;
-  const url = `https://blog.s2n.tech/articles/${slug}`;
+  const title = `${plainTitle} | ${TITLE}\n`;
+  const url = getArticleUrl(slug).href;
 
   const twitterUrl = new URL("https://twitter.com/share");
   twitterUrl.searchParams.set("text", title);

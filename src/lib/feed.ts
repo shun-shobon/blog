@@ -1,9 +1,11 @@
 import { Temporal } from "@js-temporal/polyfill";
 import { Feed } from "feed";
 
+import { ORIGIN, TITLE } from "@/config";
 import { getAllArticleSummaries, getAllTags } from "@/lib/article";
 
 import { createOgpImageUrl } from "./ogp-image";
+import { getArticleUrl, getUrl } from "./utils";
 
 export async function generateFeed(): Promise<Feed> {
   const summaries = await getAllArticleSummaries();
@@ -19,19 +21,15 @@ export async function generateFeed(): Promise<Feed> {
     : new Date(Temporal.Now.instant().epochMilliseconds);
 
   const feed = new Feed({
-    title: "blog.s2n.tech",
+    title: TITLE,
     description:
       "しゅん🌙(@shun_shobon)のブログサイトです。技術記事からポエムまで色々書きます。",
-    id: "https://blog.s2n.tech/",
-    link: "https://blog.s2n.tech/",
+    id: ORIGIN,
+    link: ORIGIN,
     language: "ja-JP",
-    favicon: "https://blog.s2n.tech/favicon.ico",
+    favicon: getUrl("/favicon.ico").href,
     copyright: "Copyright © 2023 Shuntaro Nishizawa (しゅん🌙)",
     updated,
-    feedLinks: {
-      json: "https://example.com/json",
-      atom: "https://example.com/atom",
-    },
     author: {
       name: "Shuntaro Nishizawa (しゅん🌙)",
       link: "https://s2n.tech",
@@ -52,8 +50,8 @@ export async function generateFeed(): Promise<Feed> {
 
     feed.addItem({
       title: summary.plainTitle,
-      id: `https://blog.s2n.tech/articles/${summary.slug}`,
-      link: `https://blog.s2n.tech/articles/${summary.slug}`,
+      id: getArticleUrl(summary.slug).href,
+      link: getArticleUrl(summary.slug).href,
       image: {
         url: createOgpImageUrl(summary.plainTitle, summary.createdAt),
         type: "image/png",

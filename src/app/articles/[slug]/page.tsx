@@ -1,6 +1,7 @@
 import { Temporal } from "@js-temporal/polyfill";
 import type { Metadata } from "next";
 
+import { ORIGIN, TITLE } from "@/config";
 import { getAllArticleSummaries, getArticle } from "@/lib/article";
 import { createOgpImageUrl } from "@/lib/ogp-image";
 
@@ -34,8 +35,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: article.plainTitle,
       description: article.lead,
-      url: "https://blog.s2n.tech",
-      siteName: "blog.s2n.tech",
+      url: ORIGIN,
+      siteName: TITLE,
       locale: "ja-JP",
       images: createOgpImageUrl(article.plainTitle, article.createdAt),
       type: "article",

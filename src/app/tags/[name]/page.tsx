@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { ArticleCard } from "@/components/ArticleCard/ArticleCard";
 import { Title } from "@/components/Title";
+import { ORIGIN, TITLE } from "@/config";
 import { getAllTags, getArticleSummariesByTag } from "@/lib/article";
 import { createOgpImageUrl } from "@/lib/ogp-image";
 
@@ -34,11 +35,11 @@ export function generateMetadata({ params }: Props): Metadata {
   const tag = decodeURIComponent(params.name);
 
   return {
-    title: `${tag}の記事一覧 | blog.s2n.tech`,
+    title: `${tag}の記事一覧 | ${TITLE}`,
     openGraph: {
       title: `${tag}の記事一覧`,
-      url: "https://blog.s2n.tech",
-      siteName: "blog.s2n.tech",
+      url: ORIGIN,
+      siteName: TITLE,
       locale: "ja-JP",
       type: "website",
       images: createOgpImageUrl(`${tag}の記事一覧`),

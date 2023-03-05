@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { TITLE } from "@/config";
+
 import styles from "./Header.module.css";
 
 export function Header(): JSX.Element {
@@ -9,7 +11,7 @@ export function Header(): JSX.Element {
         <ul className={styles.headerList}>
           <li className={styles.headerBrand}>
             <Link href="/" className={styles.headerBrandLink}>
-              blog.s2n.tech
+              {TITLE}
             </Link>
           </li>
         </ul>

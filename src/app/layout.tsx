@@ -6,6 +6,7 @@ import "katex/dist/katex.min.css";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
+import { ORIGIN, TITLE } from "@/config";
 import { createOgpImageUrl } from "@/lib/ogp-image";
 
 import { Header } from "./Header";
@@ -27,7 +28,7 @@ export default function Layout({ children }: Props): JSX.Element {
 }
 
 export const metadata: Metadata = {
-  title: "blog.s2n.tech",
+  title: TITLE,
   description:
     "しゅん🌙(@shun_shobon)のブログサイトです。技術記事からポエムまで色々書きます。",
   referrer: "strict-origin-when-cross-origin",
@@ -62,14 +63,14 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "blog.s2n.tech",
+    title: TITLE,
     description:
       "しゅん🌙(@shun_shobon)のブログサイトです。技術記事からポエムまで色々書きます。",
-    url: "https://blog.s2n.tech",
-    siteName: "blog.s2n.tech",
+    url: ORIGIN,
+    siteName: TITLE,
     locale: "ja-JP",
     type: "website",
-    images: createOgpImageUrl("blog.s2n.tech"),
+    images: createOgpImageUrl(TITLE),
   },
   twitter: {
     card: "summary_large_image",
