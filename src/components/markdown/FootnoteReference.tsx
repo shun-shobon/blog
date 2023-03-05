@@ -3,6 +3,7 @@ import type {
   FootnoteReference as FootnoteReferenceNode,
 } from "mdast";
 
+import styles from "./markdown.module.css";
 import { getFootnoteDefId, getFootnoteIndex, getFootnoteRefId } from "./utils";
 
 type Props = {
@@ -19,8 +20,14 @@ export function FootnoteReference({
   const fnDefId = getFootnoteDefId(index);
 
   return (
-    <sup id={fnRefId} aria-labelledby={fnDefId}>
-      <a href={`#${fnDefId}`}>{index}</a>
+    <sup
+      id={fnRefId}
+      aria-labelledby={fnDefId}
+      className={styles.footnoteReference}
+    >
+      <a href={`#${fnDefId}`} className={styles.link}>
+        {index}
+      </a>
     </sup>
   );
 }

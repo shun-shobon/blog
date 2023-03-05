@@ -4,6 +4,7 @@ import type {
 } from "mdast";
 import NextLink from "next/link";
 
+import styles from "./markdown.module.css";
 import { PhrasingContentList } from "./PhrasingContent";
 
 type Props = {
@@ -22,11 +23,17 @@ export function Link({
   );
 
   return isLocalLink(url) ? (
-    <NextLink href={url} title={title ?? undefined}>
+    <NextLink href={url} title={title ?? undefined} className={styles.link}>
       {content}
     </NextLink>
   ) : (
-    <a href={url} title={title ?? undefined} target="_blank" rel="noreferrer">
+    <a
+      href={url}
+      title={title ?? undefined}
+      target="_blank"
+      rel="noreferrer"
+      className={styles.link}
+    >
       {content}
     </a>
   );

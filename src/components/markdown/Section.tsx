@@ -6,6 +6,7 @@ import type {
 import type { Section as SectionNode } from "@/lib/plugins";
 
 import { BlockContentList } from "./BlockContent";
+import styles from "./markdown.module.css";
 
 type Props = {
   children: SectionNode;
@@ -17,7 +18,10 @@ export function Section({
   footnoteDefs,
 }: Props): JSX.Element {
   return (
-    <section aria-labelledby={children[0].identifier}>
+    <section
+      aria-labelledby={children[0].identifier}
+      className={styles.section}
+    >
       <BlockContentList footnoteDefs={footnoteDefs}>
         {/* SAFETY: No other than `BlockContentNode` is expected to appear */}
         {children as BlockContentNode[]}

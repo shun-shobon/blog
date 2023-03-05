@@ -1,0 +1,132 @@
+.section > * + * {
+  margin-top: 1.5em;
+}
+
+.pragraph {
+  line-height: 2;
+}
+
+.blockquote {
+  padding: 1em 1.5em;
+  border-left: 0.25em solid var(--border);
+  color: var(--text-quote);
+}
+
+.table {
+  width: 100%;
+  border-top: 2px solid var(--border);
+  border-bottom: 2px solid var(--border);
+  border-collapse: collapse;
+}
+.table > thead {
+  border-bottom: 1px solid var(--border);
+}
+
+.tableCell {
+  padding: 0.5em 1em;
+}
+.tableCellLeft {
+  text-align: left;
+}
+.tableCellRight {
+  text-align: right;
+}
+.tableCellCenter {
+  text-align: center;
+}
+
+.list {
+  padding-left: 1.5em;
+}
+ul.list {
+  list-style: disc;
+}
+ol.list {
+  list-style: decimal;
+}
+.list > li::marker {
+  color: var(--text-quote);
+}
+
+.descriptionTerm {
+  font-weight: 700;
+}
+.descriptionTerm::after {
+  content: ":";
+  content: ":" / "";
+  margin-left: 0.1em;
+}
+* + .descriptionTerm {
+  margin-top: 1em;
+}
+
+.descriptionDescription {
+  margin-top: 0.25em;
+  padding-left: 1.5em;
+}
+
+.thematicBreak {
+  margin: 2em 0;
+  border-top: 1px solid var(--border);
+}
+
+article > header + .section > .heading {
+  margin-top: 0;
+}
+.section > .heading {
+  margin-top: 2em;
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid var(--border);
+  font-weight: 700;
+}
+h1.heading {
+  font-size: 2rem;
+}
+h2.heading {
+  font-size: 2rem;
+}
+h3.heading {
+  font-size: 1.5rem;
+}
+h4.heading {
+  font-size: 1.3rem;
+}
+h5.heading {
+  font-size: 1.2rem;
+}
+h6.heading {
+  font-size: 1.1rem;
+}
+
+.footnoteReference {
+  font-weight: 700;
+}
+
+.footnoteDefinition {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: auto auto 1fr;
+  grid-template-areas: "content link .";
+  margin: 0.5rem 0;
+}
+.footnoteDefinition > * {
+  margin: 0;
+}
+.footnoteDefinitionLink {
+  grid-area: link;
+  align-self: end;
+}
+
+.link {
+  color: var(--primary);
+}
+.link:hover {
+  text-decoration: underline;
+}
+
+.inlineCode {
+  font-family: var(--monospace);
+  background-color: var(--border);
+  padding: 0.1em 0.4em;
+  border-radius: 0.2em;
+}

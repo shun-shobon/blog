@@ -1,11 +1,12 @@
+import classNames from "classnames";
 import type {
   AlignType,
   FootnoteDefinition as FootnoteDefinitionNode,
   TableCell as TableCellNode,
 } from "mdast";
 
+import styles from "./markdown.module.css";
 import { PhrasingContentList } from "./PhrasingContent";
-import styles from "./TableCell.module.css";
 
 type Props = {
   head?: boolean | undefined;
@@ -20,23 +21,23 @@ export function TableCell({
   children: { children },
   footnoteDefs,
 }: Props): JSX.Element {
-  let className;
+  let alignClass;
   switch (align) {
     case "left":
-      className = styles.left;
+      alignClass = styles.tableCellLeft;
       break;
     case "right":
-      className = styles.right;
+      alignClass = styles.tableCellRight;
       break;
     case "center":
-      className = styles.center;
+      alignClass = styles.tableCellCenter;
       break;
   }
 
   const Tag = head ? "th" : "td";
 
   return (
-    <Tag className={className}>
+    <Tag className={classNames(styles.tableCell, alignClass)}>
       <PhrasingContentList footnoteDefs={footnoteDefs}>
         {children}
       </PhrasingContentList>

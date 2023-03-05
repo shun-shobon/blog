@@ -3,6 +3,7 @@ import type {
   Paragraph as ParagraphNode,
 } from "mdast";
 
+import styles from "./markdown.module.css";
 import { PhrasingContentList } from "./PhrasingContent";
 
 type Props = {
@@ -15,7 +16,7 @@ export function Paragraph({
   footnoteDefs,
 }: Props): JSX.Element {
   return (
-    <p>
+    <p className={styles.pragraph}>
       <PhrasingContentList footnoteDefs={footnoteDefs}>
         {children}
       </PhrasingContentList>

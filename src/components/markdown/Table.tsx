@@ -4,6 +4,7 @@ import type {
 } from "mdast";
 import { hasMinLength } from "ts-array-length";
 
+import styles from "./markdown.module.css";
 import { TableRow } from "./TableRow";
 
 type Props = {
@@ -21,7 +22,7 @@ export function Table({
   const [headerRow, ...bodyRows] = children;
 
   return (
-    <table>
+    <table className={styles.table}>
       <thead>
         <TableRow head align={[]} footnoteDefs={footnoteDefs}>
           {headerRow}

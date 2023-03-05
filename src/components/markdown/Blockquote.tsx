@@ -5,6 +5,7 @@ import type {
 } from "mdast";
 
 import { BlockContentList } from "./BlockContent";
+import styles from "./markdown.module.css";
 
 type Props = {
   children: BlockquoteNode;
@@ -16,7 +17,7 @@ export function Blockquote({
   footnoteDefs,
 }: Props): JSX.Element {
   return (
-    <blockquote>
+    <blockquote className={styles.blockquote}>
       <BlockContentList footnoteDefs={footnoteDefs}>
         {/* SAFETY: `DefinitionContent` is not expected to appear. */}
         {children as BlockContentNode[]}

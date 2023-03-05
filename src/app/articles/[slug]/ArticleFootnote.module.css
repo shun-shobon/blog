@@ -1,3 +1,8 @@
+.thematicBreak {
+  margin: 1em 0;
+  border-top: 1px solid var(--border);
+}
+
 .srOnly {
   position: absolute;
   width: 1px;
@@ -8,21 +13,4 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
-}
-
-.footnote {
-  display: grid;
-  gap: 0.5rem;
-  grid-template-columns: auto auto 1fr;
-  grid-template-areas: "content link .";
-  margin: 0.5rem 0;
-}
-
-.footnote > * {
-  margin: 0;
-}
-
-.footnoteLink {
-  grid-area: link;
-  align-self: end;
 }

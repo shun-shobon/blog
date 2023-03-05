@@ -4,6 +4,7 @@ import type {
 } from "mdast";
 
 import { ListItem } from "./ListItem";
+import styles from "./markdown.module.css";
 
 type Props = {
   children: ListNode;
@@ -17,7 +18,7 @@ export function List({
   const Tag = ordered ? "ol" : "ul";
 
   return (
-    <Tag start={start ?? undefined}>
+    <Tag start={start ?? undefined} className={styles.list}>
       {children.map((child, idx) => (
         <ListItem key={idx} footnoteDefs={footnoteDefs}>
           {child}

@@ -1,5 +1,5 @@
 .embedWrapper {
-  margin: 1rem 0;
+  display: block;
 }
 
 .embed {
@@ -8,7 +8,6 @@
   border-radius: 1rem;
   transition: background-color 0.25s ease-in-out;
   overflow: hidden;
-  margin: 1rem 0;
 }
 
 .embed:hover {

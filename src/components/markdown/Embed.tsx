@@ -13,7 +13,7 @@ export async function Embed({
   const ogp = await fetchOgp(value);
 
   return (
-    <a href={value} data-component="true" className={styles.embedWrapper}>
+    <a href={value} className={styles.embedWrapper}>
       <article className={styles.embed}>
         <div className={styles.embedText}>
           <h2 className={styles.embedTextTitle}>{ogp.title}</h2>

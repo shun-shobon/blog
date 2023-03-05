@@ -9,6 +9,8 @@ export * from "./DescriptionListContent";
 export * from "./DescriptionTerm";
 export * from "./Embed";
 export * from "./Emphasis";
+export * from "./FootnoteDefinition";
+export * from "./FootnoteDefinitionList";
 export * from "./FootnoteReference";
 export * from "./Heading";
 export * from "./HTML";

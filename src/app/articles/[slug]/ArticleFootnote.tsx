@@ -1,15 +1,11 @@
-import type { BlockContent, FootnoteDefinition } from "mdast";
+import type { FootnoteDefinition as FootnoteDefinitionNode } from "mdast";
 
-import { BlockContentList } from "@/components/markdown";
-import {
-  getFootnoteDefId,
-  getFootnoteRefId,
-} from "@/components/markdown/utils";
+import { FootnoteDefinitionList } from "@/components/markdown";
 
 import styles from "./ArticleFootnote.module.css";
 
 type Props = {
-  children: FootnoteDefinition[];
+  children: FootnoteDefinitionNode[];
 };
 
 export function ArticleFootnote({
@@ -21,48 +17,13 @@ export function ArticleFootnote({
 
   return (
     <>
-      <hr />
+      <hr className={styles.thematicBreak} />
       <section aria-labelledby="footnote">
         <h2 id="footnote" className={styles.srOnly}>
           脚注
         </h2>
-        <ol>
-          {footnoteDefs.map((footnote, idx) => (
-            <Footnote key={idx} footnoteDefs={footnoteDefs} idx={idx + 1}>
-              {footnote}
-            </Footnote>
-          ))}
-        </ol>
+        <FootnoteDefinitionList>{footnoteDefs}</FootnoteDefinitionList>
       </section>
     </>
-  );
-}
-
-type FootnoteProps = {
-  idx: number;
-  footnoteDefs: FootnoteDefinition[];
-  children: FootnoteDefinition;
-};
-
-function Footnote({
-  children: { children },
-  footnoteDefs,
-  idx,
-}: FootnoteProps): JSX.Element {
-  return (
-    <li key={idx} id={getFootnoteDefId(idx)}>
-      <div className={styles.footnote}>
-        <BlockContentList footnoteDefs={footnoteDefs}>
-          {children as BlockContent[]}
-        </BlockContentList>
-        <a
-          href={`#${getFootnoteRefId(idx)}`}
-          aria-label="Back to content"
-          className={styles.footnoteLink}
-        >
-          ↵
-        </a>
-      </div>
-    </li>
   );
 }

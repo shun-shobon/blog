@@ -2,6 +2,7 @@ import type { FootnoteDefinition as FootnoteDefinitionNode } from "mdast";
 
 import type { DescriptionTerm as DescriptionTermNode } from "@/lib/plugins";
 
+import styles from "./markdown.module.css";
 import { PhrasingContentList } from "./PhrasingContent";
 
 type Props = {
@@ -14,7 +15,7 @@ export function DescriptionTerm({
   footnoteDefs,
 }: Props): JSX.Element {
   return (
-    <dt>
+    <dt className={styles.descriptionTerm}>
       <PhrasingContentList footnoteDefs={footnoteDefs}>
         {children}
       </PhrasingContentList>

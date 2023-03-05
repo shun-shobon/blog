@@ -6,6 +6,7 @@ import type {
 import type { DescriptionDescription as DescriptionDescriptionNode } from "@/lib/plugins";
 
 import { BlockContentList } from "./BlockContent";
+import styles from "./markdown.module.css";
 
 type Props = {
   children: DescriptionDescriptionNode;
@@ -17,7 +18,7 @@ export function DescriptionDescription({
   footnoteDefs,
 }: Props): JSX.Element {
   return (
-    <dd>
+    <dd className={styles.descriptionDescription}>
       <BlockContentList footnoteDefs={footnoteDefs}>
         {/* SAFETY: `DefinitionContent` is not expected to appear. */}
         {children as BlockContentNode[]}

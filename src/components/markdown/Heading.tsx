@@ -3,6 +3,7 @@ import type {
   Heading as HeadingNode,
 } from "mdast";
 
+import styles from "./markdown.module.css";
 import { PhrasingContentList } from "./PhrasingContent";
 
 type Props = {
@@ -17,7 +18,7 @@ export function Heading({
   const Tag = `h${depth}` as const;
 
   return (
-    <Tag id={identifier}>
+    <Tag id={identifier} className={styles.heading}>
       <PhrasingContentList footnoteDefs={footnoteDefs}>
         {children}
       </PhrasingContentList>
