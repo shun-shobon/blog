@@ -3,6 +3,7 @@ import type { BlockContent } from "mdast";
 import { BlockContentList } from "@/components/markdown";
 import type { Article } from "@/lib/plugins";
 
+import { ArticleFooter } from "./ArticleFooter";
 import { ArticleFootnote } from "./ArticleFootnote";
 import { ArticleHeader } from "./ArticleHeader";
 
@@ -20,6 +21,7 @@ export function Article({ children: article }: Props): JSX.Element {
         {content as BlockContent[]}
       </BlockContentList>
       <ArticleFootnote>{article.footnotes}</ArticleFootnote>
+      <ArticleFooter title={article.plainTitle} slug={article.slug} />
     </article>
   );
 }
