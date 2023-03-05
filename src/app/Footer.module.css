@@ -7,6 +7,10 @@
 }
 
 .copyright {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 0.5em;
   font-size: 0.9rem;
   color: var(--text-quote);
 }
