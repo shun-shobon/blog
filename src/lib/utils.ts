@@ -1,4 +1,4 @@
-import { ORIGIN } from "@/config";
+import { ARTICLE_REPOSITORY_EDIT_PATH, ORIGIN } from "@/config";
 
 export class UnreachableError extends Error {
   constructor() {
@@ -18,4 +18,11 @@ export function getUrl(...paths: string[]): URL {
 
 export function getArticleUrl(slug: string): URL {
   return getUrl("/articles", slug);
+}
+
+export function getEditArticleUrl(slug: string): URL {
+  return new URL(
+    joinPath(ARTICLE_REPOSITORY_EDIT_PATH, slug, "README.md"),
+    "https://github.com",
+  );
 }
