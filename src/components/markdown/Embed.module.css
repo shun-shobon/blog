@@ -9,7 +9,6 @@
   transition: background-color 0.25s ease-in-out;
   overflow: hidden;
 }
-
 .embed:hover {
   background-color: var(--border);
 }
@@ -52,7 +51,8 @@
 }
 
 .embedImage {
+  max-width: 40%;
   max-height: 8rem;
-  object-fit: contain;
+  object-fit: cover;
   border-left: 1px solid var(--border);
 }
