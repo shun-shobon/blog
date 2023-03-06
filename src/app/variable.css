@@ -1,10 +1,14 @@
 :root {
   --primary: #79b4e4;
-  --text: #313131;
+  --text: #4d4d4d;
   --text-quote: #626262;
   --background: #fff;
+  --background-header: rgba(255, 255, 255, var(--header-opacity));
   --border: #ced8d9;
   --code-bg: #dde0e4;
+
+  --header-opacity: 0.7;
+  --header-height: 5rem;
 
   --sans-serif: -apple-system, "BlinkMacSystemFont", "Hiragino Kaku Gothic ProN",
     "Hiragino Sans", "Meiryo", sans-serif;
@@ -17,6 +21,7 @@
     --text: #ebedef;
     --text-quote: #b8bbbe;
     --background: #121c26;
+    --background-header: rgba(18, 28, 38, var(--header-opacity));
     --border: #596067;
     --code-bg: #2a333c;
   }

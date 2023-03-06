@@ -2,4 +2,5 @@
   background-color: var(--background);
   color: var(--text);
   accent-color: var(--primary);
+  padding-top: var(--header-height);
 }
