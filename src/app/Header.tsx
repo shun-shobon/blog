@@ -11,7 +11,11 @@ export function Header(): JSX.Element {
         <ul className={styles.headerList}>
           <li className={styles.headerBrand}>
             <Link href="/" className={styles.headerBrandLink}>
-              {TITLE}
+              <img
+                src="/logo.svg"
+                alt={TITLE}
+                className={styles.headerBrandLogo}
+              />
             </Link>
           </li>
         </ul>

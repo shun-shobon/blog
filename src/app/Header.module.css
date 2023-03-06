@@ -1,5 +1,5 @@
 .header {
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 1rem;
   border-bottom: 1px solid var(--border);
 }
 
@@ -15,9 +15,8 @@
   margin-right: auto;
 }
 
-.headerBrandLink {
-  color: var(--primary);
-  font-size: 2rem;
+.headerBrandLogo {
+  height: 3rem;
 }
 
 .headerLink {
