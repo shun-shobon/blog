@@ -78,6 +78,7 @@ article > header + .section > .heading {
   padding-bottom: 0.25em;
   border-bottom: 1px solid var(--border);
   font-weight: 700;
+  scroll-margin-top: calc(var(--header-height) + 1rem);
 }
 h1.heading {
   font-size: 2rem;
@@ -100,6 +101,7 @@ h6.heading {
 
 .footnoteReference {
   font-weight: 700;
+  scroll-margin-top: calc(var(--header-height) + 1rem);
 }
 
 .footnoteDefinition {
