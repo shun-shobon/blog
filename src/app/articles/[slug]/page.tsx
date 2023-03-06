@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: ORIGIN,
       siteName: TITLE,
       locale: "ja-JP",
-      images: createOgpImageUrl(article.plainTitle, article.createdAt),
+      images: createOgpImageUrl(article.plainTitle, article.tags),
       type: "article",
       publishedTime: Temporal.PlainDate.from(article.createdAt)
         .toZonedDateTime("Asia/Tokyo")

@@ -53,7 +53,7 @@ export async function generateFeed(): Promise<Feed> {
       id: getArticleUrl(summary.slug).href,
       link: getArticleUrl(summary.slug).href,
       image: {
-        url: createOgpImageUrl(summary.plainTitle, summary.createdAt),
+        url: createOgpImageUrl(summary.plainTitle, summary.tags),
         type: "image/png",
       },
       description: summary.lead,

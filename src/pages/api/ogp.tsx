@@ -15,10 +15,14 @@ export const config = {
 export default async function ogp(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const title = searchParams.get("title");
+  const tags = searchParams.get("tags")?.split(",") ?? [];
 
   const name = "しゅん🌙";
 
-  const mPlus1p = await fetchFont(M_PLUS_1P, `${title ?? ""}${name}`);
+  const mPlus1p = await fetchFont(
+    M_PLUS_1P,
+    `${title ?? ""}${name}${tags.join("")}`,
+  );
 
   const backgroundImage = `url(data:image/svg+xml,${encodeURIComponent(
     BACKGROUND_IMG,
@@ -43,6 +47,7 @@ export default async function ogp(req: NextRequest) {
           alignItems: "center",
           justifyContent: "center",
           padding: "16px 48px 56px",
+          rowGap: "24px",
         }}
       >
         <h2
@@ -57,6 +62,21 @@ export default async function ogp(req: NextRequest) {
         >
           {title}
         </h2>
+        {tags.length > 0 && (
+          <div
+            style={{
+              display: "flex",
+              width: "100%",
+              justifyContent: "center",
+              gap: "24px",
+              fontSize: 32,
+            }}
+          >
+            {tags.map((tag, idx) => {
+              return <span key={idx}>#{tag}</span>;
+            })}
+          </div>
+        )}
         <div
           style={{
             display: "flex",
