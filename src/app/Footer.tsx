@@ -1,3 +1,5 @@
+import { Twemoji } from "@/components/Twemoji";
+
 import styles from "./Footer.module.css";
 
 export function Footer(): JSX.Element {
@@ -12,7 +14,7 @@ export function Footer(): JSX.Element {
             rel="noreferer"
             className={styles.addressLink}
           >
-            Shuntaro Nishizawa (しゅん🌙)
+            <Twemoji>Shuntaro Nishizawa (しゅん🌙)</Twemoji>
           </a>
         </address>
       </div>

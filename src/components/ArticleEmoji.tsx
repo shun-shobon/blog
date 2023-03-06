@@ -1,6 +1,7 @@
 import classNames from "classnames";
 
 import styles from "./ArticleEmoji.module.css";
+import { Twemoji } from "./Twemoji";
 
 type Props = {
   children: string;
@@ -9,8 +10,8 @@ type Props = {
 
 export function ArticleEmoji({ children, className }: Props): JSX.Element {
   return (
-    <span className={classNames(styles.emoji, className)} aria-hidden="true">
-      {children}
+    <span className={classNames(styles.emoji, className)} role="presentation">
+      <Twemoji>{children}</Twemoji>
     </span>
   );
 }

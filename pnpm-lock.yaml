@@ -14,6 +14,7 @@ specifiers:
   '@types/react-katex': ^3.0.0
   '@types/react-syntax-highlighter': ^15.5.6
   '@types/sharp': ^0.31.1
+  '@types/twemoji-parser': ^13.1.1
   '@types/unist': ^2.0.6
   '@typescript-eslint/eslint-plugin': ^5.54.0
   '@typescript-eslint/parser': ^5.54.0
@@ -56,6 +57,7 @@ specifiers:
   sharp: ^0.31.3
   ts-array-length: ^0.1.2
   tsx: ^3.12.3
+  twemoji-parser: ^14.0.0
   typescript: ^4.9.5
   unified: ^10.1.2
   unist-builder: ^3.0.1
@@ -94,6 +96,7 @@ dependencies:
   sharp: 0.31.3
   ts-array-length: 0.1.2
   tsx: 3.12.3
+  twemoji-parser: 14.0.0
   unified: 10.1.2
   unist-util-remove-position: 4.0.2
   unist-util-visit: 4.1.2
@@ -112,6 +115,7 @@ devDependencies:
   '@types/react-katex': 3.0.0
   '@types/react-syntax-highlighter': 15.5.6
   '@types/sharp': 0.31.1
+  '@types/twemoji-parser': 13.1.1
   '@types/unist': 2.0.6
   '@typescript-eslint/eslint-plugin': 5.54.0_6mj2wypvdnknez7kws2nfdgupi
   '@typescript-eslint/parser': 5.54.0_ycpbpc6yetojsgtrx3mwntkhsu
@@ -1212,6 +1216,10 @@ packages:
     resolution: {integrity: sha512-5nWwamN9ZFHXaYEincMSuza8nNfOof8nmO+mcI+Agx1uMUk4/pQnNIcix+9rLPXzKrm1pS34+6WRDbDV0Jn7ag==}
     dependencies:
       '@types/node': 18.14.2
+    dev: true
+
+  /@types/twemoji-parser/13.1.1:
+    resolution: {integrity: sha512-KhGr5xLxf8XCITgMMG8CIHpnZ5EzbVFPmStoEPd6KqtX7Lc7pc7OZyicfcWJgPv68lq/+y52zu+S5A58oOdVJw==}
     dev: true
 
   /@types/unist/2.0.6:
@@ -5882,6 +5890,10 @@ packages:
     resolution: {integrity: sha512-McnNiV1l8RYeY8tBgEpuodCC1mLUdbSN+CYBL7kJsJNInOP8UjDDEwdk6Mw60vdLLrr5NHKZhMAOSrR2NZuQ+w==}
     dependencies:
       safe-buffer: 5.2.1
+    dev: false
+
+  /twemoji-parser/14.0.0:
+    resolution: {integrity: sha512-9DUOTGLOWs0pFWnh1p6NF+C3CkQ96PWmEFwhOVmT3WbecRC+68AIqpsnJXygfkFcp4aXbOp8Dwbhh/HQgvoRxA==}
     dev: false
 
   /type-check/0.3.2:

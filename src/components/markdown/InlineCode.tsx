@@ -1,5 +1,6 @@
 import type { InlineCode as InlineCodeNode } from "mdast";
 
+import { Twemoji } from "../Twemoji";
 import styles from "./markdown.module.css";
 
 type Props = {
@@ -7,5 +8,9 @@ type Props = {
 };
 
 export function InlineCode({ children: { value } }: Props): JSX.Element {
-  return <code className={styles.inlineCode}>{value}</code>;
+  return (
+    <code className={styles.inlineCode}>
+      <Twemoji>{value}</Twemoji>
+    </code>
+  );
 }
