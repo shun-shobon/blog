@@ -10,7 +10,7 @@
   overflow: hidden;
 }
 .embed:hover {
-  background-color: var(--border);
+  background-color: var(--code-bg);
 }
 
 .embedText {

@@ -1,9 +1,10 @@
 :root {
-  --primary: #0c6e73;
-  --text: #2c363f;
-  --text-quote: #565e65;
-  --background: #e7f5f6;
+  --primary: #79b4e4;
+  --text: #313131;
+  --text-quote: #626262;
+  --background: #fff;
   --border: #ced8d9;
+  --code-bg: #dde0e4;
 
   --sans-serif: -apple-system, "BlinkMacSystemFont", "Hiragino Kaku Gothic ProN",
     "Hiragino Sans", "Meiryo", sans-serif;
@@ -13,10 +14,10 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary: #58babf;
-    --text: #e7f5f6;
-    --text-quote: #a2acac;
-    --background: #2c363f;
-    --border: #414a52;
+    --text: #ebedef;
+    --text-quote: #b8bbbe;
+    --background: #121c26;
+    --border: #596067;
+    --code-bg: #2a333c;
   }
 }
