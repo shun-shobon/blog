@@ -8,11 +8,9 @@ const ICON_PATH = new URL("../../assets/icon.jpg", import.meta.url);
 const GOOGLE_FONT_URL = "https://fonts.googleapis.com/css2";
 const M_PLUS_1P = "M PLUS Rounded 1c:wght@500";
 
-export const config = {
-  runtime: "edge",
-};
+export const runtime = "experimental-edge";
 
-export default async function ogp(req: NextRequest) {
+export async function GET(req: NextRequest): Promise<ImageResponse> {
   const { searchParams } = new URL(req.url);
   const title = searchParams.get("title");
   const tags = searchParams.get("tags")?.split(",") ?? [];
