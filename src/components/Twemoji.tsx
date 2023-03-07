@@ -37,6 +37,7 @@ export function Twemoji({ children }: Props): JSX.Element {
         ) : (
           <img
             key={idx}
+            draggable={false}
             src={node.url}
             alt={node.text}
             className={styles.twemoji}
