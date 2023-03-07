@@ -14,6 +14,7 @@ export async function GET(req: NextRequest): Promise<ImageResponse> {
   const { searchParams } = new URL(req.url);
   const title = searchParams.get("title");
   const tags = searchParams.get("tags")?.split(",") ?? [];
+  const emoji = searchParams.get("emoji");
 
   const name = "しゅん🌙";
 
@@ -51,14 +52,25 @@ export async function GET(req: NextRequest): Promise<ImageResponse> {
         <h2
           style={{
             display: "flex",
+            flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
             fontSize: 64,
             textAlign: "center",
             flexGrow: "1",
+            lineHeight: 1,
           }}
         >
-          {title}
+          {emoji && (
+            <span
+              style={{
+                fontSize: 72,
+              }}
+            >
+              {emoji}
+            </span>
+          )}
+          <span>{title}</span>
         </h2>
         {tags.length > 0 && (
           <div
