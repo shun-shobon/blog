@@ -1,7 +1,5 @@
-"use client";
-
 import type { Code as CodeNode } from "mdast";
-import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
+import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism";
 import { nord as style } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 type Props = {
