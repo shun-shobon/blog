@@ -9,6 +9,7 @@
     "emoji .";
   row-gap: 0.25rem;
   column-gap: 0.5rem;
+  container-type: inline-size;
 }
 
 .articleHeading {
@@ -18,6 +19,7 @@
 .articleEmoji {
   grid-area: emoji;
   font-size: 2.5rem;
+  font-size: max(2.5rem, 8cqw);
 }
 
 .articleMeta {
