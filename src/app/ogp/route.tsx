@@ -59,6 +59,7 @@ export async function GET(req: NextRequest): Promise<ImageResponse> {
             textAlign: "center",
             flexGrow: "1",
             lineHeight: 1,
+            rowGap: "8px",
           }}
         >
           {emoji && (
