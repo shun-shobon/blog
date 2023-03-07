@@ -1,7 +1,7 @@
 import classNames from "classnames";
 
+import { Twemoji } from "../Twemoji";
 import styles from "./ArticleEmoji.module.css";
-import { Twemoji } from "./Twemoji";
 
 type Props = {
   children: string;
