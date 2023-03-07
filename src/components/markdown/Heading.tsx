@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import type {
   FootnoteDefinition as FootnoteDefinitionsNode,
   Heading as HeadingNode,
@@ -8,6 +9,7 @@ import styles from "./markdown.module.css";
 import { PhrasingContentList } from "./PhrasingContent";
 
 type Props = {
+  className?: string | undefined;
   children: HeadingNode;
   footnoteDefs: FootnoteDefinitionsNode[];
 };
@@ -15,11 +17,12 @@ type Props = {
 export function Heading({
   children: { children, depth, identifier },
   footnoteDefs,
+  className,
 }: Props): JSX.Element {
   const Tag = `h${depth}` as const;
 
   return (
-    <Tag id={identifier} className={styles.heading}>
+    <Tag id={identifier} className={classNames(styles.heading, className)}>
       {depth > 1 && identifier && (
         <a href={`#${identifier}`} className={styles.headingLink}>
           <FiLink className={styles.headingLinkIcon} />

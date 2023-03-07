@@ -1,3 +1,4 @@
+import { ArticleEmoji } from "@/components/ArticleEmoji";
 import { ArticleTags } from "@/components/ArticleTag";
 import { Heading } from "@/components/markdown";
 import type { Article } from "@/lib/plugins";
@@ -9,20 +10,22 @@ type Props = {
 };
 
 export function ArticleHeader({
-  children: { title, footnotes, createdAt, updatedAt, tags },
+  children: { title, footnotes, createdAt, updatedAt, tags, emoji },
 }: Props): JSX.Element {
   return (
-    <header>
-      <Heading footnoteDefs={footnotes}>{title}</Heading>
-      <dl className={styles.articleMeta}>
-        <div className={styles.articleMetaItem}>
+    <header className={styles.header}>
+      <Heading footnoteDefs={footnotes} className={styles.heading}>
+        {title}
+      </Heading>
+      <dl className={styles.meta}>
+        <div className={styles.metaItem}>
           <dt>投稿日</dt>
           <dd>
             <time dateTime={createdAt}>{createdAt}</time>
           </dd>
         </div>
         {updatedAt && (
-          <div className={styles.articleMetaItem}>
+          <div className={styles.metaItem}>
             <dt>更新日</dt>
             <dd>
               <time dateTime={updatedAt}>{updatedAt}</time>
@@ -33,11 +36,12 @@ export function ArticleHeader({
           <div className={styles.box}>
             <dt className={styles.srOnly}>タグ</dt>
             <dd>
-              <ArticleTags className={styles.tags}>{tags}</ArticleTags>
+              <ArticleTags>{tags}</ArticleTags>
             </dd>
           </div>
         )}
       </dl>
+      <ArticleEmoji className={styles.emoji}>{emoji}</ArticleEmoji>
     </header>
   );
 }

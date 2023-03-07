@@ -1,10 +1,10 @@
+import { ArticleEmoji } from "@/components/ArticleEmoji";
 import type { ArticleSummary } from "@/lib/markdown";
 
 import { Twemoji } from "../Twemoji";
 import styles from "./ArticleCard.module.css";
 import { Heading } from "./ArticleCardHeading";
 import { ArticleCardMeta } from "./ArticleCardMeta";
-import { ArticleEmoji } from "./ArticleEmoji";
 
 type Props = {
   summary: ArticleSummary;

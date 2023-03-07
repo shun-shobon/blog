@@ -1,33 +1,49 @@
-.articleMeta {
+.header {
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas:
+    "emoji"
+    "heading"
+    "meta";
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.heading {
+  grid-area: heading;
+}
+
+.meta {
+  grid-area: meta;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1rem 1rem;
-  margin: 1rem 0 2rem;
+  column-gap: 1rem;
 }
 
-.articleMetaItem {
+.emoji {
+  grid-area: emoji;
+  place-self: center;
+  font-size: 4rem;
+}
+
+.metaItem {
   display: inline;
 }
-
-.articleMetaItem > dt {
+.metaItem > dt {
   display: inline;
   margin-right: 0.25rem;
 }
-.articleMetaItem > dt::after {
+.metaItem > dt::after {
   content: ":";
   content: ":" / "";
 }
-
-.articleMetaItem > dd {
+.metaItem > dd {
   display: inline;
 }
 
-.tags {
-  display: inline-flex;
-}
-
 .box {
+  margin-top: 1rem;
   flex-basis: 100%;
 }
 

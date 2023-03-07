@@ -17,6 +17,7 @@
 
 .articleEmoji {
   grid-area: emoji;
+  font-size: 2.5rem;
 }
 
 .articleMeta {
