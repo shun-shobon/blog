@@ -24,7 +24,11 @@ export function Heading({
   return (
     <Tag id={identifier} className={classNames(styles.heading, className)}>
       {depth > 1 && identifier && (
-        <a href={`#${identifier}`} className={styles.headingLink}>
+        <a
+          href={`#${identifier}`}
+          className={styles.headingLink}
+          aria-hidden="true"
+        >
           <FiLink className={styles.headingLinkIcon} />
         </a>
       )}
