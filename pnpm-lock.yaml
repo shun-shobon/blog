@@ -19,7 +19,7 @@ specifiers:
   '@types/unist': ^2.0.6
   '@typescript-eslint/eslint-plugin': ^5.54.0
   '@typescript-eslint/parser': ^5.54.0
-  '@vercel/og': ^0.3.0
+  '@vercel/og': ^0.4.0
   '@vitejs/plugin-react': ^3.1.0
   autoprefixer: ^10.4.13
   classnames: ^2.3.2
@@ -72,7 +72,7 @@ specifiers:
 dependencies:
   '@acab/reset.css': 0.5.3
   '@js-temporal/polyfill': 0.4.3
-  '@vercel/og': 0.3.0
+  '@vercel/og': 0.4.0
   classnames: 2.3.2
   fast-glob: 3.2.12
   feed: 4.2.2
@@ -1357,8 +1357,8 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vercel/og/0.3.0:
-    resolution: {integrity: sha512-0L7tAgyLJWv2jdCg7NQtoWOs+ZK+pYeJBev3r1Y8apHjcu7Qj/OfR65JlAPfTMH8b6iUpVtBeHWVUo5KAhaC2A==}
+  /@vercel/og/0.4.0:
+    resolution: {integrity: sha512-FFjXYCD5ZM0VotC9niy11qf4m6D99JVQ73P/uCLJl/r2PeOj0l26xwTEQ4HHJ/yZ6ncByCNoWAjk+S0fjMJmwg==}
     engines: {node: '>=16'}
     dependencies:
       '@resvg/resvg-wasm': 2.4.1
