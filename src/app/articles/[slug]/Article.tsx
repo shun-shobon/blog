@@ -22,7 +22,7 @@ export function Article({ children: article }: Props): JSX.Element {
         {content as BlockContent[]}
       </BlockContentList>
       <ArticleFootnote>{article.footnotes}</ArticleFootnote>
-      <ArticleFooter title={article.plainTitle} slug={article.slug} />
+      <ArticleFooter plainTitle={article.plainTitle} slug={article.slug} />
       <Script
         src="https://platform.twitter.com/widgets.js"
         strategy="afterInteractive"
