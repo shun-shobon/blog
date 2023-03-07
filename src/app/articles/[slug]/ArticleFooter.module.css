@@ -2,8 +2,35 @@
   margin: 2em 0 0;
   text-align: end;
 }
-.footer > * + * {
-  margin-top: 1em;
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.shareButton {
+  border: 1px solid var(--primary);
+  border-radius: 99rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s ease-in-out;
+  background-color: unset;
+}
+.shareButton:hover {
+  background-color: var(--primary);
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.5rem;
+}
+
+.editButtonWrapper {
+  margin-right: auto;
 }
 
 .editButton {
@@ -16,10 +43,4 @@
 }
 .editButton:hover {
   text-decoration: underline;
-}
-
-.editButtonIcon {
-  width: 1.25rem;
-  height: 1.25rem;
-  margin-right: 0.5rem;
 }

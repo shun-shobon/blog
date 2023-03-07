@@ -1,30 +1,55 @@
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaTwitter } from "react-icons/fa";
 
-import { ShareButtons } from "@/components/ShareButtons";
-import { getEditArticleUrl } from "@/lib/utils";
+import { TITLE } from "@/config";
+import { getArticleUrl, getEditArticleUrl } from "@/lib/utils";
 
 import styles from "./ArticleFooter.module.css";
+import { ShareButton } from "./ShareButton";
 
 type Props = {
-  title: string;
+  plainTitle: string;
   slug: string;
 };
 
-export function ArticleFooter({ title, slug }: Props): JSX.Element {
+export function ArticleFooter({ plainTitle, slug }: Props): JSX.Element {
   const editUrl = getEditArticleUrl(slug);
+
+  const title = `${plainTitle} | ${TITLE.replaceAll(".", "․")}`;
+  const url = getArticleUrl(slug).href;
+
+  const twitterUrl = new URL("https://twitter.com/share");
+  twitterUrl.searchParams.set("text", title);
+  twitterUrl.searchParams.set("url", url);
+  twitterUrl.searchParams.set("via", "shun_shobon");
+  twitterUrl.searchParams.set("related", "shun_shobon");
 
   return (
     <footer className={styles.footer}>
-      <ShareButtons plainTitle={title} slug={slug} />
-      <a
-        href={editUrl.href}
-        target="_blank"
-        rel="noreferer"
-        className={styles.editButton}
-      >
-        <FaGithub className={styles.editButtonIcon} />
-        編集の提案をする
-      </a>
+      <ul className={styles.list}>
+        <li className={styles.editButtonWrapper}>
+          <a
+            href={editUrl.href}
+            target="_blank"
+            rel="noreferer"
+            className={styles.editButton}
+          >
+            <FaGithub className={styles.icon} />
+            編集の提案をする
+          </a>
+        </li>
+        <li>
+          <a
+            href={twitterUrl.toString()}
+            target="_blank"
+            rel="noreferrer"
+            className={styles.shareButton}
+          >
+            <FaTwitter className={styles.icon} />
+            ツイート
+          </a>
+        </li>
+        <ShareButton title={title} url={url} />
+      </ul>
     </footer>
   );
 }
