@@ -12,6 +12,10 @@
   color: var(--text-quote);
 }
 
+.math {
+  overflow-x: auto;
+}
+
 .table {
   width: 100%;
   border-top: 2px solid var(--border);
