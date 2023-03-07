@@ -19,7 +19,7 @@ export function ShareButtons({ plainTitle, slug }: Props): JSX.Element {
     setIsShareApiSupported("share" in navigator);
   }, []);
 
-  const title = `${plainTitle} | ${TITLE}\n`;
+  const title = `${plainTitle} | ${TITLE.replaceAll(".", "․")}`;
   const url = getArticleUrl(slug).href;
 
   const twitterUrl = new URL("https://twitter.com/share");
