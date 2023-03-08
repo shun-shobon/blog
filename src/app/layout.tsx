@@ -6,6 +6,7 @@ import "katex/dist/katex.min.css";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
+import { GTM, GTMNoScript } from "@/components/GTM";
 import { ORIGIN, TITLE } from "@/config";
 import { createOgpImageUrl } from "@/lib/ogp-image";
 
@@ -21,6 +22,8 @@ export default function Layout({ children }: Props): JSX.Element {
   return (
     <html lang="ja">
       <body className={styles.body}>
+        <GTM />
+        <GTMNoScript />
         <Header />
         {children}
         <Footer />
