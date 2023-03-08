@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     siteName: TITLE,
     locale: "ja-JP",
     type: "website",
-    images: createOgpImageUrl(TITLE),
+    images: createOgpImageUrl(),
   },
   twitter: {
     card: "summary_large_image",

@@ -1,7 +1,7 @@
 import { ImageResponse } from "@vercel/og";
 import type { NextRequest } from "next/server";
 
-import { BACKGROUND_IMG } from "@/assets/background";
+import { BACKGROUND_IMG, TITLE_IMG } from "@/assets/assets";
 
 const ICON_PATH = new URL("../../assets/icon.jpg", import.meta.url);
 
@@ -27,6 +27,8 @@ export async function GET(req: NextRequest): Promise<ImageResponse> {
     BACKGROUND_IMG,
   )})`;
 
+  const titleImage = `data:image/svg+xml,${encodeURIComponent(TITLE_IMG)}`;
+
   return new ImageResponse(
     (
       <div
@@ -49,30 +51,48 @@ export async function GET(req: NextRequest): Promise<ImageResponse> {
           rowGap: "24px",
         }}
       >
-        <h2
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: 64,
-            textAlign: "center",
-            flexGrow: "1",
-            lineHeight: 1,
-            rowGap: "8px",
-          }}
-        >
-          {emoji && (
-            <span
-              style={{
-                fontSize: 72,
-              }}
-            >
-              {emoji}
-            </span>
-          )}
-          <span>{title}</span>
-        </h2>
+        {title ? (
+          <h2
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 64,
+              textAlign: "center",
+              flexGrow: "1",
+              lineHeight: 1,
+              rowGap: "8px",
+            }}
+          >
+            {emoji && (
+              <span
+                style={{
+                  fontSize: 72,
+                }}
+              >
+                {emoji}
+              </span>
+            )}
+            <span>{title}</span>
+          </h2>
+        ) : (
+          <h2
+            style={{
+              display: "flex",
+              flexGrow: "1",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <img
+              src={titleImage}
+              style={{ aspectRatio: "6 / 1" }}
+              height={128}
+              alt=""
+            />
+          </h2>
+        )}
         {tags.length > 0 && (
           <div
             style={{
@@ -111,6 +131,15 @@ export async function GET(req: NextRequest): Promise<ImageResponse> {
             />
             {name}
           </div>
+
+          {title && (
+            <img
+              src={titleImage}
+              style={{ aspectRatio: "6 / 1" }}
+              height={64}
+              alt=""
+            />
+          )}
         </div>
       </div>
     ),
