@@ -48,7 +48,7 @@ export async function GET(req: NextRequest): Promise<ImageResponse> {
           alignItems: "center",
           justifyContent: "center",
           padding: "16px 48px 56px",
-          rowGap: "24px",
+          // rowGap: "16px",
         }}
       >
         {title ? (
@@ -68,7 +68,8 @@ export async function GET(req: NextRequest): Promise<ImageResponse> {
             {emoji && (
               <span
                 style={{
-                  fontSize: 72,
+                  fontSize: 96,
+                  marginTop: "-24px",
                 }}
               >
                 {emoji}
@@ -101,6 +102,8 @@ export async function GET(req: NextRequest): Promise<ImageResponse> {
               justifyContent: "center",
               gap: "24px",
               fontSize: 32,
+              marginTop: "-24px",
+              marginBottom: "24px",
             }}
           >
             {tags.map((tag, idx) => {
