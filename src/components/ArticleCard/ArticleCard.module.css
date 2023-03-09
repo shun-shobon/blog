@@ -1,12 +1,12 @@
 .article {
   display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: repeat(3, auto) 1fr;
   grid-template-areas:
     "emoji title"
     "emoji meta"
     "emoji lead"
     "emoji .";
+  grid-template-rows: repeat(3, auto) 1fr;
+  grid-template-columns: auto 1fr;
   row-gap: 0.25rem;
   column-gap: 0.5rem;
   container-type: inline-size;

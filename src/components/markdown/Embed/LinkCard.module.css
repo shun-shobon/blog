@@ -4,39 +4,39 @@
 
 .embed {
   display: flex;
+  overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 1rem;
   transition: background-color 0.25s ease-in-out;
-  overflow: hidden;
 }
 .embed:hover {
   background-color: var(--code-bg);
 }
 
 .embedText {
-  padding: 1rem;
   display: grid;
   gap: 0.5rem;
+  padding: 1rem;
 }
 
 .embedTextTitle {
+  overflow: hidden;
   font-size: 1.25rem;
   font-weight: 700;
   text-overflow: ellipsis;
-  overflow: hidden;
   white-space: nowrap;
 }
 
 .embedTextDescription {
-  text-overflow: ellipsis;
   overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .embedTextSite {
   display: flex;
-  align-items: center;
   gap: 0.25rem;
+  align-items: center;
 }
 
 .embedTextSiteImage {
@@ -45,8 +45,8 @@
 }
 
 .embedTextSiteName {
-  text-overflow: ellipsis;
   overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 

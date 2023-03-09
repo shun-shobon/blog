@@ -1,10 +1,10 @@
 .header {
   display: grid;
-  grid-template-rows: repeat(3, auto);
   grid-template-areas:
     "emoji"
     "heading"
     "meta";
+  grid-template-rows: repeat(3, auto);
   gap: 1rem;
   margin-bottom: 2rem;
 }
@@ -14,11 +14,11 @@
 }
 
 .meta {
-  grid-area: meta;
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
+  grid-area: meta;
   column-gap: 1rem;
+  align-items: center;
 }
 
 .emoji {
@@ -43,8 +43,8 @@
 }
 
 .box {
-  margin-top: 1rem;
   flex-basis: 100%;
+  margin-top: 1rem;
 }
 
 .srOnly {

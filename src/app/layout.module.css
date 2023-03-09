@@ -1,6 +1,6 @@
 .body {
-  background-color: var(--background);
-  color: var(--text);
-  accent-color: var(--primary);
   padding-top: var(--header-height);
+  color: var(--text);
+  background-color: var(--background);
+  accent-color: var(--primary);
 }

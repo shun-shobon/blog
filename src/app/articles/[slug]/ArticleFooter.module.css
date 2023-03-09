@@ -6,18 +6,18 @@
 .list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
   gap: 1rem;
+  justify-content: flex-end;
 }
 
 .shareButton {
-  border: 1px solid var(--primary);
-  border-radius: 99rem;
-  padding: 0.5rem 1rem;
   display: flex;
   align-items: center;
-  transition: background-color 0.2s ease-in-out;
+  padding: 0.5rem 1rem;
   background-color: unset;
+  border: 1px solid var(--primary);
+  border-radius: 99rem;
+  transition: background-color 0.2s ease-in-out;
 }
 .shareButton:hover {
   background-color: var(--primary);
@@ -36,10 +36,10 @@
 .editButton {
   display: inline-flex;
   align-items: center;
+  padding: 0.5rem 1rem;
   color: var(--text-quote);
   border: 1px solid var(--border);
   border-radius: 99rem;
-  padding: 0.5rem 1rem;
 }
 .editButton:hover {
   text-decoration: underline;
