@@ -6,11 +6,12 @@
   "packageManager": "pnpm@7.29.1",
   "scripts": {
     "start": "next start",
-    "build": "run-s build:clone build:gen build:next",
+    "build": "run-s build:clone build:gen build:next build:sitemap",
     "build:clone": "git clone https://github.com/shun-shobon/articles.git articles",
     "build:gen": "tsx scripts/generate.ts",
     "build:next": "next build",
-    "clean": "rimraf .next articles data public/articles",
+    "build:sitemap": "next-sitemap",
+    "clean": "rimraf .next articles data public/articles public/sitemap*.xml public/robots.txt",
     "gen:test": "tsx scripts/generate-test.ts",
     "dev": "next dev",
     "lint": "next lint --fix",
@@ -51,6 +52,7 @@
     "zod": "^3.20.6"
   },
   "devDependencies": {
+    "@next/env": "^13.2.3",
     "@testing-library/dom": "^9.0.0",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
@@ -79,6 +81,7 @@
     "jsdom": "^21.1.0",
     "lint-staged": "^13.1.2",
     "mdast-util-math": "^2.0.2",
+    "next-sitemap": "^4.0.5",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.21",
     "prettier": "^2.8.4",
