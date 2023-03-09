@@ -148,10 +148,6 @@ devDependencies:
   vite-tsconfig-paths: 4.0.5_typescript@4.9.5
   vitest: 0.29.2_jsdom@21.1.0
 
-dependenciesMeta:
-  next@13.1.6:
-    unplugged: true
-
 packages:
 
   /@acab/reset.css/0.5.3:
