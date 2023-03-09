@@ -137,6 +137,11 @@ h6.heading {
   align-self: end;
 }
 
+.image {
+  width: 100%;
+  height: auto;
+}
+
 .link {
   color: var(--primary);
 }

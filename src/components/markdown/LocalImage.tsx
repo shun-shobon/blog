@@ -2,6 +2,8 @@ import NextImage from "next/image";
 
 import type { LocalImage as LocalImageNode } from "@/lib/plugins";
 
+import styles from "./markdown.module.css";
+
 type Props = {
   children: LocalImageNode;
 };
@@ -16,6 +18,7 @@ export function LocalImage({
       src={url}
       width={width}
       height={height}
+      className={styles.image}
     />
   );
 }
