@@ -26,6 +26,10 @@ export async function getAllTags(): Promise<string[]> {
   return Array.from(tags);
 }
 
-export async function getArticle(slug: string): Promise<Article> {
-  return (await import(`data/${slug}.json`)) as Article;
+export async function getArticle(slug: string): Promise<Article | null> {
+  try {
+    return (await import(`data/${slug}.json`)) as Article;
+  } catch {
+    return null;
+  }
 }

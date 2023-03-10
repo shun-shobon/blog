@@ -1,8 +1,9 @@
 import { Temporal } from "@js-temporal/polyfill";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 import { ORIGIN, TITLE } from "@/config";
-import { getAllArticleSummaries, getArticle } from "@/lib/article";
+import { getArticle } from "@/lib/article";
 import { createOgpImageUrl } from "@/lib/ogp-image";
 
 import { Article } from "./Article";
@@ -18,6 +19,9 @@ type Props = {
 
 export default async function Page({ params }: Props): Promise<JSX.Element> {
   const article = await getArticle(params.slug);
+  if (!article) {
+    notFound();
+  }
 
   return (
     <main className={styles.main}>
@@ -28,6 +32,9 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = await getArticle(params.slug);
+  if (!article) {
+    notFound();
+  }
 
   return {
     title: article.plainTitle,
@@ -56,14 +63,4 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       tags: article.tags,
     },
   };
-}
-
-export const dynamicParams = false;
-
-export async function generateStaticParams(): Promise<Params[]> {
-  const summaries = await getAllArticleSummaries();
-
-  return summaries.map((summary) => ({
-    slug: summary.slug,
-  }));
 }

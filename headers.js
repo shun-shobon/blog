@@ -22,7 +22,7 @@ module.exports = [
       },
       {
         key: "Permissions-Policy",
-        value: "camera=(), microphone=(), geolocation=(), browsing-topics=()",
+        value: "camera=(), microphone=(), geolocation=()",
       },
       {
         key: "X-Content-Type-Options",
@@ -32,18 +32,6 @@ module.exports = [
         key: "Referrer-Policy",
         value: "strict-origin-when-cross-origin",
       },
-      process.env["NODE_ENV"] === "production" && {
-        key: "Content-Security-Policy",
-        value: [
-          "default-src 'self'",
-          "connect-src 'self' https://www.google-analytics.com",
-          "frame-src 'self' https://www.googletagmanager.com https://platform.twitter.com",
-          "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://platform.twitter.com",
-          "style-src 'self' 'unsafe-inline'",
-          "font-src * data:",
-          "img-src * data:",
-        ].join("; "),
-      },
-    ].filter(Boolean),
+    ],
   },
 ];

@@ -26,3 +26,9 @@ export function getEditArticleUrl(slug: string): URL {
     "https://github.com",
   );
 }
+
+export function bufferToHex(buffer: ArrayBuffer): string {
+  return Array.from(new Uint8Array(buffer))
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+}

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 import { ArticleCard } from "@/components/ArticleCard/ArticleCard";
 import { Title } from "@/components/Title";
 import { ORIGIN, TITLE } from "@/config";
-import { getAllTags, getArticleSummariesByTag } from "@/lib/article";
+import { getArticleSummariesByTag } from "@/lib/article";
 import { createOgpImageUrl } from "@/lib/ogp-image";
 
 import styles from "./page.module.css";
@@ -20,6 +21,9 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
   const name = decodeURIComponent(params.name);
 
   const summaries = await getArticleSummariesByTag(name);
+  if (summaries.length === 0) {
+    notFound();
+  }
 
   return (
     <main className={styles.main}>
@@ -45,14 +49,4 @@ export function generateMetadata({ params }: Props): Metadata {
       images: createOgpImageUrl(`${tag}の記事一覧`),
     },
   };
-}
-
-export const dynamicParams = false;
-
-export async function generateStaticParams(): Promise<Params[]> {
-  const tags = await getAllTags();
-
-  return tags.map((tag) => ({
-    name: tag,
-  }));
 }

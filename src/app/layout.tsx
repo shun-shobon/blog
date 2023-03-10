@@ -4,6 +4,7 @@ import "./reset.css";
 import "katex/dist/katex.min.css";
 
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import type { ReactNode } from "react";
 
 import { GTM, GTMNoScript } from "@/components/GTM";
@@ -19,10 +20,12 @@ type Props = {
 };
 
 export default function Layout({ children }: Props): JSX.Element {
+  const nonce = headers().get("X-CSP-Nonce") ?? "";
+
   return (
     <html lang="ja">
       <body className={styles.body}>
-        <GTM />
+        <GTM nonce={nonce} />
         <GTMNoScript />
         <Header />
         {children}
