@@ -9,6 +9,8 @@ import remarkMath from "remark-math";
 import remarkParse from "remark-parse";
 import { unified } from "unified";
 
+import { ARTICLE_SUMMARIES_FILE_NAME } from "@/config";
+
 import type { Article, ArticlePath } from "./plugins";
 import {
   MARKDOWN_FILENAME,
@@ -52,8 +54,6 @@ export async function exportArticles(
   );
   await Promise.all(promies);
 }
-
-export const ARTICLE_SUMMARIES_FILE_NAME = "__articles__.json";
 
 async function exportArticleSummaries(
   dataExportDir: string,
