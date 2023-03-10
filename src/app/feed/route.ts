@@ -1,5 +1,7 @@
 import { generateFeed } from "@/lib/feed";
 
+export const runtime = "nodejs";
+
 export async function GET(): Promise<Response> {
   const feed = await generateFeed();
   const atom = feed.atom1();

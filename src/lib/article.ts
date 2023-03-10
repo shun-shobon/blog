@@ -1,5 +1,5 @@
+import { ARTICLE_SUMMARIES_FILE_NAME } from "@/config";
 import type { ArticleSummaries, ArticleSummary } from "@/lib/markdown";
-import { ARTICLE_SUMMARIES_FILE_NAME } from "@/lib/markdown";
 
 import type { Article } from "./plugins";
 
