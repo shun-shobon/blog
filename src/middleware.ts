@@ -3,6 +3,10 @@ import { NextResponse } from "next/server";
 
 import { bufferToHex } from "./lib/utils";
 
+export const config = {
+  matcher: ["/((?!_next/static|_next/image).*)"],
+};
+
 export function middleware(req: NextRequest): NextResponse | void {
   const nonce = generateNonce();
   const csp = generateCspHeader(nonce);
