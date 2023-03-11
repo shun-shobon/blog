@@ -17,13 +17,25 @@ export async function getArticleSummariesByTag(
   return summaries.filter((summary) => summary.tags.includes(tag));
 }
 
-export async function getAllTags(): Promise<string[]> {
+export type Tag = {
+  name: string;
+  summaries: ArticleSummary[];
+};
+
+export async function getAllTags(): Promise<Tag[]> {
   const summaries = await getAllArticleSummaries();
 
-  const tags = new Set<string>();
-  summaries.forEach((summary) => summary.tags.forEach((tag) => tags.add(tag)));
+  const tagSet = new Set<string>();
+  summaries.forEach((summary) =>
+    summary.tags.forEach((tag) => tagSet.add(tag)),
+  );
 
-  return Array.from(tags);
+  const tags = Array.from(tagSet);
+
+  return tags.map((tag) => ({
+    name: tag,
+    summaries: summaries.filter((summary) => summary.tags.includes(tag)),
+  }));
 }
 
 export async function getArticle(slug: string): Promise<Article | null> {

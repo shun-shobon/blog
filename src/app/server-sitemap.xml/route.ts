@@ -59,13 +59,16 @@ export async function GET() {
 
   const tagFields = tags.map(
     (tag): ISitemapField => ({
-      loc: getTagUrl(tag).href,
-      lastmod: Temporal.Now.plainDateTimeISO("Asia/Tokyo").toString(),
+      loc: getTagUrl(tag.name).href,
+      lastmod:
+        tag.summaries[0]?.updatedAt ??
+        tag.summaries[0]?.createdAt ??
+        Temporal.Now.plainDateISO("Asia/Tokyo").toString(),
       changefreq: "daily",
       priority: 0.5,
       images: [
         {
-          loc: createOgpImageUrl(`${tag}の記事一覧`),
+          loc: createOgpImageUrl(`${tag.name}の記事一覧`),
         },
       ],
     }),
