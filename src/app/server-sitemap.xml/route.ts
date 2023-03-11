@@ -34,10 +34,11 @@ export async function GET() {
       priority: 0.8,
       images: [
         {
+          // HACK: https://github.com/iamvishnusankar/next-sitemap/pull/598
           loc: createOgpImageUrl(
             summary.plainTitle,
-            summary.emoji,
-            summary.tags,
+            // summary.emoji,
+            // summary.tags,
           ),
         },
       ],
