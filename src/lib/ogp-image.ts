@@ -4,7 +4,7 @@ export function createOgpImageUrl(
   title?: string,
   emoji?: string,
   tags?: string[],
-): string {
+): URL {
   const url = new URL("/ogp", ORIGIN);
   if (title) {
     url.searchParams.set("title", title);
@@ -16,5 +16,5 @@ export function createOgpImageUrl(
     url.searchParams.set("tags", tags.join(","));
   }
 
-  return url.toString();
+  return url;
 }

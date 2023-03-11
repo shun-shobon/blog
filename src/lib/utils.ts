@@ -20,6 +20,10 @@ export function getArticleUrl(slug: string): URL {
   return getUrl("/articles", slug);
 }
 
+export function getTagUrl(name: string): URL {
+  return getUrl("/tags", name);
+}
+
 export function getEditArticleUrl(slug: string): URL {
   return new URL(
     joinPath(ARTICLE_REPOSITORY_EDIT_PATH, slug, "README.md"),
