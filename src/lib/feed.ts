@@ -68,7 +68,7 @@ export async function generateFeed(): Promise<Feed> {
   });
 
   tags.forEach((tag) => {
-    feed.addCategory(tag);
+    feed.addCategory(tag.name);
   });
 
   return feed;
