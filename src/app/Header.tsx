@@ -1,10 +1,8 @@
-import { FaGithub, FaHome } from "react-icons/fa";
-
 import { InternalLink } from "@/components/InternalLink";
-import { Link } from "@/components/Link";
 import { TITLE } from "@/config";
 
 import styles from "./Header.module.css";
+import { HeaderMenu } from "./HeaderMenu";
 
 export function Header(): JSX.Element {
   return (
@@ -19,21 +17,7 @@ export function Header(): JSX.Element {
             className={styles.logoImg}
           />
         </InternalLink>
-        <ul className={styles.navList}>
-          <li>
-            <Link href="/" className={styles.navLink}>
-              <FaHome />
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="https://github.com/shun-shobon"
-              className={styles.navLink}
-            >
-              <FaGithub />
-            </Link>
-          </li>
-        </ul>
+        <HeaderMenu />
       </nav>
     </header>
   );

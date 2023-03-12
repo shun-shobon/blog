@@ -13,6 +13,7 @@
 }
 
 .nav {
+  position: relative;
   display: flex;
   align-items: center;
   width: 100%;
@@ -25,18 +26,4 @@
 .logoImg {
   width: auto;
   height: 3rem;
-}
-
-.navList {
-  display: flex;
-  gap: 1em;
-  align-items: center;
-  font-size: 1.5rem;
-}
-
-.navLink {
-  transition: color 0.2s;
-}
-.navLink:hover {
-  color: var(--primary);
 }
