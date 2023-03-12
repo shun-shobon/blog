@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     "しゅん🌙(@shun_shobon)のブログサイトです。技術記事からポエムまで色々書きます。",
   referrer: "strict-origin-when-cross-origin",
   authors: [{ name: "しゅん🌙", url: "https://s2n.tech" }],
-  themeColor: "#2c363f",
+  themeColor: "#79b4e4",
   colorScheme: "dark light",
   alternates: {
     types: {
