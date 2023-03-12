@@ -9,8 +9,9 @@ import remarkMath from "remark-math";
 import remarkParse from "remark-parse";
 import { unified } from "unified";
 
-import { ARTICLE_SUMMARIES_FILE_NAME } from "@/config";
+import { ARTICLE_DATABASE_NAME } from "@/config";
 
+import type { ArticleDatabaseSerialized } from "./article";
 import type { Article, ArticlePath } from "./plugins";
 import {
   MARKDOWN_FILENAME,
@@ -23,23 +24,11 @@ import {
   remarkSection,
 } from "./plugins";
 
-export type ArticleSummaries = {
-  summaries: ArticleSummary[];
+export type ArticleDatabase = {
+  articles: Article[];
 };
 
-export type ArticleSummary = Pick<
-  Article,
-  | "title"
-  | "plainTitle"
-  | "slug"
-  | "lead"
-  | "createdAt"
-  | "updatedAt"
-  | "emoji"
-  | "tags"
->;
-
-export async function exportArticles(
+export async function exportArticleDatabase(
   fromDir: string,
   imageExportDir: string,
   dataExportDir: string,
@@ -47,39 +36,17 @@ export async function exportArticles(
   const articles = await processArticles(fromDir, imageExportDir);
   sortArticles(articles);
 
-  await exportArticleSummaries(dataExportDir, articles);
+  const tags = getAllTags(articles);
 
-  const promies = articles.map((article) =>
-    exportArticle(dataExportDir, article),
-  );
-  await Promise.all(promies);
-}
+  const databaseSerialized: ArticleDatabaseSerialized = {
+    tags,
+    articles,
+  };
 
-async function exportArticleSummaries(
-  dataExportDir: string,
-  articles: Article[],
-): Promise<void> {
-  const summaries = articles.map(createArticleSummary);
-  const articleSummariesPath = path.join(
-    dataExportDir,
-    ARTICLE_SUMMARIES_FILE_NAME,
-  );
-  await fs.mkdir(dataExportDir, { recursive: true });
-  await fs.writeFile(articleSummariesPath, JSON.stringify({ summaries }));
-}
+  const databasePath = path.join(dataExportDir, ARTICLE_DATABASE_NAME);
 
-function createArticleSummary(article: Article): ArticleSummary {
-  const { title, plainTitle, slug, lead, createdAt, updatedAt, emoji, tags } =
-    article;
-  return { title, plainTitle, slug, lead, createdAt, updatedAt, emoji, tags };
-}
-
-async function exportArticle(
-  dataExportDir: string,
-  article: Article,
-): Promise<void> {
-  const articlePath = path.join(dataExportDir, `${article.slug}.json`);
-  await fs.writeFile(articlePath, JSON.stringify(article));
+  await fs.mkdir(path.dirname(databasePath), { recursive: true });
+  await fs.writeFile(databasePath, JSON.stringify(databaseSerialized));
 }
 
 async function processArticles(
@@ -94,6 +61,16 @@ async function processArticles(
   );
 
   return articles;
+}
+
+function getAllTags(articles: Article[]): string[] {
+  const tagSet = new Set<string>();
+
+  articles.forEach((article) => {
+    article.tags.forEach((tag) => tagSet.add(tag));
+  });
+
+  return Array.from(tagSet);
 }
 
 function sortArticles(articles: Article[]): void {

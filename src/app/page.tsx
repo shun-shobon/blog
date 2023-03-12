@@ -3,18 +3,19 @@ import type { Metadata } from "next";
 import { ArticleCard } from "@/components/ArticleCard/ArticleCard";
 import { Title } from "@/components/Title";
 import { TITLE } from "@/config";
-import { getAllArticleSummaries } from "@/lib/article";
+import { fetchArticleDatabase, getAllArticles } from "@/lib/article";
 
 import styles from "./page.module.css";
 
 export default async function Page(): Promise<JSX.Element> {
-  const summaries = await getAllArticleSummaries();
+  const database = await fetchArticleDatabase();
+  const articles = getAllArticles(database);
 
   return (
     <main className={styles.main}>
       <Title>記事一覧</Title>
-      {summaries.map((summary) => (
-        <ArticleCard key={summary.slug} summary={summary} />
+      {articles.map((article) => (
+        <ArticleCard key={article.slug} article={article} />
       ))}
     </main>
   );

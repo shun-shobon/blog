@@ -1,6 +1,8 @@
 import { ARTICLE_DATA_DIR, ARTICLE_IMAGE_DIR } from "@/config";
-import { exportArticles } from "@/lib/markdown";
+import { exportArticleDatabase } from "@/lib/exports";
 
-void exportArticles("test-articles", ARTICLE_IMAGE_DIR, ARTICLE_DATA_DIR).catch(
-  console.error,
-);
+void exportArticleDatabase(
+  "test-articles",
+  ARTICLE_IMAGE_DIR,
+  ARTICLE_DATA_DIR,
+).catch(console.error);

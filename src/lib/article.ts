@@ -1,47 +1,51 @@
-import { ARTICLE_SUMMARIES_FILE_NAME } from "@/config";
-import type { ArticleSummaries, ArticleSummary } from "@/lib/markdown";
+import { ARTICLE_DATABASE_NAME } from "@/config";
 
 import type { Article } from "./plugins";
 
-export async function getAllArticleSummaries(): Promise<ArticleSummary[]> {
-  return (
-    (await import(`data/${ARTICLE_SUMMARIES_FILE_NAME}`)) as ArticleSummaries
-  ).summaries;
-}
-
-export async function getArticleSummariesByTag(
-  tag: string,
-): Promise<ArticleSummary[]> {
-  const summaries = await getAllArticleSummaries();
-
-  return summaries.filter((summary) => summary.tags.includes(tag));
-}
-
-export type Tag = {
-  name: string;
-  summaries: ArticleSummary[];
+export type ArticleDatabase = {
+  tags: Map<string, Article[]>;
+  articles: Map<string, Article>;
 };
 
-export async function getAllTags(): Promise<Tag[]> {
-  const summaries = await getAllArticleSummaries();
+export type ArticleDatabaseSerialized = {
+  tags: string[];
+  articles: Article[];
+};
 
-  const tagSet = new Set<string>();
-  summaries.forEach((summary) =>
-    summary.tags.forEach((tag) => tagSet.add(tag)),
+export async function fetchArticleDatabase(): Promise<ArticleDatabase> {
+  const serialized = (await import(
+    `data/${ARTICLE_DATABASE_NAME}`
+  )) as ArticleDatabaseSerialized;
+
+  const tags = new Map<string, Article[]>(
+    serialized.tags.map((tag) => [tag, []]),
   );
+  const articles = new Map<string, Article>();
 
-  const tags = Array.from(tagSet);
+  serialized.articles.forEach((article) => {
+    articles.set(article.slug, article);
+    article.tags.forEach((tag) => {
+      tags.get(tag)?.push(article);
+    });
+  });
 
-  return tags.map((tag) => ({
-    name: tag,
-    summaries: summaries.filter((summary) => summary.tags.includes(tag)),
-  }));
+  return { tags, articles };
 }
 
-export async function getArticle(slug: string): Promise<Article | null> {
-  try {
-    return (await import(`data/${slug}.json`)) as Article;
-  } catch {
-    return null;
-  }
+export function getAllArticles(database: ArticleDatabase): Article[] {
+  return Array.from(database.articles.values());
+}
+
+export function getArticle(
+  database: ArticleDatabase,
+  slug: string,
+): Article | null {
+  return database.articles.get(slug) ?? null;
+}
+
+export function getArticlesByTag(
+  database: ArticleDatabase,
+  tag: string,
+): Article[] | null {
+  return database.tags.get(tag) ?? null;
 }

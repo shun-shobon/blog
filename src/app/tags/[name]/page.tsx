@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { ArticleCard } from "@/components/ArticleCard/ArticleCard";
 import { Title } from "@/components/Title";
 import { ORIGIN, TITLE } from "@/config";
-import { getArticleSummariesByTag } from "@/lib/article";
+import { fetchArticleDatabase, getArticlesByTag } from "@/lib/article";
 import { createOgpImageUrl } from "@/lib/ogp-image";
 
 import styles from "./page.module.css";
@@ -20,16 +20,15 @@ type Props = {
 export default async function Page({ params }: Props): Promise<JSX.Element> {
   const name = decodeURIComponent(params.name);
 
-  const summaries = await getArticleSummariesByTag(name);
-  if (summaries.length === 0) {
-    notFound();
-  }
+  const database = await fetchArticleDatabase();
+  const articles = getArticlesByTag(database, name);
+  if (!articles) notFound();
 
   return (
     <main className={styles.main}>
       <Title>{name}の記事一覧</Title>
-      {summaries.map((summary) => (
-        <ArticleCard key={summary.slug} summary={summary} />
+      {articles.map((article) => (
+        <ArticleCard key={article.slug} article={article} />
       ))}
     </main>
   );

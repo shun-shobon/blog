@@ -3,19 +3,19 @@ import { getServerSideSitemap } from "next-sitemap";
 import type { ISitemapField } from "next-sitemap/dist/@types/interface";
 
 import { TITLE } from "@/config";
-import { getAllArticleSummaries, getAllTags } from "@/lib/article";
+import { fetchArticleDatabase, getAllArticles } from "@/lib/article";
 import { createOgpImageUrl } from "@/lib/ogp-image";
 import { getArticleUrl, getTagUrl, getUrl } from "@/lib/utils";
 
 export async function GET() {
-  const summaries = await getAllArticleSummaries();
-  const tags = await getAllTags();
+  const database = await fetchArticleDatabase();
+  const articles = getAllArticles(database);
 
   const topFiled: ISitemapField = {
     loc: getUrl("/").href,
     lastmod:
-      summaries[0]?.updatedAt ??
-      summaries[0]?.createdAt ??
+      articles[0]?.updatedAt ??
+      articles[0]?.createdAt ??
       Temporal.Now.plainDateISO("Asia/Tokyo").toString(),
     changefreq: "daily",
     priority: 0.6,
@@ -26,29 +26,29 @@ export async function GET() {
     ],
   };
 
-  const articleFields = summaries.map(
-    (summary): ISitemapField => ({
-      loc: getArticleUrl(summary.slug).href,
-      lastmod: summary.updatedAt ?? summary.createdAt,
+  const articleFields = articles.map(
+    (article): ISitemapField => ({
+      loc: getArticleUrl(article.slug).href,
+      lastmod: article.updatedAt ?? article.createdAt,
       changefreq: "weekly",
       priority: 0.8,
       images: [
         {
           // HACK: https://github.com/iamvishnusankar/next-sitemap/pull/598
           loc: createOgpImageUrl(
-            summary.plainTitle,
+            article.plainTitle,
             // summary.emoji,
             // summary.tags,
           ),
         },
       ],
-      ...(Temporal.PlainDate.from(summary.createdAt).until(
+      ...(Temporal.PlainDate.from(article.createdAt).until(
         Temporal.Now.plainDateISO("Asia/Tokyo"),
       ).days < 2
         ? {
             news: {
-              title: summary.plainTitle,
-              date: summary.createdAt,
+              title: article.plainTitle,
+              date: article.createdAt,
               publicationLanguage: "ja-JP",
               publicationName: TITLE,
             },
@@ -57,18 +57,18 @@ export async function GET() {
     }),
   );
 
-  const tagFields = tags.map(
-    (tag): ISitemapField => ({
-      loc: getTagUrl(tag.name).href,
+  const tagFields = Array.from(database.tags.entries()).map(
+    ([name, articles]): ISitemapField => ({
+      loc: getTagUrl(name).href,
       lastmod:
-        tag.summaries[0]?.updatedAt ??
-        tag.summaries[0]?.createdAt ??
+        articles[0]?.updatedAt ??
+        articles[0]?.createdAt ??
         Temporal.Now.plainDateISO("Asia/Tokyo").toString(),
       changefreq: "daily",
       priority: 0.5,
       images: [
         {
-          loc: createOgpImageUrl(`${tag.name}の記事一覧`),
+          loc: createOgpImageUrl(`${name}の記事一覧`),
         },
       ],
     }),

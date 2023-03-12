@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { ORIGIN, TITLE } from "@/config";
-import { getArticle } from "@/lib/article";
+import { fetchArticleDatabase, getArticle } from "@/lib/article";
 import { createOgpImageUrl } from "@/lib/ogp-image";
 
 import { Article } from "./Article";
@@ -18,10 +18,9 @@ type Props = {
 };
 
 export default async function Page({ params }: Props): Promise<JSX.Element> {
-  const article = await getArticle(params.slug);
-  if (!article) {
-    notFound();
-  }
+  const database = await fetchArticleDatabase();
+  const article = getArticle(database, params.slug);
+  if (!article) notFound();
 
   return (
     <main className={styles.main}>
@@ -31,10 +30,9 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const article = await getArticle(params.slug);
-  if (!article) {
-    notFound();
-  }
+  const database = await fetchArticleDatabase();
+  const article = getArticle(database, params.slug);
+  if (!article) notFound();
 
   return {
     title: article.plainTitle,

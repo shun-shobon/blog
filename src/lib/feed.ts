@@ -2,16 +2,16 @@ import { Temporal } from "@js-temporal/polyfill";
 import { Feed } from "feed";
 
 import { ORIGIN, TITLE } from "@/config";
-import { getAllArticleSummaries, getAllTags } from "@/lib/article";
+import { fetchArticleDatabase, getAllArticles } from "@/lib/article";
 
 import { createOgpImageUrl } from "./ogp-image";
 import { getArticleUrl, getUrl } from "./utils";
 
 export async function generateFeed(): Promise<Feed> {
-  const summaries = await getAllArticleSummaries();
-  const tags = await getAllTags();
+  const database = await fetchArticleDatabase();
+  const articles = getAllArticles(database);
 
-  const lastUpdated = summaries[0]?.updatedAt ?? summaries[0]?.createdAt;
+  const lastUpdated = articles[0]?.updatedAt ?? articles[0]?.createdAt;
   const updated = lastUpdated
     ? new Date(
         Temporal.PlainDateTime.from(lastUpdated)
@@ -36,39 +36,39 @@ export async function generateFeed(): Promise<Feed> {
     },
   });
 
-  summaries.forEach((summary) => {
+  articles.forEach((article) => {
     const date = new Date(
-      Temporal.PlainDateTime.from(summary.updatedAt ?? summary.createdAt)
+      Temporal.PlainDateTime.from(article.updatedAt ?? article.createdAt)
         .toZonedDateTime("Asia/Tokyo")
         .toInstant().epochMilliseconds,
     );
     const published = new Date(
-      Temporal.PlainDateTime.from(summary.createdAt)
+      Temporal.PlainDateTime.from(article.createdAt)
         .toZonedDateTime("Asia/Tokyo")
         .toInstant().epochMilliseconds,
     );
 
     feed.addItem({
-      title: summary.plainTitle,
-      id: getArticleUrl(summary.slug).href,
-      link: getArticleUrl(summary.slug).href,
+      title: article.plainTitle,
+      id: getArticleUrl(article.slug).href,
+      link: getArticleUrl(article.slug).href,
       image: {
         url: createOgpImageUrl(
-          summary.plainTitle,
-          summary.emoji,
-          summary.tags,
+          article.plainTitle,
+          article.emoji,
+          article.tags,
         ).toString(),
         type: "image/png",
       },
-      description: summary.lead,
-      category: summary.tags.map((tag) => ({ name: tag })),
+      description: article.lead,
+      category: article.tags.map((tag) => ({ name: tag })),
       date,
       published,
     });
   });
 
-  tags.forEach((tag) => {
-    feed.addCategory(tag.name);
+  Array.from(database.tags.keys()).forEach((tag) => {
+    feed.addCategory(tag);
   });
 
   return feed;

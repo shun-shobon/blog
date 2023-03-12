@@ -1,5 +1,5 @@
 import { ArticleEmoji } from "@/components/ArticleEmoji";
-import type { ArticleSummary } from "@/lib/markdown";
+import type { Article } from "@/lib/plugins";
 
 import { Twemoji } from "../Twemoji";
 import styles from "./ArticleCard.module.css";
@@ -7,23 +7,23 @@ import { Heading } from "./ArticleCardHeading";
 import { ArticleCardMeta } from "./ArticleCardMeta";
 
 type Props = {
-  summary: ArticleSummary;
+  article: Article;
 };
 
-export function ArticleCard({ summary }: Props): JSX.Element {
+export function ArticleCard({ article }: Props): JSX.Element {
   return (
     <article
-      key={summary.slug}
+      key={article.slug}
       className={styles.article}
-      aria-labelledby={summary.title.identifier}
+      aria-labelledby={article.title.identifier}
     >
-      <Heading slug={summary.slug}>{summary.title}</Heading>
+      <Heading slug={article.slug}>{article.title}</Heading>
       <ArticleEmoji className={styles.articleEmoji}>
-        {summary.emoji}
+        {article.emoji}
       </ArticleEmoji>
-      <ArticleCardMeta summary={summary} className={styles.articleMeta} />
+      <ArticleCardMeta article={article} className={styles.articleMeta} />
       <p className={styles.articleLead}>
-        <Twemoji>{summary.lead}</Twemoji>
+        <Twemoji>{article.lead}</Twemoji>
       </p>
     </article>
   );
