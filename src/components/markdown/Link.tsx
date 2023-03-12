@@ -3,7 +3,8 @@ import type {
   Link as LinkNode,
 } from "mdast";
 
-import { InternalLink } from "../InternalLink";
+import { Link as LinkComponent } from "@/components/Link";
+
 import styles from "./markdown.module.css";
 import { PhrasingContentList } from "./PhrasingContent";
 
@@ -16,34 +17,15 @@ export function Link({
   children: { children, url, title },
   footnoteDefs,
 }: Props): JSX.Element {
-  const content = (
-    <PhrasingContentList footnoteDefs={footnoteDefs}>
-      {children}
-    </PhrasingContentList>
-  );
-
-  return isLocalLink(url) ? (
-    <InternalLink href={url} title={title ?? undefined} className={styles.link}>
-      {content}
-    </InternalLink>
-  ) : (
-    <a
+  return (
+    <LinkComponent
       href={url}
       title={title ?? undefined}
-      target="_blank"
-      rel="noreferrer"
       className={styles.link}
     >
-      {content}
-    </a>
+      <PhrasingContentList footnoteDefs={footnoteDefs}>
+        {children}
+      </PhrasingContentList>
+    </LinkComponent>
   );
-}
-
-function isLocalLink(url: string): boolean {
-  try {
-    new URL(url);
-    return false;
-  } catch {
-    return true;
-  }
 }

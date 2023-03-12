@@ -1,6 +1,7 @@
 import { FaGithub, FaHome } from "react-icons/fa";
 
 import { InternalLink } from "@/components/InternalLink";
+import { Link } from "@/components/Link";
 import { TITLE } from "@/config";
 
 import styles from "./Header.module.css";
@@ -20,19 +21,17 @@ export function Header(): JSX.Element {
         </InternalLink>
         <ul className={styles.navList}>
           <li>
-            <InternalLink href="/" className={styles.navLink}>
+            <Link href="/" className={styles.navLink}>
               <FaHome />
-            </InternalLink>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="https://github.com/shun-shobon"
-              target="_blank"
-              rel="norefferer"
               className={styles.navLink}
             >
               <FaGithub />
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
