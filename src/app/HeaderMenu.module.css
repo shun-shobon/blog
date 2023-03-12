@@ -1,6 +1,6 @@
 .navList {
   display: flex;
-  column-gap: 1em;
+  column-gap: 0.5rem;
   align-items: center;
   font-size: 1.5rem;
 }
@@ -13,6 +13,7 @@
 .navLink {
   display: flex;
   align-items: center;
+  padding: 0.25rem 0.5rem;
   transition: color 0.2s;
 }
 .navLink:hover {
