@@ -1,6 +1,6 @@
 import "@acab/reset.css";
-import "./variable.css";
 import "./reset.css";
+import "./variable.css";
 import "katex/dist/katex.min.css";
 
 import type { Metadata } from "next";
@@ -8,6 +8,7 @@ import { headers } from "next/headers";
 import type { ReactNode } from "react";
 
 import { GTM, GTMNoScript } from "@/components/GTM";
+import { ProgressBar } from "@/components/ProgressBar";
 import { ORIGIN, TITLE } from "@/config";
 import { createOgpImageUrl } from "@/lib/ogp-image";
 
@@ -27,6 +28,7 @@ export default function Layout({ children }: Props): JSX.Element {
       <body className={styles.body}>
         <GTM nonce={nonce} />
         <GTMNoScript />
+        <ProgressBar />
         <Header />
         {children}
         <Footer />

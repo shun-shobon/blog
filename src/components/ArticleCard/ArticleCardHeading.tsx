@@ -1,9 +1,9 @@
 import classNames from "classnames";
 import type { Heading as HeadingNode } from "mdast";
-import Link from "next/link";
 
 import { PhrasingContentList } from "@/components/markdown";
 
+import { InternalLink } from "../InternalLink";
 import styles from "./ArticleCardHeading.module.css";
 
 type HeadingProps = {
@@ -20,9 +20,9 @@ export function Heading({
 
   return (
     <h2 id={identifier} className={classNames(styles.heading, className)}>
-      <Link href={href} className={styles.headingLink}>
+      <InternalLink href={href} className={styles.headingLink}>
         <PhrasingContentList footnoteDefs={[]}>{children}</PhrasingContentList>
-      </Link>
+      </InternalLink>
     </h2>
   );
 }

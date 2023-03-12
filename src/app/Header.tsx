@@ -1,5 +1,4 @@
-import Link from "next/link";
-
+import { InternalLink } from "@/components/InternalLink";
 import { TITLE } from "@/config";
 
 import styles from "./Header.module.css";
@@ -10,7 +9,7 @@ export function Header(): JSX.Element {
       <nav>
         <ul className={styles.headerList}>
           <li className={styles.headerBrand}>
-            <Link href="/" className={styles.headerBrandLink}>
+            <InternalLink href="/" className={styles.headerBrandLink}>
               <img
                 src="/logo.svg"
                 width={3072}
@@ -18,7 +17,7 @@ export function Header(): JSX.Element {
                 alt={TITLE}
                 className={styles.headerBrandLogo}
               />
-            </Link>
+            </InternalLink>
           </li>
         </ul>
       </nav>

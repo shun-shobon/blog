@@ -1,8 +1,8 @@
 import classNames from "classnames";
-import NextLink from "next/link";
 import type { ComponentProps } from "react";
 
 import styles from "./ArticleTag.module.css";
+import { InternalLink } from "./InternalLink";
 
 type Props = {
   children: string[];
@@ -29,9 +29,9 @@ type ArticleTagProps = {
 function ArticleTag({ children }: ArticleTagProps): JSX.Element {
   return (
     <li>
-      <NextLink href={`/tags/${children}`} className={styles.tag}>
+      <InternalLink href={`/tags/${children}`} className={styles.tag}>
         {children}
-      </NextLink>
+      </InternalLink>
     </li>
   );
 }

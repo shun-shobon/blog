@@ -2,8 +2,8 @@ import type {
   FootnoteDefinition as FootnoteDefinitionNode,
   Link as LinkNode,
 } from "mdast";
-import NextLink from "next/link";
 
+import { InternalLink } from "../InternalLink";
 import styles from "./markdown.module.css";
 import { PhrasingContentList } from "./PhrasingContent";
 
@@ -23,9 +23,9 @@ export function Link({
   );
 
   return isLocalLink(url) ? (
-    <NextLink href={url} title={title ?? undefined} className={styles.link}>
+    <InternalLink href={url} title={title ?? undefined} className={styles.link}>
       {content}
-    </NextLink>
+    </InternalLink>
   ) : (
     <a
       href={url}
