@@ -8,7 +8,7 @@ import { InternalLink } from "./InternalLink";
 
 type Props = {
   children: string[] | Map<string, Article[]>;
-} & ComponentProps<"ul">;
+} & Omit<ComponentProps<"ul">, "children">;
 
 export function ArticleTags({
   children,
