@@ -15,9 +15,7 @@ export default async function Page(): Promise<JSX.Element> {
   return (
     <main className={globalStyles.generalLayout}>
       <Title>タグ一覧</Title>
-      <ArticleTags className={styles.tags}>
-        {Array.from(database.tags.keys())}
-      </ArticleTags>
+      <ArticleTags className={styles.tags}>{database.tags}</ArticleTags>
     </main>
   );
 }
