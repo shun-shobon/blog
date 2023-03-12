@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import styles from "@/app/global.module.css";
 import { ArticleCard } from "@/components/ArticleCard/ArticleCard";
 import { Title } from "@/components/Title";
 import { ORIGIN, TITLE } from "@/config";
 import { fetchArticleDatabase, getArticlesByTag } from "@/lib/article";
 import { createOgpImageUrl } from "@/lib/ogp-image";
-
-import styles from "./page.module.css";
 
 type Params = {
   name: string;
@@ -25,7 +24,7 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
   if (!articles) notFound();
 
   return (
-    <main className={styles.main}>
+    <main className={styles.generalLayout}>
       <Title>{name}の記事一覧</Title>
       {articles.map((article) => (
         <ArticleCard key={article.slug} article={article} />

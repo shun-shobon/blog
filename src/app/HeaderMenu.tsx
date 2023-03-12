@@ -2,7 +2,7 @@
 
 import classNames from "classnames";
 import { useEffect, useState } from "react";
-import { FaGithub, FaHome } from "react-icons/fa";
+import { FaGithub, FaHome, FaTags } from "react-icons/fa";
 import { RxCross2, RxHamburgerMenu } from "react-icons/rx";
 
 import { Link } from "@/components/Link";
@@ -45,9 +45,14 @@ export function HeaderMenu(): JSX.Element {
 
 const headerMenu = [
   {
-    name: "HOME",
+    name: "Home",
     href: "/",
     Icon: FaHome,
+  },
+  {
+    name: "Tags",
+    href: "/tags",
+    Icon: FaTags,
   },
   {
     name: "GitHub",
