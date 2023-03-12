@@ -7,31 +7,36 @@
   display: flex;
   align-items: center;
   height: var(--header-height);
-  padding: 0 1rem;
+  padding: 0 1.5rem;
   background-color: var(--background-header);
   backdrop-filter: blur(10px);
 }
 
-.headerList {
+.nav {
   display: flex;
-  gap: 1rem;
   align-items: center;
-  font-size: 1.25rem;
-  font-weight: 600;
+  width: 100%;
 }
 
-.headerBrand {
+.logoLink {
   margin-right: auto;
 }
 
-.headerBrandLogo {
+.logoImg {
   width: auto;
   height: 3rem;
 }
 
-.headerLink {
+.navList {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.navLink {
   transition: color 0.2s;
 }
-.headerLink:hover {
+.navLink:hover {
   color: var(--primary);
 }
