@@ -1,3 +1,5 @@
+import classNames from "classnames";
+
 import { ArticleEmoji } from "@/components/ArticleEmoji";
 import { ArticleTags } from "@/components/ArticleTag";
 import { Heading } from "@/components/markdown";
@@ -7,13 +9,15 @@ import styles from "./ArticleHeader.module.css";
 
 type Props = {
   children: Article;
+  className?: string | undefined;
 };
 
 export function ArticleHeader({
   children: { title, footnotes, createdAt, updatedAt, tags, emoji },
+  className,
 }: Props): JSX.Element {
   return (
-    <header className={styles.header}>
+    <header className={classNames(styles.header, className)}>
       <Heading footnoteDefs={footnotes} className={styles.heading}>
         {title}
       </Heading>
@@ -36,7 +40,7 @@ export function ArticleHeader({
           <div className={styles.box}>
             <dt className={styles.srOnly}>タグ</dt>
             <dd>
-              <ArticleTags>{tags}</ArticleTags>
+              <ArticleTags className={styles.tags}>{tags}</ArticleTags>
             </dd>
           </div>
         )}
