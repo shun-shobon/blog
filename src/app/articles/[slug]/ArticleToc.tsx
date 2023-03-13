@@ -18,17 +18,34 @@ export function ArticleToc({ article, className }: Props): JSX.Element | null {
   const [activeIds, setActiveIds] = useState<string[]>([]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    const inObserver = new IntersectionObserver(
       (event) => {
-        const id = event.find((e) => e.isIntersecting)?.target.id;
+        const outIds = event
+          .filter((entry) => !entry.isIntersecting)
+          .map((entry) => {
+            const $heading = entry.target.querySelector("h1,h2,h3,h4,h5,h6");
+            if (!$heading) return;
+            return $heading.id;
+          })
+          .filter((id): id is string => id !== undefined);
+        const inIds = event
+          .filter((entry) => entry.isIntersecting)
+          .map((entry) => {
+            const $heading = entry.target.querySelector("h1,h2,h3,h4,h5,h6");
+            if (!$heading) return;
+            return $heading.id;
+          })
+          .filter((id): id is string => id !== undefined);
 
-        if (!id) return;
-        setActiveIds([id]);
+        setActiveIds((prev) => [
+          ...prev.filter((id) => !outIds.includes(id)),
+          ...inIds,
+        ]);
       },
       {
         root: null,
-        rootMargin: "-80px 0px -50% 0px",
-        threshold: [0.0, 1.0],
+        rootMargin: "-80px 0px 0px 0px",
+        threshold: [0.0],
       },
     );
 
@@ -38,13 +55,16 @@ export function ArticleToc({ article, className }: Props): JSX.Element | null {
       const $heading = document.querySelector(`#${id}`);
       if (!$heading) return;
 
-      observer.observe($heading);
+      const $section = $heading.closest("section");
+      if (!$section) return;
+
+      inObserver.observe($section);
       item.children.forEach(subscribe);
     };
     article.toc.forEach(subscribe);
 
     return () => {
-      observer.disconnect();
+      inObserver.disconnect();
     };
   }, [article]);
 
