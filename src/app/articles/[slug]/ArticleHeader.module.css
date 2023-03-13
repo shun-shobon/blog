@@ -6,7 +6,8 @@
     "meta";
   grid-template-rows: repeat(3, auto);
   gap: 1rem;
-  margin-bottom: 2rem;
+  justify-items: center;
+  padding-bottom: 2rem;
 }
 
 .heading {
@@ -19,6 +20,7 @@
   grid-area: meta;
   column-gap: 1rem;
   align-items: center;
+  justify-content: center;
 }
 
 .emoji {
@@ -40,6 +42,10 @@
 }
 .metaItem > dd {
   display: inline;
+}
+
+.tags {
+  justify-content: center;
 }
 
 .box {

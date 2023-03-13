@@ -81,7 +81,7 @@ ol.list {
   border-bottom: 1px solid var(--border);
   scroll-margin-top: calc(var(--header-height) + 1rem);
 }
-article > header + .section > .heading {
+.root > .section:first-child > .heading {
   margin-top: 0;
 }
 h1.heading {
