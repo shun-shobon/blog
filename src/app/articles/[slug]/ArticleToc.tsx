@@ -72,12 +72,13 @@ export function ArticleToc({ article, className }: Props): JSX.Element | null {
     <div className={className}>
       <nav className={styles.nav}>
         <h2 className={styles.title}>目次</h2>
-        <ul>
+        <ul className={styles.list}>
           {article.toc.map((item) => (
             <TocItem
               key={item.heading.identifier ?? ""}
               toc={item}
               activeIds={activeIds}
+              level={1}
             />
           ))}
         </ul>
@@ -89,20 +90,20 @@ export function ArticleToc({ article, className }: Props): JSX.Element | null {
 type TocItemProps = {
   toc: Toc;
   activeIds: string[];
+  level: number;
 };
 
-export function TocItem({ toc, activeIds }: TocItemProps): JSX.Element {
+export function TocItem({ toc, activeIds, level }: TocItemProps): JSX.Element {
   const id = toc.heading.identifier ?? "fake";
 
   return (
-    <li className={styles.item}>
-      <a
-        href={`#${id}`}
-        className={classNames(
-          styles.link,
-          activeIds.includes(id) && styles.linkActive,
-        )}
-      >
+    <li
+      className={classNames(
+        styles.item,
+        activeIds.includes(id) && styles.active,
+      )}
+    >
+      <a href={`#${id}`} className={styles.link}>
         <PhrasingContentList footnoteDefs={[]}>
           {toc.heading.children}
         </PhrasingContentList>
@@ -114,6 +115,7 @@ export function TocItem({ toc, activeIds }: TocItemProps): JSX.Element {
               key={item.heading.identifier ?? ""}
               toc={item}
               activeIds={activeIds}
+              level={level + 1}
             />
           ))}
         </ul>
