@@ -71,7 +71,7 @@ specifiers:
   unist-util-remove-position: ^4.0.2
   unist-util-visit: ^4.1.2
   vite: ^4.1.4
-  vite-tsconfig-paths: ^4.0.5
+  vite-tsconfig-paths: ^4.0.7
   vitest: ^0.29.2
   yaml: ^2.2.1
   zod: ^3.21.4
@@ -151,7 +151,7 @@ devDependencies:
   typescript: 4.9.5
   unist-builder: 3.0.1
   vite: 4.1.4_@types+node@18.15.0
-  vite-tsconfig-paths: 4.0.5_typescript@4.9.5
+  vite-tsconfig-paths: 4.0.7_vwvfc4ezh6jlf6pa67auy3eulu
   vitest: 0.29.2_jsdom@21.1.1
 
 packages:
@@ -6721,12 +6721,18 @@ packages:
       - terser
     dev: true
 
-  /vite-tsconfig-paths/4.0.5_typescript@4.9.5:
-    resolution: {integrity: sha512-/L/eHwySFYjwxoYt1WRJniuK/jPv+WGwgRGBYx3leciR5wBeqntQpUE6Js6+TJemChc+ter7fDBKieyEWDx4yQ==}
+  /vite-tsconfig-paths/4.0.7_vwvfc4ezh6jlf6pa67auy3eulu:
+    resolution: {integrity: sha512-MwIYaby6kcbQGZqMH+gAK6h0UYQGOkjsuAgw4q6bP/5vWkn8VKvnmLuCQHA2+IzHAJHnE8OFTO4lnJLFMf9+7Q==}
+    peerDependencies:
+      vite: '*'
+    peerDependenciesMeta:
+      vite:
+        optional: true
     dependencies:
       debug: 4.3.4
       globrex: 0.1.2
       tsconfck: 2.0.3_typescript@4.9.5
+      vite: 4.1.4_@types+node@18.15.0
     transitivePeerDependencies:
       - supports-color
       - typescript
