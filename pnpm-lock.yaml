@@ -63,7 +63,7 @@ specifiers:
   stylelint-config-recess-order: ^4.0.0
   stylelint-config-recommended: ^10.0.1
   ts-array-length: ^0.1.2
-  tsx: ^3.12.3
+  tsx: ^3.12.5
   twemoji-parser: ^14.0.0
   typescript: ^4.9.5
   unified: ^10.1.2
@@ -100,7 +100,7 @@ dependencies:
   remark-parse: 10.0.1
   sharp: 0.31.3
   ts-array-length: 0.1.2
-  tsx: 3.12.4
+  tsx: 3.12.5
   twemoji-parser: 14.0.0
   unified: 10.1.2
   unist-util-remove-position: 4.0.2
@@ -6482,8 +6482,8 @@ packages:
       typescript: 4.9.5
     dev: true
 
-  /tsx/3.12.4:
-    resolution: {integrity: sha512-IZ0Sqm2AwB3pgE+n/g63jLNoZZXinbXfdvNWB06wdwey+/7dlOurdS1Vb5pBGa7VO9nTjAOODbQgKCgHk7JsPA==}
+  /tsx/3.12.5:
+    resolution: {integrity: sha512-/TLj30xF1zcN9JkoFCyROtIQUi8cRQG+AFchsg5YkWou3+RXxTZS/ffWB3nCxyZPoBqF2+8ohs07N815dNb1wQ==}
     hasBin: true
     dependencies:
       '@esbuild-kit/cjs-loader': 2.4.2
