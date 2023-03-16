@@ -9,6 +9,7 @@ specifiers:
   '@testing-library/react': ^14.0.0
   '@testing-library/user-event': ^14.4.3
   '@tsconfig/next': ^1.0.5
+  '@tsconfig/next-strictest': ^1.0.1
   '@tsconfig/strictest': ^1.0.2
   '@types/katex': ^0.16.0
   '@types/mdast': ^3.0.10
@@ -116,6 +117,7 @@ devDependencies:
   '@testing-library/react': 14.0.0_biqbaboplfbrettd7655fr4n2y
   '@testing-library/user-event': 14.4.3_@testing-library+dom@9.0.1
   '@tsconfig/next': 1.0.5
+  '@tsconfig/next-strictest': 1.0.1
   '@tsconfig/strictest': 1.0.2
   '@types/katex': 0.16.0
   '@types/mdast': 3.0.10
@@ -960,6 +962,10 @@ packages:
   /@trysound/sax/0.2.0:
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
     engines: {node: '>=10.13.0'}
+    dev: true
+
+  /@tsconfig/next-strictest/1.0.1:
+    resolution: {integrity: sha512-TchRkSPpfgXA4v5kKIPGZDatVNSHD92VJSVRDnKfQcUAml6Efn9KJbX+hxQcfzTwrnJHkdj0c7eE9PNSew0B4A==}
     dev: true
 
   /@tsconfig/next/1.0.5:
