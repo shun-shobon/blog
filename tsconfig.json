@@ -1,5 +1,5 @@
 {
-  "extends": "@tsconfig/next-strictest",
+  "extends": "@tsconfig/next-strictest/tsconfig",
   "compilerOptions": {
     // TODO: Remove this after merging https://github.com/tsconfig/bases/pull/161
     "ignoreDeprecations": "5.0",
