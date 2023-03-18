@@ -9,11 +9,7 @@ type Props = {
 export function Code({ children: { value, lang } }: Props): JSX.Element {
   return (
     <div>
-      <SyntaxHighlighter
-        language={lang ?? undefined}
-        style={style}
-        showLineNumbers
-      >
+      <SyntaxHighlighter language={lang ?? undefined} style={style}>
         {value}
       </SyntaxHighlighter>
     </div>
