@@ -42,7 +42,7 @@ specifiers:
   mdast-util-math: ^2.0.2
   mdast-util-to-string: ^3.1.1
   next: ^13.2.4
-  next-sitemap: ^4.0.5
+  next-sitemap: ^4.0.6
   node-html-parser: ^6.1.5
   npm-run-all: ^4.1.5
   nprogress: ^0.2.0
@@ -139,7 +139,7 @@ devDependencies:
   jsdom: 21.1.1
   lint-staged: 13.2.0
   mdast-util-math: 2.0.2
-  next-sitemap: 4.0.5_jccvrrmb7rb3yyi3af3znueaea
+  next-sitemap: 4.0.6_jccvrrmb7rb3yyi3af3znueaea
   npm-run-all: 4.1.5
   postcss: 8.4.21
   prettier: 2.8.4
@@ -4359,8 +4359,8 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
-  /next-sitemap/4.0.5_jccvrrmb7rb3yyi3af3znueaea:
-    resolution: {integrity: sha512-kIABX4n8wJqY2sttRjivBF2r1MgQ1pg12y87qGT+5meippq0ivxaNSRldMDOj8pIGhXW6uFAsCxyH/JftqkwWQ==}
+  /next-sitemap/4.0.6_jccvrrmb7rb3yyi3af3znueaea:
+    resolution: {integrity: sha512-pZ9tynYe6mRR189qZqcOlWVgM1Gxo07BJQW0AjerKmLwQOt+6FQMdaDgifgCt6jDT3Y3EG/+NUDDZRcd0gbPkA==}
     engines: {node: '>=14.18'}
     hasBin: true
     peerDependencies:
