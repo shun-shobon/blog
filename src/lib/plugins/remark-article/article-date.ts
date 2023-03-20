@@ -16,16 +16,8 @@ export async function readArticleChangedDate(
 ): Promise<ArticleDate> {
   const dates = await readFileModifiedDates(repoPath, file);
 
-  const createdAt = dates
-    .at(-1)
-    ?.toZonedDateTimeISO("Asia/Tokyo")
-    .toPlainDate()
-    .toString();
-  const updatedAt = dates
-    .at(0)
-    ?.toZonedDateTimeISO("Asia/Tokyo")
-    .toPlainDate()
-    .toString();
+  const createdAt = dates.at(-1)?.toZonedDateTimeISO("Asia/Tokyo").toString();
+  const updatedAt = dates.at(0)?.toZonedDateTimeISO("Asia/Tokyo").toString();
 
   if (!createdAt || !updatedAt) {
     throw new Error("Expected dates to be non-empty");
@@ -42,7 +34,7 @@ async function readFileModifiedDates(
   repoPath: string,
   file: string,
 ): Promise<Temporal.Instant[]> {
-  const command = `git log --date=iso-strict --format=%ad -- ${file}`;
+  const command = `git log --date=unix --format=%ad -- ${file}`;
   const { stdout, stderr } = await exec(command, {
     cwd: repoPath,
   });
@@ -52,5 +44,6 @@ async function readFileModifiedDates(
   return stdout
     .trim()
     .split("\n")
-    .map((line) => Temporal.Instant.from(line));
+    .map((line) => Number(line))
+    .map((unixTime) => Temporal.Instant.fromEpochSeconds(unixTime));
 }

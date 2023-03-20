@@ -1,3 +1,4 @@
+import { Temporal } from "@js-temporal/polyfill";
 import classNames from "classnames";
 
 import { ArticleEmoji } from "@/components/ArticleEmoji";
@@ -25,14 +26,22 @@ export function ArticleHeader({
         <div className={styles.metaItem}>
           <dt>投稿日</dt>
           <dd>
-            <time dateTime={createdAt}>{createdAt}</time>
+            <time dateTime={createdAt}>
+              {Temporal.ZonedDateTime.from(createdAt)
+                .toPlainDate()
+                .toLocaleString("ja-JP")}
+            </time>
           </dd>
         </div>
         {updatedAt && (
           <div className={styles.metaItem}>
             <dt>更新日</dt>
             <dd>
-              <time dateTime={updatedAt}>{updatedAt}</time>
+              <time dateTime={updatedAt}>
+                {Temporal.ZonedDateTime.from(updatedAt)
+                  .toPlainDate()
+                  .toLocaleString("ja-JP")}
+              </time>
             </dd>
           </div>
         )}

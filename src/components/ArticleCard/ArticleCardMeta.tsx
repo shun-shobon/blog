@@ -1,3 +1,5 @@
+import { Temporal } from "@js-temporal/polyfill";
+
 import type { Article } from "@/lib/plugins";
 
 import { ArticleTags } from "../ArticleTag";
@@ -14,7 +16,11 @@ export function ArticleCardMeta({ article, className }: Props): JSX.Element {
       <dl className={styles.list}>
         <dt className={styles.srOnly}>Posted at</dt>
         <dd>
-          <time dateTime={article.createdAt}>{article.createdAt}</time>
+          <time dateTime={article.createdAt}>
+            {Temporal.ZonedDateTime.from(article.createdAt)
+              .toPlainDate()
+              .toLocaleString("ja-JP")}
+          </time>
         </dd>
         {article.tags.length > 0 && (
           <>

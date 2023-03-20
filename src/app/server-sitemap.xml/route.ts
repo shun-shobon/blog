@@ -16,7 +16,7 @@ export async function GET() {
     lastmod:
       articles[0]?.updatedAt ??
       articles[0]?.createdAt ??
-      Temporal.Now.plainDateISO("Asia/Tokyo").toString(),
+      Temporal.Now.zonedDateTimeISO("Asia/Tokyo").toString(),
     changefreq: "daily",
     priority: 0.6,
     images: [
@@ -42,8 +42,8 @@ export async function GET() {
           ),
         },
       ],
-      ...(Temporal.PlainDate.from(article.createdAt).until(
-        Temporal.Now.plainDateISO("Asia/Tokyo"),
+      ...(Temporal.ZonedDateTime.from(article.createdAt).until(
+        Temporal.Now.zonedDateTimeISO("Asia/Tokyo"),
       ).days < 2
         ? {
             news: {
@@ -63,7 +63,7 @@ export async function GET() {
       lastmod:
         articles[0]?.updatedAt ??
         articles[0]?.createdAt ??
-        Temporal.Now.plainDateISO("Asia/Tokyo").toString(),
+        Temporal.Now.zonedDateTimeISO("Asia/Tokyo").toString(),
       changefreq: "daily",
       priority: 0.5,
       images: [
