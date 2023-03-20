@@ -52,7 +52,7 @@
     "remark-parse": "^10.0.1",
     "sharp": "^0.31.3",
     "ts-array-length": "^0.1.2",
-    "tsx": "^3.12.5",
+    "tsx": "^3.12.6",
     "twemoji-parser": "^14.0.0",
     "unified": "^10.1.2",
     "unist-util-remove-position": "^4.0.2",
