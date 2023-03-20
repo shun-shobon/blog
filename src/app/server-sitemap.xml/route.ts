@@ -51,7 +51,9 @@ export async function GET() {
         ? {
             news: {
               title: article.plainTitle,
-              date: article.createdAt,
+              date: Temporal.ZonedDateTime.from(article.createdAt).toString({
+                timeZoneName: "never",
+              }),
               publicationLanguage: "ja-JP",
               publicationName: TITLE,
             },
