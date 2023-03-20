@@ -17,9 +17,9 @@ export function ArticleCardMeta({ article, className }: Props): JSX.Element {
         <dt className={styles.srOnly}>Posted at</dt>
         <dd>
           <time
-            dateTime={Temporal.ZonedDateTime.from(article.createdAt)
-              .toInstant()
-              .toString()}
+            dateTime={Temporal.ZonedDateTime.from(article.createdAt).toString({
+              timeZoneName: "never",
+            })}
           >
             {Temporal.ZonedDateTime.from(article.createdAt)
               .toPlainDate()

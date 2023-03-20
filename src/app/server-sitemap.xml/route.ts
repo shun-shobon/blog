@@ -17,9 +17,7 @@ export async function GET() {
       articles[0]?.updatedAt ??
         articles[0]?.createdAt ??
         Temporal.Now.zonedDateTimeISO("Asia/Tokyo"),
-    )
-      .toInstant()
-      .toString(),
+    ).toString({ timeZoneName: "never" }),
     changefreq: "daily",
     priority: 0.6,
     images: [
@@ -34,9 +32,7 @@ export async function GET() {
       loc: getArticleUrl(article.slug).href,
       lastmod: Temporal.ZonedDateTime.from(
         article.updatedAt ?? article.createdAt,
-      )
-        .toInstant()
-        .toString(),
+      ).toString({ timeZoneName: "never" }),
       changefreq: "weekly",
       priority: 0.8,
       images: [
@@ -71,9 +67,7 @@ export async function GET() {
         articles[0]?.updatedAt ??
           articles[0]?.createdAt ??
           Temporal.Now.zonedDateTimeISO("Asia/Tokyo"),
-      )
-        .toInstant()
-        .toString(),
+      ).toString({ timeZoneName: "never" }),
       changefreq: "daily",
       priority: 0.5,
       images: [

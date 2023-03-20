@@ -27,9 +27,9 @@ export function ArticleHeader({
           <dt>投稿日</dt>
           <dd>
             <time
-              dateTime={Temporal.ZonedDateTime.from(createdAt)
-                .toInstant()
-                .toString()}
+              dateTime={Temporal.ZonedDateTime.from(createdAt).toString({
+                timeZoneName: "never",
+              })}
             >
               {Temporal.ZonedDateTime.from(createdAt)
                 .toPlainDate()
@@ -42,9 +42,9 @@ export function ArticleHeader({
             <dt>更新日</dt>
             <dd>
               <time
-                dateTime={Temporal.ZonedDateTime.from(updatedAt)
-                  .toInstant()
-                  .toString()}
+                dateTime={Temporal.ZonedDateTime.from(updatedAt).toString({
+                  timeZoneName: "never",
+                })}
               >
                 {Temporal.ZonedDateTime.from(updatedAt)
                   .toPlainDate()
