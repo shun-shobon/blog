@@ -14,9 +14,7 @@ export async function generateFeed(): Promise<Feed> {
   const lastUpdated = articles[0]?.updatedAt ?? articles[0]?.createdAt;
   const updated = lastUpdated
     ? new Date(
-        Temporal.PlainDateTime.from(lastUpdated)
-          .toZonedDateTime("Asia/Tokyo")
-          .toInstant().epochMilliseconds,
+        Temporal.ZonedDateTime.from(lastUpdated).toInstant().epochMilliseconds,
       )
     : new Date(Temporal.Now.instant().epochMilliseconds);
 
@@ -38,14 +36,14 @@ export async function generateFeed(): Promise<Feed> {
 
   articles.forEach((article) => {
     const date = new Date(
-      Temporal.PlainDateTime.from(article.updatedAt ?? article.createdAt)
-        .toZonedDateTime("Asia/Tokyo")
-        .toInstant().epochMilliseconds,
+      Temporal.ZonedDateTime.from(
+        article.updatedAt ?? article.createdAt,
+      ).toInstant().epochMilliseconds,
     );
     const published = new Date(
-      Temporal.PlainDateTime.from(article.createdAt)
-        .toZonedDateTime("Asia/Tokyo")
-        .toInstant().epochMilliseconds,
+      Temporal.ZonedDateTime.from(
+        article.createdAt,
+      ).toInstant().epochMilliseconds,
     );
 
     feed.addItem({

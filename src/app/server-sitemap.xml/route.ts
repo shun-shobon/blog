@@ -13,10 +13,13 @@ export async function GET() {
 
   const topFiled: ISitemapField = {
     loc: getUrl("/").href,
-    lastmod:
+    lastmod: Temporal.ZonedDateTime.from(
       articles[0]?.updatedAt ??
-      articles[0]?.createdAt ??
-      Temporal.Now.zonedDateTimeISO("Asia/Tokyo").toString(),
+        articles[0]?.createdAt ??
+        Temporal.Now.zonedDateTimeISO("Asia/Tokyo"),
+    )
+      .toInstant()
+      .toString(),
     changefreq: "daily",
     priority: 0.6,
     images: [
@@ -29,7 +32,11 @@ export async function GET() {
   const articleFields = articles.map(
     (article): ISitemapField => ({
       loc: getArticleUrl(article.slug).href,
-      lastmod: article.updatedAt ?? article.createdAt,
+      lastmod: Temporal.ZonedDateTime.from(
+        article.updatedAt ?? article.createdAt,
+      )
+        .toInstant()
+        .toString(),
       changefreq: "weekly",
       priority: 0.8,
       images: [
@@ -60,10 +67,13 @@ export async function GET() {
   const tagFields = Array.from(database.tags.entries()).map(
     ([name, articles]): ISitemapField => ({
       loc: getTagUrl(name).href,
-      lastmod:
+      lastmod: Temporal.ZonedDateTime.from(
         articles[0]?.updatedAt ??
-        articles[0]?.createdAt ??
-        Temporal.Now.zonedDateTimeISO("Asia/Tokyo").toString(),
+          articles[0]?.createdAt ??
+          Temporal.Now.zonedDateTimeISO("Asia/Tokyo"),
+      )
+        .toInstant()
+        .toString(),
       changefreq: "daily",
       priority: 0.5,
       images: [

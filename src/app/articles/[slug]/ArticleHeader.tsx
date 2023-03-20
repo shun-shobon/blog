@@ -26,7 +26,11 @@ export function ArticleHeader({
         <div className={styles.metaItem}>
           <dt>投稿日</dt>
           <dd>
-            <time dateTime={createdAt}>
+            <time
+              dateTime={Temporal.ZonedDateTime.from(createdAt)
+                .toInstant()
+                .toString()}
+            >
               {Temporal.ZonedDateTime.from(createdAt)
                 .toPlainDate()
                 .toLocaleString("ja-JP")}
@@ -37,7 +41,11 @@ export function ArticleHeader({
           <div className={styles.metaItem}>
             <dt>更新日</dt>
             <dd>
-              <time dateTime={updatedAt}>
+              <time
+                dateTime={Temporal.ZonedDateTime.from(updatedAt)
+                  .toInstant()
+                  .toString()}
+              >
                 {Temporal.ZonedDateTime.from(updatedAt)
                   .toPlainDate()
                   .toLocaleString("ja-JP")}

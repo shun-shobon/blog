@@ -49,13 +49,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         article.tags,
       ),
       type: "article",
-      publishedTime: Temporal.PlainDate.from(article.createdAt)
-        .toZonedDateTime("Asia/Tokyo")
+      publishedTime: Temporal.ZonedDateTime.from(article.createdAt)
+        .toInstant()
         .toString(),
       modifiedTime: article.updatedAt
-        ? Temporal.PlainDate.from(article.updatedAt)
-            .toZonedDateTime("Asia/Tokyo")
-            .toString()
+        ? Temporal.ZonedDateTime.from(article.updatedAt).toInstant().toString()
         : undefined,
       authors: "しゅん🌙 (@shun_shobon)",
       tags: article.tags,

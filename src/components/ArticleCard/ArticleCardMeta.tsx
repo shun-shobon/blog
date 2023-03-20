@@ -16,7 +16,11 @@ export function ArticleCardMeta({ article, className }: Props): JSX.Element {
       <dl className={styles.list}>
         <dt className={styles.srOnly}>Posted at</dt>
         <dd>
-          <time dateTime={article.createdAt}>
+          <time
+            dateTime={Temporal.ZonedDateTime.from(article.createdAt)
+              .toInstant()
+              .toString()}
+          >
             {Temporal.ZonedDateTime.from(article.createdAt)
               .toPlainDate()
               .toLocaleString("ja-JP")}
