@@ -70,7 +70,7 @@ specifiers:
   unist-builder: ^3.0.1
   unist-util-remove-position: ^4.0.2
   unist-util-visit: ^4.1.2
-  vite: ^4.2.0
+  vite: ^4.2.1
   vite-tsconfig-paths: ^4.0.7
   vitest: ^0.29.5
   yaml: ^2.2.1
@@ -127,7 +127,7 @@ devDependencies:
   '@types/unist': 2.0.6
   '@typescript-eslint/eslint-plugin': 5.55.0_qsnvknysi52qtaxqdyqyohkcku
   '@typescript-eslint/parser': 5.55.0_j4766f7ecgqbon3u7zlxn5zszu
-  '@vitejs/plugin-react': 3.1.0_vite@4.2.0
+  '@vitejs/plugin-react': 3.1.0_vite@4.2.1
   autoprefixer: 10.4.14_postcss@8.4.21
   cssnano: 5.1.15_postcss@8.4.21
   endent: 2.1.0
@@ -150,8 +150,8 @@ devDependencies:
   stylelint-config-recommended: 11.0.0_stylelint@15.3.0
   typescript: 5.0.2
   unist-builder: 3.0.1
-  vite: 4.2.0_@types+node@18.15.3
-  vite-tsconfig-paths: 4.0.7_rn5le4pusnctvs35nlnpu7hrue
+  vite: 4.2.1_@types+node@18.15.3
+  vite-tsconfig-paths: 4.0.7_bi7wsi5xkno72wnymskyicz4pu
   vitest: 0.29.5_jsdom@21.1.1
 
 packages:
@@ -1215,7 +1215,7 @@ packages:
       yoga-wasm-web: 0.3.0
     dev: false
 
-  /@vitejs/plugin-react/3.1.0_vite@4.2.0:
+  /@vitejs/plugin-react/3.1.0_vite@4.2.1:
     resolution: {integrity: sha512-AfgcRL8ZBhAlc3BFdigClmTUMISmmzHn7sB2h9U1odvc5U/MjWXsAaz18b/WoppUTDBzxOJwo2VdClfUcItu9g==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -1226,7 +1226,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.19.6_@babel+core@7.21.0
       magic-string: 0.27.0
       react-refresh: 0.14.0
-      vite: 4.2.0_@types+node@18.15.3
+      vite: 4.2.1_@types+node@18.15.3
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6438,7 +6438,7 @@ packages:
       mlly: 1.2.0
       pathe: 1.1.0
       picocolors: 1.0.0
-      vite: 4.2.0_@types+node@18.15.3
+      vite: 4.2.1_@types+node@18.15.3
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -6449,7 +6449,7 @@ packages:
       - terser
     dev: true
 
-  /vite-tsconfig-paths/4.0.7_rn5le4pusnctvs35nlnpu7hrue:
+  /vite-tsconfig-paths/4.0.7_bi7wsi5xkno72wnymskyicz4pu:
     resolution: {integrity: sha512-MwIYaby6kcbQGZqMH+gAK6h0UYQGOkjsuAgw4q6bP/5vWkn8VKvnmLuCQHA2+IzHAJHnE8OFTO4lnJLFMf9+7Q==}
     peerDependencies:
       vite: '*'
@@ -6460,14 +6460,14 @@ packages:
       debug: 4.3.4
       globrex: 0.1.2
       tsconfck: 2.0.3_typescript@5.0.2
-      vite: 4.2.0_@types+node@18.15.3
+      vite: 4.2.1_@types+node@18.15.3
     transitivePeerDependencies:
       - supports-color
       - typescript
     dev: true
 
-  /vite/4.2.0_@types+node@18.15.3:
-    resolution: {integrity: sha512-AbDTyzzwuKoRtMIRLGNxhLRuv1FpRgdIw+1y6AQG73Q5+vtecmvzKo/yk8X/vrHDpETRTx01ABijqUHIzBXi0g==}
+  /vite/4.2.1_@types+node@18.15.3:
+    resolution: {integrity: sha512-7MKhqdy0ISo4wnvwtqZkjke6XN4taqQ2TBaTccLIpOKv7Vp2h4Y+NpmWCnGDeSvvn45KxvWgGyb0MkHvY1vgbg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -6550,7 +6550,7 @@ packages:
       tinybench: 2.4.0
       tinypool: 0.4.0
       tinyspy: 1.1.1
-      vite: 4.2.0_@types+node@18.15.3
+      vite: 4.2.1_@types+node@18.15.3
       vite-node: 0.29.5_@types+node@18.15.3
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
