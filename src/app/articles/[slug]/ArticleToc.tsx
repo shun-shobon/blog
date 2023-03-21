@@ -52,7 +52,7 @@ export function ArticleToc({ article, className }: Props): JSX.Element | null {
     const subscribe = (item: Toc) => {
       const id = item.heading.identifier ?? "fake";
 
-      const $heading = document.querySelector(`#${id}`);
+      const $heading = document.getElementById(id);
       if (!$heading) return;
 
       const $section = $heading.closest("section");
