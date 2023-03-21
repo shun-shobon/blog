@@ -57,6 +57,7 @@ specifiers:
   remark-math: ^5.1.1
   remark-parse: ^10.0.1
   rimraf: ^4.4.0
+  schema-dts: ^1.1.2
   sharp: ^0.31.3
   stylelint: ^15.3.0
   stylelint-config-prettier: ^9.0.5
@@ -144,6 +145,7 @@ devDependencies:
   postcss: 8.4.21
   prettier: 2.8.6
   rimraf: 4.4.0
+  schema-dts: 1.1.2_typescript@5.0.2
   stylelint: 15.3.0
   stylelint-config-prettier: 9.0.5_stylelint@15.3.0
   stylelint-config-recess-order: 4.0.0_stylelint@15.3.0
@@ -5561,6 +5563,14 @@ packages:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
     dependencies:
       loose-envify: 1.4.0
+
+  /schema-dts/1.1.2_typescript@5.0.2:
+    resolution: {integrity: sha512-MpNwH0dZJHinVxk9bT8XUdjKTxMYrA5bLtrrGmFA6PTLwlOKnhi67XoRd6/ty+Djt6ZC0slR57qFhZDNMI6DhQ==}
+    peerDependencies:
+      typescript: '>=4.1.0'
+    dependencies:
+      typescript: 5.0.2
+    dev: true
 
   /semver/5.7.1:
     resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==}

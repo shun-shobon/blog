@@ -1,5 +1,6 @@
 import { Temporal } from "@js-temporal/polyfill";
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 
 import { ORIGIN, TITLE } from "@/config";
@@ -21,10 +22,11 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
   const database = await fetchArticleDatabase();
   const article = getArticle(database, params.slug);
   if (!article) notFound();
+  const nonce = headers().get("X-CSP-Nonce") ?? "";
 
   return (
     <main className={styles.main}>
-      <Article>{article}</Article>
+      <Article nonce={nonce}>{article}</Article>
     </main>
   );
 }
