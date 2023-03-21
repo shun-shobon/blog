@@ -26,7 +26,9 @@ export function LinkCard({ ogp, url }: Props): JSX.Element {
             <span className={styles.embedTextSiteName}>{ogp.site}</span>
           </footer>
         </div>
-        <img alt="" src={ogp.image} className={styles.embedImage} />
+        {ogp.image && (
+          <img alt="" src={ogp.image} className={styles.embedImage} />
+        )}
       </article>
     </a>
   );
