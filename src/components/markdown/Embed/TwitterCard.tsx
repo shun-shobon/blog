@@ -4,15 +4,13 @@ import { useEffect, useRef, useState } from "react";
 
 import type { Ogp } from "@/lib/ogp";
 
-import styles from "./TwitterCard.module.css";
-
 type Props = {
   ogp: Ogp;
   url: string;
 };
 
 export function TwitterCard({ url }: Props): JSX.Element {
-  const [html, setHtml] = useState<string | null>(null);
+  const [html, setHtml] = useState<string>("");
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -32,19 +30,13 @@ export function TwitterCard({ url }: Props): JSX.Element {
     /* eslint-enable */
   }, [html, ref]);
 
-  return (
-    <div
-      ref={ref}
-      dangerouslySetInnerHTML={{ __html: html ?? "" }}
-      className={styles.wrapper}
-    />
-  );
+  return <div ref={ref} dangerouslySetInnerHTML={{ __html: html }} />;
 }
 
 function createTweetHtml(tweetId: string, isDark: boolean): string {
   return `<blockquote class="twitter-tweet" ${
     isDark ? 'data-theme="dark"' : ""
-  }><a href="https://twitter.com/i/status/${tweetId}"></a></blockquote>`;
+  } data-align="center"><a href="https://twitter.com/i/status/${tweetId}"></a></blockquote>`;
 }
 
 function findTweetId(url: string): string {

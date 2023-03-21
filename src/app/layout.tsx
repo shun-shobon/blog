@@ -86,4 +86,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     creator: "@shun_shobon",
   },
+  other: {
+    "twitter:dnt": "on",
+    "twitter:widgets:csp": "on",
+  },
 };
