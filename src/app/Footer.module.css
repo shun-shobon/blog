@@ -30,7 +30,7 @@
 }
 
 .addressLink {
-  color: var(--primary);
+  color: var(--primary-text);
 }
 .addressLink:hover {
   text-decoration: underline;

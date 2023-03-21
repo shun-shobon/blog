@@ -1,5 +1,6 @@
 :root {
-  --primary: #79b4e4;
+  --primary-text: #517a9c;
+  --primary-bg: #79b4e4;
   --text: #4d4d4d;
   --text-quote: #626262;
   --background: #fff;
@@ -18,6 +19,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --primary-text: #79b4e4;
+    --primary-bg: #79b4e4;
     --text: #ebedef;
     --text-quote: #b8bbbe;
     --background: #121c26;

@@ -17,7 +17,7 @@
   transition: color 0.2s;
 }
 .navLink:hover {
-  color: var(--primary);
+  color: var(--primary-text);
 }
 
 .hamburgerButton {

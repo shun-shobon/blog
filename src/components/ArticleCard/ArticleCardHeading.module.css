@@ -8,5 +8,5 @@
 }
 
 .headingLink:hover {
-  color: var(--primary);
+  color: var(--primary-text);
 }

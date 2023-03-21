@@ -20,7 +20,7 @@
   transition: border 0.2s ease-in-out;
 }
 .active {
-  border-left-color: var(--primary);
+  border-left-color: var(--primary-bg);
 }
 
 .link {
