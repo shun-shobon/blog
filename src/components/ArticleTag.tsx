@@ -38,7 +38,10 @@ type ArticleTagProps = {
 function ArticleTag({ children, count }: ArticleTagProps): JSX.Element {
   return (
     <li>
-      <InternalLink href={`/tags/${children}`} className={styles.tag}>
+      <InternalLink
+        href={`/tags/${encodeURIComponent(children)}`}
+        className={styles.tag}
+      >
         {children}
         {count && ` (${count})`}
       </InternalLink>
