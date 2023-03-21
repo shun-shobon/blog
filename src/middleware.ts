@@ -52,7 +52,8 @@ function generateCspHeader(nonce: string): string {
     "connect-src 'self' https://www.google-analytics.com",
     "frame-src 'self' https://www.googletagmanager.com https://platform.twitter.com",
     `script-src ${scriptSrc}`,
-    "style-src 'self' 'unsafe-inline'",
+    "style-src 'self'",
+    "style-src-attr 'unsafe-inline'",
     "font-src * data:",
     "img-src * data:",
   ].join("; ");
