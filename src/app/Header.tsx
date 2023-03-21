@@ -11,13 +11,11 @@ export function Header(): JSX.Element {
         <InternalLink href="/" className={styles.logoLink}>
           <picture>
             <source
+              srcSet="/images/logo-dark.svg"
               media="(prefers-color-scheme: dark)"
-              width={3072}
-              height={512}
-              srcSet="/logo-dark.svg"
             />
             <img
-              src="/logo-light.svg"
+              src="/images/logo-light.svg"
               width={3072}
               height={512}
               alt={TITLE}

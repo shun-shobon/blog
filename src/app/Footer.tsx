@@ -5,6 +5,20 @@ import styles from "./Footer.module.css";
 export function Footer(): JSX.Element {
   return (
     <footer className={styles.footer}>
+      <a href="https://notbyai.fyi" target="_blank" rel="noreferer">
+        <picture>
+          <source
+            srcSet="/images/not-by-ai-dark.svg"
+            media="(prefers-color-scheme: dark)"
+          />
+          <img
+            src="/images/not-by-ai-light.svg"
+            alt="not by AI"
+            height={42}
+            width={131}
+          />
+        </picture>
+      </a>
       <div className={styles.googleAnalytics}>
         このサイトでは
         <a
