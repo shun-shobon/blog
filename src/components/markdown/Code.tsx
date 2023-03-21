@@ -53,6 +53,7 @@ function CodeDiff({ code, lang }: CodeDiffProps): JSX.Element {
         language={lang}
         style={style}
         wrapLines
+        // HACK: https://github.com/react-syntax-highlighter/react-syntax-highlighter/issues/288
         showLineNumbers
         lineNumberStyle={{ display: "none" }}
         lineProps={(lineNumber) => {
