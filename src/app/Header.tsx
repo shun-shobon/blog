@@ -9,13 +9,21 @@ export function Header(): JSX.Element {
     <header className={styles.header}>
       <nav className={styles.nav}>
         <InternalLink href="/" className={styles.logoLink}>
-          <img
-            src="/logo.svg"
-            width={3072}
-            height={512}
-            alt={TITLE}
-            className={styles.logoImg}
-          />
+          <picture>
+            <source
+              media="(prefers-color-scheme: dark)"
+              width={3072}
+              height={512}
+              srcSet="/logo-dark.svg"
+            />
+            <img
+              src="/logo-light.svg"
+              width={3072}
+              height={512}
+              alt={TITLE}
+              className={styles.logoImg}
+            />
+          </picture>
         </InternalLink>
         <HeaderMenu />
       </nav>
