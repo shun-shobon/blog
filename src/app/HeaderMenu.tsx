@@ -26,6 +26,7 @@ export function HeaderMenu(): JSX.Element {
           styles.hamburgerButton,
           showMenu && styles.hamburgerButtonClicked,
         )}
+        aria-label="メニュー"
       >
         {showMenu ? <RxCross2 /> : <RxHamburgerMenu />}
       </button>
