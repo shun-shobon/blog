@@ -48,6 +48,7 @@ function generateCspHeader(nonce: string): string {
     .join(" ");
 
   const csp = [
+    "base-uri 'none'",
     "default-src 'self'",
     "connect-src 'self' https://www.google-analytics.com",
     "frame-src 'self' https://www.googletagmanager.com https://platform.twitter.com",
