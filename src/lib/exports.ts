@@ -75,27 +75,10 @@ function getAllTags(articles: Article[]): string[] {
 
 function sortArticles(articles: Article[]): void {
   articles.sort((a, b) => {
-    const compareCreatedAt = Temporal.ZonedDateTime.compare(
-      Temporal.ZonedDateTime.from(a.createdAt),
+    return Temporal.ZonedDateTime.compare(
       Temporal.ZonedDateTime.from(b.createdAt),
+      Temporal.ZonedDateTime.from(a.createdAt),
     );
-
-    if (compareCreatedAt !== 0) {
-      return -compareCreatedAt;
-    }
-
-    if (a.updatedAt && b.updatedAt) {
-      return -Temporal.ZonedDateTime.compare(
-        Temporal.ZonedDateTime.from(a.updatedAt),
-        Temporal.ZonedDateTime.from(b.updatedAt),
-      );
-    } else if (a.updatedAt && !b.updatedAt) {
-      return -1;
-    } else if (!a.updatedAt && b.updatedAt) {
-      return 1;
-    } else {
-      return 0;
-    }
   });
 }
 
