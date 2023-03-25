@@ -69,7 +69,7 @@
     "@tsconfig/next-strictest": "^1.0.1",
     "@types/katex": "^0.16.0",
     "@types/mdast": "^3.0.11",
-    "@types/node": "^18.15.7",
+    "@types/node": "^18.15.8",
     "@types/nprogress": "^0.2.0",
     "@types/react": "^18.0.29",
     "@types/react-dom": "^18.0.11",
