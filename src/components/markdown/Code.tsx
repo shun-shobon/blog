@@ -38,14 +38,18 @@ interface CodeDiffProps {
 function CodeDiff({ code, lang }: CodeDiffProps): JSX.Element {
   const lines = code.split("\n");
 
-  const addLines = lines
-    .map((line, index) => [line, index] as const)
-    .filter(([line]) => line.startsWith("+"))
-    .map(([_, index]) => index + 1);
-  const delLines = lines
-    .map((line, index) => [line, index] as const)
-    .filter(([line]) => line.startsWith("-"))
-    .map(([_, index]) => index + 1);
+  const addLines = new Set(
+    lines
+      .map((line, index) => [line, index] as const)
+      .filter(([line]) => line.startsWith("+"))
+      .map(([_, index]) => index + 1),
+  );
+  const delLines = new Set(
+    lines
+      .map((line, index) => [line, index] as const)
+      .filter(([line]) => line.startsWith("-"))
+      .map(([_, index]) => index + 1),
+  );
 
   return (
     <div>
@@ -59,10 +63,10 @@ function CodeDiff({ code, lang }: CodeDiffProps): JSX.Element {
         lineProps={(lineNumber) => {
           const style: CSSProperties = { display: "block" };
 
-          if (addLines.includes(lineNumber)) {
+          if (addLines.has(lineNumber)) {
             style.backgroundColor = "#33402e";
           }
-          if (delLines.includes(lineNumber)) {
+          if (delLines.has(lineNumber)) {
             style.backgroundColor = "#402e2e";
           }
 

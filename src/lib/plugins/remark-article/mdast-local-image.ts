@@ -88,7 +88,9 @@ type ImageSizeResult = { width: number; height: number } | undefined;
 async function getImageSize(imagePath: string): Promise<ImageSizeResult> {
   const image = sharp(imagePath);
 
-  const result = await image.metadata().catch(() => undefined);
+  const result = await image.metadata().catch(() => {
+    /* noop */
+  });
   if (!result) return undefined;
 
   const { width, height } = result;

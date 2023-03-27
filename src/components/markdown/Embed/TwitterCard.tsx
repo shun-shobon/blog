@@ -24,10 +24,7 @@ export function TwitterCard({ url }: Props): JSX.Element {
   useEffect(() => {
     if (!html || !ref.current) return;
 
-    /* eslint-disable */
-    // @ts-expect-error: `twttr` is defined in the Twitter script
     window.twttr?.widgets.load(ref.current);
-    /* eslint-enable */
   }, [html, ref]);
 
   return <div ref={ref} dangerouslySetInnerHTML={{ __html: html }} />;

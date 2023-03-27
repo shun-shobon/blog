@@ -7,6 +7,16 @@ import type {
   Section,
 } from "@/lib/plugins";
 
+declare global {
+  interface Window {
+    twttr?: {
+      widgets: {
+        load: (element?: HTMLElement) => void;
+      };
+    };
+  }
+}
+
 declare module "mdast" {
   interface BlockContentMap {
     embed: Embed;

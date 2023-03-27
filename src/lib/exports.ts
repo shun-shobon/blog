@@ -112,7 +112,7 @@ async function processArticle(articlePath: ArticlePath): Promise<Article> {
     MARKDOWN_FILENAME,
   );
 
-  const fileContent = await fs.readFile(filePath, "utf-8");
+  const fileContent = await fs.readFile(filePath, "utf8");
 
   const article = await processor.run(processor.parse(fileContent));
 

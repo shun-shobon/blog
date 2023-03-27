@@ -20,14 +20,16 @@ export function ArticleToc({ article, className }: Props): JSX.Element | null {
   useEffect(() => {
     const inObserver = new IntersectionObserver(
       (event) => {
-        const outIds = event
-          .filter((entry) => !entry.isIntersecting)
-          .map((entry) => {
-            const $heading = entry.target.querySelector("h1,h2,h3,h4,h5,h6");
-            if (!$heading) return;
-            return $heading.id;
-          })
-          .filter((id): id is string => id !== undefined);
+        const outIds = new Set(
+          event
+            .filter((entry) => !entry.isIntersecting)
+            .map((entry) => {
+              const $heading = entry.target.querySelector("h1,h2,h3,h4,h5,h6");
+              if (!$heading) return;
+              return $heading.id;
+            })
+            .filter((id): id is string => id !== undefined),
+        );
         const inIds = event
           .filter((entry) => entry.isIntersecting)
           .map((entry) => {
@@ -38,14 +40,14 @@ export function ArticleToc({ article, className }: Props): JSX.Element | null {
           .filter((id): id is string => id !== undefined);
 
         setActiveIds((prev) => [
-          ...prev.filter((id) => !outIds.includes(id)),
+          ...prev.filter((id) => !outIds.has(id)),
           ...inIds,
         ]);
       },
       {
         root: null,
         rootMargin: "-80px 0px 0px 0px",
-        threshold: [0.0],
+        threshold: [0],
       },
     );
 

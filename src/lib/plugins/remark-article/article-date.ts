@@ -43,6 +43,6 @@ async function readFileModifiedDates(
   return stdout
     .trim()
     .split("\n")
-    .map((line) => Number(line))
+    .map(Number)
     .map((unixTime) => Temporal.Instant.fromEpochSeconds(unixTime));
 }

@@ -9,7 +9,7 @@ export class UnreachableError extends Error {
 }
 
 export function joinPath(...paths: Array<string>): string {
-  return paths.join("/").replace(/\/+/gu, "/").replace(/\.\//gu, "");
+  return paths.join("/").replaceAll(/\/+/gu, "/").replaceAll("./", "");
 }
 
 export function getUrl(...paths: Array<string>): URL {
