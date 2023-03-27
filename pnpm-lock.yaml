@@ -20,8 +20,6 @@ specifiers:
   '@types/sharp': ^0.31.1
   '@types/twemoji-parser': ^13.1.1
   '@types/unist': ^2.0.6
-  '@typescript-eslint/eslint-plugin': ^5.56.0
-  '@typescript-eslint/parser': ^5.56.0
   '@vercel/og': ^0.4.1
   '@vitejs/plugin-react': ^3.1.0
   autoprefixer: ^10.4.14
@@ -31,7 +29,6 @@ specifiers:
   eslint: ^8.36.0
   eslint-config-next: ^13.2.4
   eslint-config-prettier: ^8.8.0
-  eslint-plugin-simple-import-sort: ^10.0.0
   fast-glob: ^3.2.12
   feed: ^4.2.2
   github-slugger: ^2.0.0
@@ -128,8 +125,6 @@ devDependencies:
   '@types/sharp': 0.31.1
   '@types/twemoji-parser': 13.1.1
   '@types/unist': 2.0.6
-  '@typescript-eslint/eslint-plugin': 5.56.0_2hcjazgfnbtq42tcc73br2vup4
-  '@typescript-eslint/parser': 5.56.0_j4766f7ecgqbon3u7zlxn5zszu
   '@vitejs/plugin-react': 3.1.0_vite@4.2.1
   autoprefixer: 10.4.14_postcss@8.4.21
   cssnano: 5.1.15_postcss@8.4.21
@@ -137,7 +132,6 @@ devDependencies:
   eslint: 8.36.0
   eslint-config-next: 13.2.4_j4766f7ecgqbon3u7zlxn5zszu
   eslint-config-prettier: 8.8.0_eslint@8.36.0
-  eslint-plugin-simple-import-sort: 10.0.0_eslint@8.36.0
   husky: 8.0.3
   jsdom: 21.1.1
   lint-staged: 13.2.0
@@ -2590,14 +2584,6 @@ packages:
       resolve: 2.0.0-next.4
       semver: 6.3.0
       string.prototype.matchall: 4.0.8
-    dev: true
-
-  /eslint-plugin-simple-import-sort/10.0.0_eslint@8.36.0:
-    resolution: {integrity: sha512-AeTvO9UCMSNzIHRkg8S6c3RPy5YEwKWSQPx3DYghLedo2ZQxowPFLGDN1AZ2evfg6r6mjBSZSLxLFsWSu3acsw==}
-    peerDependencies:
-      eslint: '>=5.0.0'
-    dependencies:
-      eslint: 8.36.0
     dev: true
 
   /eslint-scope/5.1.1:
