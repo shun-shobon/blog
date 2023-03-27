@@ -8,13 +8,13 @@ import { ORIGIN, TITLE } from "@/config";
 import { fetchArticleDatabase, getArticlesByTag } from "@/lib/article";
 import { createOgpImageUrl } from "@/lib/ogp-image";
 
-type Params = {
+interface Params {
   name: string;
-};
+}
 
-type Props = {
+interface Props {
   params: Params;
-};
+}
 
 export default async function Page({ params }: Props): Promise<JSX.Element> {
   const name = decodeURIComponent(params.name);

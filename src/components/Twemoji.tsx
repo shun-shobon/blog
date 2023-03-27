@@ -3,9 +3,9 @@ import { parse } from "twemoji-parser";
 
 import styles from "./Twemoji.module.css";
 
-type Props = {
+interface Props {
   children: string;
-};
+}
 
 export function Twemoji({ children }: Props): JSX.Element {
   const parsed = parse(children, {
@@ -14,7 +14,7 @@ export function Twemoji({ children }: Props): JSX.Element {
       `${TWEMOJI_URL}${codePoint}.${assetType}`,
   });
 
-  const nodes: (string | EmojiEntity)[] = [children];
+  const nodes: Array<string | EmojiEntity> = [children];
   parsed.forEach((entity) => {
     const lastIdx = nodes.length - 1;
     const lastNode = nodes[lastIdx] as string;

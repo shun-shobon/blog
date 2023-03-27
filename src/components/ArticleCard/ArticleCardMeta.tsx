@@ -5,10 +5,10 @@ import type { Article } from "@/lib/plugins";
 import { ArticleTags } from "../ArticleTag";
 import styles from "./ArticleCardMeta.module.css";
 
-type Props = {
+interface Props {
   article: Article;
   className?: string | undefined;
-};
+}
 
 export function ArticleCardMeta({ article, className }: Props): JSX.Element {
   return (

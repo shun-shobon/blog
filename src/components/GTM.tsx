@@ -2,9 +2,9 @@ import Script from "next/script";
 
 import { GTM_ID } from "@/config";
 
-type Props = {
+interface Props {
   nonce: string;
-};
+}
 
 export function GTM({ nonce }: Props): JSX.Element {
   return (

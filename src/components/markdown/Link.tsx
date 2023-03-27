@@ -8,10 +8,10 @@ import { Link as LinkComponent } from "@/components/Link";
 import styles from "./markdown.module.css";
 import { PhrasingContentList } from "./PhrasingContent";
 
-type Props = {
+interface Props {
   children: LinkNode;
-  footnoteDefs: FootnoteDefinitionNode[];
-};
+  footnoteDefs: Array<FootnoteDefinitionNode>;
+}
 
 export function Link({
   children: { children, url, title },

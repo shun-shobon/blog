@@ -8,11 +8,11 @@ export class UnreachableError extends Error {
   }
 }
 
-export function joinPath(...paths: string[]): string {
-  return paths.join("/").replace(/\/+/g, "/").replace(/\.\//, "");
+export function joinPath(...paths: Array<string>): string {
+  return paths.join("/").replace(/\/+/gu, "/").replace(/\.\//gu, "");
 }
 
-export function getUrl(...paths: string[]): URL {
+export function getUrl(...paths: Array<string>): URL {
   return new URL(joinPath(...paths), ORIGIN);
 }
 

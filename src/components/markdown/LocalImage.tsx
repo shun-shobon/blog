@@ -4,9 +4,9 @@ import type { LocalImage as LocalImageNode } from "@/lib/plugins";
 
 import styles from "./markdown.module.css";
 
-type Props = {
+interface Props {
   children: LocalImageNode;
-};
+}
 
 export function LocalImage({
   children: { alt, title, url, width, height },

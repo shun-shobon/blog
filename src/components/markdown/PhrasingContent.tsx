@@ -16,11 +16,12 @@ import { LocalImage } from "./LocalImage";
 import { Strong } from "./Strong";
 import { Text } from "./Text";
 
-type PhasingContentProps = {
+interface PhasingContentProps {
   children: PhrasingContentNode;
-  footnoteDefs: FootnoteDefinitionNode[];
-};
+  footnoteDefs: Array<FootnoteDefinitionNode>;
+}
 
+// eslint-disable-next-line complexity
 export function PhrasingContent({
   children,
   footnoteDefs,
@@ -64,10 +65,10 @@ export function PhrasingContent({
   }
 }
 
-type PhasingContentListProp = {
-  children: PhrasingContentNode[];
-  footnoteDefs: FootnoteDefinitionNode[];
-};
+interface PhasingContentListProp {
+  children: Array<PhrasingContentNode>;
+  footnoteDefs: Array<FootnoteDefinitionNode>;
+}
 
 export function PhrasingContentList({
   children,

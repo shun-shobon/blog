@@ -3,9 +3,9 @@ import type { Math as MathNode } from "mdast-util-math";
 
 import styles from "./markdown.module.css";
 
-type Props = {
+interface Props {
   children: MathNode;
-};
+}
 
 export function Math({ children: { value } }: Props): JSX.Element {
   return (

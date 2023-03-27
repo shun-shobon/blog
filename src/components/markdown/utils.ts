@@ -2,7 +2,7 @@ import type { FootnoteDefinition, FootnoteReference } from "mdast";
 
 export function getFootnoteIndex(
   footnoteReference: FootnoteReference,
-  footnoteDefinitions: FootnoteDefinition[],
+  footnoteDefinitions: Array<FootnoteDefinition>,
 ): number {
   const index = footnoteDefinitions.findIndex((footnoteDefinition) => {
     return footnoteDefinition.identifier === footnoteReference.identifier;

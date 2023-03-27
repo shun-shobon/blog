@@ -16,10 +16,10 @@ import { Section } from "./Section";
 import { Table } from "./Table";
 import { ThematicBreak } from "./ThematicBreak";
 
-type BlockContentProps = {
+interface BlockContentProps {
   children: BlockContentNode;
-  footnoteDefs: FootnoteDefinitionNode[];
-};
+  footnoteDefs: Array<FootnoteDefinitionNode>;
+}
 
 export function BlockContent({
   children,
@@ -58,10 +58,10 @@ export function BlockContent({
   }
 }
 
-type BlockContentListProps = {
-  children: BlockContentNode[];
-  footnoteDefs: FootnoteDefinitionNode[];
-};
+interface BlockContentListProps {
+  children: Array<BlockContentNode>;
+  footnoteDefs: Array<FootnoteDefinitionNode>;
+}
 
 export function BlockContentList({
   children,

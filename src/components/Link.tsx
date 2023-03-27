@@ -1,11 +1,11 @@
 import { InternalLink } from "./InternalLink";
 
-type Props = {
+interface Props {
   href: string;
   title?: string | undefined;
   className?: string | undefined;
   children?: React.ReactNode;
-};
+}
 
 export function Link({ href, ...props }: Props): JSX.Element {
   return isLocalLink(href) ? (

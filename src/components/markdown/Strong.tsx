@@ -5,10 +5,10 @@ import type {
 
 import { PhrasingContentList } from "./PhrasingContent";
 
-type Props = {
+interface Props {
   children: StrongNode;
-  footnoteDefs: FootnoteDefinitionNode[];
-};
+  footnoteDefs: Array<FootnoteDefinitionNode>;
+}
 
 export function Strong({
   children: { children },

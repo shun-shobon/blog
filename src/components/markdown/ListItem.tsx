@@ -6,10 +6,10 @@ import type {
 
 import { BlockContentList } from "./BlockContent";
 
-type Props = {
+interface Props {
   children: ListItemNode;
-  footnoteDefs: FootnoteDefinitionNode[];
-};
+  footnoteDefs: Array<FootnoteDefinitionNode>;
+}
 
 export function ListItem({
   children: { children },
@@ -19,7 +19,7 @@ export function ListItem({
     <li>
       <BlockContentList footnoteDefs={footnoteDefs}>
         {/* SAFETY: `DefinitionContent` is not expected to appear. */}
-        {children as BlockContentNode[]}
+        {children as Array<BlockContentNode>}
       </BlockContentList>
     </li>
   );

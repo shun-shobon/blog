@@ -6,12 +6,12 @@ import type {
 
 import { TableCell } from "./TableCell";
 
-type Props = {
+interface Props {
   head?: boolean | undefined;
-  align: AlignType[];
+  align: Array<AlignType>;
   children: TableRowNode;
-  footnoteDefs: FootnoteDefinitionNode[];
-};
+  footnoteDefs: Array<FootnoteDefinitionNode>;
+}
 
 export function TableRow({
   head,

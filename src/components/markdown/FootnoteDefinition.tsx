@@ -9,11 +9,11 @@ import {
 
 import styles from "./markdown.module.css";
 
-type Props = {
+interface Props {
   idx: number;
-  footnoteDefs: FootnoteDefinition[];
+  footnoteDefs: Array<FootnoteDefinition>;
   children: FootnoteDefinition;
-};
+}
 
 export function FootnoteDefinition({
   children: { children },
@@ -24,7 +24,7 @@ export function FootnoteDefinition({
     <li key={idx} id={getFootnoteDefId(idx)}>
       <div className={styles.footnoteDefinition}>
         <BlockContentList footnoteDefs={footnoteDefs}>
-          {children as BlockContent[]}
+          {children as Array<BlockContent>}
         </BlockContentList>
         <a
           href={`#${getFootnoteRefId(idx)}`}

@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from "react";
 
 import type { Ogp } from "@/lib/ogp";
 
-type Props = {
+interface Props {
   ogp: Ogp;
   url: string;
-};
+}
 
 export function TwitterCard({ url }: Props): JSX.Element {
   const [html, setHtml] = useState<string>("");
@@ -40,10 +40,10 @@ function createTweetHtml(tweetId: string, isDark: boolean): string {
 }
 
 function findTweetId(url: string): string {
-  const match = new URL(url).pathname.match(/\/status\/(?<id>\d+)/);
+  const match = new URL(url).pathname.match(/\/status\/(?<id>\d+)/u);
   const tweetId = match?.groups?.id;
 
-  if (!tweetId) {
+  if (tweetId == null) {
     throw new Error("Invalid tweet URL");
   }
 

@@ -7,7 +7,7 @@ import styles from "./ArticleTag.module.css";
 import { InternalLink } from "./InternalLink";
 
 type Props = {
-  children: string[] | Map<string, Article[]>;
+  children: Array<string> | Map<string, Array<Article>>;
 } & Omit<ComponentProps<"ul">, "children">;
 
 export function ArticleTags({
@@ -30,10 +30,10 @@ export function ArticleTags({
   );
 }
 
-type ArticleTagProps = {
+interface ArticleTagProps {
   children: string;
   count?: number | undefined;
-};
+}
 
 function ArticleTag({ children, count }: ArticleTagProps): JSX.Element {
   return (
@@ -43,7 +43,7 @@ function ArticleTag({ children, count }: ArticleTagProps): JSX.Element {
         className={styles.tag}
       >
         {children}
-        {count && ` (${count})`}
+        {count != null && ` (${count})`}
       </InternalLink>
     </li>
   );

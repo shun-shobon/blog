@@ -6,10 +6,10 @@ import { getArticleUrl, getEditArticleUrl } from "@/lib/utils";
 import styles from "./ArticleFooter.module.css";
 import { ShareButton } from "./ShareButton";
 
-type Props = {
+interface Props {
   plainTitle: string;
   slug: string;
-};
+}
 
 export function ArticleFooter({ plainTitle, slug }: Props): JSX.Element {
   const editUrl = getEditArticleUrl(slug);

@@ -18,22 +18,22 @@ import { visit } from "./visit";
 
 export interface DescriptionList extends Parent {
   type: "descriptionList";
-  children: DescriptionListContent[];
+  children: Array<DescriptionListContent>;
 }
 
 export interface DescriptionTerm extends Parent {
   type: "descriptionTerm";
-  children: PhrasingContent[];
+  children: Array<PhrasingContent>;
 }
 
 export interface DescriptionDescription extends Parent {
   type: "descriptionDescription";
-  children: (BlockContent | DefinitionContent)[];
+  children: Array<BlockContent | DefinitionContent>;
 }
 
 export type DescriptionListContent = DescriptionTerm | DescriptionDescription;
 
-export const remarkDescriptionList: Plugin<never[], Root> = () => {
+export const remarkDescriptionList: Plugin<Array<never>, Root> = () => {
   return (tree) => {
     visit(tree, isDescription, visitor);
   };
@@ -60,7 +60,7 @@ function visitor(
 
 function convertListItemToDescriptionListContent(
   node: ListItem,
-): DescriptionListContent[] {
+): Array<DescriptionListContent> {
   const { children: listItemChildren } = node;
   const [term, description] = listItemChildren;
   if (!isParagraph(term)) throw new UnreachableError();
@@ -77,7 +77,7 @@ function convertListItemToDescriptionListContent(
     children: term.children,
   };
 
-  const descriptionDescriptions: DescriptionDescription[] = (
+  const descriptionDescriptions: Array<DescriptionDescription> = (
     description?.children ?? []
   ).map(convertListItemToDescriptionDescription);
 

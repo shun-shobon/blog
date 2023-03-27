@@ -15,10 +15,10 @@ import { ArticleFootnote } from "./ArticleFootnote";
 import { ArticleHeader } from "./ArticleHeader";
 import { ArticleToc } from "./ArticleToc";
 
-type Props = {
+interface Props {
   children: Article;
   nonce: string;
-};
+}
 
 export function Article({ children: article, nonce }: Props): JSX.Element {
   const [title, ...content] = article.children;
@@ -31,7 +31,7 @@ export function Article({ children: article, nonce }: Props): JSX.Element {
     datePublished: Temporal.ZonedDateTime.from(article.createdAt).toString({
       timeZoneName: "never",
     }),
-    ...(article.updatedAt
+    ...(article.updatedAt != null
       ? {
           dateModified: Temporal.ZonedDateTime.from(article.updatedAt).toString(
             {
@@ -56,7 +56,7 @@ export function Article({ children: article, nonce }: Props): JSX.Element {
         <ArticleToc article={article} className={styles.aside} />
         <div className={classNames(markdownStyles.root, styles.content)}>
           <BlockContentList footnoteDefs={article.footnotes}>
-            {content as BlockContent[]}
+            {content as Array<BlockContent>}
           </BlockContentList>
           <ArticleFootnote>{article.footnotes}</ArticleFootnote>
           <ArticleFooter plainTitle={article.plainTitle} slug={article.slug} />

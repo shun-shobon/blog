@@ -6,10 +6,10 @@ import type {
 import styles from "./markdown.module.css";
 import { getFootnoteDefId, getFootnoteIndex, getFootnoteRefId } from "./utils";
 
-type Props = {
+interface Props {
   children: FootnoteReferenceNode;
-  footnoteDefs: FootnoteDefinitionNode[];
-};
+  footnoteDefs: Array<FootnoteDefinitionNode>;
+}
 
 export function FootnoteReference({
   children: footnoteRef,

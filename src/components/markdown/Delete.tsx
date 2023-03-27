@@ -5,10 +5,10 @@ import type {
 
 import { PhrasingContentList } from "./PhrasingContent";
 
-type Props = {
+interface Props {
   children: DeleteNode;
-  footnoteDefs: FootnoteDefinitionNode[];
-};
+  footnoteDefs: Array<FootnoteDefinitionNode>;
+}
 
 export function Delete({
   children: { children },

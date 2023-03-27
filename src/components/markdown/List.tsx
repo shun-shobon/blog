@@ -6,16 +6,16 @@ import type {
 import { ListItem } from "./ListItem";
 import styles from "./markdown.module.css";
 
-type Props = {
+interface Props {
   children: ListNode;
-  footnoteDefs: FootnoteDefinitionNode[];
-};
+  footnoteDefs: Array<FootnoteDefinitionNode>;
+}
 
 export function List({
   children: { children, ordered, start },
   footnoteDefs,
 }: Props): JSX.Element {
-  const Tag = ordered ? "ol" : "ul";
+  const Tag = ordered === true ? "ol" : "ul";
 
   return (
     <Tag start={start ?? undefined} className={styles.list}>

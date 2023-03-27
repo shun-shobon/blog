@@ -5,10 +5,10 @@ import type { DescriptionTerm as DescriptionTermNode } from "@/lib/plugins";
 import styles from "./markdown.module.css";
 import { PhrasingContentList } from "./PhrasingContent";
 
-type Props = {
+interface Props {
   children: DescriptionTermNode;
-  footnoteDefs: FootnoteDefinitionNode[];
-};
+  footnoteDefs: Array<FootnoteDefinitionNode>;
+}
 
 export function DescriptionTerm({
   children: { children },

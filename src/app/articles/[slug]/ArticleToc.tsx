@@ -9,13 +9,13 @@ import type { Toc } from "@/lib/plugins/remark-article/mdast-toc";
 
 import styles from "./ArticleToc.module.css";
 
-type Props = {
+interface Props {
   article: Article;
   className?: string | undefined;
-};
+}
 
 export function ArticleToc({ article, className }: Props): JSX.Element | null {
-  const [activeIds, setActiveIds] = useState<string[]>([]);
+  const [activeIds, setActiveIds] = useState<Array<string>>([]);
 
   useEffect(() => {
     const inObserver = new IntersectionObserver(
@@ -87,11 +87,11 @@ export function ArticleToc({ article, className }: Props): JSX.Element | null {
   );
 }
 
-type TocItemProps = {
+interface TocItemProps {
   toc: Toc;
-  activeIds: string[];
+  activeIds: Array<string>;
   level: number;
-};
+}
 
 export function TocItem({ toc, activeIds, level }: TocItemProps): JSX.Element {
   const id = toc.heading.identifier ?? "fake";

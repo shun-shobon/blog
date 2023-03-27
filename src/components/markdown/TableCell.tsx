@@ -8,12 +8,12 @@ import type {
 import styles from "./markdown.module.css";
 import { PhrasingContentList } from "./PhrasingContent";
 
-type Props = {
+interface Props {
   head?: boolean | undefined;
   align: AlignType | undefined;
   children: TableCellNode;
-  footnoteDefs: FootnoteDefinitionNode[];
-};
+  footnoteDefs: Array<FootnoteDefinitionNode>;
+}
 
 export function TableCell({
   head,
@@ -21,20 +21,20 @@ export function TableCell({
   children: { children },
   footnoteDefs,
 }: Props): JSX.Element {
-  let alignClass;
-  switch (align) {
-    case "left":
-      alignClass = styles.tableCellLeft;
-      break;
-    case "right":
-      alignClass = styles.tableCellRight;
-      break;
-    case "center":
-      alignClass = styles.tableCellCenter;
-      break;
-  }
+  const alignClass = (() => {
+    if (align == null) return;
 
-  const Tag = head ? "th" : "td";
+    switch (align) {
+      case "left":
+        return styles.tableCellLeft;
+      case "right":
+        return styles.tableCellRight;
+      case "center":
+        return styles.tableCellCenter;
+    }
+  })();
+
+  const Tag = head === true ? "th" : "td";
 
   return (
     <Tag className={classNames(styles.tableCell, alignClass)}>

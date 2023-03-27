@@ -4,9 +4,9 @@ import { FootnoteDefinitionList } from "@/components/markdown";
 
 import styles from "./ArticleFootnote.module.css";
 
-type Props = {
-  children: FootnoteDefinitionNode[];
-};
+interface Props {
+  children: Array<FootnoteDefinitionNode>;
+}
 
 export function ArticleFootnote({
   children: footnoteDefs,

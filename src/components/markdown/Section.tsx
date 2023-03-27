@@ -8,10 +8,10 @@ import type { Section as SectionNode } from "@/lib/plugins";
 import { BlockContentList } from "./BlockContent";
 import styles from "./markdown.module.css";
 
-type Props = {
+interface Props {
   children: SectionNode;
-  footnoteDefs: FootnoteDefinitionNode[];
-};
+  footnoteDefs: Array<FootnoteDefinitionNode>;
+}
 
 export function Section({
   children: { children },
@@ -24,7 +24,7 @@ export function Section({
     >
       <BlockContentList footnoteDefs={footnoteDefs}>
         {/* SAFETY: No other than `BlockContentNode` is expected to appear */}
-        {children as BlockContentNode[]}
+        {children as Array<BlockContentNode>}
       </BlockContentList>
     </section>
   );

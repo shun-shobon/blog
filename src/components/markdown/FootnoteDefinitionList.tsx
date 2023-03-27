@@ -3,9 +3,9 @@ import type { FootnoteDefinition as FootnoteDefinitionNode } from "mdast";
 import { FootnoteDefinition } from "./FootnoteDefinition";
 import styles from "./markdown.module.css";
 
-type Props = {
-  children: FootnoteDefinitionNode[];
-};
+interface Props {
+  children: Array<FootnoteDefinitionNode>;
+}
 
 export function FootnoteDefinitionList({ children }: Props): JSX.Element {
   return (

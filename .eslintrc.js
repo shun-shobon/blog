@@ -1,42 +1,18 @@
 /** @type {import("eslint").ESLint.ConfigData} */
 module.exports = {
   root: true,
-  plugins: ["simple-import-sort", "@typescript-eslint"],
-  parser: "@typescript-eslint/parser",
+  plugins: ["simple-import-sort"],
   parserOptions: {
     project: "./tsconfig.eslint.json",
     tsconfigRootDir: __dirname,
   },
-  extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "next/core-web-vitals",
-    "prettier",
-  ],
+  extends: ["@shun-shobon/base", "next/core-web-vitals", "prettier"],
   rules: {
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
-    "@typescript-eslint/no-unused-vars": [
-      "warn",
-      { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
-    ],
-    "@typescript-eslint/ban-ts-comment": [
-      "error",
-      {
-        "ts-expect-error": "allow-with-description",
-        "ts-ignore": "allow-with-description",
-      },
-    ],
     "@next/next/no-img-element": "off",
   },
   overrides: [
-    {
-      files: ["**/*.js"],
-      rules: {
-        "@typescript-eslint/no-var-requires": "off",
-      },
-    },
     {
       files: ["**/*.test.ts"],
       rules: {

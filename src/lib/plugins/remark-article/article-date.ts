@@ -5,10 +5,10 @@ import { Temporal } from "@js-temporal/polyfill";
 
 export const exec = promisify(execNonPromise);
 
-export type ArticleDate = {
+export interface ArticleDate {
   createdAt: string;
   updatedAt?: string | undefined;
-};
+}
 
 export async function readArticleChangedDate(
   repoPath: string,
@@ -19,21 +19,20 @@ export async function readArticleChangedDate(
   const createdAt = dates.at(-1)?.toZonedDateTimeISO("Asia/Tokyo").toString();
   const updatedAt = dates.at(0)?.toZonedDateTimeISO("Asia/Tokyo").toString();
 
-  if (!createdAt || !updatedAt) {
+  if (createdAt == null || updatedAt == null) {
     throw new Error("Expected dates to be non-empty");
   }
 
   if (createdAt === updatedAt) {
     return { createdAt };
-  } else {
-    return { createdAt, updatedAt };
   }
+  return { createdAt, updatedAt };
 }
 
 async function readFileModifiedDates(
   repoPath: string,
   file: string,
-): Promise<Temporal.Instant[]> {
+): Promise<Array<Temporal.Instant>> {
   const command = `git log --date=unix --format=%ad -- ${file}`;
   const { stdout, stderr } = await exec(command, {
     cwd: repoPath,

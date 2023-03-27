@@ -7,10 +7,10 @@ import { hasMinLength } from "ts-array-length";
 import styles from "./markdown.module.css";
 import { TableRow } from "./TableRow";
 
-type Props = {
+interface Props {
   children: TableNode;
-  footnoteDefs: FootnoteDefinitionNode[];
-};
+  footnoteDefs: Array<FootnoteDefinitionNode>;
+}
 
 export function Table({
   children: { children, align },

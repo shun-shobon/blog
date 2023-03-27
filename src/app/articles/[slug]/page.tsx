@@ -10,13 +10,13 @@ import { createOgpImageUrl } from "@/lib/ogp-image";
 import { Article } from "./Article";
 import styles from "./page.module.css";
 
-type Params = {
+interface Params {
   slug: string;
-};
+}
 
-type Props = {
+interface Props {
   params: Params;
-};
+}
 
 export default async function Page({ params }: Props): Promise<JSX.Element> {
   const database = await fetchArticleDatabase();
@@ -54,11 +54,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: Temporal.ZonedDateTime.from(article.createdAt).toString({
         timeZoneName: "never",
       }),
-      modifiedTime: article.updatedAt
-        ? Temporal.ZonedDateTime.from(article.updatedAt).toString({
-            timeZoneName: "never",
-          })
-        : undefined,
+      modifiedTime:
+        article.updatedAt != null
+          ? Temporal.ZonedDateTime.from(article.updatedAt).toString({
+              timeZoneName: "never",
+            })
+          : undefined,
       authors: "しゅん🌙 (@shun_shobon)",
       tags: article.tags,
     },

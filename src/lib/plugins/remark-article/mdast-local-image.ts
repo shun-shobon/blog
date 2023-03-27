@@ -19,8 +19,11 @@ export interface LocalImage extends Node, Resource, Alternative {
   aspectRatio: `${number} / ${number}`;
 }
 
-export async function mdastLocalImage(tree: Parent, articlePath: ArticlePath) {
-  const promises: Promise<void>[] = [];
+export async function mdastLocalImage(
+  tree: Parent,
+  articlePath: ArticlePath,
+): Promise<void> {
+  const promises: Array<Promise<void>> = [];
 
   const visitor = visitorBuilder(articlePath, promises);
   visit(tree, isLocalImage, visitor);
@@ -40,14 +43,14 @@ function isLocalImage(node: Node): node is Image {
 }
 
 function resolveRelativeUrl(url: string, slug: string): string {
-  const normarlizedUrl = url.replace(/^\.\//, "");
+  const normarlizedUrl = url.replace(/^\.\//u, "");
 
   return `${ARTICLE_PATH}/${slug}/${normarlizedUrl}`;
 }
 
 function visitorBuilder(
   articlePath: ArticlePath,
-  promises: Promise<void>[],
+  promises: Array<Promise<void>>,
 ): Visitor<Image> {
   return (node, idx, parent) => {
     if (!isParent(parent) || idx === null) throw new UnreachableError();
@@ -89,7 +92,7 @@ async function getImageSize(imagePath: string): Promise<ImageSizeResult> {
   if (!result) return undefined;
 
   const { width, height } = result;
-  if (!width || !height) return undefined;
+  if (width == null || height == null) return undefined;
 
   return { width, height };
 }

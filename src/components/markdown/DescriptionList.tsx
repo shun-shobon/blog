@@ -4,10 +4,10 @@ import type { DescriptionList as DescriptionListNode } from "@/lib/plugins";
 
 import { DescriptionListContentList } from "./DescriptionListContent";
 
-type Props = {
+interface Props {
   children: DescriptionListNode;
-  footnoteDefs: FootnoteDefinitionNode[];
-};
+  footnoteDefs: Array<FootnoteDefinitionNode>;
+}
 
 export function DescriptionList({
   children: { children },

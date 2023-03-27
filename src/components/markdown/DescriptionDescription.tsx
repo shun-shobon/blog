@@ -8,10 +8,10 @@ import type { DescriptionDescription as DescriptionDescriptionNode } from "@/lib
 import { BlockContentList } from "./BlockContent";
 import styles from "./markdown.module.css";
 
-type Props = {
+interface Props {
   children: DescriptionDescriptionNode;
-  footnoteDefs: FootnoteDefinitionNode[];
-};
+  footnoteDefs: Array<FootnoteDefinitionNode>;
+}
 
 export function DescriptionDescription({
   children: { children },
@@ -21,7 +21,7 @@ export function DescriptionDescription({
     <dd className={styles.descriptionDescription}>
       <BlockContentList footnoteDefs={footnoteDefs}>
         {/* SAFETY: `DefinitionContent` is not expected to appear. */}
-        {children as BlockContentNode[]}
+        {children as Array<BlockContentNode>}
       </BlockContentList>
     </dd>
   );

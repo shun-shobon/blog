@@ -3,9 +3,9 @@ import type { CSSProperties } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism";
 import { nord as style } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-type Props = {
+interface Props {
   children: CodeNode;
-};
+}
 
 export function Code({ children }: Props): JSX.Element {
   const code = children.value;
@@ -30,10 +30,10 @@ export function Code({ children }: Props): JSX.Element {
   );
 }
 
-type CodeDiffProps = {
+interface CodeDiffProps {
   code: string;
   lang: string | undefined;
-};
+}
 
 function CodeDiff({ code, lang }: CodeDiffProps): JSX.Element {
   const lines = code.split("\n");

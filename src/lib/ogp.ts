@@ -4,14 +4,14 @@ const REVALIDATE_SECONDS = 60 * 60 * 24; // 1 day
 
 export const FAVICON_SIZE = 16;
 
-export type Ogp = {
+export interface Ogp {
   title: string | undefined;
   description: string | undefined;
   image: string | undefined;
   isLargeImage: boolean;
   site: string | undefined;
   favicon: string | undefined;
-};
+}
 
 export async function fetchOgp(urlString: string): Promise<Ogp> {
   const url = new URL(urlString);

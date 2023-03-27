@@ -8,10 +8,10 @@ import type { Article } from "@/lib/plugins";
 
 import styles from "./ArticleHeader.module.css";
 
-type Props = {
+interface Props {
   children: Article;
   className?: string | undefined;
-};
+}
 
 export function ArticleHeader({
   children: { title, footnotes, createdAt, updatedAt, tags, emoji },
@@ -37,7 +37,7 @@ export function ArticleHeader({
             </time>
           </dd>
         </div>
-        {updatedAt && (
+        {updatedAt != null && (
           <div className={styles.metaItem}>
             <dt>更新日</dt>
             <dd>

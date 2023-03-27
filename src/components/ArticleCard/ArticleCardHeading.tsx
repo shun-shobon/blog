@@ -6,11 +6,11 @@ import { PhrasingContentList } from "@/components/markdown";
 import { InternalLink } from "../InternalLink";
 import styles from "./ArticleCardHeading.module.css";
 
-type HeadingProps = {
+interface HeadingProps {
   children: HeadingNode;
   slug: string;
   className?: string;
-};
+}
 export function Heading({
   children: { children, identifier },
   slug,

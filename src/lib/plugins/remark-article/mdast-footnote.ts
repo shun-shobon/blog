@@ -13,9 +13,9 @@ import { UnreachableError } from "@/lib/utils";
 import { isFootnoteDefinition, isFootnoteReference, isParent } from "../utils";
 import { visit, Visitor } from "../visit";
 
-export function mdastFootnote(tree: Parent): FootnoteDefinition[] {
+export function mdastFootnote(tree: Parent): Array<FootnoteDefinition> {
   const footnoteDefMap = new Map<string, FootnoteDefinition>();
-  const usedFootnoteDefs: FootnoteDefinition[] = [];
+  const usedFootnoteDefs: Array<FootnoteDefinition> = [];
 
   const footnoteDefVisitor = footnoteDefVisitorBuilder(footnoteDefMap);
   const footnoteRefVisitor = footnoteRefVisitorBuilder(
@@ -42,7 +42,7 @@ function footnoteDefVisitorBuilder(
 
 function footnoteRefVisitorBuilder(
   footnoteDefMap: Map<string, FootnoteDefinition>,
-  usedFootnoteDefs: FootnoteDefinition[],
+  usedFootnoteDefs: Array<FootnoteDefinition>,
 ): Visitor<FootnoteReference> {
   return (node, idx, parent) => {
     if (!isParent(parent) || idx === null) throw new UnreachableError();

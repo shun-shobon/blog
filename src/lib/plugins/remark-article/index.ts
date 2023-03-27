@@ -24,16 +24,16 @@ export interface Article extends Parent, Frontmatter, ArticleDate {
   lead: string;
   plainTitle: string;
   title: Heading;
-  toc: Toc[];
-  children: [Heading, ...Content[]];
-  footnotes: FootnoteDefinition[];
+  toc: Array<Toc>;
+  children: [Heading, ...Array<Content>];
+  footnotes: Array<FootnoteDefinition>;
 }
 
-export type ArticlePath = {
+export interface ArticlePath {
   slug: string;
   fromDir: string;
   toDir: string;
-};
+}
 
 type Option = [ArticlePath];
 

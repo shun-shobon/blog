@@ -2,22 +2,22 @@ import { ARTICLE_DATABASE_NAME } from "@/config";
 
 import type { Article } from "./plugins";
 
-export type ArticleDatabase = {
-  tags: Map<string, Article[]>;
+export interface ArticleDatabase {
+  tags: Map<string, Array<Article>>;
   articles: Map<string, Article>;
-};
+}
 
-export type ArticleDatabaseSerialized = {
-  tags: string[];
-  articles: Article[];
-};
+export interface ArticleDatabaseSerialized {
+  tags: Array<string>;
+  articles: Array<Article>;
+}
 
 export async function fetchArticleDatabase(): Promise<ArticleDatabase> {
   const serialized = (await import(
     `data/${ARTICLE_DATABASE_NAME}`
   )) as ArticleDatabaseSerialized;
 
-  const tags = new Map<string, Article[]>(
+  const tags = new Map<string, Array<Article>>(
     serialized.tags.map((tag) => [tag, []]),
   );
   const articles = new Map<string, Article>();
@@ -32,7 +32,7 @@ export async function fetchArticleDatabase(): Promise<ArticleDatabase> {
   return { tags, articles };
 }
 
-export function getAllArticles(database: ArticleDatabase): Article[] {
+export function getAllArticles(database: ArticleDatabase): Array<Article> {
   return Array.from(database.articles.values());
 }
 
@@ -46,6 +46,6 @@ export function getArticle(
 export function getArticlesByTag(
   database: ArticleDatabase,
   tag: string,
-): Article[] | null {
+): Array<Article> | null {
   return database.tags.get(tag) ?? null;
 }

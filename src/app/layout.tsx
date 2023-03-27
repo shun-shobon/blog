@@ -16,9 +16,9 @@ import { Footer } from "./Footer";
 import { Header } from "./Header";
 import styles from "./layout.module.css";
 
-type Props = {
+interface Props {
   children: ReactNode;
-};
+}
 
 export default function Layout({ children }: Props): JSX.Element {
   const nonce = headers().get("X-CSP-Nonce") ?? "";

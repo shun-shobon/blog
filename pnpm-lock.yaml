@@ -5,6 +5,7 @@ specifiers:
   '@js-temporal/polyfill': ^0.4.3
   '@next/bundle-analyzer': ^13.2.4
   '@next/env': ^13.2.4
+  '@shun-shobon/eslint-config-base': ^0.1.2
   '@testing-library/dom': ^9.2.0
   '@testing-library/react': ^14.0.0
   '@testing-library/user-event': ^14.4.3
@@ -112,6 +113,7 @@ dependencies:
 devDependencies:
   '@next/bundle-analyzer': 13.2.4
   '@next/env': 13.2.4
+  '@shun-shobon/eslint-config-base': 0.1.2_j4766f7ecgqbon3u7zlxn5zszu
   '@testing-library/dom': 9.2.0
   '@testing-library/react': 14.0.0_biqbaboplfbrettd7655fr4n2y
   '@testing-library/user-event': 14.4.3_@testing-library+dom@9.2.0
@@ -909,6 +911,32 @@ packages:
       fflate: 0.7.4
       string.prototype.codepointat: 0.2.1
     dev: false
+
+  /@shun-shobon/eslint-config-base/0.1.2_j4766f7ecgqbon3u7zlxn5zszu:
+    resolution: {integrity: sha512-J4/GmwOD4Yuzolola2OkdXaj51Bge0OkYUJk+xuXOshbpOMH8QcOpG84Ogx4CHTsOFV3MlQp9zLlRj0ll1dIZg==}
+    peerDependencies:
+      eslint: ^8.0.0
+      typescript: ^4.0.0 || ^5.0.0
+    dependencies:
+      '@shun-shobon/eslint-config-utils': 0.1.0_j4766f7ecgqbon3u7zlxn5zszu
+      '@typescript-eslint/eslint-plugin': 5.56.0_2hcjazgfnbtq42tcc73br2vup4
+      '@typescript-eslint/parser': 5.56.0_j4766f7ecgqbon3u7zlxn5zszu
+      eslint: 8.36.0
+      eslint-config-prettier: 8.8.0_eslint@8.36.0
+      typescript: 5.0.2
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@shun-shobon/eslint-config-utils/0.1.0_j4766f7ecgqbon3u7zlxn5zszu:
+    resolution: {integrity: sha512-s5mJNob1sSsBsL3R4YrOgM2mxATL3uR2ErkZ2Y1YNxK7TrFgIHkfZ8WmA4AIXXAcludnG0xgG8nIaw2lS8CYDQ==}
+    dependencies:
+      '@typescript-eslint/utils': 5.56.0_j4766f7ecgqbon3u7zlxn5zszu
+    transitivePeerDependencies:
+      - eslint
+      - supports-color
+      - typescript
+    dev: true
 
   /@swc/helpers/0.4.14:
     resolution: {integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==}

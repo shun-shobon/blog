@@ -7,10 +7,10 @@ import type {
 import { BlockContentList } from "./BlockContent";
 import styles from "./markdown.module.css";
 
-type Props = {
+interface Props {
   children: BlockquoteNode;
-  footnoteDefs: FootnoteDefinitionNode[];
-};
+  footnoteDefs: Array<FootnoteDefinitionNode>;
+}
 
 export function Blockquote({
   children: { children },
@@ -20,7 +20,7 @@ export function Blockquote({
     <blockquote className={styles.blockquote}>
       <BlockContentList footnoteDefs={footnoteDefs}>
         {/* SAFETY: `DefinitionContent` is not expected to appear. */}
-        {children as BlockContentNode[]}
+        {children as Array<BlockContentNode>}
       </BlockContentList>
     </blockquote>
   );

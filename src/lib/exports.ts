@@ -24,9 +24,9 @@ import {
   remarkSection,
 } from "./plugins";
 
-export type ArticleDatabase = {
-  articles: Article[];
-};
+export interface ArticleDatabase {
+  articles: Array<Article>;
+}
 
 export async function exportArticleDatabase(
   fromDir: string,
@@ -52,7 +52,7 @@ export async function exportArticleDatabase(
 async function processArticles(
   fromDir: string,
   toDir: string,
-): Promise<Article[]> {
+): Promise<Array<Article>> {
   const slugs = await findArticleSlugs(fromDir);
   const articlePaths = slugs.map((slug) => ({ slug, fromDir, toDir }));
 
@@ -63,7 +63,7 @@ async function processArticles(
   return articles;
 }
 
-function getAllTags(articles: Article[]): string[] {
+function getAllTags(articles: Array<Article>): Array<string> {
   const tagSet = new Set<string>();
 
   articles.forEach((article) => {
@@ -73,7 +73,7 @@ function getAllTags(articles: Article[]): string[] {
   return Array.from(tagSet);
 }
 
-function sortArticles(articles: Article[]): void {
+function sortArticles(articles: Array<Article>): void {
   articles.sort((a, b) => {
     return Temporal.ZonedDateTime.compare(
       Temporal.ZonedDateTime.from(b.createdAt),
@@ -82,7 +82,7 @@ function sortArticles(articles: Article[]): void {
   });
 }
 
-async function findArticleSlugs(basePath: string): Promise<string[]> {
+async function findArticleSlugs(basePath: string): Promise<Array<string>> {
   const pattern = path.join(basePath, "*", MARKDOWN_FILENAME);
   const files = await fg(pattern);
 

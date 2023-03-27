@@ -6,9 +6,9 @@ import styles from "./ArticleCard.module.css";
 import { Heading } from "./ArticleCardHeading";
 import { ArticleCardMeta } from "./ArticleCardMeta";
 
-type Props = {
+interface Props {
   article: Article;
-};
+}
 
 export function ArticleCard({ article }: Props): JSX.Element {
   return (

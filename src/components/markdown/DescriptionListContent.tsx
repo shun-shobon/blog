@@ -6,10 +6,10 @@ import type { DescriptionListContent as DescriptionListContentNode } from "@/lib
 import { DescriptionDescription } from "./DescriptionDescription";
 import { DescriptionTerm } from "./DescriptionTerm";
 
-type DescriptionListContentProps = {
+interface DescriptionListContentProps {
   children: DescriptionListContentNode;
-  footnoteDefs: FootnoteDefinitionNode[];
-};
+  footnoteDefs: Array<FootnoteDefinitionNode>;
+}
 
 export function DescriptionListContent({
   children,
@@ -31,10 +31,10 @@ export function DescriptionListContent({
   }
 }
 
-type DescriptionListContentListProps = {
-  children: DescriptionListContentNode[];
-  footnoteDefs: FootnoteDefinitionNode[];
-};
+interface DescriptionListContentListProps {
+  children: Array<DescriptionListContentNode>;
+  footnoteDefs: Array<FootnoteDefinitionNode>;
+}
 
 export function DescriptionListContentList({
   children,

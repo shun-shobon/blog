@@ -6,7 +6,7 @@ import type { Plugin } from "unified";
 import { isHeading } from "./utils";
 import { visit } from "./visit";
 
-export const remarkHeadingId: Plugin<never[], Root> = () => {
+export const remarkHeadingId: Plugin<Array<never>, Root> = () => {
   return (tree) => {
     const slugger = new GitHubSlugger();
     const visitor = visitorBuilder(slugger);

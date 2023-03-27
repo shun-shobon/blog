@@ -6,10 +6,10 @@ import type {
 import styles from "./markdown.module.css";
 import { PhrasingContentList } from "./PhrasingContent";
 
-type Props = {
+interface Props {
   children: ParagraphNode;
-  footnoteDefs: FootnoteDefinitionNode[];
-};
+  footnoteDefs: Array<FootnoteDefinitionNode>;
+}
 
 export function Paragraph({
   children: { children },

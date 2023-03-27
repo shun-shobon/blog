@@ -51,7 +51,7 @@ export async function GET(req: NextRequest): Promise<ImageResponse> {
           // rowGap: "16px",
         }}
       >
-        {title ? (
+        {title != null ? (
           <h2
             style={{
               display: "flex",
@@ -65,7 +65,7 @@ export async function GET(req: NextRequest): Promise<ImageResponse> {
               rowGap: "8px",
             }}
           >
-            {emoji && (
+            {emoji != null && (
               <span
                 style={{
                   fontSize: 96,
@@ -135,7 +135,7 @@ export async function GET(req: NextRequest): Promise<ImageResponse> {
             {name}
           </div>
 
-          {title && (
+          {title != null && (
             <img
               src={titleImage}
               style={{ aspectRatio: "6 / 1" }}
@@ -178,14 +178,16 @@ async function fetchFont(fontName: string, text: string): Promise<ArrayBuffer> {
   const css = await cssRes.text();
 
   const resource = css.match(
-    /src: url\((.+)\) format\('(opentype|truetype)'\)/,
+    /src: url\((?<fontUrl>.+)\) format\('(?:opentype|truetype)'\)/u,
   );
 
-  if (!resource || !resource[1]) {
+  const fontUrl = resource?.groups?.fontUrl;
+
+  if (fontUrl == null) {
     throw new Error("Failed to parse font");
   }
 
-  const fontRes = await fetch(resource[1]);
+  const fontRes = await fetch(fontUrl);
   if (!fontRes.ok) {
     throw new Error(`Failed to fetch font: ${fontRes.statusText}`);
   }

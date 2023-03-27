@@ -23,7 +23,7 @@ import {
 import type { Visitor } from "./visit";
 import { visit } from "./visit";
 
-export const remarkResolveReference: Plugin<never[], Root> = () => {
+export const remarkResolveReference: Plugin<Array<never>, Root> = () => {
   return (tree) => {
     const definitionMap = new Map<string, Definition>();
 
@@ -56,7 +56,7 @@ const linkReferenceVisitorBuilder = (
 
     const definition = definitionMap.get(node.identifier);
     if (!definition) {
-      const nodes: StaticPhrasingContent[] = [
+      const nodes: Array<StaticPhrasingContent> = [
         { type: "text", value: "[" },
         ...node.children,
         { type: "text", value: "]" },

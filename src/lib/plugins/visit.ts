@@ -9,7 +9,6 @@ export type Visitor<T extends Node> = (
 ) => VisitorResult;
 export type VisitorResult = void | boolean | "SKIP";
 
-// @ts-ignore: unist-util-visit has **very** **very** complex types so this effects type checking
 export const visit = unistVisit as <T extends Node>(
   tree: Node,
   test: Test<T>,

@@ -3,10 +3,10 @@ import { FAVICON_SIZE } from "@/lib/ogp";
 
 import styles from "./LinkCard.module.css";
 
-type Props = {
+interface Props {
   ogp: Ogp;
   url: string;
-};
+}
 
 export function LinkCard({ ogp, url }: Props): JSX.Element {
   return (
@@ -26,7 +26,7 @@ export function LinkCard({ ogp, url }: Props): JSX.Element {
             <span className={styles.embedTextSiteName}>{ogp.site}</span>
           </footer>
         </div>
-        {ogp.image && (
+        {ogp.image != null && (
           <img alt="" src={ogp.image} className={styles.embedImage} />
         )}
       </article>

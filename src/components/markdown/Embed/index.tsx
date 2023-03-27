@@ -4,9 +4,9 @@ import type { Embed as EmbedNode } from "@/lib/plugins";
 import { LinkCard } from "./LinkCard";
 import { TwitterCard } from "./TwitterCard";
 
-type Props = {
+interface Props {
   children: EmbedNode;
-};
+}
 
 export async function Embed({
   children: { value },

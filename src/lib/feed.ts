@@ -12,11 +12,14 @@ export async function generateFeed(): Promise<Feed> {
   const articles = getAllArticles(database);
 
   const lastUpdated = articles[0]?.updatedAt ?? articles[0]?.createdAt;
-  const updated = lastUpdated
-    ? new Date(
-        Temporal.ZonedDateTime.from(lastUpdated).toInstant().epochMilliseconds,
-      )
-    : new Date(Temporal.Now.instant().epochMilliseconds);
+  const updated =
+    lastUpdated != null
+      ? new Date(
+          Temporal.ZonedDateTime.from(
+            lastUpdated,
+          ).toInstant().epochMilliseconds,
+        )
+      : new Date(Temporal.Now.instant().epochMilliseconds);
 
   const feed = new Feed({
     title: TITLE,

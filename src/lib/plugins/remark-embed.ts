@@ -13,7 +13,7 @@ export interface Embed extends Literal {
   type: "embed";
 }
 
-export const remarkEmbed: Plugin<never[], Root> = () => {
+export const remarkEmbed: Plugin<Array<never>, Root> = () => {
   return (tree) => {
     visit(tree, isEmbed, visitor);
   };
@@ -55,5 +55,5 @@ function isEmbed(node: Node): node is Paragraph {
 
   const { value: text } = linkChild;
 
-  return text === url && /^https?:\/\//.test(url);
+  return text === url && /^https?:\/\//u.test(url);
 }

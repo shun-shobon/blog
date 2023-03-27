@@ -5,10 +5,10 @@ import { findNodeAfter, isHeadingOfDepth } from "./utils";
 
 export interface Section extends Parent {
   type: "section";
-  children: [Heading, ...Content[]];
+  children: [Heading, ...Array<Content>];
 }
 
-export const remarkSection: Plugin<never[], Root> = () => {
+export const remarkSection: Plugin<Array<never>, Root> = () => {
   return (tree) => {
     process(tree, 1);
   };

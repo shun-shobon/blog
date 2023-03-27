@@ -8,11 +8,11 @@ import { FiLink } from "react-icons/fi";
 import styles from "./markdown.module.css";
 import { PhrasingContentList } from "./PhrasingContent";
 
-type Props = {
+interface Props {
   className?: string | undefined;
   children: HeadingNode;
-  footnoteDefs: FootnoteDefinitionsNode[];
-};
+  footnoteDefs: Array<FootnoteDefinitionsNode>;
+}
 
 export function Heading({
   children: { children, depth, identifier },
@@ -23,7 +23,7 @@ export function Heading({
 
   return (
     <Tag id={identifier} className={classNames(styles.heading, className)}>
-      {depth > 1 && identifier && (
+      {depth > 1 && identifier != null && (
         <a
           href={`#${identifier}`}
           className={styles.headingLink}

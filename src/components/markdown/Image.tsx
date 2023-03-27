@@ -2,9 +2,9 @@ import type { Image as ImageNode } from "mdast";
 
 import styles from "./markdown.module.css";
 
-type Props = {
+interface Props {
   children: ImageNode;
-};
+}
 
 export function Image({ children: { alt, title, url } }: Props): JSX.Element {
   return (

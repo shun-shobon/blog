@@ -7,7 +7,7 @@ import { fetchArticleDatabase, getAllArticles } from "@/lib/article";
 import { createOgpImageUrl } from "@/lib/ogp-image";
 import { getArticleUrl, getTagUrl, getUrl } from "@/lib/utils";
 
-export async function GET() {
+export async function GET(): Promise<Response> {
   const database = await fetchArticleDatabase();
   const articles = getAllArticles(database);
 
