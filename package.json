@@ -96,7 +96,6 @@
     "rimraf": "^4.4.1",
     "schema-dts": "^1.1.2",
     "stylelint": "^15.3.0",
-    "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-recess-order": "^4.0.0",
     "stylelint-config-recommended": "^11.0.0",
     "typescript": "^5.0.2",
