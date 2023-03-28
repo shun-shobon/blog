@@ -100,8 +100,8 @@ devDependencies:
     specifier: ^13.2.4
     version: 13.2.4
   '@shun-shobon/eslint-config-base':
-    specifier: ^0.2.1
-    version: 0.2.1(eslint@8.36.0)(typescript@5.0.2)
+    specifier: ^0.3.1
+    version: 0.3.1(eslint@8.36.0)(typescript@5.0.2)
   '@testing-library/dom':
     specifier: ^9.2.0
     version: 9.2.0
@@ -961,8 +961,8 @@ packages:
       string.prototype.codepointat: 0.2.1
     dev: false
 
-  /@shun-shobon/eslint-config-base@0.2.1(eslint@8.36.0)(typescript@5.0.2):
-    resolution: {integrity: sha512-eTacJzDVYNmLC9cpMwIVlCwzp4GZ/84VIkpOq5v2XryH+VlZLCnlbHZfh0BP7/fbbP1es02RIHWzHmFrCngcrg==}
+  /@shun-shobon/eslint-config-base@0.3.1(eslint@8.36.0)(typescript@5.0.2):
+    resolution: {integrity: sha512-zsHSfnvOIZ5uqSDGb5dZWFp2bxzBt818aTMN+RlutjFVzXLMMUG8l0J2BcXg7Awn0FIW7VOWjKnfTnk6reb6jg==}
     peerDependencies:
       eslint: ^8.36.0
       typescript: ^4.0.0 || ^5.0.0
