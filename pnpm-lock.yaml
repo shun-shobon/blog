@@ -8,8 +8,8 @@ dependencies:
     specifier: ^0.4.3
     version: 0.4.3
   '@vercel/og':
-    specifier: ^0.4.2
-    version: 0.4.2
+    specifier: ^0.5.0
+    version: 0.5.0
   classnames:
     specifier: ^2.3.2
     version: 2.3.2
@@ -1334,8 +1334,8 @@ packages:
       eslint-visitor-keys: 3.4.0
     dev: true
 
-  /@vercel/og@0.4.2:
-    resolution: {integrity: sha512-4xKdui9JChatNwh/fAKk/pzoKHn4Cb6aAmXihVhyRKtPnTBZN7Z+eBtgFuvnV9IfvDqYB6BQmKg6G+CBmPU4ew==}
+  /@vercel/og@0.5.0:
+    resolution: {integrity: sha512-NrHyWFj7fLixXPjgCXlyX90VdbiIfP6IBcyimiFGgwpnmyRgLiYTvrnPIKI/JP49VF9bnYHFfVqzMupeyCamuQ==}
     engines: {node: '>=16'}
     dependencies:
       '@resvg/resvg-wasm': 2.4.1
