@@ -15,7 +15,7 @@
 }
 
 .item {
-  padding-left: 0.5rem;
+  padding: 0.25rem 0 0.25rem 0.5rem;
   border-left: 2px solid var(--border);
   transition: border 0.2s ease-in-out;
 }
@@ -24,9 +24,6 @@
 }
 
 .link {
-  overflow-x: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   transition: color 0.2s ease-in-out;
 }
 .link:hover {
