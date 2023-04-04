@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 
-import { ArticleCard } from "@/components/ArticleCard";
 import { ORIGIN, TITLE } from "@/config";
 import {
   fetchArticleDatabase,
