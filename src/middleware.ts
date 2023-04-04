@@ -50,7 +50,7 @@ function generateCspHeader(nonce: string): string {
   const csp = [
     "base-uri 'none'",
     "default-src 'self'",
-    "connect-src 'self' https://www.google-analytics.com",
+    "connect-src 'self' https://www.google-analytics.com https://vitals.vercel-insights.com",
     "frame-src 'self' https://www.googletagmanager.com https://platform.twitter.com",
     `script-src ${scriptSrc}`,
     "style-src 'self'",
