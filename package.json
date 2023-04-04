@@ -3,7 +3,7 @@
   "version": "2.0.2",
   "description": "blog.s2n.tech",
   "private": true,
-  "packageManager": "pnpm@8.1.0",
+  "packageManager": "pnpm@8.1.1",
   "scripts": {
     "start": "next start",
     "gen": "run-s gen:*",
