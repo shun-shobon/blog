@@ -3,12 +3,18 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 
+import { ArticleCard } from "@/components/ArticleCard";
 import { ORIGIN, TITLE } from "@/config";
-import { fetchArticleDatabase, getArticle } from "@/lib/article";
+import {
+  fetchArticleDatabase,
+  getAllArticles,
+  getArticle,
+} from "@/lib/article";
 import { createOgpImageUrl } from "@/lib/ogp-image";
 
 import { Article } from "./Article";
 import styles from "./page.module.css";
+import { ReadNext } from "./ReadNext";
 
 interface Params {
   slug: string;
@@ -24,9 +30,14 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
   if (!article) notFound();
   const nonce = headers().get("X-CSP-Nonce") ?? "";
 
+  const nextArticles = getAllArticles(database)
+    .filter((a) => a.slug !== article.slug)
+    .slice(0, 3);
+
   return (
     <main className={styles.main}>
       <Article nonce={nonce}>{article}</Article>
+      <ReadNext nextArticles={nextArticles} />
     </main>
   );
 }

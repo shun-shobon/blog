@@ -8,9 +8,10 @@ import { ArticleCardMeta } from "./ArticleCardMeta";
 
 interface Props {
   article: Article;
+  hideDescription?: boolean;
 }
 
-export function ArticleCard({ article }: Props): JSX.Element {
+export function ArticleCard({ article, hideDescription }: Props): JSX.Element {
   return (
     <article
       key={article.slug}
@@ -22,9 +23,11 @@ export function ArticleCard({ article }: Props): JSX.Element {
         {article.emoji}
       </ArticleEmoji>
       <ArticleCardMeta article={article} className={styles.articleMeta} />
-      <p className={styles.articleLead}>
-        <Twemoji>{article.lead}</Twemoji>
-      </p>
+      {!(hideDescription ?? false) && (
+        <p className={styles.articleLead}>
+          <Twemoji>{article.lead}</Twemoji>
+        </p>
+      )}
     </article>
   );
 }
