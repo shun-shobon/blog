@@ -3,6 +3,7 @@ import "./reset.css";
 import "./variable.css";
 import "katex/dist/katex.min.css";
 
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import type { ReactNode } from "react";
@@ -32,6 +33,7 @@ export default function Layout({ children }: Props): JSX.Element {
         <Header />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
