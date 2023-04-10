@@ -102,7 +102,7 @@
     "typescript": "^5.0.4",
     "unist-builder": "^3.0.1",
     "vite": "^4.2.1",
-    "vite-tsconfig-paths": "^4.0.8",
+    "vite-tsconfig-paths": "^4.0.9",
     "vitest": "^0.30.0"
   }
 }
