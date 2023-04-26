@@ -175,8 +175,8 @@ devDependencies:
     specifier: ^21.1.1
     version: 21.1.1
   lint-staged:
-    specifier: ^13.2.1
-    version: 13.2.1
+    specifier: ^13.2.2
+    version: 13.2.2
   mdast-util-math:
     specifier: ^2.0.2
     version: 2.0.2
@@ -3804,8 +3804,8 @@ packages:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
     dev: true
 
-  /lint-staged@13.2.1:
-    resolution: {integrity: sha512-8gfzinVXoPfga5Dz/ZOn8I2GOhf81Wvs+KwbEXQn/oWZAvCVS2PivrXfVbFJc93zD16uC0neS47RXHIjXKYZQw==}
+  /lint-staged@13.2.2:
+    resolution: {integrity: sha512-71gSwXKy649VrSU09s10uAT0rWCcY3aewhMaHyl2N84oBk4Xs9HgxvUp3AYu+bNsK4NrOYYxvSgg7FyGJ+jGcA==}
     engines: {node: ^14.13.1 || >=16.0.0}
     hasBin: true
     dependencies:
