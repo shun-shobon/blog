@@ -181,8 +181,8 @@ devDependencies:
     specifier: ^2.0.2
     version: 2.0.2
   next-sitemap:
-    specifier: ^4.0.8
-    version: 4.0.8(@next/env@13.3.4)(next@13.3.4)
+    specifier: ^4.0.9
+    version: 4.0.9(@next/env@13.3.4)(next@13.3.4)
   npm-run-all:
     specifier: ^4.1.5
     version: 4.1.5
@@ -4472,8 +4472,8 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
-  /next-sitemap@4.0.8(@next/env@13.3.4)(next@13.3.4):
-    resolution: {integrity: sha512-2wbTQr71zMjWjfVbSvStfR9MunixzMLhYtVinVpf7j5uozcXFoMw3rvGVRMRVbzhStd3Mm43FbuV4o2gbFx66Q==}
+  /next-sitemap@4.0.9(@next/env@13.3.4)(next@13.3.4):
+    resolution: {integrity: sha512-8pbcEe4vrmgGEc3beVbrSqd8mTQ9lCsGxP+AOlArrGmeLkKD4TbSR41R2unQHHSTkBG8cQ/7gjKkdLBlzwtu6g==}
     engines: {node: '>=14.18'}
     hasBin: true
     peerDependencies:
