@@ -103,8 +103,8 @@ devDependencies:
     specifier: ~13.3.4
     version: 13.3.4
   '@shun-shobon/eslint-config-base':
-    specifier: ^0.4.5
-    version: 0.4.5(eslint@8.39.0)(typescript@5.0.4)
+    specifier: ^0.4.6
+    version: 0.4.6(eslint@8.39.0)(typescript@5.0.4)
   '@testing-library/dom':
     specifier: ^9.2.0
     version: 9.2.0
@@ -922,10 +922,10 @@ packages:
       string.prototype.codepointat: 0.2.1
     dev: false
 
-  /@shun-shobon/eslint-config-base@0.4.5(eslint@8.39.0)(typescript@5.0.4):
-    resolution: {integrity: sha512-7VA0qz1BHEvpxE415dXPNO2haZFkSrzvS9WfAHqCQ6PmVWkCAFSRkE4ChL3X8pIRRtnjlziBZ3FiPm5/QzG/+A==}
+  /@shun-shobon/eslint-config-base@0.4.6(eslint@8.39.0)(typescript@5.0.4):
+    resolution: {integrity: sha512-R4KZgZiwzkzAOf+BkK7dmYSMynbNDoXOtV9g9JOnvRWPaZYTlMKPWu2dKSBjrmvhQf4VJkDFbtImaCTfugsyEQ==}
     peerDependencies:
-      eslint: ^8.39.0
+      eslint: ^8.40.0
       typescript: ^4.0.0 || ^5.0.0
     dependencies:
       '@shun-shobon/eslint-config-utils': 0.1.6(eslint@8.39.0)(typescript@5.0.4)
@@ -934,7 +934,7 @@ packages:
       eslint: 8.39.0
       eslint-config-prettier: 8.8.0(eslint@8.39.0)
       eslint-plugin-simple-import-sort: 10.0.0(eslint@8.39.0)
-      eslint-plugin-unicorn: 46.0.0(eslint@8.39.0)
+      eslint-plugin-unicorn: 47.0.0(eslint@8.39.0)
       typescript: 5.0.4
     transitivePeerDependencies:
       - supports-color
@@ -2663,11 +2663,11 @@ packages:
       eslint: 8.39.0
     dev: true
 
-  /eslint-plugin-unicorn@46.0.0(eslint@8.39.0):
-    resolution: {integrity: sha512-j07WkC+PFZwk8J33LYp6JMoHa1lXc1u6R45pbSAipjpfpb7KIGr17VE2D685zCxR5VL4cjrl65kTJflziQWMDA==}
-    engines: {node: '>=14.18'}
+  /eslint-plugin-unicorn@47.0.0(eslint@8.39.0):
+    resolution: {integrity: sha512-ivB3bKk7fDIeWOUmmMm9o3Ax9zbMz1Bsza/R2qm46ufw4T6VBFBaJIR1uN3pCKSmSXm8/9Nri8V+iUut1NhQGA==}
+    engines: {node: '>=16'}
     peerDependencies:
-      eslint: '>=8.28.0'
+      eslint: '>=8.38.0'
     dependencies:
       '@babel/helper-validator-identifier': 7.19.1
       '@eslint-community/eslint-utils': 4.4.0(eslint@8.39.0)
@@ -2682,7 +2682,7 @@ packages:
       pluralize: 8.0.0
       read-pkg-up: 7.0.1
       regexp-tree: 0.1.24
-      regjsparser: 0.9.1
+      regjsparser: 0.10.0
       safe-regex: 2.1.1
       semver: 7.5.0
       strip-indent: 3.0.0
@@ -5504,8 +5504,8 @@ packages:
       functions-have-names: 1.2.3
     dev: true
 
-  /regjsparser@0.9.1:
-    resolution: {integrity: sha512-dQUtn90WanSNl+7mQKcXAgZxvUe7Z0SqXlgzv0za4LwiUhyzBC58yQO3liFoUgu8GiJVInAhJjkj1N0EtQ5nkQ==}
+  /regjsparser@0.10.0:
+    resolution: {integrity: sha512-qx+xQGZVsy55CH0a1hiVwHmqjLryfh7wQyF5HO07XJ9f7dQMY/gPQHhlyDkIzJKC+x2fUCpCcUODUUUFrm7SHA==}
     hasBin: true
     dependencies:
       jsesc: 0.5.0
