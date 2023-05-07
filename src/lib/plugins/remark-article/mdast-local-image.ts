@@ -7,7 +7,8 @@ import type { Node } from "unist";
 
 import { UnreachableError } from "../../utils";
 import { isImage, isParent } from "../utils";
-import { visit, Visitor } from "../visit";
+import type { Visitor } from "../visit";
+import { visit } from "../visit";
 import type { ArticlePath } from ".";
 
 const ARTICLE_PATH = "/articles";
