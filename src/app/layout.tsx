@@ -21,6 +21,8 @@ interface Props {
   children: ReactNode;
 }
 
+export const runtime = "edge";
+
 export default function Layout({ children }: Props): JSX.Element {
   const nonce = headers().get("X-CSP-Nonce") ?? "";
 

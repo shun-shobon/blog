@@ -8,10 +8,6 @@ const headers = require("./headers");
 const config = {
   reactStrictMode: true,
   swcMinify: true,
-  experimental: {
-    appDir: true,
-    runtime: "edge",
-  },
   headers() {
     return Promise.resolve(headers);
   },
