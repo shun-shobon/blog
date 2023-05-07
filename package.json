@@ -12,7 +12,7 @@
     "build": "pnpm run gen && run-s build:*",
     "build:next": "next build",
     "build:sitemap": "next-sitemap",
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "clean": "rimraf .next articles data public/articles public/sitemap*.xml public/robots.txt",
     "lint": "run-s -c lint:*",
     "lint:eslint": "next lint",
