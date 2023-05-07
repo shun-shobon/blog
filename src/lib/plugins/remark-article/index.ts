@@ -9,10 +9,12 @@ import { isSection } from "../utils";
 import type { ArticleDate } from "./article-date";
 import { readArticleChangedDate } from "./article-date";
 import { mdastFootnote } from "./mdast-footnote";
-import { Frontmatter, mdastFrontmatter } from "./mdast-frontmatter";
+import type { Frontmatter } from "./mdast-frontmatter";
+import { mdastFrontmatter } from "./mdast-frontmatter";
 import { mdastLead } from "./mdast-lead";
 import { mdastLocalImage } from "./mdast-local-image";
-import { mdastToc, Toc } from "./mdast-toc";
+import type { Toc } from "./mdast-toc";
+import { mdastToc } from "./mdast-toc";
 
 export type { LocalImage } from "./mdast-local-image";
 

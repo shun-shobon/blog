@@ -11,7 +11,8 @@ import { compact } from "mdast-util-compact";
 import { UnreachableError } from "@/lib/utils";
 
 import { isFootnoteDefinition, isFootnoteReference, isParent } from "../utils";
-import { visit, Visitor } from "../visit";
+import type { Visitor } from "../visit";
+import { visit } from "../visit";
 
 export function mdastFootnote(tree: Parent): Array<FootnoteDefinition> {
   const footnoteDefMap = new Map<string, FootnoteDefinition>();

@@ -1,13 +1,27 @@
 {
-  "extends": "@tsconfig/next-strictest/tsconfig",
+  "extends": "@tsconfig/strictest",
   "compilerOptions": {
-    // TODO: Remove this after merging https://github.com/tsconfig/bases/pull/161
-    "ignoreDeprecations": "5.0",
+    "verbatimModuleSyntax": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
-    "noPropertyAccessFromIndexSignature": false
+    "noPropertyAccessFromIndexSignature": false,
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "allowJs": true,
+    "noEmit": true,
+    "incremental": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
