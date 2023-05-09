@@ -42,6 +42,7 @@ export default function Layout({ children }: Props): JSX.Element {
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL(ORIGIN),
   title: TITLE,
   description:
     "しゅん🌙(@shun_shobon)のブログサイトです。技術記事からポエムまで色々書きます。",
