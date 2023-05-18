@@ -5,8 +5,8 @@ dependencies:
     specifier: ^0.5.3
     version: 0.5.3
   '@js-temporal/polyfill':
-    specifier: ^0.4.3
-    version: 0.4.3
+    specifier: ^0.4.4
+    version: 0.4.4
   '@vercel/analytics':
     specifier: ^1.0.1
     version: 1.0.1
@@ -777,8 +777,8 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
 
-  /@js-temporal/polyfill@0.4.3:
-    resolution: {integrity: sha512-6Fmjo/HlkyVCmJzAPnvtEWlcbQUSRhi8qlN9EtJA/wP7FqXsevLLrlojR44kzNzrRkpf7eDJ+z7b4xQD/Ycypw==}
+  /@js-temporal/polyfill@0.4.4:
+    resolution: {integrity: sha512-2X6bvghJ/JAoZO52lbgyAPFj8uCflhTo2g7nkFzEQdXd/D8rEeD4HtmTEpmtGCva260fcd66YNXBOYdnmHqSOg==}
     engines: {node: '>=12'}
     dependencies:
       jsbi: 4.3.0
