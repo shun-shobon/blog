@@ -21,7 +21,9 @@
   display: block;
   width: 100px;
   height: 100%;
-  box-shadow: 0 0 10px var(--primary-bg), 0 0 5px var(--primary-bg);
+  box-shadow:
+    0 0 10px var(--primary-bg),
+    0 0 5px var(--primary-bg);
   opacity: 1;
 
   transform: rotate(3deg) translate(0px, -4px);
