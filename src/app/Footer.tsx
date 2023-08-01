@@ -5,7 +5,7 @@ import styles from "./Footer.module.css";
 export function Footer(): JSX.Element {
   return (
     <footer className={styles.footer}>
-      <a href="https://notbyai.fyi" target="_blank" rel="noreferer">
+      <a href="https://notbyai.fyi" target="_blank" rel="noreferrer">
         <picture>
           <source
             srcSet="/images/not-by-ai-dark.svg"
@@ -24,7 +24,7 @@ export function Footer(): JSX.Element {
         <a
           href="https://policies.google.com/technologies/partner-sites?hl=ja"
           target="_blank"
-          rel="noreferer"
+          rel="noreferrer"
           className={styles.googleAnalyticsLink}
         >
           Google Analytics
@@ -37,7 +37,7 @@ export function Footer(): JSX.Element {
           <a
             href="https://s2n.tech"
             target="_blank"
-            rel="noreferer"
+            rel="noreferrer"
             className={styles.addressLink}
           >
             <Twemoji>Shuntaro Nishizawa (しゅん🌙)</Twemoji>

@@ -24,6 +24,7 @@ export function Heading({
   return (
     <Tag id={identifier} className={classNames(styles.heading, className)}>
       {depth > 1 && identifier != null && (
+        // eslint-disable-next-line jsx-a11y/no-aria-hidden-on-focusable
         <a
           href={`#${identifier}`}
           className={styles.headingLink}

@@ -5,10 +5,7 @@ module.exports = {
     project: "./tsconfig.eslint.json",
     tsconfigRootDir: __dirname,
   },
-  extends: ["@shun-shobon/base", "next/core-web-vitals", "prettier"],
-  rules: {
-    "@next/next/no-img-element": "off",
-  },
+  extends: ["@shun-shobon/base", "@shun-shobon/react", "@shun-shobon/next"],
   overrides: [
     {
       files: ["**/*.test.ts"],

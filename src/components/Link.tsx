@@ -7,11 +7,15 @@ interface Props {
   children?: React.ReactNode;
 }
 
-export function Link({ href, ...props }: Props): JSX.Element {
+export function Link({ href, children, ...props }: Props): JSX.Element {
   return isLocalLink(href) ? (
-    <InternalLink href={href} {...props} />
+    <InternalLink href={href} {...props}>
+      {children}
+    </InternalLink>
   ) : (
-    <a href={href} target="_blank" rel="noreferrer" {...props} />
+    <a href={href} target="_blank" rel="noreferrer" {...props}>
+      {children}
+    </a>
   );
 }
 

@@ -30,7 +30,7 @@ export function ArticleFooter({ plainTitle, slug }: Props): JSX.Element {
           <a
             href={editUrl.href}
             target="_blank"
-            rel="noreferer"
+            rel="noreferrer"
             className={styles.editButton}
           >
             <FaGithub className={styles.icon} />
