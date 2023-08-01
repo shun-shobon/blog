@@ -4,6 +4,7 @@
   "description": "blog.s2n.tech",
   "private": true,
   "packageManager": "pnpm@8.6.11",
+  "type": "module",
   "scripts": {
     "start": "next start",
     "gen": "run-s gen:*",

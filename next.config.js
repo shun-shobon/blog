@@ -1,10 +1,12 @@
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
+import createBundleAnalyzer from "@next/bundle-analyzer";
+
+import { headers } from "./headers.js";
+
+const withBundleAnalyzer = createBundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
 
-const headers = require("./headers");
-
-/** @type {import('next').NextConfig} */
+/** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
   swcMinify: true,
@@ -13,5 +15,4 @@ const config = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-module.exports = withBundleAnalyzer(config);
+export default withBundleAnalyzer(config);

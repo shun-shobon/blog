@@ -1,5 +1,5 @@
 /** @type {import("next/dist/lib/load-custom-routes").Header[]} */
-module.exports = [
+export const headers = [
   {
     source: "/(.*)",
     headers: [
