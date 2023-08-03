@@ -64,7 +64,7 @@
   "devDependencies": {
     "@next/bundle-analyzer": "~13.4.12",
     "@next/env": "~13.4.12",
-    "@shun-shobon/eslint-config-base": "^0.4.17",
+    "@shun-shobon/eslint-config-base": "^0.4.18",
     "@shun-shobon/eslint-config-next": "^0.1.6",
     "@shun-shobon/eslint-config-react": "^0.1.21",
     "@testing-library/dom": "^9.3.1",
