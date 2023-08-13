@@ -107,14 +107,14 @@ devDependencies:
     specifier: ~13.4.13
     version: 13.4.13
   '@shun-shobon/eslint-config-base':
-    specifier: ^0.4.19
-    version: 0.4.19(eslint@8.47.0)(typescript@5.1.6)
+    specifier: ^0.5.0
+    version: 0.5.0(eslint@8.47.0)(typescript@5.1.6)
   '@shun-shobon/eslint-config-next':
     specifier: ^0.1.7
-    version: 0.1.7(@shun-shobon/eslint-config-base@0.4.19)(@shun-shobon/eslint-config-react@0.1.22)(eslint@8.47.0)(typescript@5.1.6)
+    version: 0.1.7(@shun-shobon/eslint-config-base@0.5.0)(@shun-shobon/eslint-config-react@0.1.22)(eslint@8.47.0)(typescript@5.1.6)
   '@shun-shobon/eslint-config-react':
     specifier: ^0.1.22
-    version: 0.1.22(@shun-shobon/eslint-config-base@0.4.19)(eslint@8.47.0)(typescript@5.1.6)
+    version: 0.1.22(@shun-shobon/eslint-config-base@0.5.0)(eslint@8.47.0)(typescript@5.1.6)
   '@testing-library/dom':
     specifier: ^9.3.1
     version: 9.3.1
@@ -1164,13 +1164,13 @@ packages:
       string.prototype.codepointat: 0.2.1
     dev: false
 
-  /@shun-shobon/eslint-config-base@0.4.19(eslint@8.47.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-iyIex9n2oLRDRqPzXKWF81oRBRK6tfXVV6KUZf2n8x/8BFODHxOJzvM1TIU/4hE9K13PxVC0pe0evA7AlaukUw==}
+  /@shun-shobon/eslint-config-base@0.5.0(eslint@8.47.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-7m0KUEnv6x0zQ0lufC2j9WuArVb4YK+vwGljarsQbzdgPUbCUS30ZJ8+df4/oSMRnmZJ2r/z+lSbac2H7HPIKA==}
     peerDependencies:
-      eslint: ^8.46.0
+      eslint: ^8.47.0
       typescript: ^4.0.0 || ^5.0.0
     dependencies:
-      '@shun-shobon/eslint-config-utils': 0.1.18(eslint@8.47.0)(typescript@5.1.6)
+      '@shun-shobon/eslint-config-utils': 0.2.0(eslint@8.47.0)(typescript@5.1.6)
       '@typescript-eslint/eslint-plugin': 6.3.0(@typescript-eslint/parser@6.3.0)(eslint@8.47.0)(typescript@5.1.6)
       '@typescript-eslint/parser': 6.3.0(eslint@8.47.0)(typescript@5.1.6)
       eslint: 8.47.0
@@ -1182,7 +1182,7 @@ packages:
       - supports-color
     dev: true
 
-  /@shun-shobon/eslint-config-next@0.1.7(@shun-shobon/eslint-config-base@0.4.19)(@shun-shobon/eslint-config-react@0.1.22)(eslint@8.47.0)(typescript@5.1.6):
+  /@shun-shobon/eslint-config-next@0.1.7(@shun-shobon/eslint-config-base@0.5.0)(@shun-shobon/eslint-config-react@0.1.22)(eslint@8.47.0)(typescript@5.1.6):
     resolution: {integrity: sha512-bXc6qD/vqY+KT1YzrIF9+hluKcmY4Tn7GK71H3/U2CtxRehTMlvDhKfYF8wCfYnu2Qh5wLg9Z9jSDDsx5vlOfQ==}
     peerDependencies:
       '@shun-shobon/eslint-config-base': 0.4.19
@@ -1191,8 +1191,8 @@ packages:
       typescript: ^4.0.0 || ^5.0.0
     dependencies:
       '@next/eslint-plugin-next': 13.4.13
-      '@shun-shobon/eslint-config-base': 0.4.19(eslint@8.47.0)(typescript@5.1.6)
-      '@shun-shobon/eslint-config-react': 0.1.22(@shun-shobon/eslint-config-base@0.4.19)(eslint@8.47.0)(typescript@5.1.6)
+      '@shun-shobon/eslint-config-base': 0.5.0(eslint@8.47.0)(typescript@5.1.6)
+      '@shun-shobon/eslint-config-react': 0.1.22(@shun-shobon/eslint-config-base@0.5.0)(eslint@8.47.0)(typescript@5.1.6)
       '@shun-shobon/eslint-config-utils': 0.1.18(eslint@8.47.0)(typescript@5.1.6)
       eslint: 8.47.0
       typescript: 5.1.6
@@ -1200,14 +1200,14 @@ packages:
       - supports-color
     dev: true
 
-  /@shun-shobon/eslint-config-react@0.1.22(@shun-shobon/eslint-config-base@0.4.19)(eslint@8.47.0)(typescript@5.1.6):
+  /@shun-shobon/eslint-config-react@0.1.22(@shun-shobon/eslint-config-base@0.5.0)(eslint@8.47.0)(typescript@5.1.6):
     resolution: {integrity: sha512-je0mMEPaUsHJVOqIKHp8V4t4UcY0k270EI4d642eS8REjGziL1UFfIQlyXf0Iwt0bsmssMKVLXObKM3UwXADkQ==}
     peerDependencies:
       '@shun-shobon/eslint-config-base': 0.4.19
       eslint: ^8.46.0
       typescript: ^4.0.0 || ^5.0.0
     dependencies:
-      '@shun-shobon/eslint-config-base': 0.4.19(eslint@8.47.0)(typescript@5.1.6)
+      '@shun-shobon/eslint-config-base': 0.5.0(eslint@8.47.0)(typescript@5.1.6)
       '@shun-shobon/eslint-config-utils': 0.1.18(eslint@8.47.0)(typescript@5.1.6)
       eslint: 8.47.0
       eslint-config-prettier: 9.0.0(eslint@8.47.0)
@@ -1221,6 +1221,16 @@ packages:
 
   /@shun-shobon/eslint-config-utils@0.1.18(eslint@8.47.0)(typescript@5.1.6):
     resolution: {integrity: sha512-Ezqi2kPSUehrVc1xRVRZ5uXDMTfNmhQBy+2e6lyHqwv/qnOacppBUszmZCUCZaXGBLiC5Wm7YYElVjmirA6Xog==}
+    dependencies:
+      '@typescript-eslint/utils': 6.3.0(eslint@8.47.0)(typescript@5.1.6)
+    transitivePeerDependencies:
+      - eslint
+      - supports-color
+      - typescript
+    dev: true
+
+  /@shun-shobon/eslint-config-utils@0.2.0(eslint@8.47.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-3l2oUmUdc1wPOBflLrDCbky+dn1mD1+AJAEB0cTmsax6dIaGWyDQWR4AfCfWT6UcpoTfFO+ULx5ObzYuteTx/A==}
     dependencies:
       '@typescript-eslint/utils': 6.3.0(eslint@8.47.0)(typescript@5.1.6)
     transitivePeerDependencies:
@@ -1527,7 +1537,7 @@ packages:
     engines: {node: ^16.0.0 || >=18.0.0}
     dependencies:
       '@typescript-eslint/types': 6.3.0
-      eslint-visitor-keys: 3.4.2
+      eslint-visitor-keys: 3.4.3
     dev: true
 
   /@vercel/analytics@1.0.2:
@@ -2806,11 +2816,6 @@ packages:
     dependencies:
       esrecurse: 4.3.0
       estraverse: 5.3.0
-    dev: true
-
-  /eslint-visitor-keys@3.4.2:
-    resolution: {integrity: sha512-8drBzUEyZ2llkpCA67iYrgEssKDUu68V8ChqqOfFupIaG/LCVPUT+CoGJpT77zJprs4T/W7p07LP7zAIMuweVw==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
   /eslint-visitor-keys@3.4.3:
