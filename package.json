@@ -66,7 +66,7 @@
     "@next/env": "~13.4.13",
     "@shun-shobon/eslint-config-base": "^0.5.0",
     "@shun-shobon/eslint-config-next": "^0.2.0",
-    "@shun-shobon/eslint-config-react": "^0.1.22",
+    "@shun-shobon/eslint-config-react": "^0.2.0",
     "@testing-library/dom": "^9.3.1",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
