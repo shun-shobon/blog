@@ -110,8 +110,8 @@ devDependencies:
     specifier: ^0.5.0
     version: 0.5.0(eslint@8.47.0)(typescript@5.1.6)
   '@shun-shobon/eslint-config-next':
-    specifier: ^0.1.7
-    version: 0.1.7(@shun-shobon/eslint-config-base@0.5.0)(@shun-shobon/eslint-config-react@0.1.22)(eslint@8.47.0)(typescript@5.1.6)
+    specifier: ^0.2.0
+    version: 0.2.0(@shun-shobon/eslint-config-base@0.5.0)(@shun-shobon/eslint-config-react@0.1.22)(eslint@8.47.0)(typescript@5.1.6)
   '@shun-shobon/eslint-config-react':
     specifier: ^0.1.22
     version: 0.1.22(@shun-shobon/eslint-config-base@0.5.0)(eslint@8.47.0)(typescript@5.1.6)
@@ -1182,18 +1182,18 @@ packages:
       - supports-color
     dev: true
 
-  /@shun-shobon/eslint-config-next@0.1.7(@shun-shobon/eslint-config-base@0.5.0)(@shun-shobon/eslint-config-react@0.1.22)(eslint@8.47.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-bXc6qD/vqY+KT1YzrIF9+hluKcmY4Tn7GK71H3/U2CtxRehTMlvDhKfYF8wCfYnu2Qh5wLg9Z9jSDDsx5vlOfQ==}
+  /@shun-shobon/eslint-config-next@0.2.0(@shun-shobon/eslint-config-base@0.5.0)(@shun-shobon/eslint-config-react@0.1.22)(eslint@8.47.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-Nf93y3/jIqJ+FijexBYwSERGo78uLXvjPqy7H/J14OMwF4tyD3yNzRdkav2k1+rOfehiB1ypk8XjJjCrpxUCmg==}
     peerDependencies:
-      '@shun-shobon/eslint-config-base': 0.4.19
-      '@shun-shobon/eslint-config-react': 0.1.22
-      eslint: ^8.46.0
+      '@shun-shobon/eslint-config-base': 0.5.0
+      '@shun-shobon/eslint-config-react': 0.2.0
+      eslint: ^8.47.0
       typescript: ^4.0.0 || ^5.0.0
     dependencies:
       '@next/eslint-plugin-next': 13.4.13
       '@shun-shobon/eslint-config-base': 0.5.0(eslint@8.47.0)(typescript@5.1.6)
       '@shun-shobon/eslint-config-react': 0.1.22(@shun-shobon/eslint-config-base@0.5.0)(eslint@8.47.0)(typescript@5.1.6)
-      '@shun-shobon/eslint-config-utils': 0.1.18(eslint@8.47.0)(typescript@5.1.6)
+      '@shun-shobon/eslint-config-utils': 0.2.0(eslint@8.47.0)(typescript@5.1.6)
       eslint: 8.47.0
       typescript: 5.1.6
     transitivePeerDependencies:
