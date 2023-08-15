@@ -72,8 +72,8 @@ dependencies:
     specifier: ^10.0.2
     version: 10.0.2
   sharp:
-    specifier: ^0.32.4
-    version: 0.32.4
+    specifier: ^0.32.5
+    version: 0.32.5
   ts-array-length:
     specifier: ^0.1.2
     version: 0.1.2
@@ -5744,8 +5744,8 @@ packages:
     dependencies:
       lru-cache: 6.0.0
 
-  /sharp@0.32.4:
-    resolution: {integrity: sha512-exUnZewqVZC6UXqXuQ8fyJJv0M968feBi04jb9GcUHrWtkRoAKnbJt8IfwT4NJs7FskArbJ14JAFGVuooszoGg==}
+  /sharp@0.32.5:
+    resolution: {integrity: sha512-0dap3iysgDkNaPOaOL4X/0akdu0ma62GcdC2NBQ+93eqpePdDdr2/LM0sFdDSMmN7yS+odyZtPsb7tx/cYBKnQ==}
     engines: {node: '>=14.15.0'}
     requiresBuild: true
     dependencies:
