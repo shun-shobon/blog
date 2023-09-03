@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@acab/reset.css':
-    specifier: ^0.6.0
-    version: 0.6.0
+    specifier: ^0.7.0
+    version: 0.7.0
   '@js-temporal/polyfill':
     specifier: ^0.4.4
     version: 0.4.4
@@ -231,8 +231,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /@acab/reset.css@0.6.0:
-    resolution: {integrity: sha512-S45ynKmNaxwvVghe2/aTVV3uluvqkLR0J+ITQZwQEtK+ad82shj2qNRdqSuqLcTrTv16D8kN+dnbH3VtVzjRgg==}
+  /@acab/reset.css@0.7.0:
+    resolution: {integrity: sha512-ty4x8BBdjjsQPnHX/Yb7SO8kMhUa1AV+/rA+2V9LHptmHfJGjBNFQo7NM4QJMuEj1SqkLxVfUZR5XwfUy2lIlw==}
     dev: false
 
   /@ampproject/remapping@2.2.0:
