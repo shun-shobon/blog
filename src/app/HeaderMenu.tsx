@@ -48,16 +48,19 @@ const headerMenu = [
   {
     name: "Home",
     href: "/",
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     Icon: FaHome,
   },
   {
     name: "Tags",
     href: "/tags",
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     Icon: FaTags,
   },
   {
     name: "GitHub",
     href: "https://github.com/shun-shobon",
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     Icon: FaGithub,
   },
 ];

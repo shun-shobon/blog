@@ -7,7 +7,7 @@
       "@/*": ["./src/*"]
     },
     "noPropertyAccessFromIndexSignature": false,
-    "target": "es5",
+    "target": "esnext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "jsx": "preserve",
     "plugins": [
@@ -19,7 +19,7 @@
     "noEmit": true,
     "incremental": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "exactOptionalPropertyTypes": false
