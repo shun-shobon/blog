@@ -107,14 +107,14 @@ devDependencies:
     specifier: ~13.4.19
     version: 13.4.19
   '@shun-shobon/eslint-config-base':
-    specifier: ^1.0.3
-    version: 1.0.3(eslint@8.48.0)(typescript@5.2.2)
+    specifier: ^1.0.4
+    version: 1.0.4(eslint@8.48.0)(typescript@5.2.2)
   '@shun-shobon/eslint-config-next':
     specifier: ^1.0.2
-    version: 1.0.2(@shun-shobon/eslint-config-base@1.0.3)(@shun-shobon/eslint-config-react@1.0.3)(eslint@8.48.0)
+    version: 1.0.2(@shun-shobon/eslint-config-base@1.0.4)(@shun-shobon/eslint-config-react@1.0.3)(eslint@8.48.0)
   '@shun-shobon/eslint-config-react':
     specifier: ^1.0.3
-    version: 1.0.3(@shun-shobon/eslint-config-base@1.0.3)(eslint@8.48.0)
+    version: 1.0.3(@shun-shobon/eslint-config-base@1.0.4)(eslint@8.48.0)
   '@shun-shobon/eslint-config-utils':
     specifier: ^1.0.1
     version: 1.0.1
@@ -340,7 +340,7 @@ packages:
       '@babel/helper-module-imports': 7.22.5
       '@babel/helper-simple-access': 7.22.5
       '@babel/helper-split-export-declaration': 7.22.6
-      '@babel/helper-validator-identifier': 7.22.5
+      '@babel/helper-validator-identifier': 7.22.15
 
   /@babel/helper-plugin-utils@7.22.5:
     resolution: {integrity: sha512-uLls06UVKgFG9QD4OeFYLEGteMIAa5kpTPcFL28yuCIIzsf6ZyKZMllKVOCZFhiZ5ptnwX4mtKdWCBE/uT4amg==}
@@ -366,11 +366,6 @@ packages:
   /@babel/helper-validator-identifier@7.22.15:
     resolution: {integrity: sha512-4E/F9IIEi8WR94324mbDUMo074YTheJmd7eZF5vITTeYchqAi6sYXRLHUVsmkdmY4QjfKTcB2jB7dVP3NaBElQ==}
     engines: {node: '>=6.9.0'}
-    dev: true
-
-  /@babel/helper-validator-identifier@7.22.5:
-    resolution: {integrity: sha512-aJXu+6lErq8ltp+JhkJUfk1MTGyuA4v7f3pA+BJ5HLfNC6nAQ0Cpi9uOquUj8Hehg0aUiHzWQbOVJGao6ztBAQ==}
-    engines: {node: '>=6.9.0'}
 
   /@babel/helper-validator-option@7.22.5:
     resolution: {integrity: sha512-R3oB6xlIVKUnxNUxbmgq7pKjxpru24zlimpE8WK47fACIlM0II/Hm1RS8IaOI7NgCr6LNS+jl5l75m20npAziw==}
@@ -390,7 +385,7 @@ packages:
     resolution: {integrity: sha512-BSKlD1hgnedS5XRnGOljZawtag7H1yPfQp0tdNJCHoH6AZ+Pcm9VvkrK59/Yy593Ypg0zMxH2BxD1VPYUQ7UIw==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/helper-validator-identifier': 7.22.5
+      '@babel/helper-validator-identifier': 7.22.15
       chalk: 2.4.2
       js-tokens: 4.0.0
 
@@ -464,7 +459,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/helper-string-parser': 7.22.5
-      '@babel/helper-validator-identifier': 7.22.5
+      '@babel/helper-validator-identifier': 7.22.15
       to-fast-properties: 2.0.0
 
   /@csstools/css-parser-algorithms@2.3.1(@csstools/css-tokenizer@2.2.0):
@@ -1184,8 +1179,8 @@ packages:
       string.prototype.codepointat: 0.2.1
     dev: false
 
-  /@shun-shobon/eslint-config-base@1.0.3(eslint@8.48.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-4SU4klaV+fSwf6gBAeMkigtWzxg/UTOEv3GKHKiAkCrQ1955YBuqeKKVuXStsxy350m9ZLLlybbDk1dlHeFpNA==}
+  /@shun-shobon/eslint-config-base@1.0.4(eslint@8.48.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-hmizGWa4ihWWMdbX/RDyyqGNBZKF0JLrcyfkzqeMCiqfWP5lR2h/+kNO3Iw1E+7ESKCRDy75RP1riMhNU8MYug==}
     peerDependencies:
       eslint: ^8.48.0
     dependencies:
@@ -1201,7 +1196,7 @@ packages:
       - typescript
     dev: true
 
-  /@shun-shobon/eslint-config-next@1.0.2(@shun-shobon/eslint-config-base@1.0.3)(@shun-shobon/eslint-config-react@1.0.3)(eslint@8.48.0):
+  /@shun-shobon/eslint-config-next@1.0.2(@shun-shobon/eslint-config-base@1.0.4)(@shun-shobon/eslint-config-react@1.0.3)(eslint@8.48.0):
     resolution: {integrity: sha512-rP/+hVTBc4dVM2JcWzn31n6WI6L0tTbQZtzAVbRaTOiV2pzL9N9BRGWXUQYnDSoBwcIN9PhzeE2fArVDxDCrHQ==}
     peerDependencies:
       '@shun-shobon/eslint-config-base': ^1.0.3
@@ -1209,18 +1204,18 @@ packages:
       eslint: ^8.48.0
     dependencies:
       '@next/eslint-plugin-next': 13.4.19
-      '@shun-shobon/eslint-config-base': 1.0.3(eslint@8.48.0)(typescript@5.2.2)
-      '@shun-shobon/eslint-config-react': 1.0.3(@shun-shobon/eslint-config-base@1.0.3)(eslint@8.48.0)
+      '@shun-shobon/eslint-config-base': 1.0.4(eslint@8.48.0)(typescript@5.2.2)
+      '@shun-shobon/eslint-config-react': 1.0.3(@shun-shobon/eslint-config-base@1.0.4)(eslint@8.48.0)
       eslint: 8.48.0
     dev: true
 
-  /@shun-shobon/eslint-config-react@1.0.3(@shun-shobon/eslint-config-base@1.0.3)(eslint@8.48.0):
+  /@shun-shobon/eslint-config-react@1.0.3(@shun-shobon/eslint-config-base@1.0.4)(eslint@8.48.0):
     resolution: {integrity: sha512-iqMT+cs1ap3jWej1a2ti0WN6nO152YTO/cvOfOCUfuH9vebLmNuMheC8bmogvRMUZg7aTZ+Mr36PTRiYdlGvZA==}
     peerDependencies:
       '@shun-shobon/eslint-config-base': ^1.0.3
       eslint: ^8.48.0
     dependencies:
-      '@shun-shobon/eslint-config-base': 1.0.3(eslint@8.48.0)(typescript@5.2.2)
+      '@shun-shobon/eslint-config-base': 1.0.4(eslint@8.48.0)(typescript@5.2.2)
       eslint: 8.48.0
       eslint-config-prettier: 9.0.0(eslint@8.48.0)
       eslint-plugin-jsx-a11y: 6.7.1(eslint@8.48.0)
@@ -5748,7 +5743,7 @@ packages:
     resolution: {integrity: sha512-nBpuuYuY5jFsli/JIs1oldw6fOQCBioohqWZg/2hiaOybXOft4lonv85uDOKXdf8rhyK159cxU5cDcK/NKk8zw==}
     hasBin: true
     dependencies:
-      is-core-module: 2.11.0
+      is-core-module: 2.13.0
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
     dev: true
