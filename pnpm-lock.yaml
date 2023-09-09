@@ -107,14 +107,14 @@ devDependencies:
     specifier: ~13.4.19
     version: 13.4.19
   '@shun-shobon/eslint-config-base':
-    specifier: ^1.0.4
-    version: 1.0.4(eslint@8.49.0)(typescript@5.2.2)
+    specifier: ^1.0.5
+    version: 1.0.5(eslint@8.49.0)(typescript@5.2.2)
   '@shun-shobon/eslint-config-next':
     specifier: ^1.0.2
-    version: 1.0.2(@shun-shobon/eslint-config-base@1.0.4)(@shun-shobon/eslint-config-react@1.0.3)(eslint@8.49.0)
+    version: 1.0.2(@shun-shobon/eslint-config-base@1.0.5)(@shun-shobon/eslint-config-react@1.0.3)(eslint@8.49.0)
   '@shun-shobon/eslint-config-react':
     specifier: ^1.0.3
-    version: 1.0.3(@shun-shobon/eslint-config-base@1.0.4)(eslint@8.49.0)
+    version: 1.0.3(@shun-shobon/eslint-config-base@1.0.5)(eslint@8.49.0)
   '@shun-shobon/eslint-config-utils':
     specifier: ^1.0.1
     version: 1.0.1
@@ -945,11 +945,6 @@ packages:
       - supports-color
     dev: true
 
-  /@eslint/js@8.48.0:
-    resolution: {integrity: sha512-ZSjtmelB7IJfWD2Fvb7+Z+ChTIKWq6kjda95fLcQKNS5aheVHn4IkfgRQE3sIIzTcSLwLcLZUD9UBt+V7+h+Pw==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    dev: true
-
   /@eslint/js@8.49.0:
     resolution: {integrity: sha512-1S8uAY/MTJqVx0SC4epBq+N2yhuwtNwLbJYNZyhL2pO1ZVKn5HFXav5T41Ryzy9K9V7ZId2JB2oy/W4aCd9/2w==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -1179,12 +1174,12 @@ packages:
       string.prototype.codepointat: 0.2.1
     dev: false
 
-  /@shun-shobon/eslint-config-base@1.0.4(eslint@8.49.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-hmizGWa4ihWWMdbX/RDyyqGNBZKF0JLrcyfkzqeMCiqfWP5lR2h/+kNO3Iw1E+7ESKCRDy75RP1riMhNU8MYug==}
+  /@shun-shobon/eslint-config-base@1.0.5(eslint@8.49.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-qi6tS8eejNIlgbvmfEH/+aDinl6lPUtGCW98R5Dma7y6Im2Tq8hdpkN2QYta7geBoyHXUWWuXb1y8eGN0S3mLg==}
     peerDependencies:
-      eslint: ^8.48.0
+      eslint: ^8.49.0
     dependencies:
-      '@eslint/js': 8.48.0
+      '@eslint/js': 8.49.0
       '@typescript-eslint/eslint-plugin': 6.6.0(@typescript-eslint/parser@6.6.0)(eslint@8.49.0)(typescript@5.2.2)
       '@typescript-eslint/parser': 6.6.0(eslint@8.49.0)(typescript@5.2.2)
       eslint: 8.49.0
@@ -1196,7 +1191,7 @@ packages:
       - typescript
     dev: true
 
-  /@shun-shobon/eslint-config-next@1.0.2(@shun-shobon/eslint-config-base@1.0.4)(@shun-shobon/eslint-config-react@1.0.3)(eslint@8.49.0):
+  /@shun-shobon/eslint-config-next@1.0.2(@shun-shobon/eslint-config-base@1.0.5)(@shun-shobon/eslint-config-react@1.0.3)(eslint@8.49.0):
     resolution: {integrity: sha512-rP/+hVTBc4dVM2JcWzn31n6WI6L0tTbQZtzAVbRaTOiV2pzL9N9BRGWXUQYnDSoBwcIN9PhzeE2fArVDxDCrHQ==}
     peerDependencies:
       '@shun-shobon/eslint-config-base': ^1.0.3
@@ -1204,18 +1199,18 @@ packages:
       eslint: ^8.48.0
     dependencies:
       '@next/eslint-plugin-next': 13.4.19
-      '@shun-shobon/eslint-config-base': 1.0.4(eslint@8.49.0)(typescript@5.2.2)
-      '@shun-shobon/eslint-config-react': 1.0.3(@shun-shobon/eslint-config-base@1.0.4)(eslint@8.49.0)
+      '@shun-shobon/eslint-config-base': 1.0.5(eslint@8.49.0)(typescript@5.2.2)
+      '@shun-shobon/eslint-config-react': 1.0.3(@shun-shobon/eslint-config-base@1.0.5)(eslint@8.49.0)
       eslint: 8.49.0
     dev: true
 
-  /@shun-shobon/eslint-config-react@1.0.3(@shun-shobon/eslint-config-base@1.0.4)(eslint@8.49.0):
+  /@shun-shobon/eslint-config-react@1.0.3(@shun-shobon/eslint-config-base@1.0.5)(eslint@8.49.0):
     resolution: {integrity: sha512-iqMT+cs1ap3jWej1a2ti0WN6nO152YTO/cvOfOCUfuH9vebLmNuMheC8bmogvRMUZg7aTZ+Mr36PTRiYdlGvZA==}
     peerDependencies:
       '@shun-shobon/eslint-config-base': ^1.0.3
       eslint: ^8.48.0
     dependencies:
-      '@shun-shobon/eslint-config-base': 1.0.4(eslint@8.49.0)(typescript@5.2.2)
+      '@shun-shobon/eslint-config-base': 1.0.5(eslint@8.49.0)(typescript@5.2.2)
       eslint: 8.49.0
       eslint-config-prettier: 9.0.0(eslint@8.49.0)
       eslint-plugin-jsx-a11y: 6.7.1(eslint@8.49.0)
@@ -3567,12 +3562,6 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /is-core-module@2.11.0:
-    resolution: {integrity: sha512-RRjxlvLDkD1YJwDbroBHMb+cukurkDWNyHx7D3oNB5x9rb5ogcksMC5wHCadcXoo67gVr/+3GFySh3134zi6rw==}
-    dependencies:
-      has: 1.0.3
-    dev: true
-
   /is-core-module@2.13.0:
     resolution: {integrity: sha512-Z7dk6Qo8pOCp3l4tsX2C5ZVas4V+UxwQodwZhLopL91TX8UyyHEXafPcyoeeWuLrwzHcr3igO78wNLwHJHsMCQ==}
     dependencies:
@@ -4717,7 +4706,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       hosted-git-info: 4.1.0
-      is-core-module: 2.11.0
+      is-core-module: 2.13.0
       semver: 7.5.4
       validate-npm-package-license: 3.0.4
     dev: true
