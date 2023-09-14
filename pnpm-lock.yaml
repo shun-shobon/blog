@@ -131,8 +131,8 @@ devDependencies:
     specifier: ^2.0.2
     version: 2.0.2
   '@types/katex':
-    specifier: ^0.16.2
-    version: 0.16.2
+    specifier: ^0.16.3
+    version: 0.16.3
   '@types/mdast':
     specifier: ^3.0.12
     version: 3.0.12
@@ -1317,8 +1317,8 @@ packages:
     resolution: {integrity: sha512-DUlIj2nk0YnJdlWgsFuVKcX27MLW0KbKmGVoUHmFr+74FYYNUDAaj9ZqTADvsbE8rfxuVmSFc7KczYn5Y09ozg==}
     dev: false
 
-  /@types/katex@0.16.2:
-    resolution: {integrity: sha512-dHsSjSlU/EWEEbeNADr3FtZZOAXPkFPUO457QCnoNqcZQXNqNEu/svQd0Nritvd3wNff4vvC/f4e6xgX3Llt8A==}
+  /@types/katex@0.16.3:
+    resolution: {integrity: sha512-CeVMX9EhVUW8MWnei05eIRks4D5Wscw/W9Byz1s3PA+yJvcdvq9SaDjiUKvRvEgjpdTyJMjQA43ae4KTwsvOPg==}
     dev: true
 
   /@types/mdast@3.0.12:
