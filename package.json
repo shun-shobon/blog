@@ -29,7 +29,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@acab/reset.css": "^0.7.0",
+    "@acab/reset.css": "^0.8.0",
     "@js-temporal/polyfill": "^0.4.4",
     "@vercel/analytics": "^1.0.2",
     "@vercel/og": "^0.5.17",
