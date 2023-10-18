@@ -155,8 +155,8 @@ devDependencies:
     specifier: ^0.31.1
     version: 0.31.1
   '@types/twemoji-parser':
-    specifier: ^13.1.2
-    version: 13.1.2
+    specifier: ^13.1.3
+    version: 13.1.3
   '@types/unist':
     specifier: ^2.0.8
     version: 2.0.8
@@ -1196,8 +1196,8 @@ packages:
       '@types/node': 18.18.6
     dev: true
 
-  /@types/twemoji-parser@13.1.2:
-    resolution: {integrity: sha512-Yiuye7Ajzsh7YYrudWZXyBkRbRVGALPYFGHLREtnYzDBrXhwpzL6rc6GAQiqSDYIIZkE8297dVTebe5BsarO3g==}
+  /@types/twemoji-parser@13.1.3:
+    resolution: {integrity: sha512-JKvVyIPPUy1A8w1gpBKA6kPIPg4E14/HZdElFKMbgmEX3RE1e01vAVP8FmjSND288AI38TZrx+v2JQu29r6q2g==}
     dev: true
 
   /@types/unist@2.0.8:
