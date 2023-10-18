@@ -81,7 +81,7 @@
     "@types/react-syntax-highlighter": "^15.5.9",
     "@types/sharp": "^0.31.1",
     "@types/twemoji-parser": "^13.1.3",
-    "@types/unist": "^2.0.8",
+    "@types/unist": "^2.0.9",
     "@vitejs/plugin-react": "^4.1.0",
     "autoprefixer": "^10.4.16",
     "cssnano": "^6.0.1",
