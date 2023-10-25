@@ -27,6 +27,8 @@ export async function GET(req: NextRequest): Promise<ImageResponse> {
 
   const titleImage = `data:image/svg+xml,${encodeURIComponent(TITLE_IMG)}`;
 
+  const iconImage = await fetch(ICON_PATH).then((res) => res.arrayBuffer());
+
   return new ImageResponse(
     (
       <div
@@ -124,7 +126,8 @@ export async function GET(req: NextRequest): Promise<ImageResponse> {
             }}
           >
             <img
-              src={ICON_PATH.toString()}
+              // @ts-expect-error: This is a valid type
+              src={iconImage}
               width={64}
               height={64}
               style={{ borderRadius: "50%", marginRight: "16px" }}
