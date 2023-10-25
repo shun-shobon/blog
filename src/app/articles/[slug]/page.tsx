@@ -1,7 +1,7 @@
-import { Temporal } from "@js-temporal/polyfill";
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
+import { Temporal } from "temporal-polyfill";
 
 import { ORIGIN, TITLE } from "@/config";
 import {

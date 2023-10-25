@@ -1,5 +1,5 @@
-import { Temporal } from "@js-temporal/polyfill";
 import classNames from "classnames";
+import { Temporal } from "temporal-polyfill";
 
 import { ArticleEmoji } from "@/components/ArticleEmoji";
 import { ArticleTags } from "@/components/ArticleTag";

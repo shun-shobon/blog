@@ -1,5 +1,5 @@
-import { Temporal } from "@js-temporal/polyfill";
 import { Feed } from "feed";
+import { Temporal } from "temporal-polyfill";
 
 import { ORIGIN, TITLE } from "@/config";
 import { fetchArticleDatabase, getAllArticles } from "@/lib/article";

@@ -1,5 +1,5 @@
-import { Temporal } from "@js-temporal/polyfill";
 import type { MetadataRoute } from "next";
+import { Temporal } from "temporal-polyfill";
 
 import { fetchArticleDatabase, getAllArticles } from "@/lib/article";
 import { getArticleUrl, getTagUrl, getUrl } from "@/lib/utils";

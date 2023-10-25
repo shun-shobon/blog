@@ -1,8 +1,8 @@
-import { Temporal } from "@js-temporal/polyfill";
 import classNames from "classnames";
 import type { BlockContent } from "mdast";
 import Script from "next/script";
 import type { Article as JsonLdArticle, WithContext } from "schema-dts";
+import { Temporal } from "temporal-polyfill";
 
 import { BlockContentList } from "@/components/markdown";
 import markdownStyles from "@/components/markdown/markdown.module.css";

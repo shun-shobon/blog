@@ -1,7 +1,7 @@
 import { exec as execNonPromise } from "node:child_process";
 import { promisify } from "node:util";
 
-import { Temporal } from "@js-temporal/polyfill";
+import { Temporal } from "temporal-polyfill";
 
 export const exec = promisify(execNonPromise);
 

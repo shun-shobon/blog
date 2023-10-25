@@ -1,12 +1,12 @@
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
 
-import { Temporal } from "@js-temporal/polyfill";
 import fg from "fast-glob";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import remarkParse from "remark-parse";
+import { Temporal } from "temporal-polyfill";
 import { unified } from "unified";
 
 import { ARTICLE_DATABASE_NAME } from "@/config";
