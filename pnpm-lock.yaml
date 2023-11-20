@@ -107,14 +107,14 @@ devDependencies:
     specifier: ~14.0.3
     version: 14.0.3
   '@shun-shobon/eslint-config-base':
-    specifier: ^1.0.12
-    version: 1.0.12(eslint@8.54.0)(typescript@5.2.2)
+    specifier: ^1.0.13
+    version: 1.0.13(eslint@8.54.0)(typescript@5.2.2)
   '@shun-shobon/eslint-config-next':
-    specifier: ^1.0.8
-    version: 1.0.8(@shun-shobon/eslint-config-base@1.0.12)(@shun-shobon/eslint-config-react@1.0.4)(eslint@8.54.0)
+    specifier: ^1.0.9
+    version: 1.0.9(@shun-shobon/eslint-config-base@1.0.13)(@shun-shobon/eslint-config-react@1.0.4)(eslint@8.54.0)
   '@shun-shobon/eslint-config-react':
     specifier: ^1.0.4
-    version: 1.0.4(@shun-shobon/eslint-config-base@1.0.12)(eslint@8.54.0)
+    version: 1.0.4(@shun-shobon/eslint-config-base@1.0.13)(eslint@8.54.0)
   '@shun-shobon/eslint-config-utils':
     specifier: ^1.0.1
     version: 1.0.1
@@ -1215,8 +1215,8 @@ packages:
       string.prototype.codepointat: 0.2.1
     dev: false
 
-  /@shun-shobon/eslint-config-base@1.0.12(eslint@8.54.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-Z+l1LvNcNA/3e/edsdHmmxrVOWO2/YKlf+JAGce+fe1+3Wx7faPRapTJZuWiugEftrHrzVaRFsMA0eKC+I4CSA==}
+  /@shun-shobon/eslint-config-base@1.0.13(eslint@8.54.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-MgS9oU9rcT89wnetDualltoAJPAFAIkmIR8rUv/u6VxCNiojyHNufkSiHffsF8lhcM+2nvISWbgN1I9A/IcRCg==}
     peerDependencies:
       eslint: ^8.53.0
     dependencies:
@@ -1232,26 +1232,26 @@ packages:
       - typescript
     dev: true
 
-  /@shun-shobon/eslint-config-next@1.0.8(@shun-shobon/eslint-config-base@1.0.12)(@shun-shobon/eslint-config-react@1.0.4)(eslint@8.54.0):
-    resolution: {integrity: sha512-hF0TnkEFHCwcXBY3shezl2NPr1WK16cQpT6f6z/GG/dshoAIH9Zp4Wzxnn6TEeAPMh7nSplgCq7kGWGl72mDWA==}
+  /@shun-shobon/eslint-config-next@1.0.9(@shun-shobon/eslint-config-base@1.0.13)(@shun-shobon/eslint-config-react@1.0.4)(eslint@8.54.0):
+    resolution: {integrity: sha512-cqwTNuyW1fnlVF60pyxigk0Q7BZVWpU8epfn5ySzaa22BcCp957SiYug2gVMSbSclgaqAg90Y9b0NV8iEDb7Cw==}
     peerDependencies:
-      '@shun-shobon/eslint-config-base': ^1.0.12
+      '@shun-shobon/eslint-config-base': ^1.0.13
       '@shun-shobon/eslint-config-react': ^1.0.4
       eslint: ^8.53.0
     dependencies:
       '@next/eslint-plugin-next': 14.0.3
-      '@shun-shobon/eslint-config-base': 1.0.12(eslint@8.54.0)(typescript@5.2.2)
-      '@shun-shobon/eslint-config-react': 1.0.4(@shun-shobon/eslint-config-base@1.0.12)(eslint@8.54.0)
+      '@shun-shobon/eslint-config-base': 1.0.13(eslint@8.54.0)(typescript@5.2.2)
+      '@shun-shobon/eslint-config-react': 1.0.4(@shun-shobon/eslint-config-base@1.0.13)(eslint@8.54.0)
       eslint: 8.54.0
     dev: true
 
-  /@shun-shobon/eslint-config-react@1.0.4(@shun-shobon/eslint-config-base@1.0.12)(eslint@8.54.0):
+  /@shun-shobon/eslint-config-react@1.0.4(@shun-shobon/eslint-config-base@1.0.13)(eslint@8.54.0):
     resolution: {integrity: sha512-yNLwpiyRxaz3XYV8foxdOt6uT6gkzTgVDlnzgqmMFOiqwOttUm9QQfCJ1zgxwU2tyJ1Kf+lOCSj+tcAKE+SqzA==}
     peerDependencies:
       '@shun-shobon/eslint-config-base': ^1.0.11
       eslint: ^8.53.0
     dependencies:
-      '@shun-shobon/eslint-config-base': 1.0.12(eslint@8.54.0)(typescript@5.2.2)
+      '@shun-shobon/eslint-config-base': 1.0.13(eslint@8.54.0)(typescript@5.2.2)
       eslint: 8.54.0
       eslint-config-prettier: 9.0.0(eslint@8.54.0)
       eslint-plugin-jsx-a11y: 6.8.0(eslint@8.54.0)
