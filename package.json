@@ -82,7 +82,7 @@
     "@types/sharp": "^0.31.1",
     "@types/twemoji-parser": "^13.1.4",
     "@types/unist": "^2.0.10",
-    "@vitejs/plugin-react": "^4.2.0",
+    "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.16",
     "cssnano": "^6.0.1",
     "endent": "^2.1.0",
