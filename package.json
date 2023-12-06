@@ -99,7 +99,7 @@
     "stylelint": "^15.11.0",
     "stylelint-config-recess-order": "^4.4.0",
     "stylelint-config-recommended": "^13.0.0",
-    "typescript": "^5.3.2",
+    "typescript": "^5.3.3",
     "unist-builder": "^3.0.1",
     "vite": "^5.0.6",
     "vite-tsconfig-paths": "^4.2.1",
