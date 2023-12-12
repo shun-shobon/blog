@@ -12,8 +12,8 @@ dependencies:
     specifier: ^1.1.1
     version: 1.1.1
   '@vercel/og':
-    specifier: ^0.6.0
-    version: 0.6.0
+    specifier: ^0.6.1
+    version: 0.6.1
   classnames:
     specifier: ^2.3.2
     version: 2.3.2
@@ -1803,8 +1803,8 @@ packages:
       server-only: 0.0.1
     dev: false
 
-  /@vercel/og@0.6.0:
-    resolution: {integrity: sha512-dLHUWTZnMAWJtXZPb6wQHoFwcxd/OaxYPW1HOxL5alT1AphF3ODC4clUoQsofrKdNGRkKfNlYZQh6AvHD6hryA==}
+  /@vercel/og@0.6.1:
+    resolution: {integrity: sha512-o0ItpTQrn7TdBRiYLoBmATfunenfI87AZ5S/SvS9puxN4rjuNdDHSV6ND24WBt0FK2SljfM9LYowK/99ql2bEA==}
     engines: {node: '>=16'}
     dependencies:
       '@resvg/resvg-wasm': 2.6.0
