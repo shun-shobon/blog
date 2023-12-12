@@ -31,7 +31,7 @@
   "dependencies": {
     "@acab/reset.css": "^0.8.0",
     "@vercel/analytics": "^1.1.1",
-    "@vercel/og": "^0.5.20",
+    "@vercel/og": "^0.6.0",
     "classnames": "^2.3.2",
     "fast-glob": "^3.3.2",
     "feed": "^4.2.2",
