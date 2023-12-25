@@ -39,8 +39,8 @@ dependencies:
     specifier: ^14.0.4
     version: 14.0.4(@babel/core@7.23.6)(react-dom@18.2.0)(react@18.2.0)
   node-html-parser:
-    specifier: ^6.1.11
-    version: 6.1.11
+    specifier: ^6.1.12
+    version: 6.1.12
   nprogress:
     specifier: ^0.2.0
     version: 0.2.0
@@ -4638,8 +4638,8 @@ packages:
     resolution: {integrity: sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==}
     dev: true
 
-  /node-html-parser@6.1.11:
-    resolution: {integrity: sha512-FAgwwZ6h0DSDWxfD0Iq1tsDcBCxdJB1nXpLPPxX8YyVWzbfCjKWEzaynF4gZZ/8hziUmp7ZSaKylcn0iKhufUQ==}
+  /node-html-parser@6.1.12:
+    resolution: {integrity: sha512-/bT/Ncmv+fbMGX96XG9g05vFt43m/+SYKIs9oAemQVYyVcZmDAI2Xq/SbNcpOA35eF0Zk2av3Ksf+Xk8Vt8abA==}
     dependencies:
       css-select: 5.1.0
       he: 1.2.0
