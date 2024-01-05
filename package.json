@@ -101,7 +101,7 @@
     "stylelint-config-recommended": "^13.0.0",
     "typescript": "^5.3.3",
     "unist-builder": "^3.0.1",
-    "vite": "^5.0.10",
+    "vite": "^5.0.11",
     "vite-tsconfig-paths": "^4.2.3",
     "vitest": "^0.34.6"
   }
