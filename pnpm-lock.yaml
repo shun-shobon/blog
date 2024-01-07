@@ -137,8 +137,8 @@ devDependencies:
     specifier: ^3.0.15
     version: 3.0.15
   '@types/node':
-    specifier: ^18.19.4
-    version: 18.19.4
+    specifier: ^18.19.5
+    version: 18.19.5
   '@types/nprogress':
     specifier: ^0.2.3
     version: 0.2.3
@@ -219,7 +219,7 @@ devDependencies:
     version: 3.0.1
   vite:
     specifier: ^5.0.11
-    version: 5.0.11(@types/node@18.19.4)
+    version: 5.0.11(@types/node@18.19.5)
   vite-tsconfig-paths:
     specifier: ^4.2.3
     version: 4.2.3(typescript@5.3.3)(vite@5.0.11)
@@ -1395,8 +1395,8 @@ packages:
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
     dev: false
 
-  /@types/node@18.19.4:
-    resolution: {integrity: sha512-xNzlUhzoHotIsnFoXmJB+yWmBvFZgKCI9TtPIEdYIMM1KWfwuY8zh7wvc1u1OAXlC7dlf6mZVx/s+Y5KfFz19A==}
+  /@types/node@18.19.5:
+    resolution: {integrity: sha512-22MG6T02Hos2JWfa1o5jsIByn+bc5iOt1IS4xyg6OG68Bu+wMonVZzdrgCw693++rpLE9RUT/Bx15BeDzO0j+g==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -1444,7 +1444,7 @@ packages:
   /@types/sharp@0.31.1:
     resolution: {integrity: sha512-5nWwamN9ZFHXaYEincMSuza8nNfOof8nmO+mcI+Agx1uMUk4/pQnNIcix+9rLPXzKrm1pS34+6WRDbDV0Jn7ag==}
     dependencies:
-      '@types/node': 18.19.4
+      '@types/node': 18.19.5
     dev: true
 
   /@types/twemoji-parser@13.1.4:
@@ -1616,7 +1616,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.23.3(@babel/core@7.23.7)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.0
-      vite: 5.0.11(@types/node@18.19.4)
+      vite: 5.0.11(@types/node@18.19.5)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6636,7 +6636,7 @@ packages:
       vfile-message: 3.1.4
     dev: false
 
-  /vite-node@0.34.6(@types/node@18.19.4):
+  /vite-node@0.34.6(@types/node@18.19.5):
     resolution: {integrity: sha512-nlBMJ9x6n7/Amaz6F3zJ97EBwR2FkzhBRxF5e+jE6LA3yi6Wtc2lyTij1OnDMIr34v5g/tVQtsVAzhT0jc5ygA==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -6646,7 +6646,7 @@ packages:
       mlly: 1.4.2
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 5.0.11(@types/node@18.19.4)
+      vite: 5.0.11(@types/node@18.19.5)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -6669,13 +6669,13 @@ packages:
       debug: 4.3.4
       globrex: 0.1.2
       tsconfck: 2.1.2(typescript@5.3.3)
-      vite: 5.0.11(@types/node@18.19.4)
+      vite: 5.0.11(@types/node@18.19.5)
     transitivePeerDependencies:
       - supports-color
       - typescript
     dev: true
 
-  /vite@5.0.11(@types/node@18.19.4):
+  /vite@5.0.11(@types/node@18.19.5):
     resolution: {integrity: sha512-XBMnDjZcNAw/G1gEiskiM1v6yzM4GE5aMGvhWTlHAYYhxb7S3/V1s3m2LDHa8Vh6yIWYYB0iJwsEaS523c4oYA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -6703,7 +6703,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 18.19.4
+      '@types/node': 18.19.5
       esbuild: 0.19.11
       postcss: 8.4.33
       rollup: 4.9.4
@@ -6744,7 +6744,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.11
       '@types/chai-subset': 1.3.5
-      '@types/node': 18.19.4
+      '@types/node': 18.19.5
       '@vitest/expect': 0.34.6
       '@vitest/runner': 0.34.6
       '@vitest/snapshot': 0.34.6
@@ -6764,8 +6764,8 @@ packages:
       strip-literal: 1.3.0
       tinybench: 2.5.1
       tinypool: 0.7.0
-      vite: 5.0.11(@types/node@18.19.4)
-      vite-node: 0.34.6(@types/node@18.19.4)
+      vite: 5.0.11(@types/node@18.19.5)
+      vite-node: 0.34.6(@types/node@18.19.5)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
