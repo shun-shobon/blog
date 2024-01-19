@@ -50,7 +50,7 @@
     "remark-gfm": "^3.0.1",
     "remark-math": "^5.1.1",
     "remark-parse": "^10.0.2",
-    "sharp": "^0.33.1",
+    "sharp": "^0.33.2",
     "temporal-polyfill": "^0.2.0",
     "ts-array-length": "^0.1.2",
     "tsx": "^4.7.0",
