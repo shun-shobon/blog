@@ -89,7 +89,7 @@
     "eslint": "^8.56.0",
     "husky": "^8.0.3",
     "jsdom": "^24.0.0",
-    "lint-staged": "^15.2.1",
+    "lint-staged": "^15.2.2",
     "mdast-util-math": "^2.0.2",
     "npm-run-all2": "^6.1.2",
     "postcss": "^8.4.33",
