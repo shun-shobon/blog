@@ -72,8 +72,8 @@ dependencies:
     specifier: ^0.33.2
     version: 0.33.2
   temporal-polyfill:
-    specifier: ^0.2.0
-    version: 0.2.0
+    specifier: ^0.2.1
+    version: 0.2.1
   ts-array-length:
     specifier: ^0.1.2
     version: 0.1.2
@@ -6059,8 +6059,8 @@ packages:
       strip-ansi: 6.0.1
     dev: true
 
-  /temporal-polyfill@0.2.0:
-    resolution: {integrity: sha512-ra5tfISsVwUlDk9fhvEiIuvfBshV7jDtHYxmC8ACLIVV91MYoVlOBE1RpIrDjqGTYkCrZf0mWhgAW9XSOVPuGw==}
+  /temporal-polyfill@0.2.1:
+    resolution: {integrity: sha512-JaCnPrUY0NkisdARpjbYIZ1P1Nt/Bhe7gRxEcboKJZnMkjtjLnmpDjQ8jM6mtpm/KUt4B3ijkkphlX2wKybX1g==}
     dependencies:
       temporal-spec: 0.2.0
     dev: false
