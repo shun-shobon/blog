@@ -51,7 +51,7 @@
     "remark-math": "^5.1.1",
     "remark-parse": "^10.0.2",
     "sharp": "^0.33.2",
-    "temporal-polyfill": "^0.2.1",
+    "temporal-polyfill": "^0.2.2",
     "ts-array-length": "^0.1.2",
     "tsx": "^4.7.1",
     "twemoji-parser": "^14.0.0",
