@@ -84,7 +84,7 @@
     "@types/unist": "^2.0.10",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.17",
-    "cssnano": "^6.0.4",
+    "cssnano": "^6.0.5",
     "endent": "^2.1.0",
     "eslint": "^8.57.0",
     "husky": "^8.0.3",
