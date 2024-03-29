@@ -40,7 +40,7 @@
     "mdast-util-compact": "^4.1.1",
     "mdast-util-to-string": "^3.2.0",
     "next": "^14.1.4",
-    "node-html-parser": "^6.1.12",
+    "node-html-parser": "^6.1.13",
     "nprogress": "^0.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
