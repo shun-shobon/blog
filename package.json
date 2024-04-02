@@ -74,7 +74,7 @@
     "@tsconfig/strictest": "^2.0.5",
     "@types/katex": "^0.16.7",
     "@types/mdast": "^3.0.15",
-    "@types/node": "^18.19.28",
+    "@types/node": "^18.19.29",
     "@types/nprogress": "^0.2.3",
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.23",
