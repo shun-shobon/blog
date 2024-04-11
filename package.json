@@ -103,6 +103,6 @@
     "unist-builder": "^3.0.1",
     "vite": "^5.2.8",
     "vite-tsconfig-paths": "^4.3.2",
-    "vitest": "^1.4.0"
+    "vitest": "^1.5.0"
   }
 }
