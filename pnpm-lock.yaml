@@ -96,8 +96,8 @@ dependencies:
     specifier: ^2.4.2
     version: 2.4.2
   zod:
-    specifier: ^3.23.4
-    version: 3.23.4
+    specifier: ^3.23.5
+    version: 3.23.5
 
 devDependencies:
   '@next/bundle-analyzer':
@@ -7177,8 +7177,8 @@ packages:
     resolution: {integrity: sha512-N+d4UJSJbt/R3wqY7Coqs5pcV0aUj2j9IaQ3rNj9bVCLld8tTGKRa2USARjnvZJWVx1NDmQev8EknoczaOQDOA==}
     dev: false
 
-  /zod@3.23.4:
-    resolution: {integrity: sha512-/AtWOKbBgjzEYYQRNfoGKHObgfAZag6qUJX1VbHo2PRBgS+wfWagEY2mizjfyAPcGesrJOcx/wcl0L9WnVrHFw==}
+  /zod@3.23.5:
+    resolution: {integrity: sha512-fkwiq0VIQTksNNA131rDOsVJcns0pfVUjHzLrNBiF/O/Xxb5lQyEXkhZWcJ7npWsYlvs+h0jFWXXy4X46Em1JA==}
     dev: false
 
   /zwitch@2.0.4:
