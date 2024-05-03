@@ -149,8 +149,8 @@ devDependencies:
     specifier: ^18.3.0
     version: 18.3.0
   '@types/react-syntax-highlighter':
-    specifier: ^15.5.11
-    version: 15.5.11
+    specifier: ^15.5.12
+    version: 15.5.12
   '@types/sharp':
     specifier: ^0.32.0
     version: 0.32.0
@@ -1414,8 +1414,8 @@ packages:
       '@types/react': 18.3.1
     dev: true
 
-  /@types/react-syntax-highlighter@15.5.11:
-    resolution: {integrity: sha512-ZqIJl+Pg8kD+47kxUjvrlElrraSUrYa4h0dauY/U/FTUuprSCqvUj+9PNQNQzVc6AJgIWUUxn87/gqsMHNbRjw==}
+  /@types/react-syntax-highlighter@15.5.12:
+    resolution: {integrity: sha512-wCuk2HWXqEkHFzNMYmdMgyVRoxJEndutEBz3rKqmcrnkwGDtwT8gMtRaTPzXWPVasJ9NydQ54dbosg2sW65PCg==}
     dependencies:
       '@types/react': 18.3.1
     dev: true
