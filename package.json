@@ -94,7 +94,7 @@
     "npm-run-all2": "^6.1.2",
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
-    "rimraf": "^5.0.6",
+    "rimraf": "^5.0.7",
     "schema-dts": "^1.1.2",
     "stylelint": "^16.5.0",
     "stylelint-config-recess-order": "^4.6.0",
