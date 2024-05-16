@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@acab/reset.css':
-    specifier: ^0.9.0
-    version: 0.9.0
+    specifier: ^0.10.0
+    version: 0.10.0
   '@vercel/analytics':
     specifier: ^1.2.2
     version: 1.2.2(next@14.2.3)(react@18.3.1)
@@ -229,8 +229,8 @@ devDependencies:
 
 packages:
 
-  /@acab/reset.css@0.9.0:
-    resolution: {integrity: sha512-d+Sgy6/U6Hk++7K80f+HqGUnpCsuI6RFQ2Qp2V3k2j64AotX26pll6CosIDT8pq27Ff140VbaQLIKo61pIaRxQ==}
+  /@acab/reset.css@0.10.0:
+    resolution: {integrity: sha512-99vTN5JMd3X+DQhR7XNC5Vc92YxzQvPbT+jnNy5uuFTcBlo0RpMBaR6/U5ZXt/cEjkZ0LDHUu8XGCQOlAvuNIQ==}
     dev: false
 
   /@ampproject/remapping@2.3.0:
