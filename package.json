@@ -96,7 +96,7 @@
     "prettier": "^3.2.5",
     "rimraf": "^5.0.7",
     "schema-dts": "^1.1.2",
-    "stylelint": "^16.5.0",
+    "stylelint": "^16.6.0",
     "stylelint-config-recess-order": "^4.6.0",
     "stylelint-config-recommended": "^14.0.0",
     "typescript": "^5.4.5",
