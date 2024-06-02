@@ -1,10 +1,10 @@
-import "@acab/reset.css";
+import "the-new-css-reset/css/reset.css";
 import "./reset.css";
 import "./variable.css";
 import "katex/dist/katex.min.css";
 
 import { Analytics } from "@vercel/analytics/react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { headers } from "next/headers";
 import type { ReactNode } from "react";
 
@@ -41,6 +41,11 @@ export default function Layout({ children }: Props): JSX.Element {
   );
 }
 
+export const viewport: Viewport = {
+  themeColor: "#79b4e4",
+  colorScheme: "dark light",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(ORIGIN),
   title: TITLE,
@@ -48,8 +53,6 @@ export const metadata: Metadata = {
     "しゅん🌙(@shun_shobon)のブログサイトです。技術記事からポエムまで色々書きます。",
   referrer: "strict-origin-when-cross-origin",
   authors: [{ name: "しゅん🌙", url: "https://s2n.tech" }],
-  themeColor: "#79b4e4",
-  colorScheme: "dark light",
   alternates: {
     types: {
       "application/atom+xml": "/feed",

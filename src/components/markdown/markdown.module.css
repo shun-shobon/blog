@@ -104,14 +104,15 @@ h6.heading {
 }
 .headingLink {
   display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  margin: 0 0.25rem;
+  margin-right: 0.25rem;
   color: var(--text-quote);
   transition: color 0.2s ease-in-out;
 }
 .headingLink:hover {
   color: var(--primary-text);
+}
+.headingLinkIcon {
+  font-size: 1rem;
 }
 .heading:target > .headingLink {
   color: var(--primary-text);
