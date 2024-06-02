@@ -1,4 +1,4 @@
-import "@acab/reset.css";
+import "the-new-css-reset/css/reset.css";
 import "./reset.css";
 import "./variable.css";
 import "katex/dist/katex.min.css";
