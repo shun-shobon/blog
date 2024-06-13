@@ -81,8 +81,8 @@ importers:
         specifier: ^0.1.2
         version: 0.1.2
       tsx:
-        specifier: ^4.15.3
-        version: 4.15.3
+        specifier: ^4.15.4
+        version: 4.15.4
       twemoji-parser:
         specifier: ^14.0.0
         version: 14.0.0
@@ -3675,8 +3675,8 @@ packages:
   tslib@2.6.3:
     resolution: {integrity: sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==}
 
-  tsx@4.15.3:
-    resolution: {integrity: sha512-wLzUMy3xSUpGZQqDprd0U25hpLRJMH8RzONVsqJLwgmE65ZKsxfbs5xVG+sF08wHNyBILmqo5C2775DXYMbRog==}
+  tsx@4.15.4:
+    resolution: {integrity: sha512-d++FLCwJLrXaBFtRcqdPBzu6FiVOJ2j+UsvUZPtoTrnYtCGU5CEW7iHXtNZfA2fcRTvJFWPqA6SWBuB0GSva9w==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -7790,7 +7790,7 @@ snapshots:
 
   tslib@2.6.3: {}
 
-  tsx@4.15.3:
+  tsx@4.15.4:
     dependencies:
       esbuild: 0.21.4
       get-tsconfig: 4.7.5
