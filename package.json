@@ -52,7 +52,7 @@
     "sharp": "^0.33.4",
     "temporal-polyfill": "^0.2.5",
     "the-new-css-reset": "^1.11.2",
-    "ts-array-length": "^0.1.2",
+    "ts-array-length": "^0.1.3",
     "tsx": "^4.16.2",
     "twemoji-parser": "^14.0.0",
     "unified": "^10.1.2",
