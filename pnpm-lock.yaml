@@ -181,8 +181,8 @@ importers:
         specifier: ^8.0.3
         version: 8.0.3
       jsdom:
-        specifier: ^24.1.1
-        version: 24.1.1
+        specifier: ^24.1.2
+        version: 24.1.2
       lint-staged:
         specifier: ^15.2.9
         version: 15.2.9
@@ -227,7 +227,7 @@ importers:
         version: 4.3.2(typescript@5.5.4)(vite@5.4.2(@types/node@18.19.45))
       vitest:
         specifier: ^1.6.0
-        version: 1.6.0(@types/node@18.19.45)(jsdom@24.1.1)
+        version: 1.6.0(@types/node@18.19.45)(jsdom@24.1.2)
 
 packages:
 
@@ -2353,8 +2353,8 @@ packages:
     resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
     hasBin: true
 
-  jsdom@24.1.1:
-    resolution: {integrity: sha512-5O1wWV99Jhq4DV7rCLIoZ/UIhyQeDR7wHVyZAHAshbrvZsLs+Xzz7gtwnlJTJDjleiTKh54F4dXrX70vJQTyJQ==}
+  jsdom@24.1.2:
+    resolution: {integrity: sha512-Fzeg0F93nMZ/dJncmxsXqL7oU/RBvE33RAvr+8otVU9719wHEyV9bUoIfylWWKiuARRV/6tHLX/0W1pe2IixsA==}
     engines: {node: '>=18'}
     peerDependencies:
       canvas: ^2.11.2
@@ -6182,7 +6182,7 @@ snapshots:
     dependencies:
       argparse: 2.0.1
 
-  jsdom@24.1.1:
+  jsdom@24.1.2:
     dependencies:
       cssstyle: 4.0.1
       data-urls: 5.0.0
@@ -7951,7 +7951,7 @@ snapshots:
       '@types/node': 18.19.45
       fsevents: 2.3.3
 
-  vitest@1.6.0(@types/node@18.19.45)(jsdom@24.1.1):
+  vitest@1.6.0(@types/node@18.19.45)(jsdom@24.1.2):
     dependencies:
       '@vitest/expect': 1.6.0
       '@vitest/runner': 1.6.0
@@ -7975,7 +7975,7 @@ snapshots:
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 18.19.45
-      jsdom: 24.1.1
+      jsdom: 24.1.2
     transitivePeerDependencies:
       - less
       - lightningcss
