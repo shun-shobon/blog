@@ -62,7 +62,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "~14.2.8",
+    "@next/bundle-analyzer": "~14.2.9",
     "@next/env": "~14.2.8",
     "@shun-shobon/eslint-config-base": "^1.0.14",
     "@shun-shobon/eslint-config-next": "^1.0.9",
