@@ -1,14 +1,20 @@
-import type { Ogp } from "@/lib/ogp";
-import { FAVICON_SIZE } from "@/lib/ogp";
+import { FAVICON_SIZE, fetchOgp } from "@/lib/ogp";
 
 import styles from "./LinkCard.module.css";
 
 interface Props {
-  ogp: Ogp;
   url: string;
 }
 
-export function LinkCard({ ogp, url }: Props): JSX.Element {
+export async function LinkCard({ url }: Props): Promise<JSX.Element> {
+  const ogp = await fetchOgp(url).catch(() => ({
+    title: url,
+    description: undefined,
+    image: undefined,
+    site: url,
+    favicon: undefined,
+  }));
+
   return (
     <a href={url} className={styles.embedWrapper}>
       <article className={styles.embed}>

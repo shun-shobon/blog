@@ -2,10 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import type { Ogp } from "@/lib/ogp";
-
 interface Props {
-  ogp: Ogp;
   url: string;
 }
 

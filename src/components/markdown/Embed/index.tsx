@@ -1,4 +1,3 @@
-import { fetchOgp } from "@/lib/ogp";
 import type { Embed as EmbedNode } from "@/lib/plugins";
 
 import { LinkCard } from "./LinkCard";
@@ -8,22 +7,13 @@ interface Props {
   children: EmbedNode;
 }
 
-export async function Embed({
-  children: { value },
-}: Props): Promise<JSX.Element> {
-  const ogp = await fetchOgp(value);
-
-  let Tag;
+export function Embed({ children: { value } }: Props): JSX.Element {
   switch (getEmbedType(value)) {
     case "twitter":
-      Tag = TwitterCard;
-      break;
+      return <TwitterCard url={value} />;
     default:
-      Tag = LinkCard;
-      break;
+      return <LinkCard url={value} />;
   }
-
-  return <Tag ogp={ogp} url={value} />;
 }
 
 type EmbedType = "link" | "twitter";
@@ -31,7 +21,7 @@ type EmbedType = "link" | "twitter";
 function getEmbedType(url: string): EmbedType {
   const urlObj = new URL(url);
 
-  if (urlObj.hostname === "twitter.com") {
+  if (urlObj.hostname === "twitter.com" || urlObj.hostname === "x.com") {
     return "twitter";
   }
 
