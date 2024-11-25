@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import type { Embed as EmbedNode } from "@/lib/plugins";
 
 import { LinkCard } from "./LinkCard";
@@ -12,7 +14,11 @@ export function Embed({ children: { value } }: Props): JSX.Element {
     case "twitter":
       return <TwitterCard url={value} />;
     default:
-      return <LinkCard url={value} />;
+      return (
+        <Suspense fallback={null}>
+          <LinkCard url={value} />
+        </Suspense>
+      );
   }
 }
 
