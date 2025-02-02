@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@vercel/analytics": "^1.4.1",
-    "@vercel/og": "^0.6.4",
+    "@vercel/og": "^0.6.5",
     "classnames": "^2.5.1",
     "fast-glob": "^3.3.3",
     "feed": "^4.2.2",
