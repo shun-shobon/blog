@@ -83,7 +83,7 @@
     "@types/twemoji-parser": "^13.1.4",
     "@types/unist": "^2.0.11",
     "@vitejs/plugin-react": "^4.3.4",
-    "autoprefixer": "^10.4.20",
+    "autoprefixer": "^10.4.21",
     "cssnano": "^7.0.6",
     "endent": "^2.1.0",
     "eslint": "^8.57.1",
