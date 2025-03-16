@@ -139,7 +139,7 @@ importers:
         specifier: ^3.0.15
         version: 3.0.15
       '@types/node':
-        specifier: ^18.19.79
+        specifier: ^18.19.80
         version: 18.19.80
       '@types/nprogress':
         specifier: ^0.2.3
