@@ -27,8 +27,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       katex:
-        specifier: ^0.16.21
-        version: 0.16.21
+        specifier: ^0.16.22
+        version: 0.16.22
       mdast-util-compact:
         specifier: ^4.1.1
         version: 4.1.1
@@ -2505,8 +2505,8 @@ packages:
     resolution: {integrity: sha512-ZZow9HBI5O6EPgSJLUb8n2NKgmVWTwCvHGwFuJlMjvLFqlGG6pjirPhtdsseaLZjSibD8eegzmYpUZwoIlj2cQ==}
     engines: {node: '>=4.0'}
 
-  katex@0.16.21:
-    resolution: {integrity: sha512-XvqR7FgOHtWupfMiigNzmh+MgUVmDGU2kXZm899ZkPfcuoPuFxyHmXsgATDpFZDAXCI8tvinaVcDo8PIIJSo4A==}
+  katex@0.16.22:
+    resolution: {integrity: sha512-XCHRdUw4lf3SKBaJe4EvgqIuWwkPSo9XoeO8GjQW94Bp7TWv9hNhzZjZ+OH9yf1UmLygb7DIT5GSFQiyt16zYg==}
     hasBin: true
 
   keyv@4.5.4:
@@ -6366,7 +6366,7 @@ snapshots:
       object.assign: 4.1.5
       object.values: 1.2.0
 
-  katex@0.16.21:
+  katex@0.16.22:
     dependencies:
       commander: 8.3.0
 
@@ -6687,7 +6687,7 @@ snapshots:
   micromark-extension-math@2.1.2:
     dependencies:
       '@types/katex': 0.16.7
-      katex: 0.16.21
+      katex: 0.16.22
       micromark-factory-space: 1.1.0
       micromark-util-character: 1.2.0
       micromark-util-symbol: 1.1.0
