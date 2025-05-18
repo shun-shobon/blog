@@ -139,8 +139,8 @@ importers:
         specifier: ^3.0.15
         version: 3.0.15
       '@types/node':
-        specifier: ^18.19.87
-        version: 18.19.87
+        specifier: ^18.19.100
+        version: 18.19.100
       '@types/nprogress':
         specifier: ^0.2.3
         version: 0.2.3
@@ -164,7 +164,7 @@ importers:
         version: 2.0.11
       '@vitejs/plugin-react':
         specifier: ^4.3.4
-        version: 4.3.4(vite@5.4.19(@types/node@18.19.87))
+        version: 4.3.4(vite@5.4.19(@types/node@18.19.100))
       autoprefixer:
         specifier: ^10.4.21
         version: 10.4.21(postcss@8.4.49)
@@ -221,13 +221,13 @@ importers:
         version: 3.0.1
       vite:
         specifier: ^5.4.19
-        version: 5.4.19(@types/node@18.19.87)
+        version: 5.4.19(@types/node@18.19.100)
       vite-tsconfig-paths:
         specifier: ^5.1.4
-        version: 5.1.4(typescript@5.6.3)(vite@5.4.19(@types/node@18.19.87))
+        version: 5.1.4(typescript@5.6.3)(vite@5.4.19(@types/node@18.19.100))
       vitest:
         specifier: ^2.1.9
-        version: 2.1.9(@types/node@18.19.87)(jsdom@25.0.1)
+        version: 2.1.9(@types/node@18.19.100)(jsdom@25.0.1)
 
 packages:
 
@@ -1092,8 +1092,8 @@ packages:
   '@types/ms@0.7.34':
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
 
-  '@types/node@18.19.87':
-    resolution: {integrity: sha512-OIAAu6ypnVZHmsHCeJ+7CCSub38QNBS9uceMQeg7K5Ur0Jr+wG9wEOEvvMbhp09pxD5czIUy/jND7s7Tb6Nw7A==}
+  '@types/node@18.19.100':
+    resolution: {integrity: sha512-ojmMP8SZBKprc3qGrGk8Ujpo80AXkrP7G2tOT4VWr5jlr5DHjsJF+emXJz+Wm0glmy4Js62oKMdZZ6B9Y+tEcA==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -4742,7 +4742,7 @@ snapshots:
 
   '@types/ms@0.7.34': {}
 
-  '@types/node@18.19.87':
+  '@types/node@18.19.100':
     dependencies:
       undici-types: 5.26.5
 
@@ -4874,14 +4874,14 @@ snapshots:
       satori: 0.12.2
       yoga-wasm-web: 0.3.3
 
-  '@vitejs/plugin-react@4.3.4(vite@5.4.19(@types/node@18.19.87))':
+  '@vitejs/plugin-react@4.3.4(vite@5.4.19(@types/node@18.19.100))':
     dependencies:
       '@babel/core': 7.26.0
       '@babel/plugin-transform-react-jsx-self': 7.25.9(@babel/core@7.26.0)
       '@babel/plugin-transform-react-jsx-source': 7.25.9(@babel/core@7.26.0)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.2
-      vite: 5.4.19(@types/node@18.19.87)
+      vite: 5.4.19(@types/node@18.19.100)
     transitivePeerDependencies:
       - supports-color
 
@@ -4892,13 +4892,13 @@ snapshots:
       chai: 5.1.2
       tinyrainbow: 1.2.0
 
-  '@vitest/mocker@2.1.9(vite@5.4.19(@types/node@18.19.87))':
+  '@vitest/mocker@2.1.9(vite@5.4.19(@types/node@18.19.100))':
     dependencies:
       '@vitest/spy': 2.1.9
       estree-walker: 3.0.3
       magic-string: 0.30.12
     optionalDependencies:
-      vite: 5.4.19(@types/node@18.19.87)
+      vite: 5.4.19(@types/node@18.19.100)
 
   '@vitest/pretty-format@2.1.9':
     dependencies:
@@ -8019,13 +8019,13 @@ snapshots:
       unist-util-stringify-position: 3.0.3
       vfile-message: 3.1.4
 
-  vite-node@2.1.9(@types/node@18.19.87):
+  vite-node@2.1.9(@types/node@18.19.100):
     dependencies:
       cac: 6.7.14
       debug: 4.4.0
       es-module-lexer: 1.5.4
       pathe: 1.1.2
-      vite: 5.4.19(@types/node@18.19.87)
+      vite: 5.4.19(@types/node@18.19.100)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -8037,30 +8037,30 @@ snapshots:
       - supports-color
       - terser
 
-  vite-tsconfig-paths@5.1.4(typescript@5.6.3)(vite@5.4.19(@types/node@18.19.87)):
+  vite-tsconfig-paths@5.1.4(typescript@5.6.3)(vite@5.4.19(@types/node@18.19.100)):
     dependencies:
       debug: 4.4.0
       globrex: 0.1.2
       tsconfck: 3.1.4(typescript@5.6.3)
     optionalDependencies:
-      vite: 5.4.19(@types/node@18.19.87)
+      vite: 5.4.19(@types/node@18.19.100)
     transitivePeerDependencies:
       - supports-color
       - typescript
 
-  vite@5.4.19(@types/node@18.19.87):
+  vite@5.4.19(@types/node@18.19.100):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.49
       rollup: 4.24.0
     optionalDependencies:
-      '@types/node': 18.19.87
+      '@types/node': 18.19.100
       fsevents: 2.3.3
 
-  vitest@2.1.9(@types/node@18.19.87)(jsdom@25.0.1):
+  vitest@2.1.9(@types/node@18.19.100)(jsdom@25.0.1):
     dependencies:
       '@vitest/expect': 2.1.9
-      '@vitest/mocker': 2.1.9(vite@5.4.19(@types/node@18.19.87))
+      '@vitest/mocker': 2.1.9(vite@5.4.19(@types/node@18.19.100))
       '@vitest/pretty-format': 2.1.9
       '@vitest/runner': 2.1.9
       '@vitest/snapshot': 2.1.9
@@ -8076,11 +8076,11 @@ snapshots:
       tinyexec: 0.3.1
       tinypool: 1.0.2
       tinyrainbow: 1.2.0
-      vite: 5.4.19(@types/node@18.19.87)
-      vite-node: 2.1.9(@types/node@18.19.87)
+      vite: 5.4.19(@types/node@18.19.100)
+      vite-node: 2.1.9(@types/node@18.19.100)
       why-is-node-running: 2.3.0
     optionalDependencies:
-      '@types/node': 18.19.87
+      '@types/node': 18.19.100
       jsdom: 25.0.1
     transitivePeerDependencies:
       - less
